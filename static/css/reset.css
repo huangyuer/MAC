@@ -1,0 +1,69 @@
+body,h1,h2,h3,h4,h5,h6,div,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
+body,button,input,select,textarea{font-size:12px;font-family:microsoft yahei;}
+body{margin:0 auto;}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+address,cite,dfn,em,var{font-style:normal}
+code,kbd,pre,samp{font-family:courier new,courier,monospace}
+small{font-size:12px}
+ul,ol,li,dl,dt,dd{list-style:none}
+sup{vertical-align:text-top}
+sub{vertical-align:text-bottom}
+legend{color:#000}
+fieldset,img{border:0}
+button,input,select,textarea{font:12px/1.5 tahoma,arial,sans-serif; vertical-align:middle;cursor:pointer}
+table{border-collapse:collapse;border-spacing:0}
+.clear{clear:both;}
+/*title*/
+h1 { font-size:50px;}
+h2 { font-size:40px;}
+h3 { font-size:30px;}
+h4 { font-size:14px;}
+h5 { font-size:12px;}
+h6 { font-size:9px;}
+a{text-decoration:none;color:#666;}
+a:hover,a:active,a:focus{color:#666;text-decoration:none;}
+/* 公共样式 */
+.left { float:left;}
+.right { float:right;}
+.left{ float:left;}
+.hidden { display:none;}
+.of{ overflow:hidden;}
+.l1 { margin-left:1px;}
+.l2 { margin-left:2px;}
+.l3 { margin-left:3px;}
+.l4 { margin-left:4px;}
+.l5 { margin-left:5px;}
+.l6 { margin-left:6px;}
+.l7 { margin-left:7px;}
+.l8 { margin-left:8px;}
+.l9 { margin-left:9px;}
+.l10 { margin-left:10px;}
+.l15 { margin-left:15px;}
+.l20 { margin-left:20px;}
+.l25 { margin-left:25px;}
+.l30 { margin-left:31px;}
+.t1 { margin-top:1px;}
+.t2 { margin-top:2px;}
+.t3 { margin-top:3px;}
+.t4 { margin-top:4px;}
+.t5 { margin-top:5px;}
+.t6 { margin-top:6px;}
+.t7{ margin-top:7px;}
+.t8{ margin-top:8px;}
+.t9{ margin-top:9px;}
+.t10 { margin-top:10px;}
+.t15 { margin-top:15px;}
+.t18 { margin-top:17px;}
+.t20 { margin-top:20px;}
+.t30 { margin-top:30px;}
+.t25 { margin-top:20px;}
+.r1 { margin-right:1px;}
+.r5 { margin-right:5px;}
+.r10 { margin-right:10px;}
+.r15 { margin-right:15px;}
+.r20 { margin-right:20px;}
+.r30 { margin-right:30px;}
+.b5 { margin-bottom:5px;}
+.b10 { margin-bottom:10px;}
+.b15 { margin-bottom:15px;}
+.b20 { margin-bottom:20px;}
