@@ -6,7 +6,7 @@
     </div>
     <div class="zhmm3">
       <input type="text" placeholder="验证码" v-model="vercode">
-      <a href="javascript:void(0);" @click="regMsg()">获取验证码</a>
+      <a href="javascript:void(0);" @click="checkUser()">获取验证码</a>
     </div>
     <div class="clear"></div>
     <div class="zhmm2">
@@ -39,6 +39,21 @@
     watch: {
     },
     methods: {
+      // 检查手机是否注册过
+      checkUser: function () {
+        this.$axios.get('users/exists/mobile/' + this.phone)
+          .then(responseData => {
+            // 如果不存在则提示已注册过 否则请求发送验证码
+            if (responseData.data.data) {
+              alert('该手机已注册，请直接登录！')
+            } else {
+              this.resetMsg()
+            }
+          })
+          .catch(error => {
+            errorHandle(error)
+          })
+      },
       // 发送验证码
       regMsg: function () {
         this.$axios.get('sms/sendcode/' + this.phone + '?kind=REGISTER')
