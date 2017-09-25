@@ -14,7 +14,7 @@
             <option value="">+86</option>
             <option value="">+86</option>
           </select>
-          <input type="text" value="17743012346" class="input_1">
+          <input type="text" class="input_1" v-model="user.mobile">
         </div>
       </div>
       <div class="grzx_right21">
@@ -23,7 +23,7 @@
           <b>*</b>
         </div>
         <div class="grzx_right21r">
-          <input type="text" value="用户名12345678" class="input_2 input_1">
+          <input type="text" class="input_2 input_1" v-model="user.username">
         </div>
       </div>
       <div class="grzx_right21">
@@ -66,7 +66,7 @@
           <p>专业</p>
         </div>
         <div class="grzx_right21r">
-          <input type="password" value="" class="input_3 input_1">
+          <input type="text" value="" class="input_3 input_1" >
         </div>
       </div>
       <div class="grzx_right21">
@@ -83,7 +83,7 @@
           <p>学历</p>
         </div>
         <div class="grzx_right21r">
-          <input type="password" value="" class="input_3 input_1">
+          <input type="text" value="" class="input_3 input_1">
         </div>
       </div>
       <div class="grzx_right21">
@@ -91,7 +91,7 @@
           <p>邮箱</p>
         </div>
         <div class="grzx_right21r grzx_right21r">
-          <input type="password" value="" class="input_3 input_1">
+          <input type="text" class="input_3 input_1" v-model="user.managerEmail">
         </div>
       </div>
       <div class="grzx_right21 grzx_right22">
@@ -99,19 +99,18 @@
           <p>个人简介</p>
         </div>
         <div class="grzx_right21r grzx_right21r2">
-          <textarea name="" id="" cols="30" rows="10" class="input_4">不超过四十字</textarea>
+          <textarea name="" cols="30" rows="10" class="input_4">不超过四十字</textarea>
         </div>
       </div>
       <div class="grzx_a">
-        <a href="">更新个人信息</a>
+        <a href="javascript:void(0);" @click="updateInfo()">更新个人信息</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  // import API_ROOT from '../../assets/js/config'
-  // import {getCookie} from '../../assets/js/cookie'
+  import {errorHandle} from '../../assets/js/common'
   export default {
     name: 'user_info',
     data () {
@@ -120,22 +119,28 @@
       }
     },
     methods: {
-      // 初始化请求数据
+      // 初始化请求基本信息数据
       initData: function () {
-//        var id = window.localStorage.id
-//        this.$axios.get(API_ROOT + 'users/' + id + '/details', {headers: {Authorization: 'Bearer ' + getCookie('sessionToken')}})
-//          .then(responseData => {
-//            this.user = responseData.data
-//          })
-//          .catch(error => {
-//            if (error.response) {
-//              // 捕获非2xx异常
-//              alert('Error:获取个人信息失败！')
-//            } else {
-//              // 网络错误触发
-//              alert('Error:' + error.message)
-//            }
-//          })
+        var id = window.localStorage.id
+        this.$axios.get('users/' + id + '/fullinfo')
+          .then(responseData => {
+            console.log(responseData.data)
+            this.user = responseData.data
+          })
+          .catch(error => {
+            errorHandle(error)
+          })
+      },
+      // 更新基本信息
+      updateInfo: function () {
+        var id = window.localStorage.id
+        this.$axios.put('users/' + id, this.user)
+          .then(responseData => {
+            console.log(responseData.data)
+          })
+          .catch(error => {
+            errorHandle(error)
+          })
       }
     },
     mounted () {
@@ -144,5 +149,5 @@
   }
 </script>
 
-<style src="../../assets/css/style.css">
+<style>
 </style>

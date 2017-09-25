@@ -41,8 +41,8 @@
 </template>
 
 <script>
-  import {checkLoginCookie, getCookie} from '../../assets/js/cookie'
-  import API_ROOT from '../../assets/js/config'
+  import {checkLoginCookie} from '../../assets/js/cookie'
+  import {errorHandle} from '../../assets/js/common'
   export default {
     name: 'user',
     data () {
@@ -62,18 +62,12 @@
       // 初始化请求数据
       initData: function () {
         var id = window.localStorage.id
-        this.$axios.get(API_ROOT + 'users/' + id + '/details', {headers: {Authorization: 'Bearer ' + getCookie('sessionToken')}})
+        this.$axios.get('users/' + id + '/baseinfo')
           .then(responseData => {
             this.avatarUrl = responseData.data.avatar
           })
           .catch(error => {
-            if (error.response) {
-              // 捕获非2xx异常
-              alert('Error:获取个人信息失败！')
-            } else {
-              // 网络错误触发
-              alert('Error:' + error.message)
-            }
+            errorHandle(error)
           })
       }
     },
@@ -84,5 +78,5 @@
   }
 </script>
 
-<style src="../../assets/css/style.css">
+<style>
 </style>

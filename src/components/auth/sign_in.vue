@@ -23,8 +23,8 @@
 </template>
 
 <script>
-  import API_ROOT from '../../assets/js/config'
   import {setCookie, updateCookie, checkLoginCookie} from '../../assets/js/cookie'
+  import {errorHandle} from '../../assets/js/common'
   export default {
     name: 'sign_in',
     data () {
@@ -37,7 +37,7 @@
     methods: {
       // 登录
       signIn: function () {
-        this.$axios.post(API_ROOT + 'users/login',
+        this.$axios.post('users/login',
           {
             'username': this.phone,
             'password': this.password
@@ -55,13 +55,7 @@
             this.$router.push({path: '/'})
           })
           .catch(error => {
-            if (error.response) {
-              // 捕获非2xx异常
-              alert('Error:' + error.response.data.error)
-            } else {
-              // 网络错误触发
-              alert('Error:' + error.message)
-            }
+            errorHandle(error)
           })
       },
       // 检查是否登录或token是否失效
@@ -79,5 +73,5 @@
   }
 </script>
 
-<style src="../../assets/css/style.css">
+<style>
 </style>

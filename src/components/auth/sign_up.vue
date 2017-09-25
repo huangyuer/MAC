@@ -24,8 +24,8 @@
 </template>
 
 <script>
-  import {setCookie} from '../../assets/js/cookie'
-  import API_ROOT from '../../assets/js/config'
+  import {setCookie, checkLoginCookie} from '../../assets/js/cookie'
+  import {errorHandle} from '../../assets/js/common'
   export default {
     name: 'sign_up',
     data () {
@@ -41,7 +41,7 @@
     methods: {
       // 发送验证码
       regMsg: function () {
-        this.$axios.get(API_ROOT + 'sms/sendcode/' + this.phone + '?kind=REGISTER')
+        this.$axios.get('sms/sendcode/' + this.phone + '?kind=REGISTER')
           .then(responseData => {
             console.log(responseData)
           })
@@ -51,7 +51,7 @@
       },
       // 注册
       signUp: function () {
-        this.$axios.post(API_ROOT + 'users/register/by/mobile',
+        this.$axios.post('users/register/by/mobile',
           {
             'mobile': this.phone,
             'vercode': this.vercode,
@@ -67,18 +67,12 @@
             this.signIn()
           })
           .catch(error => {
-            if (error.response) {
-              // 捕获非2xx异常
-              alert('Error:' + error.response.data.error)
-            } else {
-              // 网络错误触发
-              alert('Error:' + error.message)
-            }
+            errorHandle(error)
           })
       },
       // 登录
       signIn: function () {
-        this.$axios.post(API_ROOT + 'users/login',
+        this.$axios.post('users/login',
           {
             'username': this.phone,
             'password': this.password
@@ -91,18 +85,23 @@
             this.$router.push({path: '/'})
           })
           .catch(error => {
-            if (error.response) {
-              // 捕获非2xx异常
-              alert('Error:' + error.response.data.error)
-            } else {
-              // 网络错误触发
-              alert('Error:' + error.message)
-            }
+            errorHandle(error)
           })
+      },
+      // 检查是否登录或token是否失效
+      checkToken: function () {
+        if (checkLoginCookie()) {
+          // 若未失效则跳转到首页
+          alert('您已登录！请先退出再重新注册！')
+          this.$router.push({path: '/'})
+        }
       }
+    },
+    mounted () {
+      this.checkToken()
     }
   }
 </script>
 
-<style src="../../assets/css/style.css">
+<style>
 </style>

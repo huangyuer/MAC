@@ -23,7 +23,8 @@
 </template>
 
 <script>
-  import API_ROOT from '../../assets/js/config'
+  import {API_ROOT} from '../../assets/js/config'
+  import {errorHandle} from '../../assets/js/common'
   import {checkLoginCookie} from '../../assets/js/cookie'
   export default {
     name: 'psw_reset',
@@ -48,13 +49,7 @@
             }
           })
           .catch(error => {
-            if (error.response) {
-              // 捕获非2xx异常
-              alert('Error:' + error.response.data.error)
-            } else {
-              // 网络错误触发
-              alert('Error:' + error.message)
-            }
+            errorHandle(error)
           })
       },
       // 发送验证码
@@ -64,13 +59,7 @@
             console.log(responseData)
           })
           .catch(error => {
-            if (error.response) {
-              // 捕获非2xx异常
-              alert('Error:' + error.response.data.error)
-            } else {
-              // 网络错误触发
-              alert('Error:' + error.message)
-            }
+            errorHandle(error)
           })
       },
       // 找回密码
@@ -114,5 +103,5 @@
   }
 </script>
 
-<style src="../../assets/css/style.css">
+<style>
 </style>

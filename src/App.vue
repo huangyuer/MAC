@@ -8,5 +8,5 @@ export default {
 }
 </script>
 
-<style>
+<style src="./assets/css/style.css">
 </style>

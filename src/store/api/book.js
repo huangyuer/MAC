@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import API_ROOT from '../../assets/js/config'
+import {API_ROOT} from '../../assets/js/config'
 
 export default{
   getLatest (category, limit, page) {
