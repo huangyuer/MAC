@@ -47,7 +47,7 @@
             if (responseData.data.data) {
               alert('该手机已注册，请直接登录！')
             } else {
-              this.resetMsg()
+              this.sendCode()
             }
           })
           .catch(error => {
@@ -55,7 +55,7 @@
           })
       },
       // 发送验证码
-      regMsg: function () {
+      sendCode: function () {
         this.$axios.get('sms/sendcode/' + this.phone + '?kind=REGISTER')
           .then(responseData => {
             console.log(responseData)

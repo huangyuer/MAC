@@ -43,7 +43,7 @@
           .then(responseData => {
             // 如果存在则请求发送验证码 否则提示尚未注册
             if (responseData.data.data) {
-              this.resetMsg()
+              this.sendCode()
             } else {
               alert('该手机尚未注册，请先注册！')
             }
@@ -53,7 +53,7 @@
           })
       },
       // 发送验证码
-      resetMsg: function () {
+      sendCode: function () {
         this.$axios.get(API_ROOT + 'sms/sendcode/' + this.phone + '?kind=PASSWORD')
           .then(responseData => {
             console.log(responseData)
