@@ -1,6 +1,29 @@
 <template>
   <div class="index_bg">
     <div class="top" >
+      <div class="top_menu">
+        <a href="javascript:void(0);" class="menu_item link active">首页</a>
+        <a href="http://116.62.203.205:8300/#/" class="menu_item link">版权贸易</a>
+        <a href="http://118.178.238.202:8608/" class="menu_item">工程技术论坛</a>
+        <a href="javascript:void(0);" class="menu_item">同济设计在线</a>
+        <a href="javascript:void(0);" class="menu_item">BIM培训中心</a>
+        <a href="http://116.62.203.205:8300/#/about_us" class="menu_item">关于我们</a>
+      </div>
+
+      <div class="top_wap_menu">
+        <div class="btn_menu" @click="toggleMenu()"><img src="../assets/images/menu.png" alt=""></div>
+        <div class="menu_nav" v-show="isMenuClicked" >
+          <ul>
+            <li><a href="javascript:void(0);" class="menu_item link active">首页</a></li>
+            <li><a href="http://116.62.203.205:8300/#/" class="menu_item link">版权贸易</a></li>
+            <li><a href="http://118.178.238.202:8608/" class="menu_item">工程技术论坛</a></li>
+            <li><a href="javascript:void(0);" class="menu_item">同济设计在线</a></li>
+            <li><a href="javascript:void(0);" class="menu_item">BIM培训中心</a></li>
+            <li style="border-bottom:none;"><a href="http://116.62.203.205:8300/#/about_us" class="menu_item">关于我们</a></li>
+          </ul>
+        </div>
+      </div>
+
       <div class="top_login1" v-show="isSignedIn">
         <router-link to="/user/info">
           <a href="javascript:void(0);" class="login_btn1">个人中心</a>
@@ -53,7 +76,8 @@ export default {
   name: 'index',
   data () {
     return {
-      isSignedIn: false
+      isSignedIn: false,
+      isMenuClicked: false
     }
   },
   components: {
@@ -74,6 +98,10 @@ export default {
         alert('退出成功！')
         this.isSignedIn = false
       }
+    },
+    // 移动端menu切换显示
+    toggleMenu: function (event) {
+      this.isMenuClicked = !this.isMenuClicked
     }
   },
   mounted () {
@@ -81,6 +109,3 @@ export default {
   }
 }
 </script>
-
-<style src="../assets/css/style.css">
-</style>

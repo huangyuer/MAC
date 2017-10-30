@@ -6,16 +6,14 @@ html,body{width: 100%;height: 100%}
 .home{width: 150px;float: right;color: #fff;}
 .home a{line-height: 80px;color: #fff;font-size: 14px;margin:0 5px;}
 .top_login{width: 250px;float: right;margin-top: 20px}
-.top_login a{margin-left: 15px;}
 .login_btn{width: 100px;height: 40px;background-color: #fff;line-height: 40px;color: #4a91e3;font-size: 14px;display: block;border-radius: 20px;text-align: center;float: left;}
-.reg_btn{width: 100px;height: 40px;line-height: 40px;color: #ffffff;font-size: 14px;display: block;border-radius: 20px;text-align: center;float: left;border: 1px solid #85b4ec;}
+.reg_btn{width: 100px;height: 40px;line-height: 40px;color: #ffffff;font-size: 14px;display: block;border-radius: 20px;text-align: center;float: left;border: 1px solid #85b4ec; margin-left: 5px;}
 @media only screen and (max-width: 701px) {
 .top{width: auto;}
 .home{width: 120px;float: left;}
 .top_login{width: auto;float: right;margin-top: 25px}
 .login_btn{width: 80px;height: 30px;line-height: 30px;}
-.reg_btn{width: 80px;height: 30px;line-height: 30px;}
-.top_login a{margin-left: 5px;}
+.reg_btn{width: 80px;height: 30px;line-height: 30px; margin-left: 5px;}
 .top_bg{min-width:320px;}
 }
 .header{width: 1240px;margin:0 auto;height: 180px;}
@@ -74,6 +72,7 @@ html,body{width: 100%;height: 100%}
 .list_li dd{width: 512px;float: left;}
 .list_li{margin-top: 20px;}
 .list_li dl{margin-top: 10px}
+.list_li_img {width: 55px; height: 80px}
 .list_li dd em{float: left;border: 1px solid #f89e8f;line-height: 20px;padding:0 5px;border-radius: 5px;color: #f89e8f;margin-right: 10px;}
 .list_li dd p a{color: #000;;font-size: 14px;}
 .list_li span{color: #666782;margin-top: 10px;display: block;}
@@ -226,7 +225,18 @@ html,body{width: 100%;height: 100%}
 .book_lb ul li a{color: #539fe5;}
 .book_lb ul li {margin-left: 20px;margin-top: 10px;}
 .book_lb {margin-top: 10px;}
-.top_login1{width: 250px;float: right;margin-top: 20px}
+.top_login1{width: 250px;float: right;margin-top: 20px;}
+.top_menu {height: 30px; padding: 25px; float: left; line-height: 30px}
+.menu_item {margin: 0 20px; font-size: 16px; color: #fff; font-weight: 400;}
+.top_wap_menu {  display: none;  }
+.btn_menu {  float: left; width: 2rem; height: 2rem  }
+.btn_menu img{margin-top: .8rem;margin-left: .5rem}
+.menu_nav{position: absolute;z-index:9999;left:0;top:2rem;}
+.menu_nav ul li{line-height: .7rem;font-size: .5rem;background-color: #458adf;width: 5rem;text-align: center;border-bottom: 1px solid #fff;}
+.menu_nav ul li a{color: #fff;}
+.menu_item .link:hover {color: #458ADF}
+.menu_item .link:active {color: #458ADF}
+.active {color: #458ADF}
 .login_btn1{width: 100px;height: 40px;margin-left: 15px;background-color: #468adf;line-height: 40px;color: #fff;font-size: 14px;display: block;border-radius: 20px;text-align: center;float: left;}
 .reg_btn1{width: 100px;height: 40px;margin-left: 15px;line-height: 40px;color: #ffffff;font-size: 14px;display: block;border-radius: 20px;text-align: center;float: left;border: 1px solid #919296;}
 .login_btn1:hover{color: #fff;}
@@ -249,7 +259,12 @@ html,body{width: 100%;height: 100%}
 .slist{width: 320px;margin:0 auto;}
 .search_logo{text-align: center;margin-top: 40px;}
 .search_logo img{width: 20%;}
-
+.top_menu {
+  display: none;
+}
+.top_wap_menu {
+  display: block;
+}
 }
 
 @media only screen and (max-width: 641px){
