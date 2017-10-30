@@ -509,3 +509,11 @@ a:hover,a:active,a:focus{color:#666;text-decoration:none;}
 .b10 { margin-bottom:10px;}
 .b15 { margin-bottom:15px;}
 .b20 { margin-bottom:20px;}
+
+/*分页*/
+.pages {width: 100%;}
+.list_text3{overflow: hidden;padding-top: 30px;width: 490px;margin: 0 auto;margin-bottom: 20px;}
+.list_text3 a{display: block;width: 38px;height: 38px;float: left;color: #000;border: 1px solid #e5e3e3;margin: 0 7px;text-align: center;line-height: 38px;font-size: 14px;}
+.list_text3 a:hover{background: #4a90e2;border: 1px #4a90e2 solid;color: #fff;}
+.list_pages{height: 38px; margin: 0 auto;text-align: center;line-height: 38px;font-size: 14px;}
+.actived{background: #4a90e2;border: 1px #4a90e2 solid;color: #fff;}
