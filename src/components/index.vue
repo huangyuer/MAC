@@ -3,9 +3,9 @@
     <div class="top" >
       <div class="top_menu">
         <a href="javascript:void(0);" class="menu_item link active">首页</a>
-        <a href="http://trade.tjdesignx.com/#/" class="menu_item link">工程数据库</a>
+        <a href="http://home.tjdesignx.com/#/" class="menu_item link">工程数据库</a>
         
-        <a href="http://trade.tjdesignx.com/#/" class="menu_item link">工程与工程师</a>
+        <a href="http://home.tjdesignx.com/#/" class="menu_item link">工程与工程师</a>
         <a href="http://trade.tjdesignx.com/#/" class="menu_item link">版权贸易</a>
         <a href="http://bbs.tjdesignx.com/" class="menu_item">工程技术论坛</a>
         <a href="http://x.tjdesignx.com/" class="menu_item">同济设计在线</a>
