@@ -1,15 +1,17 @@
 <template>
   <div class="header">
-    <div class="logo"><a href=""><img src="../../assets/images/logo.jpg" alt=""></a><span>同济工程技术数据库</span></div>
+    <div class="logo"><a href=""><img src="../../assets/images/logo.jpg" alt=""></a><span>
+</span></div>
     <div class="search">
       <div class="search_tag">
         <ul>
           <li><a href="javascript:void(0);">全部</a></li>
           <li class="tag_cur"><a href="javascript:void(0);">图书</a></li>
-          <li><a href="javascript:void(0);">工程师</a></li>
-          <li><a href="javascript:void(0);">工程师图片</a></li>
+          <li><a href="javascript:void(0);">期刊</a></li>
+          <li><a href="javascript:void(0);">图片</a></li>
           <li><a href="javascript:void(0);">公式</a></li>
-          <li><a href="javascript:void(0);">上海建筑规范</a></li>
+          <li><a href="javascript:void(0);">图表</a></li>
+          <li><a href="javascript:void(0);">视频</a></li>
         </ul>
       </div>
       <div class="search_list">
