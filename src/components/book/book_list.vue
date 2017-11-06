@@ -40,17 +40,19 @@
                   <em>图书</em>
                   <p>
                     <router-link to="/book_info">
-                      <a v-text="book.title"></a>
+                      <a v-text="book.name"></a>
                     </router-link>
                   </p>
                   <div class="clear"></div>
-                  <span v-text="book.content.length < 90 ? book.content : book.content.substring(0, 90) + '...'"></span>
+                  <span v-text="book.bindingFormat.length < 90 ? book.bindingFormat : book.bindingFormat.substring(0, 90) + '...'"></span>
                   <a class="fav" v-show="!book.isFav" @click="addToFav()"><small></small><span>加入收藏夹</span></a>
                   <a class="fav" v-show="book.isFav" @click="removeFromFav()"><small></small><span>已加入收藏夹</span></a>
                 </dd>
               </dl>
             </div>
             <div class="clear"></div>
+
+            <pagination :total=total v-on:getList="initBookList"></pagination>
             <!--<div class="list_page">-->
               <!--<a href="" class="page_cur">1</a>-->
               <!--<a href="">2</a>-->
@@ -78,6 +80,7 @@
   import headerBar from '../public/header_bar.vue'
   import footerBar from '../public/footer_bar.vue'
   import searchBar from '../public/search_bar.vue'
+  import pagination from '../public/paginaton.vue'
   import {checkLoginCookie, deleteCookie} from '../../assets/js/cookie'
   import {errorHandle} from '../../assets/js/common'
   export default {
@@ -85,7 +88,8 @@
     data () {
       return {
         books: [],
-        categories: []
+        categories: [],
+        total: 0
       }
     },
     props: {
@@ -93,7 +97,8 @@
     components: {
       headerBar,
       footerBar,
-      searchBar
+      searchBar,
+      pagination
     },
     methods: {
       // 检查token是否失效
@@ -113,22 +118,20 @@
         }
       },
       // 初始化图书列表
-      initBookList: function () {
-        this.books = [
-          {'name': '23', 'title': '23232323', 'imgUrl': '', 'content': '1, 本文为网易云课堂--运营微专来的课程作业，如有疑问，欢迎交流。任选一互联网产品，策划一期活动，撰写出活动方案。一，活动背景常规节日活动，六一儿童节。二活动目的获....'},
-          {'name': '23', 'title': '23232323', 'content': '23232323'}
-        ]
+      initBookList: function (limit, page) {
+        console.log(limit, page)
         this.$axios.get('books', {
           params: {
 //            'category': '%e4%bd%a0%e5%a5%',
-            'limit': 10,
-            'page': 1
+            'limit': limit,
+            'page': page
           }
         })
           .then(responseData => {
-            this.books = responseData.data
-            console.log(responseData.data)
-            console.log(this.books)
+            this.total = responseData.data.total
+//            console.log(this.total)
+            this.books = responseData.data.data
+//            console.log(this.books)
           })
           .catch(error => {
             errorHandle(error)
@@ -139,7 +142,7 @@
         this.$axios.get('categories')
           .then(responseData => {
             this.categories = responseData.data
-            console.log(this.categories)
+//            console.log(this.categories)
           })
           .catch(error => {
             errorHandle(error)
@@ -154,9 +157,9 @@
         //
       }
     },
-    mounted () {
+    created () {
       this.checkToken()
-      this.initBookList()
+      this.initBookList(10, 1)
       this.initCategories()
     }
   }
