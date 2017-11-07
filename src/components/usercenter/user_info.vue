@@ -122,7 +122,7 @@
       // 初始化请求基本信息数据
       initData: function () {
         var id = window.localStorage.id
-        this.$axios.get('users/' + id + '/fullinfo')
+        this.$axios.get('v1/users/' + id + '/fullinfo')
           .then(responseData => {
             console.log(responseData.data)
             this.user = responseData.data
@@ -134,7 +134,7 @@
       // 更新基本信息
       updateInfo: function () {
         var id = window.localStorage.id
-        this.$axios.put('users/' + id, this.user)
+        this.$axios.put('v1/users/' + id, this.user)
           .then(responseData => {
             console.log(responseData.data)
           })

@@ -1,25 +1,27 @@
 <template>
   <div class="index_bg">
-    <div class="top" >
+    <div class="top">
       <div class="top_menu">
-        <a href="javascript:void(0);" class="menu_item link active">首页</a>
-        <a href="http://116.62.203.205:8300/#/" class="menu_item link">版权贸易</a>
-        <a href="http://118.178.238.202:8608/" class="menu_item">工程技术论坛</a>
-        <a href="javascript:void(0);" class="menu_item">同济设计在线</a>
-        <a href="javascript:void(0);" class="menu_item">BIM培训中心</a>
-        <a href="http://116.62.203.205:8300/#/about_us" class="menu_item">关于我们</a>
+        <a href="/" class="menu_item active">首页</a>
+        <a href="/" class="menu_item">工程数据库</a>
+        <a href="http://home.tjdesignx.com/#/" class="menu_item">工程与工程师</a>
+        <a href="http://trade.tjdesignx.com/#/" class="menu_item">版权贸易</a>
+        <a href="http://bbs.tjdesignx.com/#/" class="menu_item">工程技术论坛</a>
+        <a href="http://x.tjdesignx.com/#/" class="menu_item">同济设计在线</a>
+        <a href="http://bim.tjdesignx.com/#/" class="menu_item">BIM培训中心</a>
       </div>
 
       <div class="top_wap_menu">
         <div class="btn_menu" @click="toggleMenu()"><img src="../assets/images/menu.png" alt=""></div>
         <div class="menu_nav" v-show="isMenuClicked" >
           <ul>
-            <li><a href="javascript:void(0);" class="menu_item link active">首页</a></li>
-            <li><a href="http://116.62.203.205:8300/#/" class="menu_item link">版权贸易</a></li>
-            <li><a href="http://118.178.238.202:8608/" class="menu_item">工程技术论坛</a></li>
-            <li><a href="javascript:void(0);" class="menu_item">同济设计在线</a></li>
-            <li><a href="javascript:void(0);" class="menu_item">BIM培训中心</a></li>
-            <li style="border-bottom:none;"><a href="http://116.62.203.205:8300/#/about_us" class="menu_item">关于我们</a></li>
+            <li><a href="/" class="menu_item active">首页</a><li>
+            <li><a href="/" class="menu_item">工程数据库</a></li>
+            <li><a href="http://home.tjdesignx.com/#/" class="menu_item">工程与工程师</a></li>
+            <li><a href="http://trade.tjdesignx.com/#/" class="menu_item">版权贸易</a></li>
+            <li><a href="http://bbs.tjdesignx.com/#/" class="menu_item">工程技术论坛</a></li>
+            <li><a href="http://x.tjdesignx.com/#/" class="menu_item">同济设计在线</a></li>
+            <li style="border: none"><a href="http://bim.tjdesignx.com/#/" class="menu_item">BIM培训中心</a></li>
           </ul>
         </div>
       </div>
@@ -47,19 +49,20 @@
     <div class="serach_l">
       <div class="search_ul">
         <ul>
-          <li><a href="">全部 </a></li>
-          <li class="ul_cur"><a href="">图书 </a></li>
-          <li><a href="">工程师 </a></li>
-          <li><a href="">工程师图片 </a></li>
-          <li><a href="">公式 </a></li>
-          <li><a href="">上海建筑规范 </a></li>
+          <li class="ul_cur"><a href="javascript:;">全部 </a></li>
+          <li><a href="javascript:;">图书</a></li>
+          <li><a href="javascript:;">期刊</a></li>
+          <li><a href="javascript:;">图片</a></li>
+          <li><a href="javascript:;">公式</a></li>
+          <li><a href="javascript:;">图表</a></li>
+          <li><a href="javascript:;">视频</a></li>
         </ul>
       </div>
       <div class="clear"></div>
       <div class="slist">
         <form action="">
           <input type="text" class="s_in" placeholder="请输入关键字" style="outline: none">
-          <input type="submit" class="s_btn" value="搜索" style="outline: none">
+          <button class="s_btn" style="outline: none">搜索</button>
         </form>
       </div>
     </div>

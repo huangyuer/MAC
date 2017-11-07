@@ -41,7 +41,7 @@
     methods: {
       // 检查手机是否注册过
       checkUser: function () {
-        this.$axios.get('users/exists/mobile/' + this.phone)
+        this.$axios.get('v1/users/exists/mobile/' + this.phone)
           .then(responseData => {
             // 如果不存在则提示已注册过 否则请求发送验证码
             if (responseData.data.data) {
@@ -56,7 +56,11 @@
       },
       // 发送验证码
       sendCode: function () {
-        this.$axios.get('sms/sendcode/' + this.phone + '?kind=REGISTER')
+        this.$axios.post('http://118.178.238.202:8236/v1/send/vercode/' + this.phone,
+          {
+            'product': '同济设计在线',
+            'kind': 'REGISTER'
+          })
           .then(responseData => {
             console.log(responseData)
           })
@@ -66,7 +70,7 @@
       },
       // 注册
       signUp: function () {
-        this.$axios.post('users/register/by/mobile',
+        this.$axios.post('v1/users/register/by/mobile',
           {
             'mobile': this.phone,
             'vercode': this.vercode,
@@ -87,7 +91,7 @@
       },
       // 登录
       signIn: function () {
-        this.$axios.post('users/login',
+        this.$axios.post('v1/users/login',
           {
             'username': this.phone,
             'password': this.password

@@ -35,9 +35,9 @@
             <div class="list_cout">已为您 找到"<font color="#4a91e3">中文</font>"相关结果约100，000，000个，用时0.030秒</div>
             <div class="list_li">
               <dl v-for="book in books">
-                <dt><img src="../../assets/images/img.jpg" onerror='this.src="../../assets/images/img.jpg"' alt="" class="list_li_img"></dt>
+                <dt><img :src="url + book.cover" alt="" class="list_li_img"></dt>
                 <dd>
-                  <em>图书</em>
+                  <em v-text="book.bindingFormat">图书</em>
                   <p>
                     <router-link to="/book_info">
                       <a v-text="book.name"></a>
@@ -52,15 +52,8 @@
             </div>
             <div class="clear"></div>
 
-            <pagination :total=total v-on:getList="initBookList"></pagination>
-            <!--<div class="list_page">-->
-              <!--<a href="" class="page_cur">1</a>-->
-              <!--<a href="">2</a>-->
-              <!--<a href="">3</a>-->
-              <!--<a href="">4</a>-->
-              <!--<a href="">5</a>-->
-              <!--<a href="">></a>-->
-            <!--</div>-->
+            <pagination :total=total :limit=limit v-on:getList="initBookList"></pagination>
+
           </div>
 
         </div>
@@ -81,7 +74,6 @@
   import footerBar from '../public/footer_bar.vue'
   import searchBar from '../public/search_bar.vue'
   import pagination from '../public/paginaton.vue'
-  import {checkLoginCookie, deleteCookie} from '../../assets/js/cookie'
   import {errorHandle} from '../../assets/js/common'
   export default {
     name: 'book_list',
@@ -89,7 +81,9 @@
       return {
         books: [],
         categories: [],
-        total: 0
+        total: 0,
+        limit: 10,
+        url: 'http://118.178.238.202:9988/'
       }
     },
     props: {
@@ -101,26 +95,10 @@
       pagination
     },
     methods: {
-      // 检查token是否失效
-      checkToken: function () {
-        if (checkLoginCookie()) {
-          // 若未失效则登录注册切换显示个人中心
-          this.isSignedIn = true
-        }
-      },
-      // 退出登录
-      signOut: function () {
-        // 删除cookie检查状态成功则退出
-        deleteCookie('sessionToken')
-        if (!checkLoginCookie()) {
-          alert('退出成功！')
-          this.isSignedIn = false
-        }
-      },
       // 初始化图书列表
       initBookList: function (limit, page) {
-        console.log(limit, page)
-        this.$axios.get('books', {
+//        console.log(limit, page)
+        this.$axios.get('v1/books', {
           params: {
 //            'category': '%e4%bd%a0%e5%a5%',
             'limit': limit,
@@ -131,7 +109,7 @@
             this.total = responseData.data.total
 //            console.log(this.total)
             this.books = responseData.data.data
-//            console.log(this.books)
+            console.log(this.books)
           })
           .catch(error => {
             errorHandle(error)
@@ -139,7 +117,7 @@
       },
       // 初始化图书分类
       initCategories: function () {
-        this.$axios.get('categories')
+        this.$axios.get('v1/categories')
           .then(responseData => {
             this.categories = responseData.data
 //            console.log(this.categories)
@@ -158,8 +136,7 @@
       }
     },
     created () {
-      this.checkToken()
-      this.initBookList(10, 1)
+      this.initBookList(this.limit, 1)
       this.initCategories()
     }
   }

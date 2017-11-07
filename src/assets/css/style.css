@@ -452,7 +452,8 @@ sup{vertical-align:text-top}
 sub{vertical-align:text-bottom}
 legend{color:#000}
 fieldset,img{border:0}
-button,input,select,textarea{font:12px/1.5 tahoma,arial,sans-serif; vertical-align:middle;cursor:pointer}
+button,input,select,textarea{font:12px/1.5 tahoma,arial,sans-serif; vertical-align:middle;}
+select,button{cursor:pointer}
 table{border-collapse:collapse;border-spacing:0}
 .clear{clear:both;}
 /*title*/

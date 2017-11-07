@@ -23,7 +23,6 @@
 </template>
 
 <script>
-  import {API_ROOT} from '../../assets/js/config'
   import {errorHandle} from '../../assets/js/common'
   import {checkLoginCookie} from '../../assets/js/cookie'
   export default {
@@ -39,7 +38,7 @@
     methods: {
       // 检查手机是否注册过
       checkUser: function () {
-        this.$axios.get(API_ROOT + 'users/exists/mobile/' + this.phone)
+        this.$axios.get('v1/users/exists/mobile/' + this.phone)
           .then(responseData => {
             // 如果存在则请求发送验证码 否则提示尚未注册
             if (responseData.data.data) {
@@ -54,7 +53,7 @@
       },
       // 发送验证码
       sendCode: function () {
-        this.$axios.get(API_ROOT + 'sms/sendcode/' + this.phone + '?kind=PASSWORD')
+        this.$axios.get('v1/sms/sendcode/' + this.phone + '?kind=PASSWORD')
           .then(responseData => {
             console.log(responseData)
           })
@@ -64,7 +63,7 @@
       },
       // 找回密码
       pswReset: function () {
-        this.$axios.put(API_ROOT + 'users/reset/password/by/mobile',
+        this.$axios.put('v1/users/reset/password/by/mobile',
           {
             'mobile': this.phone,
             'vercode': this.vercode,

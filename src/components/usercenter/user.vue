@@ -62,7 +62,7 @@
       // 初始化请求数据
       initData: function () {
         var id = window.localStorage.id
-        this.$axios.get('users/' + id + '/baseinfo')
+        this.$axios.get('v1/users/' + id + '/baseinfo')
           .then(responseData => {
             this.avatarUrl = responseData.data.avatar
           })

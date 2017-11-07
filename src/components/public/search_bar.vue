@@ -6,16 +6,17 @@
         <ul>
           <li><a href="javascript:void(0);">全部</a></li>
           <li class="tag_cur"><a href="javascript:void(0);">图书</a></li>
-          <li><a href="javascript:void(0);">工程师</a></li>
-          <li><a href="javascript:void(0);">工程师图片</a></li>
+          <li><a href="javascript:void(0);">期刊</a></li>
+          <li><a href="javascript:void(0);">图片</a></li>
           <li><a href="javascript:void(0);">公式</a></li>
-          <li><a href="javascript:void(0);">上海建筑规范</a></li>
+          <li><a href="javascript:void(0);">图表</a></li>
+          <li><a href="javascript:void(0);">视频</a></li>
         </ul>
       </div>
       <div class="search_list">
         <form action="">
-          <input type="text" class="search_in" placeholder="中文">
-          <input type="submit" class="search_btn" >
+          <input type="text" v-model="searchContent" class="search_in" placeholder="中文">
+          <input type="submit" class="search_btn" @click="search()">
         </form>
       </div>
       <div class="clear"></div>
@@ -30,10 +31,40 @@
 </template>
 
 <script>
+  import {errorHandle} from '../../assets/js/common'
   export default {
     name: 'search_bar',
     data () {
       return {
+        levelOneCategory: '',
+        levelTwoCategory: [],
+        searchContent: ''
+//        searchData: []
+      }
+    },
+    props: {
+//      searchData: {
+//        type: Array
+//      }
+    },
+    methods: {
+      // search 查询
+      search: function () {
+        this.$axios.post('v1/search/',
+          {
+            'levelOneCategory': this.levelOneCategory,
+            'levelTwoCategory': this.levelTwoCategory,
+            'searchContent': this.searchContent,
+            'row': 10,
+            'page': 1
+          })
+          .then(responseData => {
+//            this.searchData = responseData.data
+            alert('111')
+          })
+          .catch(error => {
+            errorHandle(error)
+          })
       }
     }
   }
