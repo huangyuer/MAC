@@ -99,7 +99,7 @@
     data () {
       return {
         books: [],
-        categories: [],
+        categories: [1, 2, 3],
         total: 0,
         searchContent: ''
       }
@@ -128,45 +128,6 @@
           this.isSignedIn = false
         }
       },
-      // 初始化图书列表
-      initBookList: function (limit, page) {
-        console.log(limit, page)
-        this.$axios.get('books', {
-          params: {
-//            'category': '%e4%bd%a0%e5%a5%',
-            'limit': limit,
-            'page': page
-          }
-        })
-          .then(responseData => {
-            this.total = responseData.data.total
-//            console.log(this.total)
-            this.books = responseData.data.data
-//            console.log(this.books)
-          })
-          .catch(error => {
-            errorHandle(error)
-          })
-      },
-      // 初始化图书分类
-      initCategories: function () {
-        this.$axios.get('categories')
-          .then(responseData => {
-            this.categories = responseData.data
-//            console.log(this.categories)
-          })
-          .catch(error => {
-            errorHandle(error)
-          })
-      },
-      // 加入收藏夹
-      addToFav: function () {
-        //
-      },
-      // 移除收藏夹
-      removeFromFav: function () {
-        //
-      }
     },
     created () {
       this.checkToken()
