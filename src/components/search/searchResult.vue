@@ -35,7 +35,9 @@
             <div class="list_cout">已为您 找到"<font color="#4a91e3">中文</font>"相关结果约100，000，000个，用时0.030秒</div>
             <div class="list_li">
               <dl v-for="book in books">
-                <dt><img src="../../assets/images/img.jpg" onerror='this.src="../../assets/images/img.jpg"' alt="" class="list_li_img"></dt>
+                <dt><img src="../../assets/images/img.jpg" onerror='this.src=' ../../assets/images/img.jpg'' alt=""
+                  class="list_li_img">
+                </dt>
                 <dd>
                   <em>图书</em>
                   <p>
@@ -44,9 +46,14 @@
                     </router-link>
                   </p>
                   <div class="clear"></div>
-                  <span v-text="book.bindingFormat.length < 90 ? book.bindingFormat : book.bindingFormat.substring(0, 90) + '...'"></span>
-                  <a class="fav" v-show="!book.isFav" @click="addToFav()"><small></small><span>加入收藏夹</span></a>
-                  <a class="fav" v-show="book.isFav" @click="removeFromFav()"><small></small><span>已加入收藏夹</span></a>
+                  <span
+                    v-text="book.bindingFormat.length < 90 ? book.bindingFormat : book.bindingFormat.substring(0, 90) + '...'"></span>
+                  <a class="fav" v-show="!book.isFav" @click="addToFav()">
+                    <small></small>
+                    <span>加入收藏夹</span></a>
+                  <a class="fav" v-show="book.isFav" @click="removeFromFav()">
+                    <small></small>
+                    <span>已加入收藏夹</span></a>
                 </dd>
               </dl>
             </div>
@@ -81,19 +88,23 @@
   import footerBar from '../public/footer_bar.vue'
   import searchBar from '../public/search_bar.vue'
   import pagination from '../public/paginaton.vue'
-  import {checkLoginCookie, deleteCookie} from '../../assets/js/cookie'
-  import {errorHandle} from '../../assets/js/common'
+  import { getCookie, checkLoginCookie, deleteCookie } from '../../assets/js/cookie'
+  import { errorHandle } from '../../assets/js/common'
+
   export default {
+    mounted: function () {
+      this.searchContent = getCookie('searchContent')
+    },
     name: 'book_list',
     data () {
       return {
         books: [],
         categories: [],
-        total: 0
+        total: 0,
+        searchContent: ''
       }
     },
-    props: {
-    },
+    props: {},
     components: {
       headerBar,
       footerBar,
