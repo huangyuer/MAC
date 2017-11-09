@@ -1,10 +1,10 @@
 <template>
   <div class="index_bg">
-    <div class="top" >
+    <div class="top">
       <div class="top_menu">
         <a href="javascript:void(0);" class="menu_item link active">首页</a>
         <a href="http://home.tjdesignx.com/#/" class="menu_item link">工程数据库</a>
-        
+
         <a href="http://home.tjdesignx.com/#/" class="menu_item link">工程与工程师</a>
         <a href="http://trade.tjdesignx.com/#/" class="menu_item link">版权贸易</a>
         <a href="http://bbs.tjdesignx.com/" class="menu_item">工程技术论坛</a>
@@ -15,17 +15,18 @@
 
       <div class="top_wap_menu">
         <div class="btn_menu" @click="toggleMenu()"><img src="../assets/images/menu.png" alt=""></div>
-        <div class="menu_nav" v-show="isMenuClicked" >
+        <div class="menu_nav" v-show="isMenuClicked">
           <ul>
             <a href="javascript:void(0);" class="menu_item link active">首页</a>
             <a href="http://trade.tjdesignx.com/#/" class="menu_item link">工程数据库</a>
-            
+
             <a href="http://trade.tjdesignx.com/#/" class="menu_item link">工程与工程师</a>
             <a href="http://trade.tjdesignx.com/#/" class="menu_item link">版权贸易</a>
             <a href="http://bbs.tjdesignx.com/" class="menu_item">工程技术论坛</a>
             <a href="http://x.tjdesignx.com/" class="menu_item">同济设计在线</a>
             <a href="http://bim.tjdesignx.com/" class="menu_item">BIM培训中心</a>
-            <li style="border-bottom:none;"><a href="http://116.62.203.205:8300/#/about_us" class="menu_item">关于我们</a></li>
+            <li style="border-bottom:none;"><a href="http://116.62.203.205:8300/#/about_us" class="menu_item">关于我们</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -53,20 +54,14 @@
     <div class="serach_l">
       <div class="search_ul">
         <ul>
-          <li class="ul_cur"><a href="">全部</a></li>
-          <li><a href="">图书</a></li>
-          <li><a href="">期刊</a></li>
-          <li><a href="">图片</a></li>
-          <li><a href="">公式</a></li>
-          <li><a href="">图表</a></li>
-          <li><a href="">视频</a></li>
+          <li :class="{'ul_cur':i.active}" v-for="i in levelOneCategoryList"><a href="">{{i.name}}</a></li>
         </ul>
       </div>
       <div class="clear"></div>
       <div class="slist">
         <form action="">
-          <input type="text" class="s_in" placeholder="请输入关键字" style="outline: none">
-          <input type="submit" class="s_btn" value="搜索" style="outline: none">
+          <input v-model="searchContent" type="text" class="s_in" placeholder="请输入关键字" style="outline: none">
+          <input @click="clickSearch" type="submit" class="s_btn" value="搜索" style="outline: none">
         </form>
       </div>
     </div>
@@ -78,41 +73,87 @@
 </template>
 
 <script>
-import {checkLoginCookie, deleteCookie} from '../assets/js/cookie'
-export default {
-  name: 'index',
-  data () {
-    return {
-      isSignedIn: false,
-      isMenuClicked: false
-    }
-  },
-  components: {
-  },
-  methods: {
-    // 检查token是否失效
-    checkToken: function () {
-      if (checkLoginCookie()) {
-        // 若未失效则登录注册切换显示个人中心
-        this.isSignedIn = true
+  import { checkLoginCookie, deleteCookie, setCookie } from '../assets/js/cookie'
+
+  export default {
+    name: 'index',
+    data () {
+      return {
+        isSignedIn: false,
+        isMenuClicked: false,
+        searchContent: '',
+        levelOneCategoryList: [
+          {
+            name: '全部',
+            active: true
+          },
+          {
+            name: '图书',
+            active: false
+          },
+          {
+            name: '图片',
+            active: false
+          },
+          {
+            name: '公式',
+            active: false
+          },
+          {
+            name: '图标',
+            active: false
+          },
+          {
+            name: '视频',
+            active: false
+          }
+        ]
       }
     },
-    // 退出登录
-    signOut: function () {
-      // 删除cookie检查状态成功则退出
-      deleteCookie('sessionToken')
-      if (!checkLoginCookie()) {
-        alert('退出成功！')
-        this.isSignedIn = false
+    components: {},
+    methods: {
+      // 检查token是否失效
+      checkToken: function () {
+        if (checkLoginCookie()) {
+          // 若未失效则登录注册切换显示个人中心
+          this.isSignedIn = true
+        }
+      },
+      // 退出登录
+      signOut: function () {
+        // 删除cookie检查状态成功则退出
+        deleteCookie('sessionToken')
+        if (!checkLoginCookie()) {
+          alert('退出成功！')
+          this.isSignedIn = false
+        }
+      },
+      // 移动端menu切换显示
+      toggleMenu: function (event) {
+        this.isMenuClicked = !this.isMenuClicked
+      },
+      clickSearch: function () {
+        this.$router.push('/search/result')
+        var p = {
+          rows: 1,
+          page: 1,
+          searchContent: this.searchContent,
+          levelOneCategory: this.levelOneCategory,
+          levelTwoCategoryList: this.levelTwoCategoryList
+        }
+        this.$axios.post('search', p).then(function (resp) {
+          console.log(resp)
+        })
       }
     },
-    // 移动端menu切换显示
-    toggleMenu: function (event) {
-      this.isMenuClicked = !this.isMenuClicked
+    mounted () {
+      this.checkToken()
+    },
+    watch: {
+      searchContent: function (val) {
+        setCookie('searchContent', val)
+        console.log(val)
+      }
     }
-  },
-  mounted () {
-    this.checkToken()
   }
-}
 </script>

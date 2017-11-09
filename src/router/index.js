@@ -20,6 +20,10 @@ export default new Router({
       component: resolve => require(['../components/auth/sign_up.vue'], resolve)
     },
     {
+      path: '/search/result',
+      component: resolve => require(['../components/search/searchResult.vue'], resolve)
+    },
+    {
       path: '/psw_reset',
       component: resolve => require(['../components/auth/psw_reset.vue'], resolve)
     },

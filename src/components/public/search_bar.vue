@@ -16,26 +16,32 @@
       </div>
       <div class="search_list">
         <form action="">
-          <input type="text" class="search_in" placeholder="中文">
-          <input type="submit" class="search_btn" >
+          <input type="text" class="search_in" placeholder="请输入搜索内容" v-model="searchContent">
+          <input type="submit" class="search_btn">
         </form>
       </div>
       <div class="clear"></div>
       <div class="search_select">
-        <input type="checkbox" ><span>分类一</span>
-        <input type="checkbox" ><span>分类二</span>
-        <input type="checkbox" ><span>分类三</span>
-        <input type="checkbox" ><span>分类四</span>
+        <input type="checkbox"><span>分类一</span>
+        <input type="checkbox"><span>分类二</span>
+        <input type="checkbox"><span>分类三</span>
+        <input type="checkbox"><span>分类四</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import { getCookie } from '../../assets/js/cookie'
+
   export default {
     name: 'search_bar',
+    mounted: function () {
+      this.searchContent = getCookie('searchContent')
+    },
     data () {
       return {
+        searchContent: ''
       }
     }
   }
