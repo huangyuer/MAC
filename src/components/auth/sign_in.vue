@@ -37,7 +37,7 @@
     methods: {
       // 登录
       signIn: function () {
-        this.$axios.post('users/login',
+        this.$axios.post('v1/users/login',
           {
             'username': this.phone,
             'password': this.password

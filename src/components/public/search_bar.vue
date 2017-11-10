@@ -11,6 +11,7 @@
       </div>
       <div class="search_list">
         <form action="">
+
           <input type="text" class="search_in" placeholder="请输入搜索内容" v-model="searchContent">
           <input type="submit" class="search_btn" @click="clickSearch">
         </form>
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+
   import { getCookie } from '../../assets/js/cookie'
 
   export default {
@@ -36,6 +38,8 @@
     },
     data () {
       return {
+        levelOneCategory: '',
+        levelTwoCategory: [],
         searchContent: '',
         levelOneCategoryList: [
           {
@@ -93,6 +97,9 @@
           }
         }
       }
+    },
+    methods: {
+      // search 查询
     }
   }
 </script>
