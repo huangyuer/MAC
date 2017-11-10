@@ -518,3 +518,11 @@ a:hover,a:active,a:focus{color:#666;text-decoration:none;}
 .list_text3 a:hover{background: #4a90e2;border: 1px #4a90e2 solid;color: #fff;}
 .list_pages{height: 38px; margin: 0 auto;text-align: center;line-height: 38px;font-size: 14px;}
 .actived{background: #4a90e2;border: 1px #4a90e2 solid;color: #fff;}
+
+.list_li dd div.fucking  em{
+  color: red;
+  margin:0;
+  padding:0;
+  float: none;
+  border:none;
+}

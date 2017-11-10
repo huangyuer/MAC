@@ -76,7 +76,7 @@
     methods: {
       clickSearch: function () {
         let p = {
-          rows: 10,
+          rows: 8,
           page: 1,
           searchContent: this.searchContent,
           levelOneCategory: this.levelOneCategory.nickName,
