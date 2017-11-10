@@ -226,14 +226,72 @@ html,body{width: 100%;height: 100%}
 .book_lb ul li {margin-left: 20px;margin-top: 10px;}
 .book_lb {margin-top: 10px;}
 .top_login1{width: 250px;float: right;margin-top: 20px;}
-.top_menu {height: 30px; padding: 25px; float: left; line-height: 30px}
+.top_menu {height: 80px; float: left; line-height: 80px}
+.top_menu ul li{float: left;}
+.triangle-up{
+  display: none;
+  position: absolute;
+  left: 125px;
+  top: 72px;
+  width:0;
+  height:0;
+  border-width:0 6px 8px;
+  border-style:solid;
+  border-color:transparent transparent #4b555c;
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+}
+.drop-down-content {
+  position: absolute;
+  left: 30px;
+  top: 80px;
+  background-color: #4b555c;
+  border-radius: 10px;
+  float: none;
+  width: 150px;
+  opacity: 0.3;
+  height: 0;
+  overflow: hidden;
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+}
+.drop-down-content li {
+  line-height: 45px;
+  width: 150px;
+}
+.drop-right-content li a{
+  font-size: 14px;
+}
+.drop-right-content {
+  background-color: #4b555c;
+  border-radius: 10px;
+  float: left;
+  font-size: 14px;
+}
+.top_menu ul li ul li ul li{
+  float: none;
+}
+
+.nav .drop-down:hover .drop-down-content{
+  opacity: 1;
+  height: auto;
+  width: auto;
+}
+
+.nav .drop-down:hover .triangle-up{
+  display: block;
+}
+
 .menu_item {margin: 0 20px; font-size: 16px; color: #fff; font-weight: 400;}
 .top_wap_menu {  display: none;  }
 .btn_menu {  float: left; width: 2rem; height: 2rem  }
 .btn_menu img{margin-top: .8rem;margin-left: .5rem}
-.menu_nav{position: absolute;z-index:9999;left:0;top:2rem;}
-.menu_nav ul li{line-height: .7rem;font-size: .5rem;background-color: #458adf;width: 5rem;text-align: center;border-bottom: 1px solid #fff;}
+.menu_nav{position: absolute;z-index:9999;left:0;top:2rem; }
+.menu_nav ul{border-radius: 10px; background-color: #4b555c;}
+.menu_nav ul li{line-height: .8rem;font-size: .5rem;width: auto;text-align: left;}
 .menu_nav ul li a{color: #fff;}
+.menu_nav ul li ul{margin-left: 40px}
+.menu_nav ul li ul li ul{margin-left: 20px}
 .menu_item .link:hover {color: #458ADF}
 .menu_item .link:active {color: #458ADF}
 .active {color: #458ADF}
@@ -251,7 +309,8 @@ html,body{width: 100%;height: 100%}
 .s_in{margin-top: 20px;width: 490px;border:0px;height: 40px;line-height: 40px;background-color: #fff;float: left;border-radius: 20px 0 0 20px;font-size: 14px;text-indent: 20px}
 .s_btn{width: 100px;height: 40px;line-height: 40px;background-color: #458adf;text-align: center;font-size: 16px;float: left;border:0px;color: #fff;margin-top: 20px;border-radius:0 20px 20px 0;-webkit-appearance: none;}
 .bot{position: fixed;bottom:20px;width: 100%;text-align: center;font-size: 12px;line-height: 25px;color: #838382;}
-@media only screen and (max-width: 641px){
+@media only screen and (max-width: 701px){
+  html{font-size: 40px !important;}
  .s_in{width: 220px;}
 .search_ul{width: 320px;margin:0 auto;}
 .serach_l{width:auto;margin:0 auto; }
@@ -267,21 +326,21 @@ html,body{width: 100%;height: 100%}
 }
 }
 
-@media only screen and (max-width: 641px){
-html{font-size: 40px !important;}
-}
+/*@media only screen and (max-width: 641px){*/
+/*!*html{font-size: 40px !important;}*!*/
+/*}*/
 @media only screen and (max-width: 561px){
 html{font-size: 35px !important;}
 }
 @media only screen and (max-width: 481px){
 html{font-size: 30px !important;}
 }
-@media only screen and (max-width: 401px){
-html{font-size: 22px !important;}
-}
-@media only screen and (max-width: 321px){
-html{font-size: 20px !important;}
-}
+/*@media only screen and (max-width: 401px){*/
+/*html{font-size: 22px !important;}*/
+/*}*/
+/*@media only screen and (max-width: 321px){*/
+/*html{font-size: 20px !important;}*/
+/*}*/
 
 
 
