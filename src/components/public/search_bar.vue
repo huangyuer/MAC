@@ -80,7 +80,7 @@
           levelOneCategory: this.levelOneCategory.nickName,
           levelTwoCategoryList: []
         }
-        this.$axios.post('/search', p).then(function (resp) {
+        this.$axios.post('/search/all', p).then(function (resp) {
 
         })
       }

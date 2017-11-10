@@ -59,7 +59,7 @@
             </div>
             <div class="clear"></div>
 
-            <pagination :total=total v-on:getList="initBookList"></pagination>
+            <pagination :total=total></pagination>
             <!--<div class="list_page">-->
             <!--<a href="" class="page_cur">1</a>-->
             <!--<a href="">2</a>-->
@@ -89,7 +89,7 @@
   import searchBar from '../public/search_bar.vue'
   import pagination from '../public/paginaton.vue'
   import { getCookie, checkLoginCookie, deleteCookie } from '../../assets/js/cookie'
-  import { errorHandle } from '../../assets/js/common'
+  //  import { errorHandle } from '../../assets/js/common'
 
   export default {
     mounted: function () {
@@ -127,12 +127,10 @@
           alert('退出成功！')
           this.isSignedIn = false
         }
-      },
+      }
     },
     created () {
       this.checkToken()
-      this.initBookList(10, 1)
-      this.initCategories()
     }
   }
 </script>
