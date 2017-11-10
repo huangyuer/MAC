@@ -1,6 +1,7 @@
 <template>
   <div class="header">
-    <div class="logo"><a href=""><img src="../../assets/images/logo.jpg" alt=""></a><span>同济工程技术数据库</span></div>
+    <div class="logo"><a href=""><img src="../../assets/images/logo.jpg" alt=""></a><span>
+</span></div>
     <div class="search">
       <div class="search_tag">
         <ul>
@@ -15,27 +16,38 @@
       </div>
       <div class="search_list">
         <form action="">
-          <input type="text" v-model="searchContent" class="search_in" placeholder="中文">
-          <input type="submit" class="search_btn" @click="search()">
+ 
+          <input type="text" class="search_in" placeholder="请输入搜索内容" v-model="searchContent">
+          <input type="submit" class="search_btn">
+ 
         </form>
       </div>
       <div class="clear"></div>
       <div class="search_select">
-        <input type="checkbox" ><span>分类一</span>
-        <input type="checkbox" ><span>分类二</span>
-        <input type="checkbox" ><span>分类三</span>
-        <input type="checkbox" ><span>分类四</span>
+        <input type="checkbox"><span>分类一</span>
+        <input type="checkbox"><span>分类二</span>
+        <input type="checkbox"><span>分类三</span>
+        <input type="checkbox"><span>分类四</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+ 
   import {errorHandle} from '../../assets/js/common'
+ 
+  import { getCookie } from '../../assets/js/cookie'
+
+ 
   export default {
     name: 'search_bar',
+    mounted: function () {
+      this.searchContent = getCookie('searchContent')
+    },
     data () {
       return {
+ 
         levelOneCategory: '',
         levelTwoCategory: [],
         searchContent: ''
@@ -65,6 +77,9 @@
           .catch(error => {
             errorHandle(error)
           })
+ 
+        searchContent: ''
+ 
       }
     }
   }
