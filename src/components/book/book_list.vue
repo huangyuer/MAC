@@ -8,6 +8,7 @@
       <div class="main_left">
         <div class="list_left">
           <div class="class_title"><span>所有类别</span></div>
+
           <div class="list_class" v-for="category in categories">
             <div class="list_title">
               <p v-text="category.name"></p>
@@ -17,18 +18,19 @@
               <li><em>213</em><a v-text="child.name"></a></li>
             </ul>
           </div>
-          <div class="list_class">
-            <div class="list_title">
-              <p>分类三</p>
-              <span><img src="../../assets/images/jia.png" alt=""></span>
-            </div>
-            <ul class="dn">
-              <li><em>213</em><a href="">小分类三</a></li>
-              <li><em>213</em><a href="">小分类三</a></li>
-              <li><em>213</em><a href="">小分类三</a></li>
-              <li><em>213</em><a href="">小分类三</a></li>
-            </ul>
-          </div>
+
+          <!--<div class="list_class">-->
+            <!--<div class="list_title">-->
+              <!--<p>分类三</p>-->
+              <!--<span><img src="../../assets/images/jia.png" alt=""></span>-->
+            <!--</div>-->
+            <!--<ul class="dn">-->
+              <!--<li><em>213</em><a href="">小分类三</a></li>-->
+              <!--<li><em>213</em><a href="">小分类三</a></li>-->
+              <!--<li><em>213</em><a href="">小分类三</a></li>-->
+              <!--<li><em>213</em><a href="">小分类三</a></li>-->
+            <!--</ul>-->
+          <!--</div>-->
         </div>
         <div class="list_cent">
           <div class="list_list">
@@ -119,8 +121,8 @@
       initCategories: function () {
         this.$axios.get('v1/categories')
           .then(responseData => {
-            this.categories = responseData.data
-//            console.log(this.categories)
+            this.categories = responseData.data.data
+            console.log(this.categories)
           })
           .catch(error => {
             errorHandle(error)

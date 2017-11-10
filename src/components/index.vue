@@ -160,10 +160,6 @@ export default {
     // 移动端menu切换显示
     toggleMenu: function (event) {
       this.isMenuClicked = !this.isMenuClicked
-    },
-    // 显示二级菜单
-    toggleShow: function () {
-      this.isRightContentShow = !this.isRightContentShow
     }
   },
   mounted () {

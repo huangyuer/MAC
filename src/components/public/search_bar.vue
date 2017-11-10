@@ -1,16 +1,10 @@
 <template>
   <div class="header">
-    <div class="logo"><a href=""><img src="../../assets/images/logo.jpg" alt=""></a><span>同济工程技术数据库</span></div>
+    <div class="logo"><a><img src="../../assets/images/logo.jpg" alt=""></a><span>同济工程技术数据库</span></div>
     <div class="search">
       <div class="search_tag">
         <ul>
-          <li><a href="javascript:void(0);">全部</a></li>
-          <li class="tag_cur"><a href="javascript:void(0);">图书</a></li>
-          <li><a href="javascript:void(0);">期刊</a></li>
-          <li><a href="javascript:void(0);">图片</a></li>
-          <li><a href="javascript:void(0);">公式</a></li>
-          <li><a href="javascript:void(0);">图表</a></li>
-          <li><a href="javascript:void(0);">视频</a></li>
+          <li v-for="(item, $index) in searchList" :class="{ 'tag_cur': $index === isSearchListCur }" @click="isSearchListCur = $index"><a href="javascript:;" v-text="item"></a></li>
         </ul>
       </div>
       <div class="search_list">
@@ -38,6 +32,8 @@
       return {
         levelOneCategory: '',
         levelTwoCategory: [],
+        searchList: ['全部', '图书', '期刊', '图片', '公式', '图表', '视频'],
+        isSearchListCur: 0,
         searchContent: ''
 //        searchData: []
       }
