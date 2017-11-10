@@ -3,7 +3,7 @@
  */
 
 let config = {
-  API_HOST: 'http://localhost:9988'
+  API_HOST: 'http://localhost:9988/v1'
 }
 
 export default config

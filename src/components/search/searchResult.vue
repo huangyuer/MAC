@@ -8,31 +8,33 @@
       <div class="main_left">
         <div class="list_left">
           <div class="class_title"><span>所有类别</span></div>
-          <div class="list_class" v-for="category in categories">
+          <div class="list_class" v-for="i in resultList" v-if="resultList.length>0">
             <div class="list_title">
-              <p v-text="category.name"></p>
-              <span><img src="../../assets/images/jian.png" alt=""></span>
+              <p>{{i.name}}</p>
+              <!--<span><img src="../../assets/images/jian.png" alt=""></span>-->
+              <span style="">{{i.count}}</span>
+
             </div>
-            <ul v-for="child in category.children">
-              <li><em>213</em><a v-text="child.name"></a></li>
-            </ul>
+            <!--<ul v-for="child in category.children">-->
+            <!--<li><em>213</em><a v-text="child.name"></a></li>-->
+            <!--</ul>-->
           </div>
-          <div class="list_class">
-            <div class="list_title">
-              <p>分类三</p>
-              <span><img src="../../assets/images/jia.png" alt=""></span>
-            </div>
-            <ul class="dn">
-              <li><em>213</em><a href="">小分类三</a></li>
-              <li><em>213</em><a href="">小分类三</a></li>
-              <li><em>213</em><a href="">小分类三</a></li>
-              <li><em>213</em><a href="">小分类三</a></li>
-            </ul>
-          </div>
+          <!--<div class="list_class">-->
+          <!--<div class="list_title">-->
+          <!--<p>分类三</p>-->
+          <!--<span><img src="../../assets/images/jia.png" alt=""></span>-->
+          <!--</div>-->
+          <!--<ul class="dn">-->
+          <!--<li><em>213</em><a href="">小分类三</a></li>-->
+          <!--<li><em>213</em><a href="">小分类三</a></li>-->
+          <!--<li><em>213</em><a href="">小分类三</a></li>-->
+          <!--<li><em>213</em><a href="">小分类三</a></li>-->
+          <!--</ul>-->
+          <!--</div>-->
         </div>
         <div class="list_cent">
           <div class="list_list">
-            <div class="list_cout">已为您 找到"<font color="#4a91e3">中文</font>"相关结果约100，000，000个，用时0.030秒</div>
+            <div class="list_cout">已为您 找到"<font color="#4a91e3">中文</font>"相关结果约{{searchResult.total}}个，用时{{searchResult.took}}秒</div>
             <div class="list_li">
               <dl v-for="book in books">
                 <dt><img src="../../assets/images/img.jpg" onerror='this.src=' ../../assets/images/img.jpg'' alt=""
@@ -42,7 +44,7 @@
                   <em>图书</em>
                   <p>
                     <router-link to="/book_info">
-                      <a v-text="book.name"></a>
+                      <!--<a v-text="book.name"></a>-->
                     </router-link>
                   </p>
                   <div class="clear"></div>
@@ -59,7 +61,7 @@
             </div>
             <div class="clear"></div>
 
-            <pagination :total=total></pagination>
+            <!--<pagination :total=total></pagination>-->
             <!--<div class="list_page">-->
             <!--<a href="" class="page_cur">1</a>-->
             <!--<a href="">2</a>-->
@@ -99,7 +101,6 @@
     data () {
       return {
         books: [],
-        categories: [1, 2, 3],
         total: 0,
         searchContent: ''
       }
@@ -127,6 +128,20 @@
           alert('退出成功！')
           this.isSignedIn = false
         }
+      }
+    },
+    computed: {
+      searchResult: function () {
+        return this.$store.state.search.searchResult
+      },
+      resultList: function () {
+        let a = []
+        if (this.searchResult) {
+          return a.concat(this.searchResult.bookObj).concat(this.searchResult.achievementObj).concat(this.searchResult.bookChartsObj).concat(this.searchResult.bookFormulaObj).concat(this.searchResult.bookImageObj).concat(this.searchResult.engineerObj).concat(this.searchResult.expertObj).concat(this.searchResult.patentObj).concat(this.searchResult.requirementObj).concat(this.searchResult.standardObj)
+        }
+      },
+      listResult:function(){
+        return this.searchResult.data
       }
     },
     created () {

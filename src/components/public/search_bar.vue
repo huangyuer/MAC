@@ -28,8 +28,7 @@
 </template>
 
 <script>
-
-  import { getCookie } from '../../assets/js/cookie'
+  import { setCookie, getCookie } from '../../assets/js/cookie'
 
   export default {
     name: 'search_bar',
@@ -38,7 +37,6 @@
     },
     data () {
       return {
-        levelOneCategory: '',
         levelTwoCategory: [],
         searchContent: '',
         levelOneCategoryList: [
@@ -77,16 +75,15 @@
     },
     methods: {
       clickSearch: function () {
-        var p = {
+        let p = {
           rows: 10,
           page: 1,
           searchContent: this.searchContent,
           levelOneCategory: this.levelOneCategory.nickName,
           levelTwoCategoryList: []
         }
-        this.$axios.post('/search/all', p).then(function (resp) {
-
-        })
+        setCookie('searchContent', this.searchContent)
+        this.$store.dispatch('searchAllResult', p)
       }
     },
     computed: {
@@ -97,9 +94,6 @@
           }
         }
       }
-    },
-    methods: {
-      // search 查询
     }
   }
 </script>

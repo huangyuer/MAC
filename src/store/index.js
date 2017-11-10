@@ -21,7 +21,7 @@ export default new Vuex.Store({
   actions,
   modules: {
     book,
-    search,
+    search
   },
   strict: debug
 })
