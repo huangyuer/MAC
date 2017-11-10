@@ -66,7 +66,7 @@
       // 传递给父组件渲染数据
       initList: function (limit, page) {
         this.curPage = page
-        this.$emit('getList', limit, page)
+        this.$emit('getLi`st', limit, page)
       }
     }
   }
