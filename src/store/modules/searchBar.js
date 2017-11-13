@@ -24,13 +24,29 @@ const state = {
     {
       name: '图表',
       active: false,
-      nickName: 'icon'
+      nickName: 'charts'
     },
     {
-      name: '视频',
+      name: '企业需求',
       active: false,
-      nickName: 'video'
-    }
+      nickName: 'requirement'
+    },
+    {
+      name: '工程',
+      acive: false,
+      nickName: 'project'
+    },
+    {
+      name: '工程师',
+      active: false,
+      nickName: 'engineer'
+    },
+    {
+      name: '知识产权',
+      active: false,
+      nickName: 'knowledge'
+    },
+
   ],
   currentLevelOneCategory: '',
 }

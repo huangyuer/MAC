@@ -46,7 +46,7 @@
         let p = {
           rows: 8,
           page: 1,
-          searchContent: this.searchContent,
+          searchContent: this.searchContent_,
           levelOneCategory: this.currentLevelOneCategory.nickName,
           levelTwoCategoryList: []
         }
@@ -58,8 +58,14 @@
       }
     },
     computed: {
-      searchContent: function () {
-        return this.$store.state.searchBar.searchContent
+      searchContent: {
+        set: function (val) {
+          this.searchContent_ = val
+          this.$store.commit('setSearchContent', val)
+        },
+        get: function () {
+          return this.$store.state.searchBar.searchContent
+        }
       },
       levelOneCategoryList: function () {
         return this.$store.state.searchBar.levelOneCategoryList
