@@ -7,6 +7,7 @@ import * as getters from './getters'
 import book from './modules/book'
 
 import search from './modules/search'
+import searchBar from './modules/searchBar'
 
 Vue.use(Vuex)
 
@@ -21,7 +22,8 @@ export default new Vuex.Store({
   actions,
   modules: {
     book,
-    search
+    search,
+    searchBar,
   },
   strict: debug
 })

@@ -107,7 +107,8 @@
             </div>
             <div class="clear"></div>
 
-            <pagination v-on:getList="" :total=total :limit="8"></pagination>
+            <pagination :total="total" @pageClick="handlePageClick" @clickPrevPage="handleClickPrevPage"
+                        @clickNextPage="handleClickNextPage" :currentPage=currentPage :row=rows></pagination>
             <!--<div class="list_page">-->
             <!--<a href="" class="page_cur">1</a>-->
             <!--<a href="">2</a>-->
@@ -144,15 +145,26 @@
 
   export default {
     mounted: function () {
-      this.searchContent = getCookie('searchContent')
+      console.log(this.searchContent)
+      if (this.searchContent) {
+        let p = {
+          rows: this.rows,
+          page: 1,
+          searchContent: this.searchContent,
+          levelOneCategory: this.currentLevelOneCategory,
+          leelTwoCateoryList: [],
+        }
+        this.$store.dispatch('searchAllResult', p)
+      }
     },
     name: 'searchResult',
     data () {
       return {
         books: [],
         total: 0,
-        searchContent: '',
-        preFix: 'http://118.178.238.202:9988/'
+        preFix: 'http://118.178.238.202:9988/',
+        rows: 8,
+        currentPage: 1,
       }
     },
     props: {},
@@ -178,7 +190,22 @@
           alert('退出成功！')
           this.isSignedIn = false
         }
-      }
+      },
+      handlePageClick: function (p) {
+        console.log(p)
+        this.currentPage = p.clickPage
+//        let pp = {
+//          rows: this.row,
+//          page: this.currentPage,
+//          searchContent: this.searchContent
+//        }
+      },
+      handleClickPrevPage: function (p) {
+
+      },
+      handleClickNextPage: function (p) {
+
+      },
     },
     computed: {
       searchResult: function () {
@@ -195,6 +222,12 @@
       },
       listResult: function () {
         return this.searchResult.data
+      },
+      searchContent: function () {
+        return this.$store.state.searchBar.searchContent
+      },
+      currentLevelOneCategory: function () {
+        return this.$store.state.searchBar.currentLevelOneCategory
       }
     },
     created () {
