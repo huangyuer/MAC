@@ -24,7 +24,7 @@ const state = {
     {
       name: '图表',
       active: false,
-      nickName: 'icon'
+      nickName: 'charts'
     },
     {
       name: '视频',

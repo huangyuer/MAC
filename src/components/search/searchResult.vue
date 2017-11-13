@@ -141,11 +141,12 @@
   import searchBar from '../public/search_bar.vue'
   import pagination from '../public/paginaton.vue'
   import { getCookie, checkLoginCookie, deleteCookie } from '../../assets/js/cookie'
-  //  import { errorHandle } from '../../assets/js/common'
+  //    import { errorHandle } from '../../assets/js/common'
 
   export default {
     mounted: function () {
       console.log(this.searchContent)
+      this.$store.commit('setActiveLevelOneCategory', 0)
       if (this.searchContent) {
         let p = {
           rows: this.rows,
@@ -194,17 +195,32 @@
       handlePageClick: function (p) {
         console.log(p)
         this.currentPage = p.clickPage
-//        let pp = {
-//          rows: this.row,
-//          page: this.currentPage,
-//          searchContent: this.searchContent
-//        }
+        let pp = {
+          rows: this.rows,
+          page: this.currentPage,
+          searchContent: this.searchContent,
+          levelOneCategory: this.currentLevelOneCategory.nickName,
+          levelTwoCategoryList: []
+        }
+        this.$store.dispatch('searchAllResult', pp)
       },
       handleClickPrevPage: function (p) {
-
+        let pp = {
+          rows: this.rows,
+          page: this.currentPage + 1,
+          searchContent: this.searchContent,
+          levelTwoCategoryList: []
+        }
+        this.$store.dispatch('searchAllResult', pp)
       },
       handleClickNextPage: function (p) {
-
+        let pp = {
+          rows: this.rows,
+          page: this.currentPage - 1,
+          searchContent: this.searchContent,
+          levelTwoCategoryList: []
+        }
+        this.$store.dispatch('searchAllResult', pp)
       },
     },
     computed: {
