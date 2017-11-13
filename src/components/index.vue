@@ -128,6 +128,7 @@
       }
     },
     mounted () {
+      this.$store.commit('setActiveLevelOneCategory', 0)
       this.checkToken()
     },
     watch: {

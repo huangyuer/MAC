@@ -146,7 +146,16 @@
   export default {
     mounted: function () {
       console.log(this.searchContent)
-
+      if (this.searchContent) {
+        let p = {
+          rows: this.rows,
+          page: 1,
+          searchContent: this.searchContent,
+          levelOneCategory: this.currentLevelOneCategory,
+          leelTwoCateoryList: [],
+        }
+        this.$store.dispatch('searchAllResult', p)
+      }
     },
     name: 'searchResult',
     data () {
@@ -216,6 +225,9 @@
       },
       searchContent: function () {
         return this.$store.state.searchBar.searchContent
+      },
+      currentLevelOneCategory: function () {
+        return this.$store.state.searchBar.currentLevelOneCategory
       }
     },
     created () {

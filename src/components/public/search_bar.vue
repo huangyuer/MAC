@@ -14,7 +14,8 @@
         <form action="">
 
           <input type="text" class="search_in" placeholder="请输入搜索内容" v-model="searchContent">
-          <input style="cursor: pointer;" class="search_btn" @click="clickSearch">
+          <input readonly value="搜索" style="cursor: pointer;text-align:    center" class="search_btn"
+                 @click="clickSearch">
         </form>
       </div>
       <div class="clear"></div>
@@ -46,7 +47,7 @@
           rows: 8,
           page: 1,
           searchContent: this.searchContent,
-          levelOneCategory: this.levelOneCategory.nickName,
+          levelOneCategory: this.currentLevelOneCategory.nickName,
           levelTwoCategoryList: []
         }
         setCookie('searchContent', this.searchContent)
@@ -64,7 +65,7 @@
         return this.$store.state.searchBar.levelOneCategoryList
       },
       currentLevelOneCategory: function () {
-        return this.$store.state.searchBar.currentLevelCategory
+        return this.$store.state.searchBar.currentLevelOneCategory
       }
     },
     watch: {
