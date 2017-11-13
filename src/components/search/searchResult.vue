@@ -67,7 +67,7 @@
                   <em v-if="i._type=='engineers'">工程师</em>
                   <em v-if="i._type=='experts'">专家</em>
                   <em v-if="i._type=='patents'">专利</em>
-                  <em v-if="i._type=='requirements'">必须</em>
+                  <em v-if="i._type=='requirements'">企业需求</em>
                   <em v-if="i._type=='standards'">规范</em>
                   <p>
                     <router-link to="/book_info">
