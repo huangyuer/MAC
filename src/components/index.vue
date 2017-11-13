@@ -1,27 +1,28 @@
 <template>
   <div class="index_bg">
     <div class="top">
-      <div class="top_menu"> 
+      <div class="top_menu">
         <a href="/" class="menu_item active">首页</a>
         <a href="/" class="menu_item">工程数据库</a>
         <a href="http://home.tjdesignx.com/#/" class="menu_item">工程与工程师</a>
         <a href="http://trade.tjdesignx.com/#/" class="menu_item">版权贸易</a>
         <a href="http://bbs.tjdesignx.com/#/" class="menu_item">工程技术论坛</a>
         <a href="http://x.tjdesignx.com/#/" class="menu_item">同济设计在线</a>
-        <a href="http://bim.tjdesignx.com/#/" class="menu_item">BIM培训中心</a> 
+        <a href="http://bim.tjdesignx.com/#/" class="menu_item">BIM培训中心</a>
       </div>
 
       <div class="top_wap_menu">
         <div class="btn_menu" @click="toggleMenu()"><img src="../assets/images/menu.png" alt=""></div>
         <div class="menu_nav" v-show="isMenuClicked">
-          <ul> 
-            <li><a href="/" class="menu_item active">首页</a><li>
+          <ul>
+            <li><a href="/" class="menu_item active">首页</a>
+            <li>
             <li><a href="/" class="menu_item">工程数据库</a></li>
             <li><a href="http://home.tjdesignx.com/#/" class="menu_item">工程与工程师</a></li>
             <li><a href="http://trade.tjdesignx.com/#/" class="menu_item">版权贸易</a></li>
             <li><a href="http://bbs.tjdesignx.com/#/" class="menu_item">工程技术论坛</a></li>
             <li><a href="http://x.tjdesignx.com/#/" class="menu_item">同济设计在线</a></li>
-            <li style="border: none"><a href="http://bim.tjdesignx.com/#/" class="menu_item">BIM培训中心</a></li> 
+            <li style="border: none"><a href="http://bim.tjdesignx.com/#/" class="menu_item">BIM培训中心</a></li>
           </ul>
         </div>
       </div>
@@ -48,17 +49,19 @@
     </div>
     <div class="serach_l">
       <div class="search_ul">
-        <ul> 
-          <li :class="{'ul_cur':i.active}" v-for="i in levelOneCategoryList"><a href="">{{i.name}}</a></li> 
+        <ul>
+          <li style="cursor: pointer;" @click="setActiveLevelOneCategory(index)" :class="{'ul_cur':i.active}"
+              v-for="i,index in levelOneCategoryList">
+            <span style="font-size: 14px;" class="item-normal" :class="{'item-active':i.active}">{{i.name}}</span></li>
         </ul>
       </div>
       <div class="clear"></div>
       <div class="slist">
-        <form action=""> 
- 
+        <form action="">
+
           <input v-model="searchContent" type="text" class="s_in" placeholder="请输入关键字" style="outline: none">
-          <input @click="clickSearch" type="submit" class="s_btn" value="搜索" style="outline: none">
- 
+          <input @click="clickSearch" class="s_btn" readonly value="搜索" style="cursor: pointer;outline: none">
+
         </form>
       </div>
     </div>
@@ -68,7 +71,15 @@
     </div>
   </div>
 </template>
+<style scoped>
+  .item-normal {
+    color: #ffffff;
+  }
 
+  .item-active {
+    color: #458adf;
+  }
+</style>
 <script>
   import { checkLoginCookie, deleteCookie, setCookie } from '../assets/js/cookie'
 
@@ -79,32 +90,6 @@
         isSignedIn: false,
         isMenuClicked: false,
         searchContent: '',
-        levelOneCategoryList: [
-          {
-            name: '全部',
-            active: true
-          },
-          {
-            name: '图书',
-            active: false
-          },
-          {
-            name: '图片',
-            active: false
-          },
-          {
-            name: '公式',
-            active: false
-          },
-          {
-            name: '图标',
-            active: false
-          },
-          {
-            name: '视频',
-            active: false
-          }
-        ]
       }
     },
     components: {},
@@ -130,17 +115,16 @@
         this.isMenuClicked = !this.isMenuClicked
       },
       clickSearch: function () {
+        this.$store.commit('setSearchContent', this.searchContent)
         this.$router.push('/search/result')
-        var p = {
-          rows: 1,
-          page: 1,
-          searchContent: this.searchContent,
-          levelOneCategory: this.levelOneCategory,
-          levelTwoCategoryList: this.levelTwoCategoryList
-        }
-        this.$axios.post('search', p).then(function (resp) {
-          console.log(resp)
-        })
+      },
+      setActiveLevelOneCategory (ind) {
+        this.$store.commit('setActiveLevelOneCategory', ind)
+      }
+    },
+    computed: {
+      levelOneCategoryList: function () {
+        return this.$store.state.searchBar.levelOneCategoryList
       }
     },
     mounted () {

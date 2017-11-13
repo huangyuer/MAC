@@ -5,7 +5,8 @@
     <div class="search">
       <div class="search_tag">
         <ul>
-          <li v-for="i in levelOneCategoryList" :class="{'tag_cur':i.active}"><a
+          <li @click="setActiveLevelOneCategory(index)" v-for="i,index in levelOneCategoryList"
+              :class="{'tag_cur':i.active}"><a
             href="javascript:void(0);">{{i.name}}</a></li>
         </ul>
       </div>
@@ -13,7 +14,7 @@
         <form action="">
 
           <input type="text" class="search_in" placeholder="请输入搜索内容" v-model="searchContent">
-          <input type="submit" class="search_btn" @click="clickSearch">
+          <input style="cursor: pointer;" class="search_btn" @click="clickSearch">
         </form>
       </div>
       <div class="clear"></div>
@@ -33,44 +34,10 @@
   export default {
     name: 'search_bar',
     mounted: function () {
-      this.searchContent = getCookie('searchContent')
     },
     data () {
       return {
         levelTwoCategory: [],
-        searchContent: '',
-        levelOneCategoryList: [
-          {
-            name: '全部',
-            active: true,
-            nickName: 'all'
-          },
-          {
-            name: '图书',
-            active: false,
-            nickName: 'book'
-          },
-          {
-            name: '图片',
-            active: false,
-            nickName: 'pic'
-          },
-          {
-            name: '公式',
-            active: false,
-            nickName: 'formula'
-          },
-          {
-            name: '图标',
-            active: false,
-            nickName: 'icon'
-          },
-          {
-            name: '视频',
-            active: false,
-            nickName: 'video'
-          }
-        ]
       }
     },
     methods: {
@@ -84,15 +51,25 @@
         }
         setCookie('searchContent', this.searchContent)
         this.$store.dispatch('searchAllResult', p)
+      },
+      setActiveLevelOneCategory: function (ind) {
+        this.$store.commit('setActiveLevelOneCategory', ind)
       }
     },
     computed: {
-      levelOneCategory: function () {
-        for (var i = 0; i < this.levelOneCategoryList.length; i++) {
-          if (this.levelOneCategoryList[i].active === true) {
-            return this.levelOneCategoryList[i]
-          }
-        }
+      searchContent: function () {
+        return this.$store.state.searchBar.searchContent
+      },
+      levelOneCategoryList: function () {
+        return this.$store.state.searchBar.levelOneCategoryList
+      },
+      currentLevelOneCategory: function () {
+        return this.$store.state.searchBar.currentLevelCategory
+      }
+    },
+    watch: {
+      searchContent: function (val) {
+        this.$store.commit('setSearchContent', val)
       }
     }
   }
