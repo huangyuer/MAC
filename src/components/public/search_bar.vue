@@ -13,7 +13,8 @@
       <div class="search_list">
         <form action="">
 
-          <input type="text" class="search_in" placeholder="请输入搜索内容" v-model="searchContent">
+          <input @keydown.enter="clickSearch" type="text" class="search_in" placeholder="请输入搜索内容"
+                 v-model="searchContent">
           <input readonly value="搜索" style="cursor: pointer;text-align:    center" class="search_btn"
                  @click="clickSearch">
         </form>
@@ -55,6 +56,15 @@
       },
       setActiveLevelOneCategory: function (ind) {
         this.$store.commit('setActiveLevelOneCategory', ind)
+        let p = {
+          rows: 8,
+          page: 1,
+          searchContent: this.searchContent_,
+          levelOneCategory: this.currentLevelOneCategory.nickName,
+          levelTwoCategoryList: [],
+        }
+        setCookie('searchContent', this.searchContent)
+        this.$store.dispatch('searchAllResult', p)
       }
     },
     computed: {

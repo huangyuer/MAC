@@ -23,9 +23,9 @@
   export default {
     props: ['total', 'currentPage', 'row'],
     mounted: function () {
-      console.log(this.row)
-      console.log(this.total)
-      console.log(this.currentPage)
+//      console.log(this.row)
+//      console.log(this.total)
+//      console.log(this.currentPage)
     },
     components: {},
     data () {
@@ -41,7 +41,6 @@
           currentPage: this.currentPage,
           totalPage: this.displayPageList.length
         }
-        console.log(p)
         this.$emit('pageClick', p)
       },
       clickPrevPage: function () {
@@ -90,7 +89,7 @@
           }
           ppxia.push(t)
         }
-        console.log(ppxia)
+//        console.log(ppxia)
         return ppxia
       },
       // 列表真正展示的页数

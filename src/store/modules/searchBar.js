@@ -49,6 +49,7 @@ const state = {
 
   ],
   currentLevelOneCategory: '',
+  currentPage: 1,
 }
 
 const actions = {}
@@ -63,6 +64,9 @@ const mutations = {
     }
     state.levelOneCategoryList[data].active = true
     state.currentLevelOneCategory = state.levelOneCategoryList[data]
+  },
+  setCurrentPage (state, data) {
+    state.currentPage = data
   }
 }
 

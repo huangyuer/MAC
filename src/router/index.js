@@ -2,7 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-
+import {
+  SearchIndex,
+  SearchAll,
+} from './params'
 // 配置路由
 export default new Router({
   routes: [
@@ -21,7 +24,16 @@ export default new Router({
     },
     {
       path: '/search/result',
-      component: resolve => require(['../components/search/searchResult.vue'], resolve)
+      component: SearchIndex,
+      children: [
+        {
+          path: '/',
+          name: 'searchAll',
+          components: {
+            'childSearch': SearchAll,
+          }
+        }
+      ]
     },
     {
       path: '/psw_reset',
