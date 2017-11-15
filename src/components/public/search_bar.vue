@@ -36,6 +36,7 @@
   export default {
     name: 'search_bar',
     mounted: function () {
+      console.log(this.$route.name)
     },
     data () {
       return {
@@ -44,6 +45,12 @@
     },
     methods: {
       clickSearch: function () {
+        let routerName = this.$route.name
+        if (routerName === 'searchAll') {
+
+        } else {
+          this.$router.push({name: 'searchAll'})
+        }
         let p = {
           rows: 8,
           page: 1,

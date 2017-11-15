@@ -74,32 +74,26 @@
       </div>
       <div class="clear"></div>
 
-
-      <!--<div class="list_page">-->
-      <!--<a href="" class="page_cur">1</a>-->
-      <!--<a href="">2</a>-->
-      <!--<a href="">3</a>-->
-      <!--<a href="">4</a>-->
-      <!--<a href="">5</a>-->
-      <!--<a href="">></a>-->
-      <!--</div>-->
+      <pagination :total="total" :row="rows" :currentPage="currentPage"></pagination>
     </div>
-
   </div>
 </template>
 <style scoped>
 
 </style>
 <script>
+  import pagination from '../public/pagination.vue'
+
   export default {
     mounted: function () {
 
     },
-    components: {},
+    components: {
+      pagination
+    },
     data () {
       return {
         books: [],
-        total: 0,
         preFix: 'http://118.178.238.202:9988/',
         rows: 8,
       }
@@ -107,9 +101,6 @@
     methods: {},
     computed: {
       searchResult: function () {
-        if (this.$store.state.search.searchResult.total) {
-          this.total = this.$store.state.search.searchResult.total
-        }
         return this.$store.state.search.searchResult
       },
 
@@ -122,8 +113,13 @@
       currentLevelOneCategory: function () {
         return this.$store.state.searchBar.currentLevelOneCategory
       },
+      total: function () {
+        return this.$store.state.search.total
+      },
+      currentPage: function () {
+        return this.$store.state.search.currentPage
+      }
     },
     filters: {}
-
   }
 </script>

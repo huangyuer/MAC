@@ -34,9 +34,7 @@
         </div>
         <div class="list_cent">
           <router-view name="childSearch"></router-view>
-          <pagination :total="total" @pageClick="handlePageClick" @clickPrevPage="handleClickPrevPage"
-                      @clickNextPage="handleClickNextPage" :currentPage=currentPage :row=rows></pagination>
-        </div>
+          </div>
 
       </div>
       <div class="list_right">
@@ -56,7 +54,6 @@
   import headerBar from '../public/header_bar.vue'
   import footerBar from '../public/footer_bar.vue'
   import searchBar from '../public/search_bar.vue'
-  import pagination from '../public/paginaton.vue'
   import { getCookie, checkLoginCookie, deleteCookie } from '../../assets/js/cookie'
   //    import { errorHandle } from '../../assets/js/common'
 
@@ -90,7 +87,6 @@
       headerBar,
       footerBar,
       searchBar,
-      pagination
     },
     methods: {
       // 检查token是否失效
@@ -163,6 +159,7 @@
               bookIdList: kk
             }
             this.$store.dispatch('displayBookList', pp)
+            this.$router.push({name: 'searchBook'})
             break
           default:
             break

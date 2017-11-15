@@ -2,6 +2,10 @@ import api from '../api/search'
 
 const state = {
   searchResult: '',
+  total: '',
+  searchBookList: [],
+  took: '',
+  currentPage: 1,
 }
 
 const getters = {
@@ -24,19 +28,29 @@ const actions = {
   displayBookList ({commit}, data) {
     let promise = api.displayBookList(data)
     promise.then((response) => {
-
+      if (response.data.state === '1') {
+        commit('displayBookList', response.data)
+      }
     }, (response) => {
-
+      alert(response.data.message)
     })
   }
 }
 
 const mutations = {
+  setCurrentPage (state, data) {
+    state.currentPage = data
+  },
   searchAllResult (state, data) {
+    state.total = data.total
     state.searchResult = data
   },
   displayBookList (state, data) {
-
+    console.log(data)
+    state.total = data.total
+    state.took = 23
+    state.searchBookList = data.data
+    state.currentPage = data.page
   }
 }
 
