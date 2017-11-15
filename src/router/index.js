@@ -5,6 +5,7 @@ Vue.use(Router)
 import {
   SearchIndex,
   SearchAll,
+  SearchBook,
 } from './params'
 // 配置路由
 export default new Router({
@@ -31,6 +32,13 @@ export default new Router({
           name: 'searchAll',
           components: {
             'childSearch': SearchAll,
+          }
+        },
+        {
+          path: 'book',
+          name: 'searchBook',
+          components: {
+            'childSearch': SearchBook,
           }
         }
       ]
