@@ -2,7 +2,7 @@ import api from '../api/search'
 
 const state = {
   searchResult: '',
-  total: '',
+  total: 0,
   searchBookList: [],
   took: '',
   currentPage: 1,
