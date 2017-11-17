@@ -2,7 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-
+import {
+  SearchIndex,
+  SearchAll,
+  SearchBook,
+} from './params'
 // 配置路由
 export default new Router({
   routes: [
@@ -18,6 +22,26 @@ export default new Router({
     {
       path: '/sign_up',
       component: resolve => require(['../components/auth/sign_up.vue'], resolve)
+    },
+    {
+      path: '/search/result',
+      component: SearchIndex,
+      children: [
+        {
+          path: '/',
+          name: 'searchAll',
+          components: {
+            'childSearch': SearchAll,
+          }
+        },
+        {
+          path: 'book',
+          name: 'searchBook',
+          components: {
+            'childSearch': SearchBook,
+          }
+        }
+      ]
     },
     {
       path: '/psw_reset',

@@ -6,6 +6,9 @@ import * as getters from './getters'
 // import * as getters from './getters'
 import book from './modules/book'
 
+import search from './modules/search'
+import searchBar from './modules/searchBar'
+
 Vue.use(Vuex)
 
 const state = {
@@ -18,7 +21,9 @@ export default new Vuex.Store({
   getters,
   actions,
   modules: {
-    book
+    book,
+    search,
+    searchBar,
   },
   strict: debug
 })

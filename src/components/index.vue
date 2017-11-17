@@ -1,5 +1,5 @@
 <template>
-  <div class="index_bg">
+  <div id="particles-js">
     <div class="top">
 
       <div class="top_menu">
@@ -22,7 +22,7 @@
 
       <div class="top_wap_menu">
         <div class="btn_menu" @click="toggleMenu()"><img src="../assets/images/menu.png" alt=""></div>
-        <div class="menu_nav" v-show="isMenuClicked" >
+        <div class="menu_nav" v-show="isMenuClicked">
           <ul>
             <li><a href="/" class="menu_item active">首页</a><li>
             <li><a class="menu_item" href="javascript:;" @click="isLibListShow = !isLibListShow">工程数据库</a>
@@ -58,19 +58,23 @@
     <div class="clear"></div>
     <div class="search_logo">
       <img src="../assets/images/logo1.png" alt="">
-      <p>同济工程数据库</p>
+      <p>中国工程与工程师史文化应用交互平台</p>
     </div>
     <div class="serach_l">
       <div class="search_ul">
         <ul>
-          <li v-for="(item, $index) in searchList" :class="{ 'ul_cur': $index === isSearchListCur }" @click="isSearchListCur = $index"><a href="javascript:;" v-text="item"></a></li>
+          <li style="cursor: pointer;" @click="setActiveLevelOneCategory(index)" :class="{'ul_cur':i.active}"
+              v-for="i,index in levelOneCategoryList">
+            <span style="font-size: 14px;" class="item-normal" :class="{'item-active':i.active}">{{i.name}}</span></li>
         </ul>
       </div>
       <div class="clear"></div>
       <div class="slist">
         <form action="">
-          <input type="text" class="s_in" placeholder="请输入关键字" style="outline: none">
-          <button class="s_btn" style="outline: none">搜索</button>
+
+          <input v-model="searchContent" type="text" class="s_in" placeholder="请输入关键字" style="outline: none">
+          <input @click="clickSearch" class="s_btn" readonly value="搜索" style="cursor: pointer;outline: none">
+
         </form>
       </div>
     </div>
@@ -80,58 +84,95 @@
     </div>
   </div>
 </template>
-
-<script>
-import {checkLoginCookie, deleteCookie} from '../assets/js/cookie'
-export default {
-  name: 'index',
-  data () {
-    return {
-      libList: [
-        {
-          title: '1111数据库',
-          url: '/'
-        },
-        {
-          title: '2222数据库',
-          url: '/'
-        }
-      ],
-      libCur: 0,
-      isLibListShow: false,
-      searchList: ['全部', '图书', '期刊', '图片', '公式', '图表', '视频'],
-      isSearchListCur: 0,
-      isSignedIn: false,
-      isMenuClicked: false,
-      isRightContentShow: false
-    }
-  },
-  components: {
-  },
-  methods: {
-    // 检查token是否失效
-    checkToken: function () {
-      if (checkLoginCookie()) {
-        // 若未失效则登录注册切换显示个人中心
-        this.isSignedIn = true
-      }
-    },
-    // 退出登录
-    signOut: function () {
-      // 删除cookie检查状态成功则退出
-      deleteCookie('sessionToken')
-      if (!checkLoginCookie()) {
-        alert('退出成功！')
-        this.isSignedIn = false
-      }
-    },
-    // 移动端menu切换显示
-    toggleMenu: function (event) {
-      this.isMenuClicked = !this.isMenuClicked
-    }
-  },
-  mounted () {
-    this.checkToken()
+<style scoped>
+  .item-normal {
+    color: #ffffff;
   }
-}
+
+  .item-active {
+    color: #458adf;
+  }
+  #particles-js{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(80, 174, 201, 0.51);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+</style>
+<script>
+  import particlesJS from 'particles.js'
+  import { checkLoginCookie, deleteCookie, setCookie } from '../assets/js/cookie'
+
+  export default {
+    name: 'index',
+    data () {
+      return {
+        isSignedIn: false,
+        isMenuClicked: false,
+        searchContent: '',
+        libList: [
+          {
+            title: '1111数据库',
+            url: '/'
+          },
+          {
+            title: '2222数据库',
+            url: '/'
+          }
+        ],
+        isLibListShow: false,
+      }
+    },
+    components: {},
+    methods: {
+      // 检查token是否失效
+      checkToken: function () {
+        if (checkLoginCookie()) {
+          // 若未失效则登录注册切换显示个人中心
+          this.isSignedIn = true
+        }
+      },
+      // 退出登录
+      signOut: function () {
+        // 删除cookie检查状态成功则退出
+        deleteCookie('sessionToken')
+        if (!checkLoginCookie()) {
+          alert('退出成功！')
+          this.isSignedIn = false
+        }
+      },
+      // 移动端menu切换显示
+      toggleMenu: function (event) {
+        this.isMenuClicked = !this.isMenuClicked
+      },
+      clickSearch: function () {
+        this.$store.commit('setSearchContent', this.searchContent)
+        this.$router.push('/search/result')
+      },
+      setActiveLevelOneCategory (ind) {
+        this.$store.commit('setActiveLevelOneCategory', ind)
+      }
+    },
+    computed: {
+      levelOneCategoryList: function () {
+        return this.$store.state.searchBar.levelOneCategoryList
+      }
+    },
+    mounted () {
+      this.$store.commit('setActiveLevelOneCategory', 0)
+      this.checkToken()
+//      particlesJS.load('particles-js', require('../assets/css/particles.json'), function() {
+//        console.log('callback - particles.js config loaded')
+//      })
+    },
+    watch: {
+      searchContent: function (val) {
+        setCookie('searchContent', val)
+        console.log(val)
+      }
+    }
+  }
 </script>
