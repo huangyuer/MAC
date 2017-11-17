@@ -7,6 +7,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import axios from 'axios';
+import VueParticles from 'vue-particles'
 import { AUTH_TOKEN } from './assets/js/config';
 
 // 全局配置axios
@@ -18,9 +19,11 @@ axios.defaults.baseURL = 'http://118.178.238.202:9988/';
 
 // axios.defaults.baseURL = 'http://localhost:9988/v1/'
 
-
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
+
+// 使用第三方库
+Vue.use(VueParticles)
 
 /* eslint-disable no-new */
 new Vue({
