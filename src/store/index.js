@@ -8,6 +8,7 @@ import book from './modules/book'
 
 import search from './modules/search'
 import searchBar from './modules/searchBar'
+import leftPanel from './modules/leftPanel'
 
 Vue.use(Vuex)
 
@@ -24,6 +25,7 @@ export default new Vuex.Store({
     book,
     search,
     searchBar,
+    leftPanel,
   },
   strict: debug
 })

@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="logo"><a href=""><img src="../../assets/images/logo.jpg" alt=""></a><span>
-</span></div>
+  </span></div>
     <div class="search">
       <div class="search_tag">
         <ul>
@@ -81,7 +81,13 @@
           this.$store.commit('setSearchContent', val)
         },
         get: function () {
-          return this.$store.state.searchBar.searchContent
+          let content = this.$store.state.searchBar.searchContent
+          if (content) {
+            return content
+          } else {
+            this.searchContent_ = getCookie('searchContent')
+            return getCookie('searchContent')
+          }
         }
       },
       levelOneCategoryList: function () {
