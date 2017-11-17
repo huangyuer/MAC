@@ -8,7 +8,7 @@ const actions = {}
 
 const mutations = {
   sendLeftPanelFromSearch (state, data) {
-    console.log(data.bookObj)
+    state.levelOneCategoryList = []
     for (var k in data) {
       if (data[k].hasOwnProperty('name')) {
         var t = new levelOneCategoryItem()
@@ -18,7 +18,6 @@ const mutations = {
         state.levelOneCategoryList.push(t)
       }
     }
-    console.log(state.levelOneCategoryList)
   }
 }
 

@@ -4,7 +4,19 @@
     <div class="clear"></div>
     <search-bar></search-bar>
     <div class="clear"></div>
-    <left-panel></left-panel>
+    <div class="list_main">
+      <div class="main_left">
+        <left-panel></left-panel>
+        <div class="list_cent">
+          <router-view name="childSearch"></router-view>
+        </div>
+
+      </div>
+      <div class="list_right">
+        <a><img src="../../assets/images/img1.jpg" alt=""></a>
+        <a><img src="../../assets/images/img1.jpg" alt=""></a>
+      </div>
+    </div>
     <div class="clear"></div>
     <footer-bar></footer-bar>
   </div>
