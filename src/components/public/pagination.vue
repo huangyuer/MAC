@@ -14,9 +14,9 @@
 <script>
   export default {
     mounted () {
-      console.log(this.row)
-      console.log(this.total)
-      console.log(this.currentPage)
+//      console.log(this.row)
+//      console.log(this.total)
+//      console.log(this.currentPage)
     },
     data () {
       return {

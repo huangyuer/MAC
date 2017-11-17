@@ -179,10 +179,6 @@
         }
         return this.$store.state.search.searchResult
       },
-
-      currentPage: function () {
-        return this.$store.state.searchBar.currentPage
-      }
     },
     created () {
       this.checkToken()

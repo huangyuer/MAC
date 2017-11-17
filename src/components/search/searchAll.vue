@@ -63,18 +63,18 @@
                     </div>
 
                   </span>
-            <a class="fav" @click="addToFav()">
-              <small></small>
-              <span>加入收藏夹</span></a>
-            <a class="fav" @click="removeFromFav()">
-              <small></small>
-              <span>已加入收藏夹</span></a>
+            <!--<a class="fav" @click="addToFav()">-->
+            <!--<small></small>-->
+            <!--<span>加入收藏夹</span></a>-->
+            <!--<a class="fav" @click="removeFromFav()">-->
+            <!--<small></small>-->
+            <!--<span>已加入收藏夹</span></a>-->
           </dd>
         </dl>
       </div>
       <div class="clear"></div>
 
-      <pagination :total="total" :row="rows" :currentPage="currentPage"></pagination>
+      <pagination @pageClick="handlePageClick" :total="total" :row="rows" :currentPage="currentPage"></pagination>
     </div>
   </div>
 </template>
@@ -86,7 +86,16 @@
 
   export default {
     mounted: function () {
-
+      if (this.searchContent) {
+        let p = {
+          rows: this.rows,
+          page: 1,
+          searchContent: this.searchContent,
+          levelOneCategory: this.currentLevelOneCategory.nickName,
+          leelTwoCateoryList: [],
+        }
+        this.$store.dispatch('searchAllResult', p)
+      }
     },
     components: {
       pagination
@@ -98,7 +107,20 @@
         rows: 8,
       }
     },
-    methods: {},
+    methods: {
+      handlePageClick: function (p) {
+        let clickPage = p.clickPage
+        console.log(clickPage)
+        let pp = {
+          rows: this.rows,
+          page: clickPage,
+          searchContent: this.searchContent,
+          levelOneCategory: this.currentLevelOneCategory.nickName,
+          levelTwoCategoryList: []
+        }
+        this.$store.dispatch('searchAllResult', pp)
+      }
+    },
     computed: {
       searchResult: function () {
         return this.$store.state.search.searchResult
@@ -118,6 +140,9 @@
       },
       currentPage: function () {
         return this.$store.state.search.currentPage
+      },
+      searchContent: function () {
+        return this.$store.state.searchBar.searchContent
       }
     },
     filters: {}
