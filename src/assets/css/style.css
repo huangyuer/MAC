@@ -290,8 +290,8 @@ html,body{width: 100%;height: 100%}
 .menu_nav ul{border-radius: 10px; background-color: #4b555c;}
 .menu_nav ul li{line-height: .8rem;font-size: .5rem;width: auto;text-align: left;}
 .menu_nav ul li a{color: #fff;}
-.menu_nav ul li ul{margin-left: 40px}
-.menu_nav ul li ul li ul{margin:0 20px}
+.menu_nav ul li ul{margin-left: 40px;}
+.menu_nav ul li ul li{font-size: 14px;}
 .menu_item .link:hover {color: #458ADF}
 .menu_item .link:active {color: #458ADF}
 .active {color: #458ADF}

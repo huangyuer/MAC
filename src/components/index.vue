@@ -8,10 +8,7 @@
           <li class="drop-down"><a class="menu_item">工程数据库</a>
             <div class="triangle-up"></div>
             <ul class="drop-down-content">
-              <li v-for="(lib, $index) in libList" @mouseover="libCur = $index"><a class="menu_item" v-text="lib.title"></a>
-                <ul class="drop-right-content" v-show="$index === libCur">
-                  <li v-for="item in lib.children"><a :href="item.url" class="menu_item" v-text="item.title"></a></li>
-                </ul>
+              <li v-for="lib in libList"><a class="menu_item" :href="lib.url" v-text="lib.title"></a>
               </li>
             </ul>
           </li>
@@ -28,12 +25,9 @@
         <div class="menu_nav" v-show="isMenuClicked" >
           <ul>
             <li><a href="/" class="menu_item active">首页</a><li>
-            <li><a class="menu_item" @click="isLibListShow = !isLibListShow">工程数据库</a>
+            <li><a class="menu_item" href="javascript:;" @click="isLibListShow = !isLibListShow">工程数据库</a>
               <ul v-show="isLibListShow">
-                <li v-for="(lib, $index) in libList" @click="libCur = $index"><a v-text="lib.title"></a>
-                  <ul v-show="$index === libCur">
-                    <li v-for="item in lib.children"><a :href="item.url" v-text="item.title"></a></li>
-                  </ul>
+                <li v-for="lib in libList"><a :href="lib.url" v-text="lib.title"></a>
                 </li>
               </ul>
             </li>
@@ -96,37 +90,11 @@ export default {
       libList: [
         {
           title: '1111数据库',
-          children: [
-            {
-              title: '22222数据库',
-              url: '/'
-            },
-            {
-              title: '22222数据库',
-              url: '/'
-            },
-            {
-              title: '22222数据库',
-              url: '/'
-            }
-          ]
+          url: '/'
         },
         {
-          title: '1122数据库',
-          children: [
-            {
-              title: '2222数据库',
-              url: '/'
-            },
-            {
-              title: '2222数据库',
-              url: '/'
-            },
-            {
-              title: '1222数据库',
-              url: '/'
-            }
-          ]
+          title: '2222数据库',
+          url: '/'
         }
       ],
       libCur: 0,
