@@ -30,7 +30,7 @@
       <div class="clear"></div>
       <pagination :total="total"
                   :currentPage=currentPage
-                  :row=rows></pagination>
+                  :row=rows @clickPage="handleClickPage"></pagination>
     </div>
   </div>
 </template>
@@ -38,6 +38,7 @@
 </style>
 <script>
   import pagination from '../public/pagination.vue'
+
   export default {
     mounted: function () {
 
@@ -52,8 +53,19 @@
       }
     },
     methods: {
-      handlePageClick: function () {
-
+      handleClickPage: function (p) {
+        let clickPage = p.clickPage
+        let k = this.$store.getters.bookObj.data
+        let kk = []
+        for (var i = 0; i < k.length; i++) {
+          kk.push(k[i].key)
+        }
+        let pp = {
+          rows: this.rows,
+          page: clickPage,
+          bookIdList: kk
+        }
+        this.$store.dispatch('displayBookList', pp)
       },
     },
     computed: {
