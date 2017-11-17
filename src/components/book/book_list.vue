@@ -55,7 +55,7 @@
             <div class="clear"></div>
 
             <!--<pagination :total=total :limit=limit v-on:getList="initBookList"></pagination>-->
-            <pagination :total=total :limit=limit v-on:initList="initBookList"></pagination>
+            <!--<pagination :total=total :limit=limit v-on:initList="initBookList"></pagination>-->
 
           </div>
 
