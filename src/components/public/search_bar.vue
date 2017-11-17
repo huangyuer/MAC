@@ -86,6 +86,7 @@
             return content
           } else {
             this.searchContent_ = getCookie('searchContent')
+            this.$store.commit('setSearchContent', this.searchContent_)
             return getCookie('searchContent')
           }
         }
