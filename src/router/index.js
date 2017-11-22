@@ -3,6 +3,8 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 import {
+  AppHeader,
+  AppFooter,
   SearchIndex,
   SearchAll,
   SearchBook,
