@@ -97,6 +97,9 @@
         this.$store.dispatch('searchAllResult', p)
       }
     },
+    watch: {
+      currentPage: 'currentPage'
+    },
     components: {
       pagination
     },
@@ -125,7 +128,6 @@
       searchResult: function () {
         return this.$store.state.search.searchResult
       },
-
       listResult: function () {
         return this.searchResult.data
       },
@@ -141,9 +143,6 @@
       currentPage: function () {
         return this.$store.state.search.currentPage
       },
-      searchContent: function () {
-        return this.$store.state.searchBar.searchContent
-      }
     },
     filters: {}
   }

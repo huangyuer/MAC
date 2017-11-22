@@ -14,9 +14,7 @@
 <script>
   export default {
     mounted () {
-//      console.log(this.row)
-//      console.log(this.total)
-//      console.log(this.currentPage)
+      console.log(this.currentPage)
     },
     data () {
       return {
@@ -79,6 +77,18 @@
           totalPage: this.total
         }
         console.log(p)
+        // 定时器 逐渐回到顶部
+        var timer = null
+        cancelAnimationFrame(timer);
+        timer = requestAnimationFrame(function fn(){
+          var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+          if(oTop > 0){
+            document.body.scrollTop = document.documentElement.scrollTop = oTop - 30;
+            timer = requestAnimationFrame(fn);
+          }else{
+            cancelAnimationFrame(timer);
+          }
+        });
         this.$emit('pageClick', p)
       }
     },
