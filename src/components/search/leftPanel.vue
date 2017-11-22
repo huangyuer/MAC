@@ -42,7 +42,10 @@
     },
     methods: {
       categorySearch: function (i) {
+        let p = {
+          levelOneCategory: i.nickName,
 
+        }
       }
     },
     computed: {
