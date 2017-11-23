@@ -75,7 +75,7 @@
 <script>
   import headerBar from '../public/header_bar.vue'
   import footerBar from '../public/footer_bar.vue'
-  import searchBar from '../public/searchComponent.vue'
+//  import searchBar from '../public/searchComponent.vue'
   import pagination from '../public/pagination.vue'
   import {errorHandle} from '../../assets/js/common'
   export default {
@@ -94,7 +94,7 @@
     components: {
       headerBar,
       footerBar,
-      searchBar,
+//      searchBar,
       pagination
     },
     methods: {

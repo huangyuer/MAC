@@ -3,5 +3,97 @@
 .search-component {
   height: 160px;
   width: 100%;
-  background-image: url("../../images/search-background.png");
+  position: relative;
+  border-top: 1px solid transparent;
+  img.img-bg {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  .inner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 830px;
+    margin: 22px auto auto auto;
+    height: 116px;
+    .left {
+      display: inline-block;
+      vertical-align: middle;
+      width: 145px;
+      height: 25px;
+      margin-top: 45.5px;
+      img.left-img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .right {
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+      width: 650px;
+      .category {
+        margin-left: 20px;
+        span {
+          margin-right: 18px;
+          color: #4A4A4A;
+        }
+        .active {
+          color: $primary-color;
+        }
+      }
+      .search-content {
+        font-size: 0;
+        position: relative;
+        overflow: hidden;
+        width: 650px;
+        height: 40px;
+        border: 2px solid $primary-color;
+        margin-top: 15px;
+        border-radius: 25px;
+        display: inline-block;
+        background-color: white;
+        z-index: 11;
+        input {
+          height: 100%;
+          border: none;
+          margin-left: 2%;
+          width: 82%;
+          outline: none;
+          font-size: 14px;
+        }
+        .search-btn {
+          position: absolute;
+          right: 0;
+          width: 16%;
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 14px;
+          background-color: $primary-color;
+          color: #ffffff;
+          height: 100%;
+          text-align: center;
+          line-height: 40px;
+          border-top-left-radius: 25px;
+          border-bottom-left-radius: 25px;
+          z-index: 12;
+        }
+      }
+      .level-two-category {
+        margin-left: 23px;
+        .item {
+          margin-right: 8px;
+          display: inline-block;
+          vertical-align: middle;
+          color: $primary-color;
+        }
+      }
+    }
+  }
 }
