@@ -132,10 +132,10 @@
         return this.searchResult.data
       },
       searchContent: function () {
-        return this.$store.state.searchBar.searchContent
+        return this.$store.state.searchComponent.searchContent
       },
       currentLevelOneCategory: function () {
-        return this.$store.state.searchBar.currentLevelOneCategory
+        return this.$store.state.searchComponent.currentLevelOneCategory
       },
       total: function () {
         return this.$store.state.search.total

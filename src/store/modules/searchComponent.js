@@ -12,26 +12,6 @@ const state = {
       nickName: 'book'
     },
     {
-      name: '图片',
-      active: false,
-      nickName: 'pic'
-    },
-    {
-      name: '公式',
-      active: false,
-      nickName: 'formula'
-    },
-    {
-      name: '图表',
-      active: false,
-      nickName: 'charts'
-    },
-    {
-      name: '企业需求',
-      active: false,
-      nickName: 'requirement'
-    },
-    {
       name: '工程',
       acive: false,
       nickName: 'project'
@@ -40,6 +20,22 @@ const state = {
       name: '工程师',
       active: false,
       nickName: 'engineer'
+    },
+    {
+      name: '多媒体',
+      active: false,
+      nickName: 'pic'
+    },
+    {
+      name: '企业需求',
+      active: false,
+      nickName: 'requirement'
+    },
+
+    {
+      name: '工程文献',
+      active: false,
+      nickName: 'anli',
     },
     {
       name: '知识产权',

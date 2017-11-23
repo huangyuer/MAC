@@ -1,6 +1,12 @@
+const homePage = resolve => {
+  require.ensure(['../components/index.vue'], () => {
+    resolve(require('../components/index.vue'))
+  })
+}
+
 const SearchIndex = resolve => {
-  require.ensure(['../components/search/searchResult.vue'], () => {
-    resolve(require('../components/search/searchResult.vue'))
+  require.ensure(['../components/search/searchIndex.vue'], () => {
+    resolve(require('../components/search/searchIndex.vue'))
   })
 }
 
@@ -14,8 +20,21 @@ const SearchBook = resolve => {
     resolve(require('../components/search/SearchBook.vue'))
   })
 }
+const AppHeader = resolve => {
+  require.ensure(['../components/public/AppHeader.vue'], () => {
+    resolve(require('../components/public/AppHeader.vue'))
+  })
+}
+const AppFooter = resolve => {
+  require.ensure(['../components/public/AppFooter.vue'], () => {
+    resolve(require('../components/public/AppFooter.vue'))
+  })
+}
 export {
+  homePage,
   SearchIndex,
   SearchAll,
   SearchBook,
+  AppHeader,
+  AppFooter,
 }

@@ -17,6 +17,7 @@ const actions = {
     promise.then((response) => {
       if (response.data.state === 1) {
         commit('searchAllResult', response.data)
+        commit('sendLeftPanelFromSearch', response.data)
       } else {
         // alert(response.data.message)
       }

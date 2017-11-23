@@ -3,9 +3,12 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 import {
+  AppHeader,
+  AppFooter,
   SearchIndex,
   SearchAll,
   SearchBook,
+  homePage,
 } from './params'
 // 配置路由
 export default new Router({
@@ -13,7 +16,9 @@ export default new Router({
     // 懒加载引入自定义组件
     {
       path: '/',
-      component: resolve => require(['../components/index.vue'], resolve)
+      components: {
+        'app-body': homePage
+      }
     },
     {
       path: '/sign_in',
@@ -25,7 +30,11 @@ export default new Router({
     },
     {
       path: '/search/result',
-      component: SearchIndex,
+      components: {
+        'app-header': AppHeader,
+        'app-body': SearchIndex,
+        'app-footer': AppFooter
+      },
       children: [
         {
           path: '/',

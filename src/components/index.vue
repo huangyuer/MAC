@@ -161,7 +161,7 @@
     },
     computed: {
       levelOneCategoryList: function () {
-        return this.$store.state.searchBar.levelOneCategoryList
+        return this.$store.state.searchComponent.levelOneCategoryList
       }
     },
     mounted () {
