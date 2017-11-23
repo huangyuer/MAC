@@ -16,11 +16,15 @@
         <span>|</span>
         <span>BIM培训中心</span>
       </div>
+      <div class="icp">
+        <a href="http://www.miitbeian.gov.cn/">沪ICP备11031396号</a>
+      </div>
       <div class="copyright">
-        <span>Copyright &copy; 2017 Tongji. All Rights Reserved.</span>
+        <span>同济大学出版社版权所有 上海市杨浦区赤峰路2号 021-0000000</span>
       </div>
       <div class="contact">
-        <span>同济大学出版社版权所有 上海市杨浦区赤峰路2号 021-0000000</span>
+        <span>Copyright &copy; 2017 Tongji. All Rights Reserved.</span>
+
       </div>
     </div>
   </div>

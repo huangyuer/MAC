@@ -17,6 +17,8 @@
     margin: auto;
     text-align: center;
     color: #ffffff;
+    cursor: pointer;
+    user-select: none;
     .container {
       & > span:nth-child(odd) {
         color: #ffffff;
@@ -25,6 +27,17 @@
         color: $orange-color;
         margin-left: 21px;
         margin-right: 21px;
+      }
+    }
+    .icp {
+      bottom: 40px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      & > a:active, & > a:link, & > a:visited {
+        color: #ffffff;
       }
     }
     .copyright {
