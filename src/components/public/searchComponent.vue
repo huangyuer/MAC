@@ -81,7 +81,7 @@
           this.$store.commit('setSearchContent', val)
         },
         get: function () {
-          let content = this.$store.state.searchBar.searchContent
+          let content = this.$store.state.searchComponent.searchContent
           if (content) {
             return content
           } else {
@@ -92,10 +92,10 @@
         }
       },
       levelOneCategoryList: function () {
-        return this.$store.state.searchBar.levelOneCategoryList
+        return this.$store.state.searchComponent.levelOneCategoryList
       },
       currentLevelOneCategory: function () {
-        return this.$store.state.searchBar.currentLevelOneCategory
+        return this.$store.state.searchComponent.currentLevelOneCategory
       }
     },
     watch: {

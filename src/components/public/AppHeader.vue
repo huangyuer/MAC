@@ -1,8 +1,9 @@
 <template>
-    <div class="">
-    </div>
+  <div class="">
+  </div>
 </template>
 <style lang="scss" scoped>
+  @import "../../assets/css/public/appHeader.scss";
 </style>
 <script>
   export default {

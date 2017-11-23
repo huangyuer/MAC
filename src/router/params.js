@@ -1,6 +1,12 @@
+const homePage = resolve => {
+  require.ensure(['../components/index.vue'], () => {
+    resolve(require('../components/index.vue'))
+  })
+}
+
 const SearchIndex = resolve => {
-  require.ensure(['../components/search/searchResult.vue'], () => {
-    resolve(require('../components/search/searchResult.vue'))
+  require.ensure(['../components/search/searchIndex.vue'], () => {
+    resolve(require('../components/search/searchIndex.vue'))
   })
 }
 
@@ -25,6 +31,7 @@ const AppFooter = resolve => {
   })
 }
 export {
+  homePage,
   SearchIndex,
   SearchAll,
   SearchBook,
