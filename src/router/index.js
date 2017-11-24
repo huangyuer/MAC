@@ -51,7 +51,7 @@ export default new Router({
           path: 'book',
           name: 'searchBook',
           components: {
-            'childSearch': SearchBook,
+            'middlePanel': SearchBook,
           }
         }
       ]
