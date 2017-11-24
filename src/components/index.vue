@@ -106,7 +106,7 @@
   </div>
 </template>
 <script>
-  import particlesJS from 'particles.js'
+   import VueParticles from 'vue-particles/src/vue-particles/vue-particles.vue'
   import { checkLoginCookie, deleteCookie, setCookie } from '../assets/js/cookie'
 
   export default {
@@ -129,7 +129,9 @@
         isLibListShow: false,
       }
     },
-    components: {},
+    components: {
+      VueParticles
+    },
     methods: {
       // 检查token是否失效
       checkToken: function () {
