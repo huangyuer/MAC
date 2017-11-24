@@ -51,7 +51,9 @@ export default new Router({
           path: 'book',
           name: 'searchBook',
           components: {
+            'leftPanel': leftPanel,
             'middlePanel': SearchBook,
+            'rightPanel': rightPanel,
           }
         }
       ]
