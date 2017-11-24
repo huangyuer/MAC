@@ -1,17 +1,15 @@
 <template>
-  <div class="search-all">
+    <div class="left-panel">
 
-  </div>
+    </div>
 </template>
-<style scoped>
-
+<style lang="scss" scoped>
 </style>
 <script>
-
   export default {
     mounted: function () {
+
     },
-    watch: {},
     components: {},
     data () {
       return {}
@@ -19,5 +17,6 @@
     methods: {},
     computed: {},
     filters: {}
+
   }
 </script>

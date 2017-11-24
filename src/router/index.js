@@ -9,6 +9,8 @@ import {
   SearchAll,
   SearchBook,
   homePage,
+  leftPanel,
+  rightPanel,
 } from './params'
 // 配置路由
 export default new Router({
@@ -40,7 +42,9 @@ export default new Router({
           path: '/',
           name: 'searchAll',
           components: {
-            'childSearch': SearchAll,
+            'leftPanel': leftPanel,
+            'middlePanel': SearchAll,
+            'rightPanel': rightPanel,
           }
         },
         {

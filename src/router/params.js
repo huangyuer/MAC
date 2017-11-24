@@ -30,6 +30,16 @@ const AppFooter = resolve => {
     resolve(require('../components/public/AppFooter.vue'))
   })
 }
+const leftPanel = resolve => {
+  require.ensure(['../components/search/leftPanel.vue'], () => {
+    resolve(require('../components/search/leftPanel.vue'))
+  })
+}
+const rightPanel = resolve => {
+  require.ensure(['../components/search/rightPanel.vue'], () => {
+    resolve(require('../components/search/rightPanel.vue'))
+  })
+}
 export {
   homePage,
   SearchIndex,
@@ -37,4 +47,6 @@ export {
   SearchBook,
   AppHeader,
   AppFooter,
+  leftPanel,
+  rightPanel,
 }

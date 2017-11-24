@@ -3,7 +3,7 @@
     <search-component></search-component>
     <router-view name="leftPanel"></router-view>
     <router-view name="middlePanel"></router-view>
-    <router-view name="middlePanel"></router-view>
+    <router-view name="rightPanel"></router-view>
   </div>
 </template>
 <style>

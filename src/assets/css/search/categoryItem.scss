@@ -1,0 +1,22 @@
+@import '../global';
+
+.category-item {
+  width: 100%;
+  .level-1-category {
+    height: 40px;
+    line-height: 40px;
+    background-color: $primary-color;
+    color: #ffffff;
+    .inner {
+      width: 90%;
+      //background-color: red;
+      height: 100%;
+      margin:0 auto;
+      svg {
+        float: right;
+        height:30px;
+        width:30px;
+      }
+    }
+  }
+}
