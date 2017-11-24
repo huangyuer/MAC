@@ -11,13 +11,13 @@ const SearchIndex = resolve => {
 }
 
 const SearchAll = resolve => {
-  require.ensure(['../components/search/SearchAll.vue'], () => {
-    resolve(require('../components/search/SearchAll.vue'))
+  require.ensure(['../components/search/searchAll.vue'], () => {
+    resolve(require('../components/search/searchAll.vue'))
   })
 }
 const SearchBook = resolve => {
-  require.ensure(['../components/search/SearchBook.vue'], () => {
-    resolve(require('../components/search/SearchBook.vue'))
+  require.ensure(['../components/search/searchBook.vue'], () => {
+    resolve(require('../components/search/searchBook.vue'))
   })
 }
 const AppHeader = resolve => {
