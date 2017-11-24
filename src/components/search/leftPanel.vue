@@ -1,10 +1,10 @@
 <template>
   <div class="left-panel">
-    <category-item></category-item>
+    <category-item v-for="i in 3" :key="i.id"></category-item>
   </div>
 </template>
 <style lang="scss" scoped>
-  @import '../../assets/css/search/leftPanel.scss'
+  @import '../../assets/css/search/leftPanel.scss';
 </style>
 <script>
   import categoryItem from './categoryItem.vue'

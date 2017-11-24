@@ -1,6 +1,7 @@
 <template>
-  <div id="searchIndex">
+  <div id="searchIndex" style="font-size: 0;">
     <search-component></search-component>
+    <div class="gap" style="height: 22px;"></div>
     <router-view name="leftPanel"></router-view>
     <router-view name="middlePanel"></router-view>
     <router-view name="rightPanel"></router-view>
