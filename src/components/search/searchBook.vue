@@ -40,7 +40,7 @@
   import pagination from '../public/pagination.vue'
 
   export default {
-    name: 'searchBook',
+    name: 'searchBookChild',
     mounted: function () {
 
     },
