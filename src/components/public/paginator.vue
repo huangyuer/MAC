@@ -60,9 +60,16 @@
         if (name === lastPage.name) {
           this.displayPageList = []
           for (var i = lastPage.name; i < lastPage.name + 5; i++) {
-            let t = {
-              name: i,
-              active: false,
+            if (i === lastPage.name) {
+              var t = {
+                name: i,
+                active: true,
+              }
+            } else {
+              var t = {
+                name: i,
+                active: false,
+              }
             }
             this.displayPageList.push(t)
           }
@@ -72,20 +79,34 @@
           if (firstPage.name > 4) { //  避免出现负页数
             this.displayPageList = []
             for (var i = firstPage.name; i > firstPage.name - 5; i--) {
-              let tp = {
-                name: i,
-                active: false,
+              if (i === firstPage.name) {
+                var tp = {
+                  name: i,
+                  active: true,
+                }
+              } else {
+                var tp = {
+                  name: i,
+                  active: false,
+                }
               }
               this.displayPageList.unshift(tp)
             }
           }
         }
+        this.setActivePage(name)
       },
       prevPageClick: function () {
 
       },
       nextPageClick: function () {
 
+      },
+      setActivePage: function (num) {
+        for (var i = 0; i < this.displayPageList.length; i++) {
+          this.displayPageList[i].active = false
+        }
+        this.displayPageList[num - 1].active = true
       }
     },
     computed: {},
