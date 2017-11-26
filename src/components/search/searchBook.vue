@@ -5,7 +5,6 @@
 <style scoped>
 </style>
 <script>
-  import pagination from '../public/pagination.vue'
 
   export default {
     name: 'searchBookChild',
@@ -13,7 +12,6 @@
 
     },
     components: {
-      pagination,
     },
     data () {
       return {

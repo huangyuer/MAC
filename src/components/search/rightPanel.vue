@@ -1,7 +1,7 @@
 <template>
-    <div class="left-panel">
+  <div class="right-panel">
 
-    </div>
+  </div>
 </template>
 <style lang="scss" scoped>
 </style>

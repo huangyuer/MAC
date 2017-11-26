@@ -5,8 +5,9 @@
       <div class="result">
         <span>找到<span>77,123,211</span>条结果</span>
       </div>
-      <image-text-item></image-text-item>
+      <image-text-item v-for="i in 10" :key="i.id"></image-text-item>
     </div>
+    <patinator @click="pageClick"></patinator>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -15,19 +16,25 @@
 <script>
   import toolBar from './toolBar.vue'
   import imageTextItem from './imageTextItem.vue'
+  import patinator from '../public/paginator.vue'
+
   export default {
-    name: 'searchAll',
     mounted: function () {
     },
     watch: {},
     components: {
       toolBar,
       imageTextItem,
+      patinator,
     },
     data () {
       return {}
     },
-    methods: {},
+    methods: {
+      pageClick: function (p) {
+
+      }
+    },
     computed: {},
     filters: {}
   }

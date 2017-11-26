@@ -30,6 +30,11 @@ const AppFooter = resolve => {
     resolve(require('../components/public/AppFooter.vue'))
   })
 }
+// const paginator = resolve => {
+//   require.ensure(['../components/public/paginator.vue'], () => {
+//     resolve(require('../components/public/paginator.vue'))
+//   })
+// }
 const leftPanel = resolve => {
   require.ensure(['../components/search/leftPanel.vue'], () => {
     resolve(require('../components/search/leftPanel.vue'))
@@ -49,4 +54,5 @@ export {
   AppFooter,
   leftPanel,
   rightPanel,
+  // paginator,
 }
