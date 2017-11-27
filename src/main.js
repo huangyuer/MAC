@@ -24,9 +24,6 @@ axios.defaults.baseURL = 'http://118.178.238.202:9988/'
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 
-// 使用第三方库
-Vue.use(VueParticles)
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
