@@ -17,10 +17,14 @@
     }
   }
   .tag-cloud {
-    width: 100%;
+    width: 278px;
+    border-right:1px dashed #eeeeee;
+    border-left:1px dashed #eeeeee;
+    border-bottom:1px dashed #eeeeee;
     height: 300px;
     svg {
-      circle {
+      text {
+        fill: $primary-color;
       }
     }
   }
