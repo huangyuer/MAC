@@ -1,0 +1,27 @@
+@import '../global';
+
+.search-all {
+  display: inline-block;
+  vertical-align: top;
+  width: 701px;
+  margin-left: 21px;
+  margin-right: 20px;
+  font-size: 16px;
+  .inner {
+    width: 90%;
+    //height: 100px;
+    margin: 0 auto;
+    .result {
+      font-size: 12px;
+      height: 50px;
+      line-height: 50px;
+      width: 100%;
+      span > span {
+        color: $orange-color;
+      }
+      & + .image-text-item {
+        margin-top: 0;
+      }
+    }
+  }
+}

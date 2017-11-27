@@ -1,6 +1,7 @@
 @import "../global";
 
 .search-component {
+  font-size: 16px;
   height: 160px;
   width: 100%;
   position: relative;
@@ -86,6 +87,7 @@
         }
       }
       .level-two-category {
+        font-size: 14px;
         margin-left: 23px;
         .item {
           margin-right: 8px;
