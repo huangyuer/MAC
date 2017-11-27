@@ -2,9 +2,12 @@
   <div id="searchIndex" style="font-size: 0;">
     <search-component></search-component>
     <div class="gap" style="height: 22px;"></div>
-    <router-view name="leftPanel"></router-view>
-    <router-view name="middlePanel"></router-view>
-    <router-view name="rightPanel"></router-view>
+    <div class="inner" style="width:    1302px;margin:   0 auto;">
+
+      <router-view name="leftPanel"></router-view>
+      <router-view name="middlePanel"></router-view>
+      <router-view name="rightPanel"></router-view>
+    </div>
   </div>
 </template>
 <style>
