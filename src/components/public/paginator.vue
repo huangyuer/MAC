@@ -48,6 +48,7 @@
         console.log('currentPage: ' + name + ', firstPage:  ' + firstPage.name + ',  lastPage: ' + lastPage.name)
         // 代表是最后一页
         if (name === lastPage.name && this.displayPageList.length > 4) {
+          console.log('.....')
           this.displayPageList = []
           var lpage = lastPage.name + 5
           if (lpage > this.totalPage) {
@@ -71,6 +72,7 @@
         // 代表是第一页
         if (name === firstPage.name) {
           if (firstPage.name > 4) { //  避免出现负页数
+            console.log('bingo...')
             this.displayPageList = []
             for (var i = firstPage.name; i > firstPage.name - 5; i--) {
               if (i === firstPage.name) {
@@ -86,10 +88,11 @@
               }
               this.displayPageList.unshift(tp)
             }
+          } else {
+            this.setActivePage(firstPage.name)
           }
         }
         if (name === firstPage.name || name === lastPage.name) {
-
         } else {
           this.setActivePage(name)
         }
@@ -158,7 +161,7 @@
       },
       firstPage: function () {
         return this.displayPageList[0]
-      }
+      },
     },
     filters: {}
 
