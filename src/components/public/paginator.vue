@@ -47,26 +47,30 @@
         let firstPage = this.firstPage
         console.log('currentPage: ' + name + ', firstPage:  ' + firstPage.name + ',  lastPage: ' + lastPage.name)
         // 代表是最后一页
-        if (name === lastPage.name && this.displayPageList.length > 4) {
-          console.log('.....')
-          this.displayPageList = []
-          var lpage = lastPage.name + 5
-          if (lpage > this.totalPage) {
-            lpage = this.totalPage + 1
-          }
-          for (var i = lastPage.name; i < lpage; i++) {
-            if (i === lastPage.name) {
-              var t = {
-                name: i,
-                active: true,
-              }
-            } else {
-              var t = {
-                name: i,
-                active: false,
-              }
+        if (name === lastPage.name) {
+          if (this.displayPageList.length > 4) {
+            this.displayPageList = []
+            var lpage = lastPage.name + 5
+            if (lpage > this.totalPage) {
+              lpage = this.totalPage + 1
             }
-            this.displayPageList.push(t)
+            for (var i = lastPage.name; i < lpage; i++) {
+              if (i === lastPage.name) {
+                var t = {
+                  name: i,
+                  active: true,
+                }
+              } else {
+                var t = {
+                  name: i,
+                  active: false,
+                }
+              }
+              this.displayPageList.push(t)
+            }
+          } else {
+            console.log('bingo...')
+            this.setActivePage(this.lastPage.name)
           }
         }
         // 代表是第一页
