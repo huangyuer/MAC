@@ -16,50 +16,44 @@
 </style>
 <script>
   export default {
+    props: ['total',],
     mounted: function () {
-
+      var t = this.totalPage > 5 ? 5 : this.totalPage
+      for (var i = 1; i <= t; i++) {
+        var p = {
+          name: i,
+          active: false
+        }
+        if (i === 1) {
+          p.active = true
+        }
+        this.displayPageList.push(p)
+      }
     },
     components: {},
     data () {
       return {
         currentPage: 1,
-        displayPageList: [
-          {
-            name: 1,
-            active: true,
-          },
-          {
-            name: 2,
-            active: false,
-          },
-          {
-            name: 3,
-            active: false,
-          },
-          {
-            name: 4,
-            active: false,
-          },
-          {
-            name: 5,
-            active: false,
-          },
-        ]
+        displayPageList: []
       }
     },
     methods: {
       pageClick: function (name) {
-        console.log(name)
         let p = {
           clickPage: name,
         }
         this.$emit('pageClick', p)
-        let lastPage = this.displayPageList[4]
-        let firstPage = this.displayPageList[0]
+        let lastPage = this.lastPage
+        let firstPage = this.firstPage
+        console.log('currentPage: ' + name + ', firstPage:  ' + firstPage.name + ',  lastPage: ' + lastPage.name)
         // 代表是最后一页
-        if (name === lastPage.name) {
+        if (name === lastPage.name && this.displayPageList.length > 4) {
           this.displayPageList = []
-          for (var i = lastPage.name; i < lastPage.name + 5; i++) {
+          var lpage = lastPage.name + 5
+          if (lpage > this.totalPage) {
+            lpage = this.totalPage + 1
+          }
+          for (var i = lastPage.name; i < lpage; i++) {
             if (i === lastPage.name) {
               var t = {
                 name: i,
@@ -94,22 +88,78 @@
             }
           }
         }
-        this.setActivePage(name)
+        if (name === firstPage.name || name === lastPage.name) {
+
+        } else {
+          this.setActivePage(name)
+        }
       },
       prevPageClick: function () {
+        var firstPage = this.firstPage
+        if (firstPage.name === 1) {
 
+        } else {
+          this.displayPageList = []
+          for (var i = firstPage.name; i > firstPage.name - 5; i--) {
+            var p = {
+              name: i,
+              active: false
+            }
+            if (i === firstPage.name - 4) {
+              p.active = true
+            }
+            this.displayPageList.unshift(p)
+          }
+        }
       },
       nextPageClick: function () {
-
+        var lastPage = this.lastPage
+        if (lastPage.name === this.totalPage) {
+          //如果当前显示的页码已经是最后一页的页码，不做任何处理
+        } else {
+          var shouldPage = lastPage.name + 4
+          if (shouldPage > this.totalPage) { // 理应的最后一页
+            shouldPage = this.totalPage
+          } else {
+            // none
+          }
+          this.displayPageList = []
+          for (var i = lastPage.name; i <= shouldPage; i++) {
+            var p = {
+              name: i,
+              active: false
+            }
+            if (i === lastPage.name) {
+              p.active = true
+            }
+            this.displayPageList.push(p)
+          }
+        }
       },
       setActivePage: function (num) {
         for (var i = 0; i < this.displayPageList.length; i++) {
-          this.displayPageList[i].active = false
+          if (num === this.displayPageList[i].name) {
+            this.displayPageList[i].active = true
+          } else {
+            this.displayPageList[i].active = false
+          }
         }
-        this.displayPageList[num - 1].active = true
       }
     },
-    computed: {},
+    computed: {
+      rows: function () {
+        return this.$store.state.paginator.rows
+      },
+      totalPage: function () {
+        return Math.ceil(this.total / this.rows)
+      },
+      lastPage: function () {
+        return this.displayPageList[this.displayPageList.length - 1]
+      },
+      firstPage: function () {
+        return this.displayPageList[0]
+      }
+    },
     filters: {}
 
   }

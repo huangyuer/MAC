@@ -7,7 +7,7 @@
       </div>
       <image-text-item v-for="i in 10" :key="i.id"></image-text-item>
     </div>
-    <patinator @click="pageClick"></patinator>
+    <patinator @click="pageClick" :total="133"></patinator>
   </div>
 </template>
 <style lang="scss" scoped>
