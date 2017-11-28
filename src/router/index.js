@@ -7,6 +7,7 @@ import {
   AppFooter,
   SearchIndex,
   SearchAll,
+  SearchNull,
   SearchBook,
   homePage,
   leftPanel,
@@ -44,6 +45,15 @@ export default new Router({
           components: {
             'leftPanel': leftPanel,
             'middlePanel': SearchAll,
+            'rightPanel': rightPanel,
+          }
+        },
+        {
+          path: 'null',
+          name: 'searchNull',
+          components: {
+            'leftPanel': leftPanel,
+            'middlePanel': SearchNull,
             'rightPanel': rightPanel,
           }
         },
