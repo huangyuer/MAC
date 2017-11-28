@@ -2,7 +2,7 @@
   <div class="category-item">
     <div class="level-1-category">
       <div class="inner">
-        <span>所有类别</span>
+        <span>{{obj.name}}</span>
         <svg @click="collapseClick" v-if="!collapse" class="icon" aria-hidden="true" height="30px" width="30px">
           <use xlink:href="#icon-jia"></use>
         </svg>
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div v-show="collapse" :class="{'level-2-active': i.active}" @click="setActiveLevel2Category(index)"
-         class="level-2-category" v-for="i,index in level2CategoryList" :key="i.id">
+         class="level-2-category" v-for="i,index in obj.children" :key="i.id">
       <div class="inner">
         <span>{{i.name}}</span>
         <span>{{i.count}}</span>
@@ -25,7 +25,7 @@
 </style>
 <script>
   export default {
-//    props:['levelOneCategoryName','levelTwoCategoryList']
+    props: ['obj'],
     mounted: function () {
 
     },

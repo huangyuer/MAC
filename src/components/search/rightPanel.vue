@@ -1,9 +1,9 @@
 <template>
   <div class="right-panel">
     <div class="title">
-      <span>热搜词汇</span>
+      <span>{{title}}</span>
     </div>
-    <div class="tag-cloud">
+    <div class="tag-cloud" v-show="showCloud">
       <svg id="svvg" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"
            @mousemove='listener($event)'>
         <!--<circle :x="140" :y="140" :r="r" stroke="black" stroke-width="0" fill="white"></circle>-->
@@ -123,7 +123,14 @@
         this.speedY = y * 0.0001 > 0 ? Math.min(this.r * 0.00002, y * 0.0001) : Math.max(-this.r * 0.00002, y * 0.0001)
       },
     },
-    computed: {},
+    computed: {
+      title: function () {
+        return this.$store.state.rightPanel.title
+      },
+      showCloud: function () {
+        return this.$store.state.rightPanel.showCloud
+      }
+    },
     watch: {
       'tags': 'getTags',
       'textTags': 'rotate',
