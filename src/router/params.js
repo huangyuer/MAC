@@ -15,6 +15,11 @@ const SearchAll = resolve => {
     resolve(require('../components/search/searchAll.vue'))
   })
 }
+const SearchNull = resolve => {
+  require.ensure(['../components/search/searchNull.vue'], () => {
+    resolve(require('../components/search/searchNull.vue'))
+  })
+}
 const SearchBook = resolve => {
   require.ensure(['../components/search/searchBook.vue'], () => {
     resolve(require('../components/search/searchBook.vue'))
@@ -54,5 +59,6 @@ export {
   AppFooter,
   leftPanel,
   rightPanel,
+  SearchNull,
   // paginator,
 }
