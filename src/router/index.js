@@ -6,7 +6,7 @@ import {
   AppHeader,
   AppFooter,
   SearchIndex,
-  SearchAll,
+  searchContext,
   SearchNull,
   SearchBook,
   homePage,
@@ -40,11 +40,11 @@ export default new Router({
       },
       children: [
         {
-          path: '/',
-          name: 'searchAll',
+          path: 'context',
+          name: 'searchContext',
           components: {
             'leftPanel': leftPanel,
-            'middlePanel': SearchAll,
+            'middlePanel': searchContext,
             'rightPanel': rightPanel,
           }
         },

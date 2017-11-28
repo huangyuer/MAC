@@ -10,9 +10,9 @@ const SearchIndex = resolve => {
   })
 }
 
-const SearchAll = resolve => {
-  require.ensure(['../components/search/searchAll.vue'], () => {
-    resolve(require('../components/search/searchAll.vue'))
+const searchContext = resolve => {
+  require.ensure(['../components/search/searchContext.vue'], () => {
+    resolve(require('../components/search/searchContext.vue'))
   })
 }
 const SearchNull = resolve => {
@@ -53,7 +53,7 @@ const rightPanel = resolve => {
 export {
   homePage,
   SearchIndex,
-  SearchAll,
+  searchContext,
   SearchBook,
   AppHeader,
   AppFooter,
