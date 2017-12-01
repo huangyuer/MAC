@@ -1,7 +1,7 @@
 <template>
   <div class="index_bg">
     <vue-particles
-      color="rgb(202,121,222)"
+      color="#fff"
       :particleOpacity="0.7"
       :particlesNumber="120"
       shapeType="circle"
