@@ -1,0 +1,35 @@
+@import '../global';
+
+.search-all {
+  display: inline-block;
+  vertical-align: top;
+  width: 701px;
+  margin-left: 21px;
+  margin-right: 20px;
+  font-size: 16px;
+  .title {
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    span > span {
+      color: $orange-color;
+    }
+  }
+  .subtitle {
+    height: 40px;
+    line-height: 40px;
+    background-color: $primary-color;
+    .inner {
+      color: #FFFFFF;
+      margin-left: 37px;
+      margin-right: 47px;
+      .right {
+        font-size: 14px;
+        display: inline-block;
+        float: right;
+        height: 100%;
+        width: 82px;
+      }
+    }
+  }
+}
