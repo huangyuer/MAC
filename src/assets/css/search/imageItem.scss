@@ -1,5 +1,51 @@
 @import '../global';
 
 .image-item {
-
+  height: 237px;
+  width: 200px;
+  border: 1px solid #eeeeee;
+  .img-container {
+    height: 130px;
+    width: 100%;
+    background-color: grey;
+  }
+  .content {
+    height: 91px;
+    padding: 8px;
+    .inner {
+      height: 100%;
+      width: 100%;
+      .title {
+        font-size: 14px;
+        color: $primary-color;
+        font-weight: bold;
+      }
+      .text {
+        font-size: 12px;
+        color: #4A4A4A;
+        height: 34px;
+        //background-color: red;
+        overflow: hidden;
+        word-wrap: break-word;
+      }
+      .underline {
+        width: 100%;
+        background-color: #D8D8D8;
+        height: 1px;
+        margin-top: 8px;
+        margin-bottom: 6px;
+      }
+      .tool-bar {
+        font-size: 10px;
+        svg {
+          height: 14px;
+          width: 14px;
+        }
+        span {
+          display: inline-block;
+          margin-left: 6px;
+        }
+      }
+    }
+  }
 }
