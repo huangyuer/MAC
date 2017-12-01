@@ -19,6 +19,10 @@
             <use xlink:href="#icon-tupian"></use>
           </svg>
           <span>查看原图</span>
+          <svg style="margin-left: 12px;" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-yanjing"></use>
+          </svg>
+          <span>12次查看</span>
         </div>
       </div>
     </div>

@@ -2,12 +2,13 @@
 
 .image-item {
   height: 237px;
+  display: inline-block;
   width: 200px;
   border: 1px solid #eeeeee;
   .img-container {
     height: 130px;
     width: 100%;
-    background-color: grey;
+    background-color: #D8D8D8;
   }
   .content {
     height: 91px;
