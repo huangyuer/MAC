@@ -8,7 +8,8 @@ import {
   SearchIndex,
   searchContext,
   SearchNull,
-  SearchBook,
+  searchAll,
+  searchMedia,
   homePage,
   leftPanel,
   rightPanel,
@@ -49,6 +50,24 @@ export default new Router({
       },
       children: [
         {
+          path: '/',
+          name: 'searchAll',
+          components: {
+            'leftPanel': leftPanel,
+            'middlePanel': searchAll,
+            'rightPanel': rightPanel,
+          }
+        },
+        {
+          path: 'media',
+          name: 'searchMedia',
+          components: {
+            'leftPanel': leftPanel,
+            'middlePanel': searchMedia,
+            'rightPanel': rightPanel,
+          }
+        },
+        {
           path: 'context',
           name: 'searchContext',
           components: {
@@ -66,15 +85,6 @@ export default new Router({
             'rightPanel': rightPanel,
           }
         },
-        {
-          path: 'book',
-          name: 'searchBook',
-          components: {
-            'leftPanel': leftPanel,
-            'middlePanel': SearchBook,
-            'rightPanel': rightPanel,
-          }
-        }
       ]
     },
     {

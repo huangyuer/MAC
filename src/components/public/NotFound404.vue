@@ -29,6 +29,7 @@
 </style>
 <script>
   import VueParticles from 'vue-particles/src/vue-particles/vue-particles.vue'
+
   export default {
     mounted: function () {
 
