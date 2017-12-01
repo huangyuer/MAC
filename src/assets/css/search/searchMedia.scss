@@ -3,6 +3,7 @@
 .search-media {
   display: inline-block;
   vertical-align: top;
+  background-color: white;
   width: 701px;
   margin-left: 21px;
   margin-right: 20px;
@@ -22,6 +23,27 @@
       & + .image-text-item {
         margin-top: 0;
       }
+    }
+    .row {
+      overflow: hidden;
+      position: relative;
+      margin-top: 30px;
+      & > .image-item:first-child {
+        float: left;
+      }
+      & > .image-item:last-child {
+        float: right;
+      }
+      & > .image-item:nth-child(2) {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    .result + .row {
+      margin-top: 0;
     }
   }
 }
