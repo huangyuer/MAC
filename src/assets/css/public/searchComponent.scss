@@ -44,6 +44,14 @@
         span {
           margin-right: 18px;
           color: #4A4A4A;
+          cursor: pointer;
+          user-select: none;
+        }
+        .category-active {
+          color: $orange-color;
+        }
+        & > span:hover {
+          color: $orange-color;
         }
         .active {
           color: $primary-color;

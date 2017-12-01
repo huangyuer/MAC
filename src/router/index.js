@@ -12,11 +12,20 @@ import {
   homePage,
   leftPanel,
   rightPanel,
+  NotFound404,
 } from './params'
 // 配置路由
 export default new Router({
   routes: [
     // 懒加载引入自定义组件
+    {
+      path: '/lost',
+      components: {
+        'app-header': AppHeader,
+        'app-body': NotFound404,
+        'app-footer': AppFooter,
+      }
+    },
     {
       path: '/',
       components: {

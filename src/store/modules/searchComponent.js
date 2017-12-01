@@ -60,6 +60,15 @@ const mutations = {
     state.levelOneCategoryList[data].active = true
     state.currentLevelOneCategory = state.levelOneCategoryList[data]
   },
+  setActiveLevelOneCategory (state, data) {
+    for (var i = 0; i < state.levelOneCategoryList.length; i++) {
+      if (i === data) {
+        state.levelOneCategoryList[i].active = true
+      } else {
+        state.levelOneCategoryList[i].active = false
+      }
+    }
+  }
 }
 
 export default {

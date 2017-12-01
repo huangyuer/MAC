@@ -7,10 +7,11 @@
       </div>
       <div class="right">
         <div class="category">
-          <span v-for="i in categoryList">{{i.name}}</span>
+          <span @click="setActiveLevelOneCategory(index)" :class="{'category-active': i.active}"
+                v-for="i,index in categoryList">{{i.name}}</span>
         </div>
         <div class="search-content">
-          <input class="search-input" placeholder="请输入关键字">
+          <input v-model="searchContent" class="search-input" placeholder="请输入关键字">
           <div class="search-btn">
             <span>搜索</span>
           </div>
@@ -38,10 +39,17 @@
     data () {
       return {}
     },
-    methods: {},
+    methods: {
+      setActiveLevelOneCategory: function (index) {
+        this.$store.commit('setActiveLevelOneCategory', index)
+      }
+    },
     computed: {
       categoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
+      },
+      searchContent: function () {
+        return this.$store.state.searchComponent.searchContent
       }
     },
     watch: {}

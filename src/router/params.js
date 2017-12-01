@@ -30,6 +30,11 @@ const AppHeader = resolve => {
     resolve(require('../components/public/AppHeader.vue'))
   })
 }
+const NotFound404 = resolve => {
+  require.ensure(['../components/public/NotFound404.vue'], () => {
+    resolve(require('../components/public/NotFound404.vue'))
+  })
+}
 const AppFooter = resolve => {
   require.ensure(['../components/public/AppFooter.vue'], () => {
     resolve(require('../components/public/AppFooter.vue'))
@@ -60,5 +65,6 @@ export {
   leftPanel,
   rightPanel,
   SearchNull,
+  NotFound404,
   // paginator,
 }
