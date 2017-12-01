@@ -6,17 +6,26 @@ import {
   AppHeader,
   AppFooter,
   SearchIndex,
-  SearchAll,
+  searchContext,
   SearchNull,
   SearchBook,
   homePage,
   leftPanel,
   rightPanel,
+  NotFound404,
 } from './params'
 // 配置路由
 export default new Router({
   routes: [
     // 懒加载引入自定义组件
+    {
+      path: '/lost',
+      components: {
+        'app-header': AppHeader,
+        'app-body': NotFound404,
+        'app-footer': AppFooter,
+      }
+    },
     {
       path: '/',
       components: {
@@ -40,11 +49,11 @@ export default new Router({
       },
       children: [
         {
-          path: '/',
-          name: 'searchAll',
+          path: 'context',
+          name: 'searchContext',
           components: {
             'leftPanel': leftPanel,
-            'middlePanel': SearchAll,
+            'middlePanel': searchContext,
             'rightPanel': rightPanel,
           }
         },

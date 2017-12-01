@@ -1,6 +1,6 @@
 <template>
   <div class="left-panel">
-    <category-item v-for="i in 3" :key="i.id"></category-item>
+    <category-item v-for="i in itemList" :obj="i" :key="i.id"></category-item>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -20,7 +20,11 @@
       return {}
     },
     methods: {},
-    computed: {},
+    computed: {
+      itemList: function () {
+        return this.$store.state.leftPanel.leftPanelItemList
+      }
+    },
     filters: {}
 
   }

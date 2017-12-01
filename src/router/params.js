@@ -10,9 +10,9 @@ const SearchIndex = resolve => {
   })
 }
 
-const SearchAll = resolve => {
-  require.ensure(['../components/search/searchAll.vue'], () => {
-    resolve(require('../components/search/searchAll.vue'))
+const searchContext = resolve => {
+  require.ensure(['../components/search/searchContext.vue'], () => {
+    resolve(require('../components/search/searchContext.vue'))
   })
 }
 const SearchNull = resolve => {
@@ -28,6 +28,11 @@ const SearchBook = resolve => {
 const AppHeader = resolve => {
   require.ensure(['../components/public/AppHeader.vue'], () => {
     resolve(require('../components/public/AppHeader.vue'))
+  })
+}
+const NotFound404 = resolve => {
+  require.ensure(['../components/public/NotFound404.vue'], () => {
+    resolve(require('../components/public/NotFound404.vue'))
   })
 }
 const AppFooter = resolve => {
@@ -53,12 +58,13 @@ const rightPanel = resolve => {
 export {
   homePage,
   SearchIndex,
-  SearchAll,
+  searchContext,
   SearchBook,
   AppHeader,
   AppFooter,
   leftPanel,
   rightPanel,
   SearchNull,
+  NotFound404,
   // paginator,
 }

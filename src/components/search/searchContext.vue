@@ -11,7 +11,7 @@
   </div>
 </template>
 <style lang="scss" scoped>
-  @import '../../assets/css/search/searchAll.scss';
+  @import '../../assets/css/search/searchContext.scss';
 </style>
 <script>
   import toolBar from './toolBar.vue'

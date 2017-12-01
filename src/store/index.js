@@ -9,6 +9,7 @@ import book from './modules/book'
 import search from './modules/search'
 import searchComponent from './modules/searchComponent'
 import leftPanel from './modules/leftPanel'
+import rightPanel from './modules/rightPanel'
 import paginator from './modules/paginator'
 
 Vue.use(Vuex)
@@ -27,6 +28,7 @@ export default new Vuex.Store({
     search,
     searchComponent,
     leftPanel,
+    rightPanel,
     paginator,
   },
   strict: debug

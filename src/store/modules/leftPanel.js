@@ -1,25 +1,17 @@
 import { levelOneCategoryItem } from '../objectDeclare'
 
 const state = {
-  levelOneCategoryList: []
+  leftPanelItemList: [
+    {
+      name: '没有找到相关文献',
+      children: []
+    }
+  ],
 }
 
 const actions = {}
 
-const mutations = {
-  sendLeftPanelFromSearch (state, data) {
-    state.levelOneCategoryList = []
-    for (var k in data) {
-      if (data[k].hasOwnProperty('name')) {
-        var t = new levelOneCategoryItem()
-        t.name = data[k].name
-        t.count = data[k].count
-        t.nickName = data[k].nickName
-        state.levelOneCategoryList.push(t)
-      }
-    }
-  }
-}
+const mutations = {}
 
 export default {
   state,

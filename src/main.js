@@ -23,7 +23,13 @@ axios.defaults.baseURL = 'http://118.178.238.202:9988/'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
-
+router.beforeEach((to, from, next) => {
+  if (to.matched.length < 1) {
+    next('/lost')
+  } else {
+    next()
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
