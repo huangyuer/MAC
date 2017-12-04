@@ -60,6 +60,24 @@ const rightPanel = resolve => {
     resolve(require('../components/search/rightPanel.vue'))
   })
 }
+
+const BookList = resolve => {
+  require.ensure(['../components/book/book_list.vue'], () => {
+    resolve(require('../components/book/book_list.vue'))
+  })
+}
+const BookInfo = resolve => {
+  require.ensure(['../components/book/book_info.vue'], () => {
+    resolve(require('../components/book/book_info.vue'))
+  })
+}
+
+const BookContent = resolve => {
+  require.ensure(['../components/book/book_content.vue'], () => {
+    resolve(require('../components/book/book_content.vue'))
+  })
+}
+
 export {
   homePage,
   SearchIndex,
@@ -72,5 +90,8 @@ export {
   NotFound404,
   searchMedia,
   searchAll,
+  BookList,
+  BookInfo,
+  BookContent
   // paginator,
 }

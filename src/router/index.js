@@ -14,6 +14,9 @@ import {
   leftPanel,
   rightPanel,
   NotFound404,
+  BookList,
+  BookInfo,
+  BookContent
 } from './params'
 // 配置路由
 export default new Router({
@@ -87,6 +90,7 @@ export default new Router({
         },
       ]
     },
+
     {
       path: '/psw_reset',
       component: resolve => require(['../components/auth/psw_reset.vue'], resolve)
@@ -96,8 +100,28 @@ export default new Router({
       component: resolve => require(['../components/about_us.vue'], resolve)
     },
     {
-      path: '/book_list',
-      component: resolve => require(['../components/book/book_list.vue'], resolve)
+      path: '/book/list',
+      components: {
+        'app-header': AppHeader,
+        'app-body': BookList,
+        'app-footer': AppFooter
+      }, 
+    },
+    {
+      path: '/book/info',
+      components: {
+        'app-header': AppHeader,
+        'app-body': BookInfo,
+        'app-footer': AppFooter
+      }, 
+    },
+    {
+      path: '/book/content',
+      components: {
+        'app-header': AppHeader,
+        'app-body': BookContent,
+        'app-footer': AppFooter
+      }, 
     },
     {
       path: '/book_info',
