@@ -7,6 +7,7 @@
   margin-left: 21px;
   margin-right: 20px;
   font-size: 16px;
+  background-color: white;
   .title {
     height: 40px;
     line-height: 40px;
@@ -29,7 +30,33 @@
         float: right;
         height: 100%;
         width: 82px;
+        cursor: pointer;
+        user-select: none;
       }
     }
+  }
+  .row {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    overflow: hidden;
+    position: relative;
+    & > .image-item:first-child {
+      float: left;
+    }
+    & > .image-item:last-child {
+      float: right;
+    }
+    & > .image-item:nth-child(2) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .inners {
+    width: 90%;
+    margin: 0 auto;
   }
 }

@@ -42,6 +42,20 @@
     methods: {
       setActiveLevelOneCategory: function (index) {
         this.$store.commit('setActiveLevelOneCategory', index)
+        console.log(this.currentLevelOneCategory.type)
+        switch (this.currentLevelOneCategory.type) {
+          case 'all':
+            this.$router.push('/search/result')
+            break
+          case 'image':
+            this.$router.push('/search/result/media')
+            break
+          case 'text':
+            this.$router.push('/search/result/context')
+            break
+          default:
+            break
+        }
       }
     },
     computed: {
@@ -50,6 +64,9 @@
       },
       searchContent: function () {
         return this.$store.state.searchComponent.searchContent
+      },
+      currentLevelOneCategory: function () {
+        return this.$store.state.searchComponent.currentLevelOneCategory
       }
     },
     watch: {}
