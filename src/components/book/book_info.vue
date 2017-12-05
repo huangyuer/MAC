@@ -57,8 +57,7 @@
             <p v-if="bookDetail.authorInfo"> {{bookDetail.authorInfo}}</p>  
             <p v-else>无</p>
           </div>
-        </div>
-
+        </div> 
       </div>
       <div class="list_right">
         <a href=""><img src="../../assets/images/img1.jpg" alt=""></a>
