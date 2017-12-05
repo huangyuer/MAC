@@ -108,7 +108,7 @@ export default new Router({
       }, 
     },
     {
-      path: '/book/info',
+      path: '/book/info/:bookId',
       components: {
         'app-header': AppHeader,
         'app-body': BookInfo,

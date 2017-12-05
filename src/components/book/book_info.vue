@@ -1,114 +1,191 @@
 <template>
   <div class="bg">
-    <header-bar></header-bar>
-    <div class="clear"></div>
-    <search-bar></search-bar>
-    <div class="clear"></div>
+    <search-component></search-component>
     <div class="list_main">
-      <div class="main_left">
-        <div class="list_left list_left_bg">
-          <div class="class_title"><span>本书目录</span></div>
-          <div class="book_list">
-            <div class="book_title">
-              <p>第一章 主要项目基本知识问答</p>
-              <span>-</span>
-            </div>
-            <ul>
-              <li><a href="">1.田径</a></li>
-              <li><a href="">2.游泳</a></li>
-              <li><a href="">3.跳水</a></li>
-              <li><a href="">4.举重</a></li>
-            </ul>
-          </div>
-          <div class="book_list">
-            <div class="book_title">
-              <p>第二章 主要项目基本知识问答</p>
-              <span>-</span>
-            </div>
-            <ul>
-              <li><a href="">1.田径</a></li>
-              <li><a href="">2.游泳</a></li>
-              <li><a href="">3.跳水</a></li>
-              <li><a href="">4.举重</a></li>
-            </ul>
-          </div>
-          <div class="book_list">
-            <div class="book_title">
-              <p>第三章 主要项目基本知识问答</p>
-              <span>-</span>
-            </div>
-          </div>
-          <div class="book_list">
-            <div class="book_title">
-              <p>第四章 主要项目基本知识问答</p>
-              <span>-</span>
-            </div>
-          </div>
-          <div class="book_list">
-            <div class="book_title">
-              <p>第五章 主要项目基本知识问答</p>
-              <span>-</span>
-            </div>
-          </div>
+      <div class="list_left list_left_bg">
+        <div class="class_title">
+          <span>本书目录</span>
         </div>
+        <div class="clear" style="border-bottom: 1px solid #fff;"></div>
+        <el-table
+          :data="catalogs"
+          style="width: 100%"
+          :row-style="showRow">
+          <el-table-column
+            prop="name"
+            label="本书目录">
+            <template slot-scope="scope">
+
+              <span v-for="space in scope.row.level" class="ms-tree-space">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <el-button  v-if="scope.row.isLeaf===true" type="text" icon="el-icon-document"></el-button>
+              <el-button @click="toggle(scope.row,index)"  v-else-if="scope.row.expanded===true"  type="text" icon="el-icon-caret-bottom"></el-button>
+              <el-button @click="toggle(scope.row,index)" v-else type="text" icon="el-icon-caret-right"></el-button>
+              <a href="javascript:;">
+                <span style="color: #4A4A4A">{{scope.row.name}}</span>
+              </a>
+            </template>
+          </el-table-column>
+
+        </el-table>
+
+        <!--  <el-tree :data="treeCatalogs"
+            node-key="target-tree"
+            :props="defaultProps"
+            :default-expand-all="true"
+            @node-click="handleNodeClick"
+            :highlight-current="true"
+            :show-checkbox="false"
+            ref="catalogs_tree">
+          </el-tree>  -->
+      </div>
+
+      <div class="main_left">
         <div class="list_cent">
           <div class="book_li">
-            <p>运营之光</p>
+            <p>{{bookDetail.name}}</p>
             <dl >
-              <dd style="float: left">
-                <div class="dl_img"><img src="../../assets/images/img2.jpg" alt=""></div>
+              <dd style="float: left; width: 240px">
+                <div class="dl_img" style="width:200px;"><img :src="coverUrlPrefix + bookDetail.cover" alt="" style="width:200px;">
+                </div>
               </dd>
-              <dd style="float: left">
-                <p><span>作者:</span><a href="">中国体育记者协会</a>编 </p>
-                <p><span>出版社:</span>电子工业出版社</p>
-                <p><span>副标题:</span>我的互联网运营方法论与自白</p>
-                <p><span>出版年:</span>2016-9-1</p>
-                <p><span>页数:332</span></p>
-                <p><span>中国法分类号:</span>G8-49</p>
-                <p><span>参考文献格式:</span>中国体育记者协会编，体育知识咨询录。北京：人民体育出版社1988.2</p>
+              <dd style="float: left; width: 380px">
+                <p>英文书名：<span>{{bookDetail.enName}}</span></p>
+                <p>作者：<a href="javascript:;">{{bookDetail.chiefEditor}}</a></p>
+                <p>出版社：<span>{{bookDetail.publisher}}</span></p>
+                <p>出版日期：<span>{{bookDetail.publishedAt}}</span></p>
+                <p>印张数：<span>{{bookDetail.sheets}}</span></p>
+                <p>定价：<span>{{bookDetail.price}}</span></p>
               </dd>
             </dl>
           </div>
           <div class="clear"></div>
           <div class="book_bt"><span>内容介绍</span></div>
           <div class="book_info">
-            在互联网行业内，“运营”这个职能发展到一定阶段后，往往更需要有成熟的知识体系和工作方法来给予行业从业者们以指引。<br>
-            《运营之光：我的互联网运营方法论与自白》尤其难得之处在于：它既对“什么是运营”这样的概念认知类问题进行了解读，又带有大量实际的工作技巧、工作思维和工作方法，还包含了很多对于运营的思考、宏观分析和建议，可谓内容完整而全面，同时书中加入了作者亲历的大量真实案例，让全书读起来深入浅出、耐人寻味。<br>
-            从内容的受众来说，它既有面向初入互联网行业的运营从业者们的具体工作方法讲解和建议，又有适合3～5年运营从业者们阅读的一些案例解析、思考方法分享，也有更适合创业者、互联网公司高管阅读的一些运营体系搭建、不同类型产品所适合的运营方法等更为宏观的问题的解读。<br>
-            我们希望它可以成为面向互联网运营从业者和创业者们的一本经典读物。
+            <p v-if="bookDetail.summary">{{bookDetail.summary}}</p>
+
+            <p v-else>无</p>
+
           </div>
           <div class="book_bt"><span>作者介绍</span></div>
           <div class="book_info">
-            互联网运营从业近10年，曾先后就职于美国About.com、第九课堂、新浪微米、周伯通招聘等互联网公司，历任运营经理、COO助理、COO等职。<br>
-            现任互联网人在线学习社区三节课（sanjieke.cn）联合创始人。
+            <p v-if="bookDetail.authorInfo"> {{bookDetail.authorInfo}}</p>
+            <p v-else>无</p>
           </div>
         </div>
+      </div>
 
-      </div>
-      <div class="list_right">
-        <a href=""><img src="../../assets/images/img1.jpg" alt=""></a>
-        <a href=""><img src="../../assets/images/img1.jpg" alt=""></a>
-      </div>
+      <similar-right></similar-right>
     </div>
     <div class="clear"></div>
-    <footer-bar></footer-bar>
+
   </div>
 </template>
 
 <script>
-  import headerBar from '../public/header_bar.vue'
-  import footerBar from '../public/footer_bar.vue'
-  import searchBar from '../public/searchComponent.vue'
+  import searchComponent from '../public/searchComponent.vue'
+  import similarRight from '../book/similar_right.vue'
+  import {DataTree} from '../../utils/data_tree'
+
   export default {
     name: 'book_info',
     data () {
       return {
+        defaultProps: {
+          children: 'children',
+          label: 'name'
+        },
       }
     },
     components: {
-      headerBar,
-      footerBar,
-      searchBar
+      searchComponent,
+      similarRight
+    },
+    mounted:function(){
+       this.init();
+
+    },
+    computed:{
+      bookId(){
+        return this.$route.params.bookId || '0';
+      },
+      currentCatalog(){
+        return this.$store.getters.currentCatalog;
+      },
+      treeCatalogs(){
+        let catalogs = [];
+        let oriCatalogs = this.$store.getters.bookCatalogs;
+        if(oriCatalogs && oriCatalogs.length > 0){
+          catalogs = DataTree.build(oriCatalogs);
+        }
+        return catalogs;
+      },
+      catalogs(){
+        let catalogs = [];
+        catalogs  = this.treeToArray(this.treeCatalogs);
+        return catalogs;
+      },
+      bookDetail(){
+        return this.$store.getters.bookDetail;
+      },
+      coverUrlPrefix(){
+        return this.$store.getters.coverUrlPrefix;
+      }
+    },
+    methods: {
+      init: function(){
+        this.$store.dispatch('listBookCatalogs', {'bookId': this.bookId, 'limit': 1000, 'page':1 });
+        this.$store.dispatch('getBookDetail', {'bookId': this.bookId});
+      },
+      showRow: function (row, index) {
+        let show = row['row'].display ? true : false;
+        return show ? '' : 'display:none;'
+      },
+      treeToArray: function(oriCatalogs){
+        let a = new Array();
+        for(let catalog of oriCatalogs){
+          this.traverse(a, catalog);
+        }
+        return a;
+      },
+      // 遍历节点，并将节点压入数组
+      traverse: function(a, node){
+        let newNode = {};
+        for(let f in node){
+          newNode[f] = node[f];
+        }
+        var children = newNode.children;
+        a.push(newNode);
+        if(children && children.length > 0){
+          for(let child of children){
+            this.traverse(a, child);
+          }
+        }
+      },
+      toggle: function(row, index){
+        row.expanded = ! row.expanded;
+        let parentId = row._id;
+        let a = new Array();
+        this.getAllChildren(a, parentId);
+        for(let catalog of this.catalogs){
+          if(a.indexOf(catalog._id) >= 0){
+            catalog.expanded = row.expanded;
+            catalog.display = row.expanded;
+          }
+        }
+      },
+      getAllChildren(a, parentId){
+        for(let catalog of this.catalogs){
+          if(catalog.parentId === parentId){
+            a.push(catalog._id);
+            this.getAllChildren(a, catalog._id);
+          }
+        }
+      },
+      handleNodeClick(data, node) {
+
+      },
     }
   }
 </script>

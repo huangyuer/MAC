@@ -6,6 +6,7 @@ import * as getters from './getters'
 // import * as getters from './getters'
 import book from './modules/book'
 import category from './modules/category'
+import bookCatalog from './modules/book_catalog'
 
 import search from './modules/search'
 import searchComponent from './modules/searchComponent'
@@ -16,7 +17,8 @@ import paginator from './modules/paginator'
 Vue.use(Vuex)
 
 const state = {
-  rootUrl: 'http://118.178.238.202:8000/'
+  rootUrl: 'http://118.178.238.202:8000/',
+  coverUrlPrefix: 'http://118.178.238.202:9988/'
 }
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -26,6 +28,7 @@ export default new Vuex.Store({
   actions,
   modules: {
     book,
+    bookCatalog,
     category,
     search,
     searchComponent,

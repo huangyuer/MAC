@@ -44,12 +44,15 @@ html,body{width: 100%;height: 100%;min-width:1240px; min-height:840px; margin: 0
 .search_tag ul li{margin-top: 10px}
 }
 .list_main{width: 1240px;margin:0 auto;}
-.list_left{width: 299px;float: left;}
-.list_cent{width: 679px;float: left;}
-.list_right{width: 259px;float: right;}
-.main_left{float: left;width: 980px;background-color: #fff;}
+.list_left{width: 280px;float: left;}
+.list_cent{width: 660px;float: left;}
+.list_right{width: 280px;float: right;}
+.list_right img {float: right}
+.main_left{float: left;width: 660px;background-color: #fff; margin-left: 20px}
 .class_title{height: 40px;background-color: #1E518A;line-height: 40px;font-size: 16px;color: #fff;}
 .class_title span{margin: 0 20px}
+.class_title ul {margin: 10px 15px}
+.class_title ul li {float: left; color: #1A508C}
 .title_img {float: right; }
 .title_img span{color: #fff; font-size: 20px;}
 .list_title{height: 40px;line-height: 40px;font-size: 14px;}
@@ -162,15 +165,17 @@ html,body{width: 100%;height: 100%;min-width:1240px; min-height:840px; margin: 0
 .book_list ul li{height: 35px;line-height: 35px;border-bottom: 1px solid #e9e9e9;}
 .book_list ul li a{font-size: 14px;color: #8f8890;margin-left: 30px;}
 .book_li{margin:20px;}
-.book_li p{font-size: 16px;color: #333;}
+.book_li p{font-size: 20px;color: #1E518A;}
 .book_li dl{margin-top: 20px;}
 .book_li dt{float: left;width: 160px;}
-.book_li dd{width: 450px;float: left;font-size: 12px;}
-.book_li dd span{color: #8889b1;font-size: 12px;}
-.book_li dd p{font-size: 12px;line-height: 26px;}
-.book_bt{height: 40px;line-height: 40px;background: #eaf2fb ;margin-top: 20px;font-size: 14px;}
+.book_li dd{float: left;font-size: 12px;}
+.book_li dd p span{color:#4A4A4A;}
+.book_li dd a{color: #E5740B;font-size: 14px;}
+.book_li dd a:hover{text-decoration: underline}
+.book_li dd p{font-size: 14px;line-height: 26px;color: #1E518A;}
+.book_bt{height: 40px;line-height: 40px;background: #1E518A; color: #fff; margin-top: 20px;font-size: 14px;}
 .book_bt span{margin-left: 20px;}
-.book_info {font-size: 14px;color: #756976;margin:20px;line-height: 28px;}
+.book_info {font-size: 14px;color: #555555;margin:20px;line-height: 28px;}
 .location{height: 30px;line-height: 30px;background: #468adf;font-size: 14px;color: #fff;}
 .location a{color: #fff;}
 .location a:hover{color: #fff;}
