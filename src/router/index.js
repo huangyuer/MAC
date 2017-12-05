@@ -116,7 +116,7 @@ export default new Router({
       }, 
     },
     {
-      path: '/book/content',
+      path: '/book/content/:bookId/chapter',
       components: {
         'app-header': AppHeader,
         'app-body': BookContent,

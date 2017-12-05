@@ -24,10 +24,10 @@
         <ul class="nav">
           <li><a href="/" class="menu_item link active">首页</a>
           <li>
-          <li class="drop-down"><a class="menu_item link">工程数据库</a>
+          <li class="drop-down"><a @click="listBooks" class="menu_item link">工程数据库</a>
             <div class="triangle-up"></div>
             <ul class="drop-down-content">
-              <li v-for="lib in libList"><a class="menu_item link" :href="lib.url" v-text="lib.title"></a>
+              <li v-for="lib in sublibs"><a @click="listBooksByLib(lib.name)"  class="menu_item link" href="javascript:;" v-text="lib.name"></a>
               </li>
             </ul>
           </li>
@@ -47,7 +47,7 @@
             <li>
             <li><a class="menu_item" href="javascript:;" @click="isLibListShow = !isLibListShow">工程数据库</a>
               <ul v-show="isLibListShow">
-                <li v-for="lib in libList"><a :href="lib.url" v-text="lib.title"></a>
+                <li v-for="lib in sublibs"><a href="javascript:;" @click="listBooksByLib(lib.name)" v-text="lib.name"></a>
                 </li>
               </ul>
             </li>
@@ -119,16 +119,7 @@
         isSignedIn: false,
         isMenuClicked: false,
         searchContent: '',
-        libList: [
-          {
-            title: '1111数据库',
-            url: '/'
-          },
-          {
-            title: '2222数据库',
-            url: '/'
-          }
-        ],
+        
         isLibListShow: false,
       }
     },
@@ -136,6 +127,12 @@
       VueParticles
     },
     methods: {
+      listBooks: function(){
+        this.$router.pusu('/book/list');
+      },
+      listBooksByLib: function(lib){
+        this.$router.push('/book/list?lib=' + encodeURI(lib));
+      },
       // 检查token是否失效
       checkToken: function () {
         if (checkLoginCookie()) {
@@ -169,13 +166,17 @@
       }
     },
     computed: {
+      sublibs(){
+        return this.$store.getters.sublibs;
+      },
       levelOneCategoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
       }
     },
     mounted () {
       this.$store.commit('setActiveLevelOneCategory', 0)
-      this.checkToken()
+      this.checkToken();
+      this.$store.dispatch('listSublibs', {});
     },
     watch: {
       searchContent: function (val) {

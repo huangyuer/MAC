@@ -293,7 +293,7 @@ html,body{width: 100%;height: 100%;min-width:1240px; min-height:840px; margin: 0
 .btn_menu img{margin-top: .8rem;margin-left: .5rem}
 .menu_nav{position: absolute;z-index:9999;left:0;top:2rem; }
 .menu_nav ul{border-radius: 10px; background-color: #4b555c;}
-.menu_nav ul li{line-height: .8rem;font-size: .5rem;width: auto;text-align: left;}
+.menu_nav ul li{line-height: .8rem;font-size: 12px;width: auto;text-align: left;}
 .menu_nav ul li a{color: #fff;}
 .menu_nav ul li ul{margin-left: 40px;}
 .menu_nav ul li ul li{font-size: 14px;}

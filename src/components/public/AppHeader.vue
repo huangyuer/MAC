@@ -3,7 +3,7 @@
     <div class="inner">
 
       <div class="logo-container">
-        <img src="../../assets/images/header-logo.png" alt="">
+        <a href="/"><img src="../../assets/images/header-logo.png" alt=""></a>
       </div>
       <div class="navigator">
         <span><router-link to="/">首页&nbsp;</router-link></span>
