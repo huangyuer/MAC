@@ -17,7 +17,8 @@ import paginator from './modules/paginator'
 Vue.use(Vuex)
 
 const state = {
-  rootUrl: 'http://118.178.238.202:8000/'
+  rootUrl: 'http://118.178.238.202:8000/',
+  coverUrlPrefix: 'http://118.178.238.202:9988/'
 }
 
 const debug = process.env.NODE_ENV !== 'production'

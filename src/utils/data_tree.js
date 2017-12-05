@@ -84,4 +84,4 @@ DataTree.findNodeChildren =  (data, nodeId, nodeLevel) => {
 };
 
 
-module.exports = DataTree;
+export{DataTree};
