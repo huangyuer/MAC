@@ -51,11 +51,15 @@
                 </dd>
               </dl>
             </div>
-            <div class="clear"></div>
-
-            <!--<pagination :total=total :limit=limit v-on:getList="initBookList"></pagination>-->
-            <!--<pagination :total=total :limit=limit v-on:initList="initBookList"></pagination>-->
-
+            <div class="clear"></div> 
+            <div style="margin:20px;" class="paginator">
+              <el-pagination
+                background
+                @current-change="handleCurrentChange"
+                layout="prev, pager, next"
+                :total="booksTotal" :current-page="currentPage" :page-size="pageSize">
+              </el-pagination> 
+            </div>
           </div>
 
         </div>

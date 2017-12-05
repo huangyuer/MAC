@@ -8,6 +8,10 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueParticles from 'vue-particles'
+
+import { Pagination } from 'element-ui'
+Vue.use(Pagination)
+
 import { AUTH_TOKEN } from './assets/js/config'
 import './assets/iconfont/iconfont.css'
 import './assets/iconfont/iconfont'
