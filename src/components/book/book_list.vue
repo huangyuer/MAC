@@ -34,6 +34,14 @@
         <div class="list_cent">
           <div class="list_list">
             <div class="list_cout">已为您找到"<font color="#4a91e3">中文</font>"相关结果约{{booksTotal}}个</div>
+           <!--  <div style="margin:20px 0px 20px 0px;background-color:#eee;" class="paginator">
+              <el-pagination
+                background
+                @current-change="handleCurrentChange"
+                layout="prev, pager, next"
+                :total="booksTotal" :current-page="currentPage" :page-size="pageSize">
+              </el-pagination> 
+            </div> -->
             <div class="list_li">
               <dl v-for="book in books">
                 <dt><img :src="url + book.cover" alt="" class="list_li_img"></dt>
@@ -84,9 +92,7 @@
   export default {
     name: 'book_list',
     data () {
-      return {  
-        total: 0,
-        limit: 10,
+      return {
         url: 'http://118.178.238.202:9988/'
       }
     },
