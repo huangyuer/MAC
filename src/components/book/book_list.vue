@@ -1,8 +1,8 @@
 <template>
   <div class="bg"> 
-    <div class="clear"></div>
+    
      <search-component></search-component>
-    <div class="clear"></div>
+    
     <div class="list_main">
       <div class="main_left">
         <div class="list_left">
@@ -40,7 +40,7 @@
                 <dd>
                   <em v-text="book.bindingFormat">图书</em>
                   <p>
-                    <router-link to="/book_info">
+                    <router-link :to="'/book/info/' + book._id">
                       <a v-text="book.name"></a>
                     </router-link>
                   </p>

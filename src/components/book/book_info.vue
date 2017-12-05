@@ -1,55 +1,19 @@
 <template>
   <div class="bg">
-    <header-bar></header-bar>
-    <div class="clear"></div>
-    <search-bar></search-bar>
-    <div class="clear"></div>
+    <search-component></search-component> 
     <div class="list_main">
       <div class="main_left">
         <div class="list_left list_left_bg">
           <div class="class_title"><span>本书目录</span></div>
-          <div class="book_list">
-            <div class="book_title">
-              <p>第一章 主要项目基本知识问答</p>
-              <span>-</span>
-            </div>
-            <ul>
-              <li><a href="">1.田径</a></li>
-              <li><a href="">2.游泳</a></li>
-              <li><a href="">3.跳水</a></li>
-              <li><a href="">4.举重</a></li>
-            </ul>
-          </div>
-          <div class="book_list">
-            <div class="book_title">
-              <p>第二章 主要项目基本知识问答</p>
-              <span>-</span>
-            </div>
-            <ul>
-              <li><a href="">1.田径</a></li>
-              <li><a href="">2.游泳</a></li>
-              <li><a href="">3.跳水</a></li>
-              <li><a href="">4.举重</a></li>
-            </ul>
-          </div>
-          <div class="book_list">
-            <div class="book_title">
-              <p>第三章 主要项目基本知识问答</p>
-              <span>-</span>
-            </div>
-          </div>
-          <div class="book_list">
-            <div class="book_title">
-              <p>第四章 主要项目基本知识问答</p>
-              <span>-</span>
-            </div>
-          </div>
-          <div class="book_list">
-            <div class="book_title">
-              <p>第五章 主要项目基本知识问答</p>
-              <span>-</span>
-            </div>
-          </div>
+           <el-tree :data="treeCatalogs"
+              node-key="target-tree"
+              :props="defaultProps" 
+              :default-expand-all="false"  
+              @node-click="handleNodeClick"
+              :highlight-current="true"
+              :show-checkbox="false" 
+              ref="catalogs_tree"> 
+            </el-tree> 
         </div>
         <div class="list_cent">
           <div class="book_li">
@@ -96,9 +60,9 @@
 </template>
 
 <script>
-  import headerBar from '../public/header_bar.vue'
-  import footerBar from '../public/footer_bar.vue'
-  import searchBar from '../public/searchComponent.vue'
+  import searchComponent from '../public/searchComponent.vue'
+  // import DataTree from '../../utils/data_tree'
+
   export default {
     name: 'book_info',
     data () {
@@ -106,9 +70,36 @@
       }
     },
     components: {
-      headerBar,
-      footerBar,
-      searchBar
+      searchComponent,
+    },
+    mounted:function(){
+       this.init();
+
+    }, 
+    computed:{ 
+      bookId(){  
+        return this.$route.params.bookId || '0';
+      },
+      currentCatalog(){
+        return this.$store.getters.currentCatalog;
+      },
+      treeCatalogs(){
+        let catalogs = [];
+        // let oriCatalogs = this.$store.getters.bookCatalogs;
+        // if(oriCatalogs && oriCatalogs.length > 0){
+        //   catalogs = DataTree.build(oriCatalogs); 
+        // } 
+        return catalogs;
+      },
+    },
+    methods: {
+      init: function(){
+        this.$store.dispatch('listBookCatalogs', {'bookId': this.bookId, 'limit': 1000, 'page':1 });
+        this.$store.dispatch('getBookDetail', {'bookId': this.bookId});
+      },
+      handleNodeClick(data, node) {  
+        
+      },
     }
   }
 </script>
