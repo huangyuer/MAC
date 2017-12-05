@@ -11,7 +11,7 @@
             <el-table-column
               prop="name"
               label="本书目录">
-              <template slot-scope="scope"><span v-for="space in scope.row.level" class="ms-tree-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><el-button  v-if="scope.row.isLeaf===true" type="text" icon="el-icon-document"></el-button><el-button @click="toggle(scope.row,index)"  v-else-if="scope.row.expanded===true"  type="text" icon="el-icon-caret-bottom"></el-button><el-button @click="toggle(scope.row,index)" v-else type="text" icon="el-icon-caret-right"></el-button><span>{{scope.row.name}}</span></template>
+              <template slot-scope="scope"><span v-for="space in scope.row.level" class="ms-tree-space">&nbsp;&nbsp;&nbsp;&nbsp;</span><el-button  v-if="scope.row.isLeaf===true" type="text" icon="el-icon-document"></el-button><el-button @click="toggle(scope.row,index)"  v-else-if="scope.row.expanded===true"  type="text" icon="el-icon-caret-bottom"></el-button><el-button @click="toggle(scope.row,index)" v-else type="text" icon="el-icon-caret-right"></el-button><span @click="openChapter(scope.row)">{{scope.row.name}}</span></template>
             </el-table-column>
            
           </el-table>
@@ -170,6 +170,10 @@
       handleNodeClick(data, node) {  
         
       },
+      openChapter: function(chapter){
+
+        this.$router.push('/book/content/' + this.bookId + '/chapter?src=' + chapter.src);
+      }
     }
   }
 </script>
