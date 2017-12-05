@@ -1,16 +1,16 @@
-import api from '../api/book'
+import api from '../api/book';
 
 // initial state
-const state = {
+const state = { 
   hottestBooks: {
     'total': 0,
-    'data': [],
-    'isSearchResult': false
+    'data': [], 
+    'isSearchResult': false,
   },
   latestBooks: {
     'total': 0,
     'data': [],
-    'isSearchResult': false
+    'isSearchResult': false,
   },
   books: {
     'total': 0,
@@ -19,258 +19,291 @@ const state = {
     'keywords': ''
   },
   bookDetail: {
-    _id: '',
+     _id: '', 
     name: '',
+    ISBN: '',
     publishedAt: '',
     bookNo: '',
     recordNo: '',
-    categories: [],
+    categories: [],  
     summary: '',
-    attachment: '',
+    pdf: '', 
+    epub: '',
     strTags: '',
     texts: [],
-    tags: []
+    tags: [], 
+    creator: '',
   },
   bookError: '',
-  bookSaveStatus: false,
+  bookSaveStatus: false, 
   bookDeleteStatus: false,
-
+  bookCategoriesEditDialogVisible: false,
+  bookSublibsEditDialogVisible: false,
+  bookClcsEditDialogVisible: false,
   bookDeleteResult: {
     bookId: '',
     status: false
   },
   bookDetailReady: false,
   savedBook: {
-    id: '',
+    id:'',
     title: ''
-  }
-}
+  }, 
+};
 
 // getters
 const getters = {
   hottestBooks: state => state.hottestBooks.data,
-  books: state => state.books.data,
+  books: state => state.books.data, 
   latestBooks: state => state.latestBooks.data,
   hottestBooksTotal: state => state.hottestBooks.total,
   booksTotal: state => state.books.total,
   latestBooksTotal: state => state.latestBooks.total,
-  bookDetail: state => state.bookDetail,
+  bookDetail: state => state.bookDetail, 
   savedBook: state => state.savedBook,
-  bookSaveStatus: state => state.bookSaveStatus,
-  bookDeleteStatus: state => state.bookDeleteStatus,
+  bookSaveStatus: state => state.bookSaveStatus,  
+  bookDeleteStatus: state => state.bookDeleteStatus,  
   bookDeleteResult: state => state.bookDeleteResult,
-  bookDetailReady: state => state.bookDetailReady
-}
+  bookDetailReady: state => state.bookDetailReady,
+  bookCategoriesEditDialogVisible: state => state.bookCategoriesEditDialogVisible,
+  bookSublibsEditDialogVisible: state => state.bookSublibsEditDialogVisible,
+  bookClcsEditDialogVisible: state => state.bookClcsEditDialogVisible,
+};
 
 // actions
-const actions = {
-  getHottestBooks ({ commit, state }, params) {
-    let promise = api.getHottest(params.category, params.limit, params.page)
+const actions = { 
+  getHottestBooks ({ commit, state }, params) {  
+    let promise = api.getHottest(params.category, params.limit, params.page);
     promise.then((response) => {
-      console.log(response.data)
-      commit('setHottestBooks', response.data)
-      commit('setBooks', state.hottestBooks)
+      console.log(response.data);
+      commit('setHottestBooks', response.data); 
+      commit('setBooks', state.hottestBooks); 
     }, (response) => {
-      console.log(response)
-      commit('setHottestBooks', [])
-      commit('setBooks', [])
-    })
+      console.log(response);
+      commit('setHottestBooks', []); 
+      commit('setBooks', []); 
+    });
+  }, 
+  getLatestBooks ({ commit,state }, params) {  
+    let promise = api.getLatest(params.category,params.clc,params.lib, params.limit, params.page);
+    promise.then((response) => {
+      console.log(response.data);
+      commit('setLatestBooks', response.data); 
+      commit('setBooks', state.latestBooks); 
+    }, (response) => {
+      console.log(response);
+      commit('setLatestBooks', []); 
+      commit('setBooks', []);
+    });
+  }, 
+  searchBooks ({ commit }, params) {  
+    let promise = api.search(params.keywords, params.limit, params.page);
+    promise.then((response) => {
+      console.log(response.data); 
+      let result = {'total': response.data.total, 
+                    'data': response.data.data,
+                    'isSearchResult': true,
+                    'keywords': params.keywords};
+      commit('setBooks', result); 
+    }, (response) => {
+      console.log(response); 
+      commit('setBooks', []);  
+    });
+  }, 
+  getBookDetail({ commit,state }, params) { 
+    commit('setBookDetailReady',false);
+    let promise = api.getBookDetail(params.bookId);
+    promise.then((response) => {
+      //console.log(response);
+      commit('setBookDetail', response.data);  
+      commit('setBookDetailReady',true);
+    }, (response) => { 
+      commit('setBookError', '专家不存在');
+      console.log(response); 
+    }); 
+  }, 
+  postBook ({ commit }, bookInfo) {   
+    commit('setBookSaveStatus', false);
+    let promise = api.postBook(bookInfo);
+    promise.then((response) => {
+      console.log(response.data);
+      commit('setSavedBook', response.data); 
+      commit('setBookSaveStatus', true); 
+    }, (response) => {
+      console.log(response);
+      commit('setBookError', '专家保存失败'); 
+    });
+  }, 
+  postBookCategory ({ commit }, categoryInfo) {   
+    commit('setBookSaveStatus', false);
+    let promise = api.postBookCategory(categoryInfo.bookId, categoryInfo.category);
+    promise.then((response) => {
+      console.log(response.data);
+      commit('setSavedBook', response.data); 
+      commit('setBookSaveStatus', true); 
+    }, (response) => {
+      console.log(response);
+      commit('setBookError', '保存失败'); 
+    });
+  }, 
+  putBook ({ commit }, bookInfo) {   
+    commit('setBookSaveStatus', false);
+    let promise = api.putBook(bookInfo);
+    promise.then((response) => {
+      console.log(response.data);
+      commit('setSavedBook', response.data); 
+      commit('setBookSaveStatus', true); 
+    }, (response) => {
+      console.log(response);
+      commit('setBookError', '修改失败'); 
+    });
   },
-  getLatestBooks ({ commit, state }, params) {
-    let promise = api.getLatest(params.category, params.limit, params.page)
+  putBookCategory ({ commit }, categoryInfo) {   
+    commit('setBookSaveStatus', false);
+    let promise = api.putBookCategory(categoryInfo.bookId, categoryInfo.category);
     promise.then((response) => {
-      console.log(response.data)
-      commit('setLatestBooks', response.data)
-      commit('setBooks', state.latestBooks)
+      console.log(response.data);
+      commit('setSavedBook', response.data); 
+      commit('setBookSaveStatus', true); 
     }, (response) => {
-      console.log(response)
-      commit('setLatestBooks', [])
-      commit('setBooks', [])
-    })
+      console.log(response);
+      commit('setBookError', '修改失败'); 
+    });
   },
-  searchBooks ({ commit }, params) {
-    let promise = api.search(params.keywords, params.limit, params.page)
+  moveToBookCategory ({ commit }, categoryInfo) {   
+    commit('setBookSaveStatus', false);
+    let promise = api.moveToBookCategory(categoryInfo.bookId, categoryInfo.category, categoryInfo.moveToId);
     promise.then((response) => {
-      console.log(response.data)
-      let result = {'total': response.data.total,
-        'data': response.data.data,
-        'isSearchResult': true,
-        'keywords': params.keywords}
-      commit('setBooks', result)
+      console.log(response.data);
+      commit('setSavedBook', response.data); 
+      commit('setBookSaveStatus', true); 
     }, (response) => {
-      console.log(response)
-      commit('setBooks', [])
-    })
+      console.log(response);
+      commit('setBookError', '修改失败'); 
+    });
   },
-  getBookDetail ({ commit, state }, params) {
-    commit('setBookDetailReady', false)
-    let promise = api.getBookDetail(params.bookId)
-    promise.then((response) => {
-      // console.log(response)
-      commit('setBookDetail', response.data)
-      commit('setBookDetailReady', true)
+  deleteBook ({ commit }, bookId) {   
+    commit('setBookDeleteStatus', false);
+    commit('setBookDeleteResult', {bookId: bookId, status: false});  
+    let promise = api.deleteBook(bookId);
+    promise.then((response) => {  
+      console.log(response.data);
+      commit('setBookDeleteStatus', true); 
+      commit('setBookDeleteResult', {bookId: bookId, status: true}); 
     }, (response) => {
-      commit('setBookError', '专家不存在')
-      console.log(response)
-    })
+      console.log(response);
+      commit('setBookError', '删除失败'); 
+    });
   },
-  postBook ({ commit }, bookInfo) {
-    commit('setBookSaveStatus', false)
-    let promise = api.postBook(bookInfo)
-    promise.then((response) => {
-      console.log(response.data)
-      commit('setSavedBook', response.data)
-      commit('setBookSaveStatus', true)
+  deleteBookCategory ({ commit }, categoryInfo) {   
+    commit('setBookDeleteStatus', false);
+    commit('setBookDeleteResult', {bookId: categoryInfo.bookId, status: false});  
+    let promise = api.deleteBookCategory(categoryInfo.bookId, categoryInfo.categoryId);
+    promise.then((response) => {  
+      console.log(response.data);
+      commit('setBookDeleteStatus', true); 
+      commit('setBookDeleteResult', {bookId: categoryInfo.bookId, status: true}); 
     }, (response) => {
-      console.log(response)
-      commit('setBookError', '专家保存失败')
-    })
-  },
-  postBookCategory ({ commit }, categoryInfo) {
-    commit('setBookSaveStatus', false)
-    let promise = api.postBookCategory(categoryInfo.bookId, categoryInfo.category)
-    promise.then((response) => {
-      console.log(response.data)
-      commit('setSavedBook', response.data)
-      commit('setBookSaveStatus', true)
-    }, (response) => {
-      console.log(response)
-      commit('setBookError', '保存失败')
-    })
-  },
-  putBook ({ commit }, bookInfo) {
-    commit('setBookSaveStatus', false)
-    let promise = api.putBook(bookInfo)
-    promise.then((response) => {
-      console.log(response.data)
-      commit('setSavedBook', response.data)
-      commit('setBookSaveStatus', true)
-    }, (response) => {
-      console.log(response)
-      commit('setBookError', '修改失败')
-    })
-  },
-  putBookCategory ({ commit }, categoryInfo) {
-    commit('setBookSaveStatus', false)
-    let promise = api.putBookCategory(categoryInfo.bookId, categoryInfo.category)
-    promise.then((response) => {
-      console.log(response.data)
-      commit('setSavedBook', response.data)
-      commit('setBookSaveStatus', true)
-    }, (response) => {
-      console.log(response)
-      commit('setBookError', '修改失败')
-    })
-  },
-  moveToBookCategory ({ commit }, categoryInfo) {
-    commit('setBookSaveStatus', false)
-    let promise = api.moveToBookCategory(categoryInfo.bookId, categoryInfo.category, categoryInfo.moveToId)
-    promise.then((response) => {
-      console.log(response.data)
-      commit('setSavedBook', response.data)
-      commit('setBookSaveStatus', true)
-    }, (response) => {
-      console.log(response)
-      commit('setBookError', '修改失败')
-    })
-  },
-  deleteBook ({ commit }, bookId) {
-    commit('setBookDeleteStatus', false)
-    commit('setBookDeleteResult', {bookId: bookId, status: false})
-    let promise = api.deleteBook(bookId)
-    promise.then((response) => {
-      console.log(response.data)
-      commit('setBookDeleteStatus', true)
-      commit('setBookDeleteResult', {bookId: bookId, status: true})
-    }, (response) => {
-      console.log(response)
-      commit('setBookError', '删除失败')
-    })
-  },
-  deleteBookCategory ({ commit }, categoryInfo) {
-    commit('setBookDeleteStatus', false)
-    commit('setBookDeleteResult', {bookId: categoryInfo.bookId, status: false})
-    let promise = api.deleteBookCategory(categoryInfo.bookId, categoryInfo.categoryId)
-    promise.then((response) => {
-      console.log(response.data)
-      commit('setBookDeleteStatus', true)
-      commit('setBookDeleteResult', {bookId: categoryInfo.bookId, status: true})
-    }, (response) => {
-      console.log(response)
-      commit('setBookError', '删除失败')
-    })
+      console.log(response);
+      commit('setBookError', '删除失败'); 
+    });
   }
-}
+};
 
 // mutations
 const mutations = {
   setHottestBooks (state, books) {
     // 变更状态
-    state.hottestBooks.total = books.total
-    state.hottestBooks.data = books.data
-    state.hottestBooks.isSearchResult = false
-  },
+    state.hottestBooks.total = books.total;
+    state.hottestBooks.data = books.data;
+    state.hottestBooks.isSearchResult = false;
+  }, 
   setBooks (state, books) {
     // 变更状态
-    state.books = books
+    state.books = books; 
   },
   setLatestBooks (state, books) {
     // 变更状态
-    state.latestBooks.total = books.total
-    state.latestBooks.data = books.data
-    state.latestBooks.isSearchResult = false
-  },
-  setBookDetail (state, book) {
+    state.latestBooks.total = books.total;
+    state.latestBooks.data = books.data;
+    state.latestBooks.isSearchResult = false;
+  }, 
+  setBookDetail(state, book) {
     // 变更状态
-    if (book) {
-      for (let k in book) {
-        if (k === 'categories' || k === 'texts' || k === 'tags') {
-          state.bookDetail[k] = []
-          for (let item of book[k]) {
-            state.bookDetail[k].push(item)
-          }
-          if (k === 'tags' && Object.prototype.toString.call(book.tags) === '[object Array]') {
-            state.bookDetail.strTags = book.tags.join(' ')
-          }
-        } else {
-          state.bookDetail[k] = book[k]
-        }
+    if(book){
+      for(let k in book){ 
+        if(k === 'categories' || k === 'texts' || k === 'tags'){ 
+            state.bookDetail[k] = [];
+            for(let item of book[k]){ 
+              state.bookDetail[k].push(item);
+            }
+            if(k === 'tags' && Object.prototype.toString.call(book.tags)==='[object Array]'){
+              state.bookDetail.strTags = book.tags.join(' ');
+            }
+          }else{
+             state.bookDetail[k] = book[k]; 
+          } 
       }
     }
   },
-  setSavedBook (state, book) {
+  setSavedBook(state, book) {
+      // 变更状态
+    state.savedBook.id = book.id;
+    state.savedBook.title = book.title; 
+  }, 
+  setBookError(state, error) {
     // 变更状态
-    state.savedBook.id = book.id
-    state.savedBook.title = book.title
-  },
-  setBookError (state, error) {
+    state.bookError = error; 
+  }, 
+  clearBookError(state){
+    state.bookError = '';
+  }, 
+  setBookSaveStatus(state, status) {
     // 变更状态
-    state.bookError = error
+    state.bookSaveStatus = status; 
   },
-  clearBookError (state) {
-    state.bookError = ''
-  },
-  setBookSaveStatus (state, status) {
+  setBookDeleteStatus(state, status) {
     // 变更状态
-    state.bookSaveStatus = status
-  },
-  setBookDeleteStatus (state, status) {
+    state.bookDeleteStatus = status; 
+  }, 
+  setBookDeleteResult(state, result) {
     // 变更状态
-    state.bookDeleteStatus = status
+    state.bookDeleteResult = result; 
   },
-  setBookDeleteResult (state, result) {
+  setBookDetailReady(state, status) {
     // 变更状态
-    state.bookDeleteResult = result
+    state.bookDetailReady = status; 
   },
-  setBookDetailReady (state, status) {
+  showBookCategoriesEditDialog(state) {
     // 变更状态
-    state.bookDetailReady = status
+    state.bookCategoriesEditDialogVisible = true; 
+  },
+  hideBookCategoriesEditDialog(state) {
+    // 变更状态
+    state.bookCategoriesEditDialogVisible = false; 
+  },
+  showBookSublibsEditDialog(state) {
+    // 变更状态
+    state.bookSublibsEditDialogVisible = true; 
+  },
+  hideBookSublibsEditDialog(state) {
+    // 变更状态
+    state.bookSublibsEditDialogVisible = false; 
+  },
+  showBookClcsEditDialog(state) {
+    // 变更状态
+    state.bookClcsEditDialogVisible = true; 
+  },
+  hideBookClcEditDialog(state) {
+    // 变更状态
+    state.bookClcsEditDialogVisible = false; 
   }
-}
+
+};
 
 export default {
   state,
   getters,
   actions,
   mutations
-}
+};

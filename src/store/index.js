@@ -5,6 +5,7 @@ import * as actions from './actions'
 import * as getters from './getters'
 // import * as getters from './getters'
 import book from './modules/book'
+import category from './modules/category'
 
 import search from './modules/search'
 import searchComponent from './modules/searchComponent'
@@ -25,6 +26,7 @@ export default new Vuex.Store({
   actions,
   modules: {
     book,
+    category,
     search,
     searchComponent,
     leftPanel,
