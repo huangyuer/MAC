@@ -48,10 +48,12 @@ html,body{width: 100%;height: 100%;min-width:1240px; min-height:840px; margin: 0
 .list_cent{width: 679px;float: left;}
 .list_right{width: 259px;float: right;}
 .main_left{float: left;width: 980px;background-color: #fff;}
-.class_title{height: 40px;background-color: #4a91e3;line-height: 40px;font-size: 16px;color: #fff;}
-.class_title span{margin-left: 20px}
-.list_title{height: 40px;line-height: 40px;font-size: 14px;color: #fff;background-color: #97c3f5;}
-.list_title p{float: left;margin-left: 20px;}
+.class_title{height: 40px;background-color: #1E518A;line-height: 40px;font-size: 16px;color: #fff;}
+.class_title span{margin: 0 20px}
+.title_img {float: right; }
+.title_img span{color: #fff; font-size: 20px;}
+.list_title{height: 40px;line-height: 40px;font-size: 14px;}
+.list_title p{float: left;margin-left: 20px;color: #000;}
 .list_title span{float: right;margin-right: 20px;}
 .list_class ul li{line-height: 35px;color: #282828 }
 .list_class ul{margin-left: 30px}
