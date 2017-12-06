@@ -1,6 +1,7 @@
 <template>
   <div class="bg">
     <search-component></search-component>
+    <nav-bar firstUrl="/" firstNav="首页" secondUrl="/book/list" secondNav="图书列表" :thirdUrl="'/book/info/' + bookId" :thirdNav="bookDetail.name"></nav-bar>
     <div class="list_main">
 
       <category-left></category-left>
@@ -8,7 +9,7 @@
       <div class="main_left">
         <div class="list_cent">
           <div class="book_li">
-            <p>{{bookDetail.name}}</p>
+            <h3>{{bookDetail.name}}</h3>
             <dl >
               <dd style="float: left; width: 240px">
                 <div class="dl_img" style="width:200px;"><img :src="coverUrlPrefix + bookDetail.cover" alt="" style="width:200px;">
@@ -50,6 +51,7 @@
 
 <script>
   import searchComponent from '../public/searchComponent.vue'
+  import navBar from '../public/nav_bar.vue'
   import categoryLeft from '../book/category_left.vue'
   import similarRight from '../book/similar_right.vue'
   import {DataTree} from '../../utils/data_tree'
@@ -65,6 +67,7 @@
       }
     },
     components: {
+      navBar,
       searchComponent,
       similarRight,
       categoryLeft

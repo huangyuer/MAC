@@ -1,13 +1,14 @@
 <template>
   <div class="bg">
 
-     <search-component></search-component>
-
+    <search-component></search-component>
+    <nav-bar firstUrl="/" firstNav="首页" secondUrl="/book/list" secondNav="图书列表"></nav-bar>
     <div class="list_main">
       <list-left></list-left>
 
       <div class="main_left">
         <div class="list_cent">
+          <tool-bar></tool-bar>
           <div class="list_list">
             <div class="list_cout">找到&nbsp;<font color="#E37423">{{booksTotal}}</font>&nbsp;条结果</div>
             <div class="list_li">
@@ -48,6 +49,8 @@
 </template>
 
 <script>
+  import toolBar from '../search/toolBar.vue'
+  import navBar from '../public/nav_bar.vue'
   import searchComponent from '../public/searchComponent.vue'
   import listLeft from '../book/list_left.vue'
   import listRight from '../book/list_right.vue'
@@ -64,11 +67,13 @@
     props: {
     },
     components: {
+      toolBar,
+      navBar,
       searchComponent,
 //      searchBar,
       pagination,
       listLeft,
-      listRight
+      listRight,
     },
     mounted: function() {
       this.getLatestBooks(this.currentCategory,this.currentClc, this.currentLib,this.pageSize, this.currentPage);

@@ -13,6 +13,7 @@
         label="本书目录">
         <template slot-scope="scope">
               <span v-for="space in scope.row.level" class="ms-tree-space">
+                &nbsp;&nbsp;
               </span>
           <el-button  v-if="scope.row.isLeaf===true" type="text" icon="el-icon-document"></el-button>
           <el-button @click="toggle(scope.row,index)"  v-else-if="scope.row.expanded===true"  type="text" icon="el-icon-caret-bottom"></el-button>

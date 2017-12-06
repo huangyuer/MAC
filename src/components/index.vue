@@ -119,7 +119,7 @@
         isSignedIn: false,
         isMenuClicked: false,
         searchContent: '',
-        
+
         isLibListShow: false,
       }
     },
@@ -128,7 +128,7 @@
     },
     methods: {
       listBooks: function(){
-        this.$router.pusu('/book/list');
+        this.$router.push('/book/list');
       },
       listBooksByLib: function(lib){
         this.$router.push('/book/list?lib=' + encodeURI(lib));
