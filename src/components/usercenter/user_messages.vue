@@ -1,4 +1,8 @@
 <template>
+  <div class="z_bg"> 
+  <div class="grzx_main">
+    <user-left-menu></user-left-menu> 
+    
   <div class="grzx_right">
     <div class="grzx_right1">
       <p>站内信</p>
@@ -50,15 +54,24 @@
       </table>
     </div>
   </div>
+  </div>
+  </div>
+  </div>
+</div>
 </template>
 
 <script>
+  import UserLeftMenu from './left_menu'
   export default {
-    name: 'user_messages',
+    name: 'UserMessages',
     data () {
       return {
       }
-    }
+    },
+    components:{
+      'user-left-menu': UserLeftMenu
+    },
+
   }
 </script>
 

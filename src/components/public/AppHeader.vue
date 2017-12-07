@@ -59,7 +59,7 @@
       logout: function () {
         deleteCookie('sessionToken')
         this.$store.commit('setLoggedOut'); 
-        this.$router.push('/'); 
+        this.$router.push({path: '/'});
       },
     },
     computed: {
@@ -72,8 +72,8 @@
         if (userInfo) {
           let user = JSON.parse(userInfo);
           return user;
-        } else {
-          return state.userInfo;
+        } else { 
+          return this.$store.getters.userInfo; 
         }
       },
       
