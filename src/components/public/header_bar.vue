@@ -32,10 +32,10 @@
         <a href="javascript:void(0);" class="reg_btn" @click="signOut()">退出登录</a>
       </div>
       <div class="top_login1" v-show="!isSignedIn">
-        <router-link to="/sign_in">
+        <router-link to="/auth/login">
           <a href="javascript:void(0);" class="login_btn">登录</a>
         </router-link>
-        <router-link to="/sign_up">
+        <router-link to="/auth/register">
           <a href="javascript:void(0);" class="reg_btn">注册</a>
         </router-link>
       </div>

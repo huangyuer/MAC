@@ -16,7 +16,11 @@ import {
   NotFound404,
   BookList,
   BookInfo,
-  BookContent
+  BookContent,
+  Login,
+  Register,
+  ResetPassword,
+  UserInfo
 } from './params'
 // 配置路由
 export default new Router({
@@ -35,14 +39,6 @@ export default new Router({
       components: {
         'app-body': homePage
       }
-    },
-    {
-      path: '/sign_in',
-      component: resolve => require(['../components/auth/sign_in.vue'], resolve)
-    },
-    {
-      path: '/sign_up',
-      component: resolve => require(['../components/auth/sign_up.vue'], resolve)
     },
     {
       path: '/search/result',
@@ -90,14 +86,28 @@ export default new Router({
         },
       ]
     },
-
-    {
-      path: '/psw_reset',
-      component: resolve => require(['../components/auth/psw_reset.vue'], resolve)
-    },
+ 
     {
       path: '/about_us',
       component: resolve => require(['../components/about_us.vue'], resolve)
+    },
+    {
+      path: '/auth/login',
+      components: { 
+        'app-body': Login, 
+      }, 
+    },
+    {
+      path: '/auth/register',
+      components: { 
+        'app-body': Register, 
+      }, 
+    },
+    {
+      path: '/auth/reset/password',
+      components: { 
+        'app-body': ResetPassword, 
+      }, 
     },
     {
       path: '/book/list',
@@ -122,37 +132,15 @@ export default new Router({
         'app-body': BookContent,
         'app-footer': AppFooter
       }, 
-    },
+    }, 
+    
     {
-      path: '/book_info',
-      component: resolve => require(['../components/book/book_info.vue'], resolve)
-    },
-    {
-      path: '/book_content',
-      component: resolve => require(['../components/book/book_content.vue'], resolve)
-    },
-    {
-      path: '/user',
-      component: resolve => require(['../components/usercenter/user.vue'], resolve),
-      redirect: '/user/info',
-      children: [
-        {
-          path: '/user/info',
-          component: resolve => require(['../components/usercenter/user_info.vue'], resolve)
-        },
-        {
-          path: '/user/favorites',
-          component: resolve => require(['../components/usercenter/user_favorites.vue'], resolve)
-        },
-        {
-          path: '/user/messages',
-          component: resolve => require(['../components/usercenter/user_messages.vue'], resolve)
-        },
-        {
-          path: '/user/resources',
-          component: resolve => require(['../components/usercenter/user_resources.vue'], resolve)
-        }
-      ]
-    }
+      path: '/user/info',
+      components: {
+        'app-header': AppHeader,
+        'app-body': UserInfo,
+        'app-footer': AppFooter
+      }, 
+    },  
   ]
 })

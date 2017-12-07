@@ -1,27 +1,4 @@
-<template>
-  <div class="z_bg">
-    <div class="top_bg">
-      <div class="top">
-        <div class="grzx_grzx">
-          <router-link to="/user/info">
-            <a href="javascript:void(0);">
-              <img src="../../assets/images/grzx_ico1.png" alt="">
-            </a>
-          </router-link>
-          <router-link to="/user/info">
-            <a href="javascript:void(0);">
-              <p>个人中心</p>
-            </a>
-          </router-link>
-        </div>
-        <div class="z_home home ">
-          <router-link to="/"><a href="javascript:void(0);">首页</a></router-link>
-          |
-          <router-link to="/about_us"><a href="javascript:void(0);">关于我们</a></router-link>
-        </div>
-      </div>
-    </div>
-    <div class="grzx_main">
+<template> 
       <div class="grzx_left">
         <div class="grzx_left1">个人中心</div>
         <div class="grzx_left2"><img :src="avatarUrl" alt=""></div>
@@ -33,18 +10,15 @@
             <router-link to="/user/resources"><li><a href="javascript:void(0);">共享资料</a></li></router-link>
           </ul>
         </div>
-      </div>
-      <router-view class="grzx_right">
-      </router-view>
-    </div>
-  </div>
+      </div> 
+    
 </template>
 
 <script>
   import {checkLoginCookie} from '../../assets/js/cookie'
   import {errorHandle} from '../../assets/js/common'
   export default {
-    name: 'user',
+    name: 'UserLeftMenu',
     data () {
       return {
         avatarUrl: ''
