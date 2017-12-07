@@ -1,5 +1,8 @@
 <template>
-  <div class="grzx_right">
+  <div class="z_bg"> 
+    <div class="grzx_main">
+    <user-left-menu></user-left-menu>
+    <div class="grzx_right">
     <div class="grzx_right1">
       <p>基本信息</p>
     </div>
@@ -107,16 +110,22 @@
       </div>
     </div>
   </div>
+  </div> 
+</div>
 </template>
 
 <script>
   import {errorHandle} from '../../assets/js/common'
+  import UserLeftMenu from './left_menu'
   export default {
-    name: 'user_info',
+    name: 'UserInfo',
     data () {
       return {
         user: {}
       }
+    },
+    components:{
+      'user-left-menu': UserLeftMenu
     },
     methods: {
       // 初始化请求基本信息数据

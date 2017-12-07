@@ -64,13 +64,13 @@
         <router-link to="/user/info">
           <a href="javascript:void(0);" class="login_btn1">个人中心</a>
         </router-link>
-        <a href="javascript:void(0);" class="reg_btn1" @click="signOut()">退出登录</a>
+        <a href="javascript:void(0);" class="reg_btn1" @click="logout()">退出登录</a>
       </div>
       <div class="top_login1" v-show="!isSignedIn">
-        <router-link to="/sign_in">
+        <router-link to="/auth/login">
           <a href="javascript:void(0);" class="login_btn1">登录</a>
         </router-link>
-        <router-link to="/sign_up">
+        <router-link to="/auth/register">
           <a href="javascript:void(0);" class="reg_btn1">注册</a>
         </router-link>
       </div>
@@ -141,13 +141,12 @@
         }
       },
       // 退出登录
-      signOut: function () {
+      logout: function () {
         // 删除cookie检查状态成功则退出
         deleteCookie('sessionToken')
-        if (!checkLoginCookie()) {
-          alert('退出成功！')
-          this.isSignedIn = false
-        }
+        this.$store.commit('setLoggedOut');
+        window.history.go(0);
+        this.$store.push('/');
       },
       // 移动端menu切换显示
       toggleMenu: function (event) {

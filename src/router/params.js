@@ -78,6 +78,36 @@ const BookContent = resolve => {
   })
 }
 
+const Login = resolve => {
+  require.ensure(['../components/auth/sign_in.vue'], () => {
+    resolve(require('../components/auth/sign_in.vue'))
+  })
+}
+
+const Register = resolve => {
+  require.ensure(['../components/auth/sign_up.vue'], () => {
+    resolve(require('../components/auth/sign_up.vue'))
+  })
+}
+
+const ResetPassword = resolve => {
+  require.ensure(['../components/auth/password_reset.vue'], () => {
+    resolve(require('../components/auth/password_reset.vue'))
+  })
+}
+
+const UserInfo = resolve => {
+  require.ensure(['../components/usercenter/user_info.vue'], () => {
+    resolve(require('../components/usercenter/user_info.vue'))
+  })
+}
+
+const UserLeftMenu = resolve => {
+  require.ensure(['../components/usercenter/left_menu.vue'], () => {
+    resolve(require('../components/usercenter/left_menu.vue'))
+  })
+}
+
 export {
   homePage,
   SearchIndex,
@@ -92,6 +122,10 @@ export {
   searchAll,
   BookList,
   BookInfo,
-  BookContent
+  BookContent,
+  Login,
+  Register,
+  ResetPassword,
+  UserInfo
   // paginator,
 }

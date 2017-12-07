@@ -1,4 +1,4 @@
-<template>
+f<template>
   <div class="category-item">
     <div class="level-1-category">
       <div class="inner">

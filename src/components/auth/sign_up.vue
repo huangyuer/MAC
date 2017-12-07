@@ -4,9 +4,9 @@
     <div class="zhmm2">
       <input type="text" placeholder="请输入手机号" class="input_111" v-model="phone">
     </div>
-    <div class="zhmm3">
+    <div class="zhmm3"> 
       <input type="text" placeholder="验证码" v-model="vercode">
-      <a href="javascript:void(0);" @click="checkUser()">获取验证码</a>
+      <a id="btn-get-vercode" href="javascript:void(0);" @click="getVerCode()">{{text}}</a> 
     </div>
     <div class="clear"></div>
     <div class="zhmm2">
@@ -16,9 +16,9 @@
       <input type="password" placeholder="请再一次输入密码" class="input_444" v-model="repassword">
     </div>
     <small>注册代表您已经阅读并同意<a href="javascript:void(0);"><b>《xxxxx交易平台用户协议》</b></a></small>
-    <em><a href="javascript:void(0);" @click="signUp()">注 册</a></em>
+    <em><a href="javascript:void(0);"  @click="register()">注 册</a></em>
     <strong>已有账号？
-       去<router-link to="/sign_in"><a href="javascript:void(0);">登录</a></router-link>
+       去<router-link to="/auth/login"><a href="javascript:void(0);">登录</a></router-link>
     </strong>
   </div>
 </template>
@@ -26,98 +26,143 @@
 <script>
   import {setCookie, checkLoginCookie} from '../../assets/js/cookie'
   import {errorHandle} from '../../assets/js/common'
+  import validator from 'validator'
+  import Vue from 'vue'
+  import api from '../../store/api/auth';
+
   export default {
     name: 'sign_up',
+    props: {
+      second: {
+        type: Number,
+        default: 30
+      }
+    },
     data () {
       return {
         phone: '',
         password: '',
         repassword: '',
-        vercode: ''
+        vercode: '',
+        time: 0
       }
     },
     watch: {
     },
-    methods: {
-      // 检查手机是否注册过
-      checkUser: function () {
-        this.$axios.get('v1/users/exists/mobile/' + this.phone)
-          .then(responseData => {
-            // 如果不存在则提示已注册过 否则请求发送验证码
-            if (responseData.data.data) {
-              alert('该手机已注册，请直接登录！')
-            } else {
-              this.sendCode()
+    computed: { 
+      loginError () {
+        return this.$store.getters.loginError;
+      },
+      text() {
+        return this.time > 0 ? this.time + '秒后重试' : '获取验证码'
+      },
+      loggedIn () {
+        return this.$store.getters.loggedIn; 
+      },
+      registered(){
+        return this.$store.getters.registered; 
+      },
+      registerSuccess(){
+        return this.$store.getters.registerSuccess; 
+      },
+      registerError(){
+        return this.$store.getters.registerError; 
+      }
+    },
+    watch: { 
+      loggedIn: {
+        handler: function (val, oldVal) {  
+          console.log('loggedIn');
+          if(val){ 
+            this.$router.push({path: '/'});
+          }
+        }
+      },
+      registerSuccess: {
+        handler: function (val, oldVal) {   
+          if(val){ 
+            this.$router.push({path: '/'});
+          }
+        }
+      },
+      registerError: {
+        handler: function (val, oldVal) {   
+          alert(val);
+        }
+      }
+    },
+    methods: { 
+      register: function() { 
+        // 检查手机号是否有效
+        if(this.phone === '' || !validator.isMobilePhone(this.phone, 'zh-CN')){
+          alert('请输入有效的手机号');
+          return;
+        }
+        // 检查验证码和密码是否输入
+        if(this.password === '' || this.vercode === ''){
+          alert('请输入密码和验证码');
+          return;
+        }
+        // 检查密码长度
+        if(this.password.length < 6){
+          alert('密码至少为6位以上的字母或者数字组合');
+          return;
+        }
+        // 检查密码是否有非法字符
+
+        // 检查两次输入密码是否一致
+        if(this.password !== this.repassword){
+          alert('两次输入密码不一致');
+          return;
+        }
+        this.$store.dispatch('registerByMobile', {'username': this.phone,'vercode': this.vercode, 'mobile': this.phone, 'password': this.password, 'repassword': this.repassword});
+      },  
+      stopClick: function(){
+        if(this.time > 0){
+          return true;
+        }else{
+          return false;
+        }
+      },
+      getVerCode: function(){  
+        if(this.registered){
+          this.$router.push('/');
+        }
+        // 检查手机号是否有效
+        if(this.phone === '' || !validator.isMobilePhone(this.phone, 'zh-CN')){
+          alert('请输入有效的手机号');
+          return;
+        }
+        // 检查手机是否已注册
+        let promise = api.checkRegisterStatus(this.phone);
+        let self = this;
+        promise.then(function(response){
+          console.log(response.data.status);
+          if(response.data.status === true){
+            self.$router.push('/auth/login');
+          }else{
+            if(self.time === 0){
+              self.$store.dispatch('getVercode', {'mobile': self.phone, 'kind': 'REGISTER'});
             }
-          })
-          .catch(error => {
-            errorHandle(error)
-          })
+            self.time = self.second;
+            self.timer();
+          }
+        }, function(error){
+          console.log(error);
+        });
       },
-      // 发送验证码
-      sendCode: function () {
-        this.$axios.post('http://118.178.238.202:8236/v1/send/vercode/' + this.phone,
-          {
-            'product': '同济设计在线',
-            'kind': 'REGISTER'
-          })
-          .then(responseData => {
-            console.log(responseData)
-          })
-          .catch(responseData => {
-            console.log(responseData)
-          })
-      },
-      // 注册
-      signUp: function () {
-        this.$axios.post('v1/users/register/by/mobile',
-          {
-            'mobile': this.phone,
-            'vercode': this.vercode,
-            'password': this.password,
-            'repassword': this.repassword,
-            'username': this.phone,
-            'nickname': this.phone
-          })
-          .then(responseData => {
-            console.log(responseData)
-            // 注册成功自动登录
-            alert('注册成功！')
-            this.signIn()
-          })
-          .catch(error => {
-            errorHandle(error)
-          })
-      },
-      // 登录
-      signIn: function () {
-        this.$axios.post('v1/users/login',
-          {
-            'username': this.phone,
-            'password': this.password
-          })
-          .then(responseData => {
-            // 保存到document.cookie并回到首页
-            let token = responseData.data.sessionToken
-            window.localStorage.id = responseData.data.userId
-            setCookie('sessionToken', token)
-            this.$router.push({path: '/'})
-          })
-          .catch(error => {
-            errorHandle(error)
-          })
-      },
-      // 检查是否登录或token是否失效
-      checkToken: function () {
-        if (checkLoginCookie()) {
-          // 若未失效则跳转到首页
-          alert('您已登录！请先退出再重新注册！')
-          this.$router.push({path: '/'})
+      timer() { 
+        if (this.time > 0) {
+          //document.getElementById("btn-get-vercode").disabled = ' disabled';
+          this.time = this.time - 1;
+          setTimeout(this.timer, 1000);
         }
       }
     },
     mounted () {
-      this.checkToken()
+      if(this.loggedIn){
+        this.$router.push('/');
+      }
     }
   }
 </script>
