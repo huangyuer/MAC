@@ -15,7 +15,9 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item :author="i.chiefEditor" :name="i.name" :year="i.publishedAt" :content="i.highlight" :keywords="i.keywords" v-for="i in allPageBookList" :key="i.id"></image-text-item>
+      <image-text-item :author="i.chiefEditor" :name="i.name" :year="i.publishedAt" :content="i.highlight"
+                       :cover="i.cover" :keywords="i.keywords" v-for="i in allPageBookList"
+                       :key="i.id"></image-text-item>
     </div>
     <div class="subtitle" style="margin-top: 21px;">
       <div class="inner">

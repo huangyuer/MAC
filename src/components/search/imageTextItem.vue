@@ -25,7 +25,7 @@
     </div>
     <div class="img-container">
       <div class="img-real-container">
-        <img :src="cover">
+        <img :src="cover_">
       </div>
     </div>
   </div>
@@ -44,7 +44,9 @@
     },
     components: {},
     data () {
-      return {}
+      return {
+        preFix: 'http://118.178.238.202:9988/'
+      }
     },
     methods: {},
     computed: {
@@ -52,6 +54,9 @@
         if (this.year) {
           return this.year.split('-')[0]
         }
+      },
+      cover_: function () {
+        return this.preFix + this.cover
       }
     },
     filters: {}
