@@ -8,17 +8,15 @@
         <div class="category">
           <span>图书</span>
         </div>
-        <span>刘凤祥</span>-<span>《古文字化》</span>-<span>2017年</span>
+        <span>{{author}}</span>-<span>{{name}}</span>-<span>{{year_}}年</span>
       </div>
       <div class="content">
-        <span>
-          这是这本书的详细摘要哦哦哦哦哦哦哦你说呢？今天晚上你吃饱了么？吃饱了以后
-          你想干嘛呢？有什么好的想法吗？
+        <span v-html="content">
         </span>
       </div>
       <div class="keywords">
         <span>关键词:</span>
-        <span v-for="i in 3" :key="i.id">关键词{{i}}</span>
+        <span></span>
       </div>
       <div class="btn-container">
         <div class="btn">在线阅读</div>
@@ -27,25 +25,35 @@
     </div>
     <div class="img-container">
       <div class="img-real-container">
-        <img src="../../assets/images/img.jpg">
+        <img :src="cover">
       </div>
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
+<style lang="scss">
   @import "../../assets/css/search/imageTextItem.scss";
 </style>
 <script>
   export default {
+    props: ['author', 'name', 'year', 'content', 'keywords', 'cover'],
     mounted: function () {
-
+      let t = document.getElementsByTagName('em')
+//      for (var i = 0; i < t.length; i++) {
+//        t[i].style.color = 'red'
+//      }
     },
     components: {},
     data () {
       return {}
     },
     methods: {},
-    computed: {},
+    computed: {
+      year_: function () {
+        if (this.year) {
+          return this.year.split('-')[0]
+        }
+      }
+    },
     filters: {}
 
   }

@@ -8,5 +8,14 @@ export function levelOneCategoryItem () {
   this.show = false  //当前是否显示
 }
 
-
+export function bookItem () {
+  this.publisher = ''
+  this.chiefEditor = ''
+  this.isbn = ''
+  this.name = ''
+  this.keywords = ''
+  this.publishedAt = ''
+  this.cover = ''
+  this.highlight = ''
+}
 

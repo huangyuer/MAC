@@ -1,57 +1,49 @@
 import api from '../api/search'
+import { bookItem } from '../objectDeclare'
 
 const state = {
-  searchResult: '',
-  total: 0,
-  searchBookList: [],
-  took: '',
-  currentPage: 1,
+  allPageBookList: [],//搜索'全部'的时候图书的列表
 }
 
-const getters = {
-  bookObj: state => state.searchResult.bookObj
-}
+const getters = {}
 const actions = {
-  searchAllResult ({commit}, data) {
+  searchAll ({commit}, data) {
     let promise = api.searchAll(data)
     promise.then((response) => {
-      if (response.data.state === 1) {
-        commit('searchAllResult', response.data)
-        commit('sendLeftPanelFromSearch', response.data)
-      } else {
-        // alert(response.data.message)
+      if (response.data.state === '1') {
+        commit('searchAll', response.data.data)
       }
     }, (response) => {
 
-    })
-  },
-  //根据书的ID列表获取书的详情
-  displayBookList ({commit}, data) {
-    let promise = api.displayBookList(data)
-    promise.then((response) => {
-      if (response.data.state === '1') {
-        commit('displayBookList', response.data)
-      }
-    }, (response) => {
-      alert(response.data.message)
     })
   }
 }
 
 const mutations = {
-  setCurrentPage (state, data) {
-    state.currentPage = data
-  },
-  searchAllResult (state, data) {
-    state.total = data.total
-    state.searchResult = data
-  },
-  displayBookList (state, data) {
+  searchAll (state, data) {
     console.log(data)
-    state.total = data.total
-    state.took = 23
-    state.searchBookList = data.data
-    state.currentPage = data.page
+    state.allPageBookList = []
+    let a = data.hits
+    for (var i = 0; i < a.length; i++) {
+      let b = new bookItem()
+      let t = a[i].inner_hits.bookchapters.hits.hits//这是一个highlight的数组
+      // console.log(t[0].highlight.content)
+      let tt = t[0].highlight.content
+      var stt = ''
+      // for (var i = 0; i < tt.length; i++) {
+      //   stt += tt[i]
+      // }
+      // console.log(stt)
+      b.publisher = a[i]._source.publisher
+      b.chiefEditor = a[i]._source.chiefEditor
+      b.isbn = a[i]._source.isbn
+      b.name = a[i]._source.name
+      b.keywords = a[i]._source.keywords
+      b.publishedAt = a[i]._source.publishedAt
+      b.highlight = tt[0].replace('[').replace(']')
+      b.cover = a[i]._source.cover
+      state.allPageBookList.push(b)
+    }
   }
 }
 

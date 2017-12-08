@@ -12,7 +12,7 @@
         </div>
         <div class="search-content">
           <input v-model="searchContent" class="search-input" placeholder="请输入关键字">
-          <div class="search-btn">
+          <div class="search-btn" @click="clickSearch">
             <span>搜索</span>
           </div>
         </div>
@@ -35,9 +35,12 @@
 
   export default {
     mounted: function () {
+      this.setActiveLevelOneCategory(0)
     },
     data () {
-      return {}
+      return {
+        searchContent_: '',
+      }
     },
     methods: {
       setActiveLevelOneCategory: function (index) {
@@ -56,20 +59,42 @@
           default:
             break
         }
+      },
+      clickSearch: function () {
+        switch (this.currentLevelOneCategory.nickName) {
+          case 'all':
+            let p = {
+              searchContent: this.searchContent ? this.searchContent : this.searchContent_
+            }
+            this.$store.dispatch('searchAll', p)
+            break
+          default:
+            break
+        }
       }
     },
     computed: {
       categoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
       },
-      searchContent: function () {
-        return this.$store.state.searchComponent.searchContent
+      searchContent: {
+        get: function () {
+          return this.$store.state.searchComponent.searchContent
+        },
+        set: function (val) {
+          this.searchContent_ = val
+        }
+
       },
       currentLevelOneCategory: function () {
         return this.$store.state.searchComponent.currentLevelOneCategory
       }
     },
-    watch: {}
+    watch: {
+      searchContent_: function (val) {
+        this.$store.commit('setSearchContent', val)
+      }
+    }
   }
 </script>
 

@@ -5,7 +5,7 @@
       <div class="logo-container">
         <a href="/"><img src="../../assets/images/header-logo.png" alt=""></a>
       </div>
-    
+
       <div v-show="!loggedIn" class="login-container">
         <div @click="login" class="btn btn-login">
           <span>登 录</span>
@@ -58,13 +58,13 @@
       // 退出登录
       logout: function () {
         deleteCookie('sessionToken')
-        this.$store.commit('setLoggedOut'); 
-        this.$router.push('/'); 
+        this.$store.commit('setLoggedOut');
+        this.$router.push('/');
       },
     },
     computed: {
       loggedIn () {
-        let logged =  this.$store.getters.loggedIn; 
+        let logged =  this.$store.getters.loggedIn;
         if(logged){
           return true;
         }
@@ -73,10 +73,10 @@
           let user = JSON.parse(userInfo);
           return user;
         } else {
-          return state.userInfo;
+//          return state.userInfo;
         }
       },
-      
+
     },
     filters: {}
 

@@ -92,6 +92,8 @@
           border-top-left-radius: 25px;
           border-bottom-left-radius: 25px;
           z-index: 12;
+          cursor: pointer;
+          user-select: none;
         }
       }
       .level-two-category {
