@@ -10,20 +10,21 @@
     <div class="zhmm2">
       <input type="checkbox" class="input_555" v-model="isRemembered">
       <span>记住我</span>
-      <router-link to="/psw_reset">
+      <router-link to="/auth/reset/password">
         <em><a href="javascript:void(0);">找回密码</a></em>
       </router-link>
     </div>
     <div class="clear"></div>
-    <small><a href="javascript:void(0);" @click="signIn()">登录</a></small>
+    <small><a href="javascript:void(0);" @click="login()">登录</a></small>
     <strong>还没有账号？
-      <router-link to="/sign_up"><a href="javascript:void(0);">注册</a></router-link>
+      <router-link to="/auth/register"><a href="javascript:void(0);">注册</a></router-link>
     </strong>
   </div>
 </template>
 
 <script>
   import {setCookie, updateCookie, checkLoginCookie} from '../../assets/js/cookie'
+  import Vue from 'vue'
   import {errorHandle} from '../../assets/js/common'
   export default {
     name: 'sign_in',
@@ -34,33 +35,44 @@
         isRemembered: false
       }
     },
-    methods: {
-      // 登录
-      signIn: function () {
-        this.$axios.post('v1/users/login',
-          {
-            'username': this.phone,
-            'password': this.password
-          })
-          .then(responseData => {
-            // 保存到document.cookie, 保存id到localStorage并回到首页
-            let token = responseData.data.sessionToken
-            window.localStorage.id = responseData.data.userId
-            if (this.isRemembered) {
-              updateCookie('sessionToken', token, '7')
-            } else {
-              setCookie('sessionToken', token)
-            }
-            alert('登录成功！将转至首页！')
-            this.$router.push({path: '/'})
-          })
-          .catch(error => {
-            errorHandle(error)
-          })
+    computed: { 
+      loginError () {
+        return this.$store.getters.loginError;
       },
-      // 检查是否登录或token是否失效
-      checkToken: function () {
-        if (checkLoginCookie()) {
+      loggedIn () {
+        return this.$store.getters.loggedIn; 
+      }
+    },
+    watch: { 
+      loggedIn: {
+        handler: function (val, oldVal) {  
+          console.log('loggedIn');
+          if(val){ 
+            this.$router.push({path: '/'});
+          }
+        }
+      }
+    },
+    methods: {
+      checkLoginValidation: function () {
+        let msg = "";
+        if (this.phone === '' || this.password === '') {
+          msg = "用户名或密码不能为空";
+        }
+        return msg;
+      },
+      // 登录
+      login: function() {  
+        let msg = this.checkLoginValidation();
+        if (msg !== '') {
+            alert(msg);
+            reutrn;
+        }
+        this.$store.dispatch('login', {'username': this.phone, 'password': this.password});
+      },
+      // 检查是否已登录
+      checkLoginStatus: function () {
+        if (this.loggedIn) {
           // 若未失效则跳转到首页
           alert('您已登录！将转至首页！')
           this.$router.push({path: '/'})
@@ -68,7 +80,7 @@
       }
     },
     mounted () {
-      this.checkToken()
+      //this.checkLoginStatus()
     }
   }
 </script>

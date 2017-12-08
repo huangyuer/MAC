@@ -16,7 +16,21 @@ import {
   NotFound404,
   BookList,
   BookInfo,
-  BookContent
+  BookContent,
+  Selected,
+  EngineerList,
+  EngineerInfo,
+  ProjectList,
+  ProjectInfo,
+  LiteratureList,
+  LiteratureInfo,
+  Login,
+  Register,
+  ResetPassword,
+  UserInfo,
+  UserFavorites,
+  UserMessages,
+  UserResources
 } from './params'
 // 配置路由
 export default new Router({
@@ -35,14 +49,6 @@ export default new Router({
       components: {
         'app-body': homePage
       }
-    },
-    {
-      path: '/sign_in',
-      component: resolve => require(['../components/auth/sign_in.vue'], resolve)
-    },
-    {
-      path: '/sign_up',
-      component: resolve => require(['../components/auth/sign_up.vue'], resolve)
     },
     {
       path: '/search/result',
@@ -92,12 +98,26 @@ export default new Router({
     },
 
     {
-      path: '/psw_reset',
-      component: resolve => require(['../components/auth/psw_reset.vue'], resolve)
-    },
-    {
       path: '/about_us',
       component: resolve => require(['../components/about_us.vue'], resolve)
+    },
+    {
+      path: '/auth/login',
+      components: {
+        'app-body': Login,
+      },
+    },
+    {
+      path: '/auth/register',
+      components: {
+        'app-body': Register,
+      },
+    },
+    {
+      path: '/auth/reset/password',
+      components: {
+        'app-body': ResetPassword,
+      },
     },
     {
       path: '/book/list',
@@ -105,7 +125,7 @@ export default new Router({
         'app-header': AppHeader,
         'app-body': BookList,
         'app-footer': AppFooter
-      }, 
+      },
     },
     {
       path: '/book/info/:bookId',
@@ -113,7 +133,7 @@ export default new Router({
         'app-header': AppHeader,
         'app-body': BookInfo,
         'app-footer': AppFooter
-      }, 
+      },
     },
     {
       path: '/book/content/:bookId/chapter',
@@ -121,38 +141,95 @@ export default new Router({
         'app-header': AppHeader,
         'app-body': BookContent,
         'app-footer': AppFooter
-      }, 
+      },
     },
     {
-      path: '/book_info',
-      component: resolve => require(['../components/book/book_info.vue'], resolve)
+      path: '/selected',
+      components: {
+        'app-header': AppHeader,
+        'app-body': Selected,
+        'app-footer': AppFooter
+      }
     },
     {
-      path: '/book_content',
-      component: resolve => require(['../components/book/book_content.vue'], resolve)
+      path: '/engineer/list',
+      components: {
+        'app-header': AppHeader,
+        'app-body': EngineerList,
+        'app-footer': AppFooter
+      },
     },
     {
-      path: '/user',
-      component: resolve => require(['../components/usercenter/user.vue'], resolve),
-      redirect: '/user/info',
-      children: [
-        {
-          path: '/user/info',
-          component: resolve => require(['../components/usercenter/user_info.vue'], resolve)
-        },
-        {
-          path: '/user/favorites',
-          component: resolve => require(['../components/usercenter/user_favorites.vue'], resolve)
-        },
-        {
-          path: '/user/messages',
-          component: resolve => require(['../components/usercenter/user_messages.vue'], resolve)
-        },
-        {
-          path: '/user/resources',
-          component: resolve => require(['../components/usercenter/user_resources.vue'], resolve)
-        }
-      ]
-    }
+      path: '/engineer/info/:engineerId',
+      components: {
+        'app-header': AppHeader,
+        'app-body': EngineerInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/project/list',
+      components: {
+        'app-header': AppHeader,
+        'app-body': ProjectList,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/project/info/:projectId',
+      components: {
+        'app-header': AppHeader,
+        'app-body': ProjectInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/literature/list',
+      components: {
+        'app-header': AppHeader,
+        'app-body': LiteratureList,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/literature/info/:literatureId',
+      components: {
+        'app-header': AppHeader,
+        'app-body': LiteratureInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/user/info',
+      components: {
+        'app-header': AppHeader,
+        'app-body': UserInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/user/favorites',
+      components: {
+        'app-header': AppHeader,
+        'app-body': UserFavorites,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/user/messages',
+      components: {
+        'app-header': AppHeader,
+        'app-body': UserMessages,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/user/resources',
+      components: {
+        'app-header': AppHeader,
+        'app-body': UserResources,
+        'app-footer': AppFooter
+      },
+    },
   ]
 })

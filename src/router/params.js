@@ -78,6 +78,87 @@ const BookContent = resolve => {
   })
 }
 
+const Selected = resolve => {
+  require.ensure(['../components/selected.vue'], () => {
+    resolve(require('../components/selected.vue'))
+  })
+}
+
+const EngineerList = resolve => {
+  require.ensure(['../components/engineer/engineer_list.vue'], () => {
+    resolve(require('../components/engineer/engineer_list.vue'))
+  })
+}
+
+const EngineerInfo = resolve => {
+  require.ensure(['../components/engineer/engineer_info.vue'], () => {
+    resolve(require('../components/engineer/engineer_info.vue'))
+  })
+}
+
+const ProjectList = resolve => {
+  require.ensure(['../components/project/project_list.vue'], () => {
+    resolve(require('../components/project/project_list.vue'))
+  })
+}
+
+const ProjectInfo = resolve => {
+  require.ensure(['../components/project/project_info.vue'], () => {
+    resolve(require('../components/project/project_info.vue'))
+  })
+}
+
+const LiteratureList = resolve => {
+  require.ensure(['../components/literature/literature_list.vue'], () => {
+    resolve(require('../components/literature/literature_list.vue'))
+  })
+}
+
+const LiteratureInfo = resolve => {
+  require.ensure(['../components/literature/literature_info.vue'], () => {
+    resolve(require('../components/literature/literature_info.vue'))
+  })
+}
+
+const Login = resolve => {
+  require.ensure(['../components/auth/sign_in.vue'], () => {
+    resolve(require('../components/auth/sign_in.vue'))
+  })
+}
+
+const Register = resolve => {
+  require.ensure(['../components/auth/sign_up.vue'], () => {
+    resolve(require('../components/auth/sign_up.vue'))
+  })
+}
+
+const ResetPassword = resolve => {
+  require.ensure(['../components/auth/password_reset.vue'], () => {
+    resolve(require('../components/auth/password_reset.vue'))
+  })
+}
+
+const UserInfo = resolve => {
+  require.ensure(['../components/usercenter/user_info.vue'], () => {
+    resolve(require('../components/usercenter/user_info.vue'))
+  })
+}
+const UserFavorites = resolve => {
+  require.ensure(['../components/usercenter/user_favorites.vue'], () => {
+    resolve(require('../components/usercenter/user_favorites.vue'))
+  })
+}
+const UserMessages = resolve => {
+  require.ensure(['../components/usercenter/user_messages.vue'], () => {
+    resolve(require('../components/usercenter/user_messages.vue'))
+  })
+}
+const UserResources = resolve => {
+  require.ensure(['../components/usercenter/user_resources.vue'], () => {
+    resolve(require('../components/usercenter/user_resources.vue'))
+  })
+}
+
 export {
   homePage,
   SearchIndex,
@@ -92,6 +173,20 @@ export {
   searchAll,
   BookList,
   BookInfo,
-  BookContent
+  BookContent,
+  Selected,
+  EngineerList,
+  EngineerInfo,
+  ProjectList,
+  ProjectInfo,
+  LiteratureList,
+  LiteratureInfo,
+  Login,
+  Register,
+  ResetPassword,
+  UserInfo,
+  UserFavorites,
+  UserMessages,
+  UserResources
   // paginator,
 }

@@ -9,6 +9,8 @@ import category from './modules/category'
 import bookCatalog from './modules/book_catalog'
 import bookChapter from './modules/book_chapter'
 
+import auth from './modules/auth'
+
 import search from './modules/search'
 import searchComponent from './modules/searchComponent'
 import leftPanel from './modules/leftPanel'
@@ -37,6 +39,7 @@ export default new Vuex.Store({
     leftPanel,
     rightPanel,
     paginator,
+    auth
   },
   strict: debug
 })
