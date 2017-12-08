@@ -1,4 +1,7 @@
 <template>
+  <div class="z_bg"> 
+  <div class="grzx_main">
+    <user-left-menu></user-left-menu> 
   <div class="grzx_right">
     <div class="grzx_right1">
       <p>收藏夹</p>
@@ -8,8 +11,7 @@
         <li><a href="" class="a_hover">图书</a></li>
         <li><a href="">工程师</a></li>
         <li><a href="">工程图书</a></li>
-        <li><a href="">公式</a></li>
-        <li><a href="">伤害建筑规范</a></li>
+        <li><a href="">公式</a></li> 
       </ul>
     </div>
     <div class="grzx_right_table">
@@ -52,15 +54,22 @@
       </table>
     </div>
   </div>
+  </div>
+</div>
 </template>
 
 <script>
+  import UserLeftMenu from './left_menu'
+
   export default {
     name: 'user_favorites',
     data () {
       return {
       }
-    }
+    },
+    components:{
+      'user-left-menu': UserLeftMenu
+    },
   }
 </script>
 

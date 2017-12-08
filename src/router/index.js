@@ -20,7 +20,10 @@ import {
   Login,
   Register,
   ResetPassword,
-  UserInfo
+  UserInfo,
+  UserFavorites,
+  UserMessages,
+  UserResources
 } from './params'
 // 配置路由
 export default new Router({
@@ -132,13 +135,36 @@ export default new Router({
         'app-body': BookContent,
         'app-footer': AppFooter
       }, 
-    }, 
-    
+    },  
     {
       path: '/user/info',
       components: {
         'app-header': AppHeader,
         'app-body': UserInfo,
+        'app-footer': AppFooter
+      }, 
+    }, 
+    {
+      path: '/user/favorites',
+      components: {
+        'app-header': AppHeader,
+        'app-body': UserFavorites,
+        'app-footer': AppFooter
+      }, 
+    }, 
+    {
+      path: '/user/messages',
+      components: {
+        'app-header': AppHeader,
+        'app-body': UserMessages,
+        'app-footer': AppFooter
+      }, 
+    }, 
+    {
+      path: '/user/resources',
+      components: {
+        'app-header': AppHeader,
+        'app-body': UserResources,
         'app-footer': AppFooter
       }, 
     },  

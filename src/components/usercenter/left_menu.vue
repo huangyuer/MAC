@@ -1,7 +1,8 @@
 <template> 
       <div class="grzx_left">
         <div class="grzx_left1">个人中心</div>
-        <div class="grzx_left2"><img :src="avatarUrl" alt=""></div>
+        <div v-if="userInfo.avatar" class="grzx_left2"><img :src="userInfo.avatar" alt=""></div>
+        <div v-if="! userInfo.avatar" class="grzx_left2"><img src="../../assets/images/logo.png" alt=""></div>
         <div class="grzx_left3">
           <ul>
             <router-link to="/user/info"><li><a href="javascript:void(0);">基本信息</a></li></router-link>
@@ -15,8 +16,9 @@
 </template>
 
 <script>
-  import {checkLoginCookie} from '../../assets/js/cookie'
+  import {checkLoginCookie, getCookie} from '../../assets/js/cookie'
   import {errorHandle} from '../../assets/js/common'
+
   export default {
     name: 'UserLeftMenu',
     data () {
@@ -24,30 +26,21 @@
         avatarUrl: ''
       }
     },
-    methods: {
-      // 检查是否登录或token是否失效
-      checkToken: function () {
-        if (!checkLoginCookie()) {
-          // 若已失效则跳转到登录页
-          alert('您尚未登录，请重新登录！')
-          this.$router.push({path: '/sign_in'})
+    computed: {
+      userInfo () {  
+        let userInfo = getCookie('userInfo');
+        if (userInfo) {
+          let user = JSON.parse(userInfo);
+          return user;
+        } else { 
+          return this.$store.getters.userInfo;
         }
       },
-      // 初始化请求数据
-      initData: function () {
-        var id = window.localStorage.id
-        this.$axios.get('v1/users/' + id + '/baseinfo')
-          .then(responseData => {
-            this.avatarUrl = responseData.data.avatar
-          })
-          .catch(error => {
-            errorHandle(error)
-          })
-      }
     },
-    mounted () {
-      this.checkToken()
-      this.initData()
+    methods: {
+      
+    },
+    mounted () { 
     }
   }
 </script>

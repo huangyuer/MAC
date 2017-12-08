@@ -101,12 +101,21 @@ const UserInfo = resolve => {
     resolve(require('../components/usercenter/user_info.vue'))
   })
 }
-
-const UserLeftMenu = resolve => {
-  require.ensure(['../components/usercenter/left_menu.vue'], () => {
-    resolve(require('../components/usercenter/left_menu.vue'))
+const UserFavorites = resolve => {
+  require.ensure(['../components/usercenter/user_favorites.vue'], () => {
+    resolve(require('../components/usercenter/user_favorites.vue'))
   })
 }
+const UserMessages = resolve => {
+  require.ensure(['../components/usercenter/user_messages.vue'], () => {
+    resolve(require('../components/usercenter/user_messages.vue'))
+  })
+}
+const UserResources = resolve => {
+  require.ensure(['../components/usercenter/user_resources.vue'], () => {
+    resolve(require('../components/usercenter/user_resources.vue'))
+  })
+} 
 
 export {
   homePage,
@@ -126,6 +135,9 @@ export {
   Login,
   Register,
   ResetPassword,
-  UserInfo
+  UserInfo,
+  UserFavorites,
+  UserMessages,
+  UserResources
   // paginator,
 }
