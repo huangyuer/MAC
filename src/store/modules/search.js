@@ -56,6 +56,8 @@ const actions = {
     promise.then((response) => {
       if (response.data.state === '1') {
         commit('searchAll', response.data.data)
+        //发送到leftPanel.js中去
+        commit('setAllPageLeftPanel', response.data.data)
       }
     }, (response) => {
 
