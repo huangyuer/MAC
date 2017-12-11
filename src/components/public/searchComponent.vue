@@ -63,11 +63,18 @@
       clickSearch: function () {
         switch (this.currentLevelOneCategory.nickName) {
           case 'all':
-            let p = {
-              searchContent: this.searchContent ? this.searchContent : this.searchContent_
+            var p = {
+              searchContent: this.searchContent ? this.searchContent : this.searchContent_,
             }
             this.$store.dispatch('searchAll', p)
             break
+          case 'book':
+            var p = {
+              searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+              rows: 10,
+              page: 1
+            }
+            this.$store.display('searchBook', p)
           default:
             break
         }

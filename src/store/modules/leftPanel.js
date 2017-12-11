@@ -14,16 +14,22 @@ const actions = {}
 const mutations = {
   //首页，全部搜索的时候展示的数据
   setAllPageLeftPanel (state, data) {
+    state.leftPanelItemList = [
+      {
+        name: '没有找到相关文献',
+        children: []
+      }
+    ]
     state.leftPanelItemList[0].name = '所有类别'
     state.leftPanelItemList[0].children.push({
       name: '图书',
       count: data.allDataCount,
-      active: false
+      active: false,
     })
     state.leftPanelItemList[0].children.push({
       name: '工程',
       count: data.projectDataCount,
-      active: false
+      active: false,
     })
     state.leftPanelItemList[0].children.push({
       name: '工程师',
@@ -41,7 +47,7 @@ const mutations = {
       active: false
     })
     state.leftPanelItemList[0].children.push({
-      name: '文献',
+      name: '工程文献',
       count: data.literatureDataCount,
       active: false
     })
@@ -58,7 +64,6 @@ const mutations = {
   },
   setActiveLevel2Category (state, data) {
     let d = state.leftPanelItemList[data.parentIndex]
-    console.log(d)
     for (var i = 0; i < d.children.length; i++) {
       d.children[i].active = false
     }
