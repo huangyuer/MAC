@@ -18,17 +18,7 @@
   export default {
     props: ['total',],
     mounted: function () {
-      var t = this.totalPage > 5 ? 5 : this.totalPage
-      for (var i = 1; i <= t; i++) {
-        var p = {
-          name: i,
-          active: false
-        }
-        if (i === 1) {
-          p.active = true
-        }
-        this.displayPageList.push(p)
-      }
+      console.log('mounted....')
     },
     components: {},
     data () {
@@ -167,7 +157,23 @@
         return this.displayPageList[0]
       },
     },
-    filters: {}
+    filters: {},
+    watch: {
+      total: function (val) {
+        console.log('total page...' + val)
+        var t = this.totalPage > 5 ? 5 : this.totalPage
+        for (var i = 1; i <= t; i++) {
+          var p = {
+            name: i,
+            active: false
+          }
+          if (i === 1) {
+            p.active = true
+          }
+          this.displayPageList.push(p)
+        }
+      }
+    }
 
   }
 </script>

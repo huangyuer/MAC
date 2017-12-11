@@ -47,6 +47,9 @@ const state = {
   allPageRequirementList: [],//搜索'全部'的时候企业需求的列表
   allPageLiteratureList: [],//搜索'全部'的时候文献的列表
   allPageKnowledgeList: [],//搜索'全部'的时候文献的列表
+
+  bookList: [],//搜索图书列表
+  bookTotal: '',
 }
 
 const getters = {}
@@ -62,7 +65,64 @@ const actions = {
     }, (response) => {
 
     })
-  }
+  },
+  searchBook ({commit}, data) {
+    let promise = api.searchBook(data)
+    promise.then((response) => {
+      commit('searchBook', response.data)
+    }, (response) => {
+
+    })
+  },
+  searchProject ({commit}, data) {
+    let promise = api.searchProject(data)
+    promise.then((response) => {
+    }, (response) => {
+
+    })
+  },
+  searchEngineer ({commit}, data) {
+    let promise = api.searchEngineer(data)
+    promise.then((response) => {
+    }, (response) => {
+
+    })
+  },
+  searchMedia ({commit}, data) {
+    let promise = api.searchMedia(data)
+    promise.then((response) => {
+    }, (response) => {
+
+    })
+  },
+  searchRequirement ({commit}, data) {
+    let promise = api.searchRequirement(data)
+    promise.then((response) => {
+    }, (response) => {
+
+    })
+  },
+  searchLiteriture ({commit}, data) {
+    let promise = api.searchLiteriture(data)
+    promise.then((response) => {
+    }, (response) => {
+
+    })
+  },
+  searchExpert ({commit}, data) {
+    let promise = api.searchExpert(data)
+    promise.then((response) => {
+    }, (response) => {
+
+    })
+  },
+  searchPatent ({commit}, data) {
+    let promise = api.searchPatent(data)
+    promise.then((response) => {
+    }, (response) => {
+
+    })
+  },
 }
 
 const mutations = {
@@ -163,6 +223,21 @@ const mutations = {
       knowledge.summary = h[i]._source.summary
       knowledge.createdAt = h[i]._source.createdAt
       state.allPageKnowledgeList.push(knowledge)
+    }
+  },
+  searchBook (state, data) {
+    let d = data.hits
+    state.bookTotal = data.total
+    for (var i = 0; i < d.length; i++) {
+      var book = new bookItem()
+      book.name = d[i]._source.name
+      book.chiefEditor = d[i]._source.chiefEditor
+      book.cover = d[i]._source.cover
+      book.publishedAt = d[i]._source.publishedAt
+      book.keywords = d[i]._source.keywords
+      book.highlight = d[i].inner_hits.bookchapters.hits.hits[0].highlight.content[0]
+      console.log(book.highlight)
+      state.bookList.push(book)
     }
   }
 }

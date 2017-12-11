@@ -12,7 +12,7 @@ f
         </svg>
       </div>
     </div>
-    <div v-show="collapse" :class="{'level-2-active': i.active}" @click="setActiveLevel2Category(index)"
+    <div v-show="collapse" :class="{'level-2-active': i.active}" @click="setActiveLevel2Category(index,i)"
          class="level-2-category" v-for="i,index in obj.children" :key="i.id">
       <div class="inner">
         <span>{{i.name}}</span>
@@ -57,15 +57,47 @@ f
       collapseClick: function () {
         this.collapse = !this.collapse
       },
-      setActiveLevel2Category: function (ids) {
+      setActiveLevel2Category: function (ids, obj) {
         let p = {
           parentIndex: this.ids,
           childIndex: ids
         }
         this.$store.commit('setActiveLevel2Category', p)
+        console.log(obj)
+        if (obj.name === '图书' || obj.name === '企业需求' || obj.name === '工程文献' || obj.name === '专家' || obj.name === '专利') {
+          switch (obj.name) {
+            case '图书':
+              let p1 = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: 1,
+              }
+              this.$store.dispatch('searchBook', p)
+              this.$store.commit('setActiveLevelOneCategory', 1)
+              break
+            case '工程':
+              let p2 = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: 1,
+              }
+              this.$store.dispatch('searchProject', p)
+              this.$store.commit('setActiveLevelOneCategory', 2)
+            default:
+              break
+          }
+          this.$router.push('/search/result/context')
+        }
+        if (obj.name === '工程' || obj.name === '工程师' || obj.name === '多媒体') {
+          this.$router.push('/search/result/media')
+        }
       }
     },
-    computed: {},
+    computed: {
+      searchContent: function () {
+        return this.$store.state.searchComponent.searchContent
+      }
+    },
     filters: {}
 
   }
