@@ -1,15 +1,15 @@
 <template>
   <div class="image-item">
     <div class="img-container">
-      <img src="">
+      <img :src="cover">
     </div>
     <div class="content">
       <div class="inner">
         <div class="title">
-          <span>注册预登录设计备忘</span>
+          <span>{{title}}</span>
         </div>
         <div class="text">
-          <span>为网易云课堂提供优质服供优质服供优质服供优质服供优质服供优质服供优质服务,</span>
+          <span>{{summary}}</span>
         </div>
         <div class="underline">
 
@@ -33,6 +33,7 @@
 </style>
 <script>
   export default {
+    props: ['cover', 'title', 'summary'],
     mounted: function () {
 
     },

@@ -19,3 +19,44 @@ export function bookItem () {
   this.highlight = ''
 }
 
+export function projectItem () {
+  this.title = ''
+  this.summary = ''
+  this.highlight = ''
+  this.cover = ''
+}
+
+export function engineerItem () {
+  this.name = ''
+  this.avatar = ''
+  this.summary = ''
+}
+
+export function mediaItem () {
+  this.url = ''
+  this.description = ''
+  this.title = ''
+}
+
+export function requirementItem () {
+  this.name = ''
+  this.province = ''
+  this.city = ''
+  this.requirement = ''
+  this.content = ''
+  this.createdAt = ''
+}
+
+export function literatureItem () {
+  this.name = ''
+  this.cover = ''
+  this.summary = ''
+  this.createdAt = ''
+}
+
+export function knowledgeItem () {
+  this.name = ''
+  this.cover = ''
+  this.summary = ''
+  this.createdAt = ''
+}
