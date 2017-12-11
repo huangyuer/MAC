@@ -72,35 +72,8 @@ f
                 searchContent: this.searchContent,
                 page: 1,
               }
-              this.$store.dispatch('searchBook', p)
+              this.$store.dispatch('searchBook', p1)
               this.$store.commit('setActiveLevelOneCategory', 1)
-              break
-            case '工程':
-              let p2 = {
-                rows: 10,
-                searchContent: this.searchContent,
-                page: 1,
-              }
-              this.$store.dispatch('searchProject', p)
-              this.$store.commit('setActiveLevelOneCategory', 2)
-              break
-            case '工程师':
-              let p3 = {
-                rows: 10,
-                searchContent: this.searchContent,
-                page: 1,
-              }
-              this.$store.dispatch('searchEngineer', p)
-              this.$store.commit('setActiveLevelOneCategory', 3)
-              break
-            case '多媒体':
-              let p4 = {
-                rows: 10,
-                searchContent: this.searchContent,
-                page: 1,
-              }
-              this.$store.dispatch('searchMedia', p)
-              this.$store.commit('setActiveLevelOneCategory', 4)
               break
             case '企业需求':
               let p5 = {
@@ -108,7 +81,7 @@ f
                 searchContent: this.searchContent,
                 page: 1,
               }
-              this.$store.dispatch('searchRequirement', p)
+              this.$store.dispatch('searchRequirement', p5)
               this.$store.commit('setActiveLevelOneCategory', 5)
               break
             case '工程文献':
@@ -117,7 +90,7 @@ f
                 searchContent: this.searchContent,
                 page: 1,
               }
-              this.$store.dispatch('searchLiteriture', p)
+              this.$store.dispatch('searchLiteriture', p6)
               this.$store.commit('setActiveLevelOneCategory', 6)
               break
             case '专家':
@@ -126,7 +99,7 @@ f
                 searchContent: this.searchContent,
                 page: 1,
               }
-              this.$store.dispatch('searchExpert', p)
+              this.$store.dispatch('searchExpert', p7)
               this.$store.commit('setActiveLevelOneCategory', 7)
               break
             case '专利':
@@ -135,7 +108,7 @@ f
                 searchContent: this.searchContent,
                 page: 1,
               }
-              this.$store.dispatch('searchPatent', p)
+              this.$store.dispatch('searchPatent', p8)
               this.$store.commit('setActiveLevelOneCategory', 7)
               break
             default:
@@ -144,6 +117,38 @@ f
           this.$router.push('/search/result/context')
         }
         if (obj.name === '工程' || obj.name === '工程师' || obj.name === '多媒体') {
+          switch (obj.name) {
+            case '工程':
+              let p2 = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: 1,
+              }
+              this.$store.dispatch('searchProject', p2)
+              this.$store.commit('setActiveLevelOneCategory', 2)
+              break
+            case '工程师':
+              let p3 = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: 1,
+              }
+              this.$store.dispatch('searchEngineer', p3)
+              this.$store.commit('setActiveLevelOneCategory', 3)
+              break
+            case '多媒体':
+              let p4 = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: 1,
+              }
+              this.$store.dispatch('searchMedia', p4)
+              this.$store.commit('setActiveLevelOneCategory', 4)
+              break
+            default:
+              break
+
+          }
           this.$router.push('/search/result/media')
         }
       }
