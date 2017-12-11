@@ -1,4 +1,5 @@
-f<template>
+f
+<template>
   <div class="category-item">
     <div class="level-1-category">
       <div class="inner">
@@ -25,7 +26,7 @@ f<template>
 </style>
 <script>
   export default {
-    props: ['obj'],
+    props: ['obj', 'ids'],
     mounted: function () {
 
     },
@@ -57,10 +58,11 @@ f<template>
         this.collapse = !this.collapse
       },
       setActiveLevel2Category: function (ids) {
-        for (var i = 0; i < this.level2CategoryList.length; i++) {
-          this.level2CategoryList[i].active = false
+        let p = {
+          parentIndex: this.ids,
+          childIndex: ids
         }
-        this.level2CategoryList[ids].active = true
+        this.$store.commit('setActiveLevel2Category', p)
       }
     },
     computed: {},

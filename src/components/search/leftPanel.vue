@@ -1,6 +1,6 @@
 <template>
   <div class="left-panel">
-    <category-item v-for="i in itemList" :obj="i" :key="i.id"></category-item>
+    <category-item v-for="i,index in itemList"  :ids="index" :obj="i" :key="i.id"></category-item>
   </div>
 </template>
 <style lang="scss" scoped>
