@@ -1,5 +1,5 @@
 const state = {
-  searchContent: '',
+  searchContent: '同济大学',
   levelOneCategoryList: [
     {
       name: '全部',

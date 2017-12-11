@@ -9,6 +9,10 @@
     height: 130px;
     width: 100%;
     background-color: #D8D8D8;
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
   .content {
     height: 91px;
@@ -20,6 +24,8 @@
         font-size: 14px;
         color: $primary-color;
         font-weight: bold;
+        height: 20px;
+        overflow: hidden;
       }
       .text {
         font-size: 12px;
@@ -28,6 +34,9 @@
         //background-color: red;
         overflow: hidden;
         word-wrap: break-word;
+        span p span {
+          color: red;
+        }
       }
       .underline {
         width: 100%;

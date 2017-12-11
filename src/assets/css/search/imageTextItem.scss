@@ -19,9 +19,10 @@
     }
     .subtitle {
       margin-top: 7px;
+      height: 31px;
       .category {
         height: 18px;
-        width: 36px;
+        width: 53px;
         border: 1px solid $orange-color;
         font-size: 11px;
         text-align: center;
@@ -43,6 +44,9 @@
       font-size: 12px;
       height: 70px;
       color: #666666;
+      span > span {
+        color: red;
+      }
     }
     .keywords {
       margin-top: 8px;
@@ -88,6 +92,10 @@
       left: 0;
       margin-right: auto;
       margin-left: auto;
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 }

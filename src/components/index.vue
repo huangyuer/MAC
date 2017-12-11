@@ -27,7 +27,8 @@
           <li class="drop-down"><a @click="listBooks" class="menu_item link">工程数据库</a>
             <div class="triangle-up"></div>
             <ul class="drop-down-content">
-              <li v-for="lib in sublibs"><a @click="listBooksByLib(lib.name)"  class="menu_item link" href="javascript:;" v-text="lib.name"></a>
+              <li v-for="lib in sublibs"><a @click="listBooksByLib(lib.name)" class="menu_item link" href="javascript:;"
+                                            v-text="lib.name"></a>
               </li>
             </ul>
           </li>
@@ -47,7 +48,8 @@
             <li>
             <li><a class="menu_item" href="javascript:;" @click="isLibListShow = !isLibListShow">工程数据库</a>
               <ul v-show="isLibListShow">
-                <li v-for="lib in sublibs"><a href="javascript:;" @click="listBooksByLib(lib.name)" v-text="lib.name"></a>
+                <li v-for="lib in sublibs"><a href="javascript:;" @click="listBooksByLib(lib.name)"
+                                              v-text="lib.name"></a>
                 </li>
               </ul>
             </li>
@@ -119,7 +121,7 @@
         isSignedIn: false,
         isMenuClicked: false,
         searchContent: '',
-        
+
         isLibListShow: false,
       }
     },
@@ -127,11 +129,11 @@
       VueParticles
     },
     methods: {
-      listBooks: function(){
-        this.$router.pusu('/book/list');
+      listBooks: function () {
+        this.$router.pusu('/book/list')
       },
-      listBooksByLib: function(lib){
-        this.$router.push('/book/list?lib=' + encodeURI(lib));
+      listBooksByLib: function (lib) {
+        this.$router.push('/book/list?lib=' + encodeURI(lib))
       },
       // 检查token是否失效
       checkToken: function () {
@@ -144,16 +146,18 @@
       logout: function () {
         // 删除cookie检查状态成功则退出
         deleteCookie('sessionToken')
-        this.$store.commit('setLoggedOut');
-        window.history.go(0);
-        this.$store.push('/');
+        this.$store.commit('setLoggedOut')
+        window.history.go(0)
+        this.$store.push('/')
       },
       // 移动端menu切换显示
       toggleMenu: function (event) {
         this.isMenuClicked = !this.isMenuClicked
       },
       clickSearch: function () {
-        this.$store.commit('setSearchContent', this.searchContent)
+        if (this.searchContent) {
+          this.$store.commit('setSearchContent', this.searchContent)
+        }
         if (this.searchContent) {
           this.$router.push('/search/result/context')
         } else {
@@ -165,8 +169,8 @@
       }
     },
     computed: {
-      sublibs(){
-        return this.$store.getters.sublibs;
+      sublibs () {
+        return this.$store.getters.sublibs
       },
       levelOneCategoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
@@ -174,8 +178,8 @@
     },
     mounted () {
       this.$store.commit('setActiveLevelOneCategory', 0)
-      this.checkToken();
-      this.$store.dispatch('listSublibs', {});
+      this.checkToken()
+      this.$store.dispatch('listSublibs', {})
     },
     watch: {
       searchContent: function (val) {

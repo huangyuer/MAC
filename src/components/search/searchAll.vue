@@ -15,7 +15,9 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item v-for="i in 3" :key="i.id"></image-text-item>
+      <image-text-item type="图书" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt" :content="i.highlight"
+                       :cover="i.cover" :keywords="i.keywords" v-for="i in allPageBookList"
+                       :key="i.id"></image-text-item>
     </div>
     <div class="subtitle" style="margin-top: 21px;">
       <div class="inner">
@@ -28,8 +30,9 @@
         </div>
       </div>
     </div>
-    <div class="row" v-for="i in 3" :key="i.id">
-      <image-item v-for="i in 3" :key="i.id"></image-item>
+    <div class="row" v-for="i in allPageProjectList" :key="i.id">
+      <image-item :cover="j.cover" :title="j.title" :summary="j.summary" v-for="j in i.children"
+                  :key="i.id"></image-item>
     </div>
     <div class="subtitle" style="margin-top: 21px;">
       <div class="inner">
@@ -42,8 +45,9 @@
         </div>
       </div>
     </div>
-    <div class="row" v-for="i in 3" :key="i.id">
-      <image-item v-for="i in 3" :key="i.id"></image-item>
+    <div class="row" v-for="i in allPageEngineerList" :key="i.id">
+      <image-item :cover="j.avatar" :title="j.name" :summary="j.summary" v-for="j in i.children"
+                  :key="i.id"></image-item>
     </div>
     <div class="subtitle" style="margin-top: 21px;">
       <div class="inner">
@@ -56,8 +60,9 @@
         </div>
       </div>
     </div>
-    <div class="row" v-for="i in 3" :key="i.id">
-      <image-item v-for="i in 3" :key="i.id"></image-item>
+    <div class="row" v-for="i  in allPageMediaList" :key="i.id">
+      <image-item :cover="preFix+j.url" :title="j.title" :summary="j.description" v-for="j in i.children"
+                  :key="j.id"></image-item>
     </div>
     <div class="subtitle" style="margin-top: 21px;">
       <div class="inner">
@@ -71,7 +76,8 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item v-for="i in 3" :key="i.id"></image-text-item>
+      <image-text-item type="企业需求" :name="i.name" :year="i.createdAt" :content="i.content"
+                       :keywords="i.keywords" v-for="i in allPageRequirementList" :key="i.id"></image-text-item>
     </div>
     <div class="subtitle" style="margin-top: 21px;">
       <div class="inner">
@@ -85,7 +91,8 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item v-for="i in 3" :key="i.id"></image-text-item>
+      <image-text-item type="工程文献" :name="i.name" :year="i.createdAt" :content="i.summary"
+                       v-for="i in allPageLiteratureList" :key="i.id"></image-text-item>
     </div>
     <div class="subtitle" style="margin-top: 21px;">
       <div class="inner">
@@ -99,7 +106,8 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item v-for="i in 3" :key="i.id"></image-text-item>
+      <image-text-item type="知识产权" :name="i.name" :year="i.createdAt" :content="i.summary"
+                       v-for="i in allPageKnowledgeList" :key="i.id"></image-text-item>
     </div>
     <div style="margin-bottom: 80px;"></div>
   </div>
@@ -113,17 +121,47 @@
 
   export default {
     mounted: function () {
-
+      let p = {
+        searchContent: this.searchContent
+      }
+      this.$store.dispatch('searchAll', p)
     },
     components: {
       imageTextItem,
       imageItem,
     },
     data () {
-      return {}
+      return {
+        preFix: 'http://118.178.238.202:9988/'
+      }
     },
     methods: {},
-    computed: {},
+    computed: {
+      allPageBookList: function () {
+        return this.$store.state.search.allPageBookList
+      },
+      allPageProjectList: function () {
+        return this.$store.state.search.allPageProjectList
+      },
+      allPageEngineerList: function () {
+        return this.$store.state.search.allPageEngineerList
+      },
+      allPageMediaList: function () {
+        return this.$store.state.search.allPageMediaList
+      },
+      allPageRequirementList: function () {
+        return this.$store.state.search.allPageRequirementList
+      },
+      allPageLiteratureList: function () {
+        return this.$store.state.search.allPageLiteratureList
+      },
+      allPageKnowledgeList: function () {
+        return this.$store.state.search.allPageKnowledgeList
+      },
+      searchContent: function () {
+        return this.$store.state.searchComponent.searchContent
+      }
+    },
     filters: {}
 
   }
