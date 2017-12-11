@@ -17,8 +17,7 @@ import {
   BookList,
   BookInfo,
   BookContent,
-<<<<<<< HEAD
-=======
+ 
   Selected,
   EngineerList,
   EngineerInfo,
@@ -26,7 +25,7 @@ import {
   ProjectInfo,
   LiteratureList,
   LiteratureInfo,
->>>>>>> dev
+ 
   Login,
   Register,
   ResetPassword,
@@ -99,18 +98,14 @@ export default new Router({
         },
       ]
     },
-<<<<<<< HEAD
  
-=======
-
->>>>>>> dev
     {
       path: '/about_us',
       component: resolve => require(['../components/about_us.vue'], resolve)
     },
     {
       path: '/auth/login',
-<<<<<<< HEAD
+ 
       components: { 
         'app-body': Login, 
       }, 
@@ -120,30 +115,8 @@ export default new Router({
       components: { 
         'app-body': Register, 
       }, 
-    },
-    {
-      path: '/auth/reset/password',
-      components: { 
-        'app-body': ResetPassword, 
-      }, 
-=======
-      components: {
-        'app-body': Login,
-      },
-    },
-    {
-      path: '/auth/register',
-      components: {
-        'app-body': Register,
-      },
-    },
-    {
-      path: '/auth/reset/password',
-      components: {
-        'app-body': ResetPassword,
-      },
->>>>>>> dev
-    },
+    }, 
+    
     {
       path: '/book/list',
       components: {
@@ -165,8 +138,7 @@ export default new Router({
       components: {
         'app-header': AppHeader,
         'app-body': BookContent,
-        'app-footer': AppFooter
-<<<<<<< HEAD
+        'app-footer': AppFooter 
       }, 
     },  
     {
@@ -184,11 +156,7 @@ export default new Router({
         'app-body': UserFavorites,
         'app-footer': AppFooter
       }, 
-    }, 
-    {
-=======
-      },
-    },
+    },  
     {
       path: '/selected',
       components: {
@@ -261,32 +229,22 @@ export default new Router({
         'app-footer': AppFooter
       },
     },
-    {
->>>>>>> dev
+    { 
       path: '/user/messages',
       components: {
         'app-header': AppHeader,
         'app-body': UserMessages,
-        'app-footer': AppFooter
-<<<<<<< HEAD
+        'app-footer': AppFooter 
       }, 
-    }, 
-=======
-      },
-    },
->>>>>>> dev
+    },  
     {
       path: '/user/resources',
       components: {
         'app-header': AppHeader,
         'app-body': UserResources,
-        'app-footer': AppFooter
-<<<<<<< HEAD
-      }, 
-    },  
-=======
-      },
+        'app-footer': AppFooter 
+      },  
     },
->>>>>>> dev
+ 
   ]
 })

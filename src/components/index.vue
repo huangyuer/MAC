@@ -129,13 +129,9 @@
       VueParticles
     },
     methods: {
-<<<<<<< HEAD
+ 
       listBooks: function () {
-        this.$router.pusu('/book/list')
-=======
-      listBooks: function(){
-        this.$router.push('/book/list');
->>>>>>> dev
+        this.$router.pusu('/book/list') 
       },
       listBooksByLib: function (lib) {
         this.$router.push('/book/list?lib=' + encodeURI(lib))
@@ -151,15 +147,10 @@
       logout: function () {
         // 删除cookie检查状态成功则退出
         deleteCookie('sessionToken')
-<<<<<<< HEAD
         this.$store.commit('setLoggedOut')
         window.history.go(0)
         this.$store.push('/')
-=======
-        this.$store.commit('setLoggedOut');
-        window.history.go(0);
-        this.$store.push('/');
->>>>>>> dev
+ 
       },
       // 移动端menu切换显示
       toggleMenu: function (event) {

@@ -78,8 +78,7 @@ const BookContent = resolve => {
   })
 }
 
-<<<<<<< HEAD
-=======
+ 
 const Selected = resolve => {
   require.ensure(['../components/selected.vue'], () => {
     resolve(require('../components/selected.vue'))
@@ -122,7 +121,7 @@ const LiteratureInfo = resolve => {
   })
 }
 
->>>>>>> dev
+ 
 const Login = resolve => {
   require.ensure(['../components/auth/sign_in.vue'], () => {
     resolve(require('../components/auth/sign_in.vue'))
@@ -160,11 +159,9 @@ const UserResources = resolve => {
   require.ensure(['../components/usercenter/user_resources.vue'], () => {
     resolve(require('../components/usercenter/user_resources.vue'))
   })
-<<<<<<< HEAD
+ 
 } 
-=======
-}
->>>>>>> dev
+ 
 
 export {
   homePage,
@@ -181,8 +178,7 @@ export {
   BookList,
   BookInfo,
   BookContent,
-<<<<<<< HEAD
-=======
+ 
   Selected,
   EngineerList,
   EngineerInfo,
@@ -190,7 +186,7 @@ export {
   ProjectInfo,
   LiteratureList,
   LiteratureInfo,
->>>>>>> dev
+
   Login,
   Register,
   ResetPassword,

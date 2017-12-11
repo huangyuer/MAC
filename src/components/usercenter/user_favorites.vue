@@ -47,7 +47,7 @@
     components:{
       'user-left-menu': UserLeftMenu
     },
-<<<<<<< HEAD
+ 
     methods: {
       // 初始化请求基本信息数据 
     },
@@ -62,8 +62,7 @@
     mounted () {
       this.$store.dispatch('getFavoriteBooks', {});
     }
-=======
->>>>>>> dev
+ 
   }
 </script>
 

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-f
 <template>
-=======
-f<template>
->>>>>>> dev
+ 
   <div class="category-item">
     <div class="level-1-category">
       <div class="inner">
