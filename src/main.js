@@ -21,6 +21,7 @@ import { AUTH_TOKEN } from './assets/js/config'
 import './assets/iconfont/iconfont.css'
 import './assets/iconfont/iconfont'
 
+
 // 全局配置axios
 axios.defaults.timeout = 5000
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'

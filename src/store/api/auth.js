@@ -36,4 +36,9 @@ export default{
     let promise = Vue.http.put(apiUrl, {'type': type, 'school': school});
     return promise;
   },
+  getFavoriteBooks () {
+    let apiUrl = `${config.API_HOST}/users/favorite/books`; 
+    let promise = Vue.http.get(apiUrl);
+    return promise;
+  },
 };
