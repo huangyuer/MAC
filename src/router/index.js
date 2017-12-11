@@ -17,6 +17,16 @@ import {
   BookList,
   BookInfo,
   BookContent,
+<<<<<<< HEAD
+=======
+  Selected,
+  EngineerList,
+  EngineerInfo,
+  ProjectList,
+  ProjectInfo,
+  LiteratureList,
+  LiteratureInfo,
+>>>>>>> dev
   Login,
   Register,
   ResetPassword,
@@ -89,13 +99,18 @@ export default new Router({
         },
       ]
     },
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> dev
     {
       path: '/about_us',
       component: resolve => require(['../components/about_us.vue'], resolve)
     },
     {
       path: '/auth/login',
+<<<<<<< HEAD
       components: { 
         'app-body': Login, 
       }, 
@@ -111,6 +126,23 @@ export default new Router({
       components: { 
         'app-body': ResetPassword, 
       }, 
+=======
+      components: {
+        'app-body': Login,
+      },
+    },
+    {
+      path: '/auth/register',
+      components: {
+        'app-body': Register,
+      },
+    },
+    {
+      path: '/auth/reset/password',
+      components: {
+        'app-body': ResetPassword,
+      },
+>>>>>>> dev
     },
     {
       path: '/book/list',
@@ -118,7 +150,7 @@ export default new Router({
         'app-header': AppHeader,
         'app-body': BookList,
         'app-footer': AppFooter
-      }, 
+      },
     },
     {
       path: '/book/info/:bookId',
@@ -126,7 +158,7 @@ export default new Router({
         'app-header': AppHeader,
         'app-body': BookInfo,
         'app-footer': AppFooter
-      }, 
+      },
     },
     {
       path: '/book/content/:bookId/chapter',
@@ -134,6 +166,7 @@ export default new Router({
         'app-header': AppHeader,
         'app-body': BookContent,
         'app-footer': AppFooter
+<<<<<<< HEAD
       }, 
     },  
     {
@@ -153,20 +186,107 @@ export default new Router({
       }, 
     }, 
     {
+=======
+      },
+    },
+    {
+      path: '/selected',
+      components: {
+        'app-header': AppHeader,
+        'app-body': Selected,
+        'app-footer': AppFooter
+      }
+    },
+    {
+      path: '/engineer/list',
+      components: {
+        'app-header': AppHeader,
+        'app-body': EngineerList,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/engineer/info/:engineerId',
+      components: {
+        'app-header': AppHeader,
+        'app-body': EngineerInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/project/list',
+      components: {
+        'app-header': AppHeader,
+        'app-body': ProjectList,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/project/info/:projectId',
+      components: {
+        'app-header': AppHeader,
+        'app-body': ProjectInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/literature/list',
+      components: {
+        'app-header': AppHeader,
+        'app-body': LiteratureList,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/literature/info/:literatureId',
+      components: {
+        'app-header': AppHeader,
+        'app-body': LiteratureInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/user/info',
+      components: {
+        'app-header': AppHeader,
+        'app-body': UserInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/user/favorites',
+      components: {
+        'app-header': AppHeader,
+        'app-body': UserFavorites,
+        'app-footer': AppFooter
+      },
+    },
+    {
+>>>>>>> dev
       path: '/user/messages',
       components: {
         'app-header': AppHeader,
         'app-body': UserMessages,
         'app-footer': AppFooter
+<<<<<<< HEAD
       }, 
     }, 
+=======
+      },
+    },
+>>>>>>> dev
     {
       path: '/user/resources',
       components: {
         'app-header': AppHeader,
         'app-body': UserResources,
         'app-footer': AppFooter
+<<<<<<< HEAD
       }, 
     },  
+=======
+      },
+    },
+>>>>>>> dev
   ]
 })

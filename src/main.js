@@ -7,9 +7,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import VueParticles from 'vue-particles'
 
- 
 import { Pagination, Tree, Table, TableColumn,Button } from 'element-ui'
 Vue.use(Pagination)
 Vue.use(Tree)

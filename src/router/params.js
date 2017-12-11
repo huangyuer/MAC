@@ -78,6 +78,51 @@ const BookContent = resolve => {
   })
 }
 
+<<<<<<< HEAD
+=======
+const Selected = resolve => {
+  require.ensure(['../components/selected.vue'], () => {
+    resolve(require('../components/selected.vue'))
+  })
+}
+
+const EngineerList = resolve => {
+  require.ensure(['../components/engineer/engineer_list.vue'], () => {
+    resolve(require('../components/engineer/engineer_list.vue'))
+  })
+}
+
+const EngineerInfo = resolve => {
+  require.ensure(['../components/engineer/engineer_info.vue'], () => {
+    resolve(require('../components/engineer/engineer_info.vue'))
+  })
+}
+
+const ProjectList = resolve => {
+  require.ensure(['../components/project/project_list.vue'], () => {
+    resolve(require('../components/project/project_list.vue'))
+  })
+}
+
+const ProjectInfo = resolve => {
+  require.ensure(['../components/project/project_info.vue'], () => {
+    resolve(require('../components/project/project_info.vue'))
+  })
+}
+
+const LiteratureList = resolve => {
+  require.ensure(['../components/literature/literature_list.vue'], () => {
+    resolve(require('../components/literature/literature_list.vue'))
+  })
+}
+
+const LiteratureInfo = resolve => {
+  require.ensure(['../components/literature/literature_info.vue'], () => {
+    resolve(require('../components/literature/literature_info.vue'))
+  })
+}
+
+>>>>>>> dev
 const Login = resolve => {
   require.ensure(['../components/auth/sign_in.vue'], () => {
     resolve(require('../components/auth/sign_in.vue'))
@@ -115,7 +160,11 @@ const UserResources = resolve => {
   require.ensure(['../components/usercenter/user_resources.vue'], () => {
     resolve(require('../components/usercenter/user_resources.vue'))
   })
+<<<<<<< HEAD
 } 
+=======
+}
+>>>>>>> dev
 
 export {
   homePage,
@@ -132,6 +181,16 @@ export {
   BookList,
   BookInfo,
   BookContent,
+<<<<<<< HEAD
+=======
+  Selected,
+  EngineerList,
+  EngineerInfo,
+  ProjectList,
+  ProjectInfo,
+  LiteratureList,
+  LiteratureInfo,
+>>>>>>> dev
   Login,
   Register,
   ResetPassword,
