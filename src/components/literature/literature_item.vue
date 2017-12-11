@@ -1,7 +1,7 @@
 <template>
   <div class="literature_item_wrapper">
 
-    <img :src="literature.imgUrl"/>
+    <img :src="literature.cover + '?x-oss-process=image/resize,m_fill,w_280,h_210'" />
 
     <div class="literature_item">
       <h4 v-text="literature.title"></h4>
@@ -22,7 +22,7 @@
   export default {
     props: {
       literature: {
-        imgUrl: '',
+        cover: '',
         title: '',
         info: '',
         category: '',

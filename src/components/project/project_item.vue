@@ -1,7 +1,7 @@
 <template>
   <div class="project_item_wrapper">
 
-    <img :src="project.imgUrl"/>
+    <img :src="project.cover+ '?x-oss-process=image/resize,m_fill,w_280,h_180'" />
 
     <div class="project_item">
       <h4 v-text="project.title"></h4>
@@ -22,7 +22,7 @@
   export default {
     props: {
       project: {
-        imgUrl: '',
+        cover: '',
         title: '',
         info: '',
         category: '',

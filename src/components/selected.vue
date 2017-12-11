@@ -1,11 +1,9 @@
 <template>
-  <div class="engineer_wrapper">
-
+  <div class="engineer_wrapper"> 
     <engineer-header-bg></engineer-header-bg>
     <engineer-header-bar></engineer-header-bar>
 
-    <div class="engineer_list_wrapper">
-
+    <div class="engineer_list_wrapper"> 
       <!--工程师-->
       <div class="engineer_list">
         <div class="engineer_list_left">
@@ -17,8 +15,8 @@
         </div>
         <div class="engineer_list_right">
           <ul>
-            <li v-for="engineer in engineerList">
-              <router-link :to="'/engineer/info/' + engineer.id">
+            <li v-for="engineer in engineers">
+              <router-link :to="'/engineer/info/' + engineer._id">
                 <engineer-item :engineer="engineer"></engineer-item>
               </router-link>
             </li>
@@ -45,8 +43,8 @@
         </div>
         <div class="engineer_list_right">
           <ul>
-            <li v-for="project in projectList">
-              <router-link :to="'/project/info/' + project.id">
+            <li v-for="project in works">
+              <router-link :to="'/project/info/' + project._id">
                 <project-item :project="project"></project-item>
               </router-link>
             </li>
@@ -72,8 +70,8 @@
         </div>
         <div class="literature_list_right">
           <ul>
-            <li v-for="literature in literatureList">
-              <router-link :to="'/literature/info/' + literature.id">
+            <li v-for="literature in literatures">
+              <router-link :to="'/literature/info/' + literature._id">
                 <literature-item :literature="literature"></literature-item>
               </router-link>
             </li>
@@ -211,12 +209,40 @@
         ]
       }
     },
+    mounted(){
+      this.getLatestWorks();
+      this.getLatestEngineers();
+      this.getLatestLiteratures();
+    },
+    computed: {
+      engineers(){
+        return this.$store.getters.engineers;
+      },
+      literatures(){
+        return this.$store.getters.literatures;
+      },
+      works(){
+        return this.$store.getters.works;
+      }
+    },
     components: {
       engineerHeaderBg,
       engineerHeaderBar,
       engineerItem,
       projectItem,
       literatureItem
+    },
+    methods: { 
+      getLatestWorks: function(category,clc, lib, limit,page){
+        this.$store.dispatch('getLatestWorks', {'category': '', 'limit': 6, 'page': 1}); 
+      }, 
+      getLatestEngineers: function(category,clc, lib, limit,page){
+        this.$store.dispatch('getLatestEngineers', {'category': '', 'limit': 6, 'page': 1});  
+      },
+      getLatestLiteratures: function(category,clc, lib, limit,page){
+        this.$store.dispatch('getLatestLiteratures', {'category': '', 'limit': 6, 'page': 1}); 
+      }, 
+
     }
   }
 </script>

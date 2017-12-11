@@ -1,7 +1,7 @@
 <template>
   <div class="engineer_item_wrapper">
 
-    <img :src="engineer.imgUrl"/>
+    <img :src="engineer.avatar + '?x-oss-process=image/resize,m_fill,w_230,h_180'" />
 
     <div class="engineer_item">
       <h4 v-text="engineer.title"></h4>
@@ -19,10 +19,15 @@
 </template>
 
 <script>
-  export default {
+  export default { 
+    data () {
+      return {
+        url: 'http://118.178.238.202:9988/'
+      }
+    },
     props: {
       engineer: {
-        imgUrl: '',
+        cover: '',
         title: '',
         info: '',
         category: '',
