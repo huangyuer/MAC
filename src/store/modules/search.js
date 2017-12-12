@@ -72,6 +72,20 @@ const actions = {
     let promise = api.searchBook(data)
     promise.then((response) => {
       commit('searchBook', response.data)
+      let d = response.data.hits.hits
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.chiefEditor = d[i]._source.chiefEditor
+        context.type = '图书'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.publishedAt
+        context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
+        context.keywords = d[i]._source.keywords
+        context.highlight = d[i].inner_hits.bookchapters.hits.hits[0].highlight.content[0]
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
     }, (response) => {
 
     })
@@ -134,6 +148,7 @@ const actions = {
   searchRequirement ({commit}, data) {
     let promise = api.searchRequirement(data)
     promise.then((response) => {
+      // TODO:  企业需求现在没有数据
     }, (response) => {
 
     })
@@ -174,6 +189,7 @@ const actions = {
         context.cover = d[i]._source.avatar
         context.keywords = d[i]._source.categories
       }
+      commit('setSearchContextData', temp)
     }, (response) => {
 
     })

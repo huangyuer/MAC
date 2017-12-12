@@ -46,14 +46,71 @@
       setActiveLevelOneCategory: function (index) {
         this.$store.commit('setActiveLevelOneCategory', index)
         console.log(this.currentLevelOneCategory.type)
-        switch (this.currentLevelOneCategory.type) {
+        switch (this.currentLevelOneCategory.nickName) {
           case 'all':
             this.$router.push('/search/result')
             break
-          case 'image':
+          case 'book':
+            let p1 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchBook', p1)
+            this.$router.push('/search/result/context')
+            break
+          case 'project':
+            let p2 = {
+              rows: 9,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchProject', p2)
             this.$router.push('/search/result/media')
             break
-          case 'text':
+          case 'engineer':
+            let p3 = {
+              rows: 9,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchEngineer', p3)
+            this.$router.push('/search/result/media')
+            break
+          case 'pic':
+            let p4 = {
+              rows: 9,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchMedia', p4)
+            this.$router.push('/search/result/media')
+            break
+          case 'requirement':
+            let p5 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchRequirement', p5)
+            this.$router.push('/search/result/context')
+            break
+          case 'anli':
+            let p6 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchLiteriture', p6)
+            this.$router.push('/search/result/context')
+            break
+          case 'knowledge':
+            let p7 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchExpertPatent', p7)
             this.$router.push('/search/result/context')
             break
           default:
@@ -74,7 +131,7 @@
               rows: 10,
               page: 1
             }
-            this.$store.display('searchBook', p)
+            this.$store.dispatch('searchBook', p)
           default:
             break
         }
