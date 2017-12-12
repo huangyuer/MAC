@@ -77,6 +77,7 @@ const actions = {
   searchProject ({commit}, data) {
     let promise = api.searchProject(data)
     promise.then((response) => {
+      commit('searchProject', response.data)
     }, (response) => {
 
     })
@@ -205,8 +206,7 @@ const mutations = {
       literature.createdAt = f[i]._source.createdAt
       state.allPageLiteratureList.push(literature)
     }
-    let g = data.expertData
-    let h = data.patentData
+    let g = data.expertPatentData
     state.allPageKnowledgeList = []
     for (var i = 0; i < g.length; i++) {
       var knowledge = new knowledgeItem()
@@ -214,14 +214,6 @@ const mutations = {
       knowledge.cover = g[i]._source.avatar
       knowledge.summary = g[i]._source.experience
       knowledge.createdAt = g[i]._source.createdAt
-      state.allPageKnowledgeList.push(knowledge)
-    }
-    for (var i = 0; i < h.length; i++) {
-      var knowledge = new knowledgeItem()
-      knowledge.name = h[i]._source.name
-      knowledge.cover = ''
-      knowledge.summary = h[i]._source.summary
-      knowledge.createdAt = h[i]._source.createdAt
       state.allPageKnowledgeList.push(knowledge)
     }
   },

@@ -34,23 +34,6 @@ f
     data () {
       return {
         collapse: true,
-        level2CategoryList: [
-          {
-            name: '近代',
-            active: false,
-            count: 12,
-          },
-          {
-            name: '近代',
-            active: false,
-            count: 12,
-          },
-          {
-            name: '近代',
-            active: false,
-            count: 12,
-          }
-        ]
       }
     },
     methods: {
@@ -64,7 +47,7 @@ f
         }
         this.$store.commit('setActiveLevel2Category', p)
         console.log(obj)
-        if (obj.name === '图书' || obj.name === '企业需求' || obj.name === '工程文献' || obj.name === '专家' || obj.name === '专利') {
+        if (obj.name === '图书' || obj.name === '企业需求' || obj.name === '工程文献' || obj.name === '知识产权') {
           switch (obj.name) {
             case '图书':
               let p1 = {
@@ -93,24 +76,16 @@ f
               this.$store.dispatch('searchLiteriture', p6)
               this.$store.commit('setActiveLevelOneCategory', 6)
               break
-            case '专家':
+            case '知识产权':
               let p7 = {
                 rows: 10,
                 searchContent: this.searchContent,
                 page: 1,
               }
-              this.$store.dispatch('searchExpert', p7)
+              this.$store.dispatch('searchExpertPatent', p7)
               this.$store.commit('setActiveLevelOneCategory', 7)
               break
-            case '专利':
-              let p8 = {
-                rows: 10,
-                searchContent: this.searchContent,
-                page: 1,
-              }
-              this.$store.dispatch('searchPatent', p8)
-              this.$store.commit('setActiveLevelOneCategory', 7)
-              break
+
             default:
               break
           }
@@ -120,7 +95,7 @@ f
           switch (obj.name) {
             case '工程':
               let p2 = {
-                rows: 10,
+                rows: 9,
                 searchContent: this.searchContent,
                 page: 1,
               }
@@ -129,7 +104,7 @@ f
               break
             case '工程师':
               let p3 = {
-                rows: 10,
+                rows: 9,
                 searchContent: this.searchContent,
                 page: 1,
               }
@@ -138,7 +113,7 @@ f
               break
             case '多媒体':
               let p4 = {
-                rows: 10,
+                rows: 9,
                 searchContent: this.searchContent,
                 page: 1,
               }

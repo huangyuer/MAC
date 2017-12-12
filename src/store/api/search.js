@@ -37,13 +37,8 @@ export default {
     let promise = axios.post(apiUrl, data)
     return promise
   },
-  searchExpert (data) {
-    let apiUrl = `${config.API_HOST}/search/expert`
-    let promise = axios.post(apiUrl, data)
-    return promise
-  },
-  searchPatent (data) {
-    let apiUrl = `${config.API_HOST}/search/patent`
+  searchExpertPatent (data) {
+    let apiUrl = `${config.API_HOST}/search/expertpatent`
     let promise = axios.post(apiUrl, data)
     return promise
   },
