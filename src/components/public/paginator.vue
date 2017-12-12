@@ -1,5 +1,5 @@
 <template>
-  <div class="paginator">
+  <div class="paginator" v-show="total>0">
     <div class="item" @click="prevPageClick">
       <span><<</span>
     </div>
