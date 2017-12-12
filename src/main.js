@@ -7,9 +7,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import VueParticles from 'vue-particles'
 
- 
 import { Pagination, Tree, Table, TableColumn,Button } from 'element-ui'
 Vue.use(Pagination)
 Vue.use(Tree)
@@ -20,6 +18,7 @@ Vue.use(Button)
 import { AUTH_TOKEN } from './assets/js/config'
 import './assets/iconfont/iconfont.css'
 import './assets/iconfont/iconfont'
+
 
 // 全局配置axios
 axios.defaults.timeout = 5000

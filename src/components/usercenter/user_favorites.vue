@@ -20,37 +20,14 @@
           <td width="80%" class="td_1">详情</td>
           <td width="20%" class="td_1">操作</td>
         </tr>
-        <tr>
-          <td width="80%">标题标题标题标题标题标题</td>
+        
+        <tr v-for="book in favoriteBooks">
+          <td width="80%">{{book.name}}</td>
           <td width="20%">
-            <a href="">查看</a>
-            <a href="">取消收藏</a>
+            <router-link :to="'/book/info/' + book._id">详情</router-link>
+            <a @click="cancelFavoriteBook" href="javascript:;">取消收藏</a>
           </td>
-        </tr>
-        <tr>
-          <td width="80%"></td>
-          <td width="20%"></td>
-        </tr>
-        <tr>
-          <td width="80%"></td>
-          <td width="20%"></td>
-        </tr>
-        <tr>
-          <td width="80%"></td>
-          <td width="20%"></td>
-        </tr>
-        <tr>
-          <td width="80%"></td>
-          <td width="20%"></td>
-        </tr>
-        <tr>
-          <td width="80%"></td>
-          <td width="20%"></td>
-        </tr>
-        <tr>
-          <td width="80%"></td>
-          <td width="20%"></td>
-        </tr>
+        </tr> 
       </table>
     </div>
   </div>
@@ -70,6 +47,22 @@
     components:{
       'user-left-menu': UserLeftMenu
     },
+ 
+    methods: {
+      // 初始化请求基本信息数据 
+    },
+    computed: {
+      favoriteBooks(){
+        return this.$store.getters.favoriteBooks;
+      },
+      favoriteBooksReady(){
+        return this.$store.getters.favoriteBooksReady;
+      }
+    }, 
+    mounted () {
+      this.$store.dispatch('getFavoriteBooks', {});
+    }
+ 
   }
 </script>
 

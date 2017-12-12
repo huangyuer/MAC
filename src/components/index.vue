@@ -32,7 +32,7 @@
               </li>
             </ul>
           </li>
-          <li><a href="http://home.tjdesignx.com/#/" class="menu_item link">工程与工程师</a></li>
+          <li><a href="/#/selected" class="menu_item link">工程与工程师</a></li>
           <li><a href="http://trade.tjdesignx.com/#/" class="menu_item link">版权贸易</a></li>
           <li><a href="http://bbs.tjdesignx.com/#/" class="menu_item link">工程技术论坛</a></li>
           <li><a href="http://x.tjdesignx.com/#/" class="menu_item link">同济设计在线</a></li>
@@ -129,8 +129,9 @@
       VueParticles
     },
     methods: {
+ 
       listBooks: function () {
-        this.$router.pusu('/book/list')
+        this.$router.pusu('/book/list') 
       },
       listBooksByLib: function (lib) {
         this.$router.push('/book/list?lib=' + encodeURI(lib))
@@ -149,6 +150,7 @@
         this.$store.commit('setLoggedOut')
         window.history.go(0)
         this.$store.push('/')
+ 
       },
       // 移动端menu切换显示
       toggleMenu: function (event) {

@@ -11,6 +11,10 @@ const state = {
     avatar: '',
     sessionToken: ''
   },
+ 
+  favoriteBooks: [],
+  favoriteBooksReady: false,
+ 
   registered: false,
   loginAndRegisterDialogVisible: false,
   loginDialogVisible: false,
@@ -41,8 +45,11 @@ const getters = {
   registered: state => state.registered,
 
   loginOrRegister: state => state.loginOrRegister,
-  registerSuccess: state => state.registerSuccess,
-
+  registerSuccess: state => state.registerSuccess, 
+  favoriteBooks: state => state.favoriteBooks,
+  favoriteBooksReady: state => state.favoriteBooksReady,
+  
+ 
   loginAndRegisterDialogVisible: state => state.loginAndRegisterDialogVisible,
   loginDialogVisible: state => state.loginDialogVisible,
   registerDialogVisible: state => state.registerDialogVisible, 
@@ -144,16 +151,27 @@ const actions = {
        commit('setRegisterStatus', true);
     }, (error) => { 
        commit('setRegisterStatus', false);
-    });
+    }); 
   },
 
+ 
   getVercode({ commit }, mobileInfo){
     let promise = api.getVercode(mobileInfo.mobile, mobileInfo.kind);
     promise.then((response) => {
        console.log(response.status);
     }, (error) => { 
        commit('setLoginError', error);
-    });
+    }); 
+  },
+  getFavoriteBooks({ commit }, mobileInfo){
+    commit('setFavoriteBooksReady', false);
+    let promise = api.getFavoriteBooks();
+    promise.then((response) => { 
+      commit('setFavoriteBooks', response.data);
+      commit('setFavoriteBooksReady', true);
+    }, (error) => { 
+        commit('setFavoriteBooksReady', false);
+    }); 
   }
 };
 
@@ -171,10 +189,23 @@ const mutations = {
       }
     }
   },
+ 
+  setFavoriteBooks(state, favoriteBooks){
+    state.favoriteBooks = favoriteBooks;
+  },
+  setFavoriteBooksReady(state, status){
+    state.favoriteBooksReady = status;
+  }, 
+  setLoggedOut(state){
+    state.loggedIn = false;
+  },
+
+
   
   setLoggedOut(state){
     state.loggedIn = false;
   },
+ 
   setLoggedIn(state){
     state.loggedIn = true;
   },
