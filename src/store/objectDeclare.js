@@ -38,6 +38,16 @@ export function mediaItem () {
   this.title = ''
 }
 
+export function contextItem () {
+  this.chiefEditor = ''
+  this.type = ''
+  this.name = ''
+  this.publishedAt = ''
+  this.cover = ''
+  this.keywords = ''
+  this.highlight = ''
+}
+
 export function requirementItem () {
   this.name = ''
   this.province = ''

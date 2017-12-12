@@ -161,6 +161,7 @@
     watch: {
       total: function (val) {
         console.log('total page...' + val)
+        this.displayPageList = []
         var t = this.totalPage > 5 ? 5 : this.totalPage
         for (var i = 1; i <= t; i++) {
           var p = {
