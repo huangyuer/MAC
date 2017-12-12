@@ -5,8 +5,9 @@ import {
   projectItem,
   engineerItem,
   mediaItem,
+  contextItem,
   requirementItem,
-  literatureItem
+  literatureItem,
 } from '../objectDeclare'
 
 const state = {
@@ -49,6 +50,7 @@ const state = {
   allPageKnowledgeList: [],//搜索'全部'的时候文献的列表
 
   bookList: [],//搜索图书列表
+  literatureList: [],
   bookTotal: '',
 }
 
@@ -78,6 +80,17 @@ const actions = {
     let promise = api.searchProject(data)
     promise.then((response) => {
       commit('searchProject', response.data)
+      let d = response.data.hits
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var media = new mediaItem()
+        media.url = d[i]._source.cover
+        media.description = d[i]._source.summary
+        media.title = d[i]._source.title
+        temp.push(media)
+      }
+      commit('setSearchMediaData', temp)
+      commit('setSearchMediaTotal', response.data.total)
     }, (response) => {
 
     })
@@ -85,6 +98,17 @@ const actions = {
   searchEngineer ({commit}, data) {
     let promise = api.searchEngineer(data)
     promise.then((response) => {
+      let d = response.data.hits
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var media = new mediaItem()
+        media.url = d[i]._source.avagtar
+        media.description = d[i]._source.summary
+        media.title = d[i]._source.name
+        temp.push(media)
+      }
+      commit('setSearchMediaData', temp)
+      commit('setSearchMediaTotal', response.data.total)
     }, (response) => {
 
     })
@@ -92,6 +116,17 @@ const actions = {
   searchMedia ({commit}, data) {
     let promise = api.searchMedia(data)
     promise.then((response) => {
+      let d = response.data.hits
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var media = new mediaItem()
+        media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
+        media.description = d[i]._source.description
+        media.title = d[i]._source.title
+        temp.push(media)
+      }
+      commit('setSearchMediaData', temp)
+      commit('setSearchMediaTotal', response.data.total)
     }, (response) => {
 
     })
@@ -106,24 +141,43 @@ const actions = {
   searchLiteriture ({commit}, data) {
     let promise = api.searchLiteriture(data)
     promise.then((response) => {
+      commit('searchLiteriture', response.data)
+      let d = response.data.hits
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.chiefEditor = ''
+        context.type = '工程文献'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.createdAt
+        context.cover = d[i]._source.cover
+        context.keywords = d[i]._source.categories
+        context.highlight = d[i].highlight.content[0]
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
     }, (response) => {
 
     })
   },
-  searchExpert ({commit}, data) {
-    let promise = api.searchExpert(data)
+  searchExpertPatent ({commit}, data) {
+    let promise = api.searchExpertPatent(data)
     promise.then((response) => {
+      let d = response.data.hits
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.chiefEditor = ''
+        context.type = '知识产权'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.createdAt
+        context.cover = d[i]._source.avatar
+        context.keywords = d[i]._source.categories
+      }
     }, (response) => {
 
     })
-  },
-  searchPatent ({commit}, data) {
-    let promise = api.searchPatent(data)
-    promise.then((response) => {
-    }, (response) => {
-
-    })
-  },
+  }
 }
 
 const mutations = {
@@ -218,8 +272,8 @@ const mutations = {
     }
   },
   searchBook (state, data) {
-    let d = data.hits
-    state.bookTotal = data.total
+    let d = data.hits.hits
+    state.bookTotal = data.hits.total
     for (var i = 0; i < d.length; i++) {
       var book = new bookItem()
       book.name = d[i]._source.name
@@ -228,10 +282,20 @@ const mutations = {
       book.publishedAt = d[i]._source.publishedAt
       book.keywords = d[i]._source.keywords
       book.highlight = d[i].inner_hits.bookchapters.hits.hits[0].highlight.content[0]
-      console.log(book.highlight)
       state.bookList.push(book)
     }
-  }
+  },
+  searchProject (state, data) {
+
+  },
+  searchEngineer (state, data) {},
+  searchMedia (state, data) {},
+  searchRequirement (state, data) {},
+  searchLiteriture (state, data) {
+
+  },
+  searchExpert (state, data) {},
+  searchPatent (state, data) {},
 }
 
 export default {

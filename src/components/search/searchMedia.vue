@@ -5,11 +5,12 @@
       <div class="result">
         <span>找到<span>77,123,211</span>条结果</span>
       </div>
-      <div class="row" v-for="i in 3" :key="i.id">
-        <image-item v-for="i in 3" :key="i.id"></image-item>
+      <div class="row" v-for="i in searchMediaData" :key="i.id">
+        <image-item :cover="j.url" :title="j.title" :summary="j.description" v-for="j in i.children"
+                    :key="i.id"></image-item>
       </div>
     </div>
-    <paginator @click="pageClick" :total="133"></paginator>
+    <paginator @click="pageClick" :total="total"></paginator>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -37,7 +38,14 @@
 
       }
     },
-    computed: {},
+    computed: {
+      total: function () {
+        return this.$store.state.searchMedia.total
+      },
+      searchMediaData: function () {
+        return this.$store.state.searchMedia.searchMediaData
+      }
+    },
     filters: {}
 
   }
