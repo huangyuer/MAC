@@ -1,18 +1,20 @@
 <template>
   <div class="engineer_item_wrapper">
 
-    <img :src="engineer.avatar + '?x-oss-process=image/resize,m_fill,w_230,h_180'" />
+    <img v-show="engineer.avatar === ''" src="../../assets/images/default.jpg" />
+
+    <img v-show="engineer.avatar !==''" :src="engineer.avatar + '?x-oss-process=image/resize,m_fill,w_230,h_180'" /> 
 
     <div class="engineer_item">
-      <h4 v-text="engineer.title"></h4>
-      <p v-text="engineer.info"></p>
-      <p v-text="engineer.category"></p>
+      <h4 v-text="engineer.name"></h4>
+      <p>{{engineer.summary|substr}}</p>
+      <p v-text="engineer.categories"></p>
       <div class="divider"></div>
       <div class="engineer_item_footer">
         <img src="../../assets/images/eye_close_up.png"/>
-        <span v-text="engineer.count"></span>
+        <span v-text="engineer.clicks"></span>
         <img src="../../assets/images/shape.png"/>
-        <span v-text="engineer.date"></span>
+        <span v-text="engineer.era"></span>
       </div>
     </div>
   </div>
@@ -34,6 +36,17 @@
         count: 0,
         date: ''
       }
+    },
+    filters: {
+      substr: function(value){
+        if(! value) return '';
+        value = value.toString(); 
+        if(value.length > 40){
+          return value.substr(0, 40) + '...';
+        }else{
+          return value;
+        }
+      },
     }
   }
 </script>

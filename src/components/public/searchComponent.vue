@@ -35,7 +35,7 @@
 
   export default {
     mounted: function () {
-      this.setActiveLevelOneCategory(0)
+      //this.setActiveLevelOneCategory(0)
     },
     data () {
       return {

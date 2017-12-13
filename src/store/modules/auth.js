@@ -83,9 +83,9 @@ const actions = {
         setCookie('userId', userId, 7); 
         setCookie('userInfo', JSON.stringify(user), 7);
       }  
-    }, (errro) => {
+    }, (error) => {
       console.log(error);
-      commit('setLoginError', error.message); 
+      commit('setLoginError', error); 
     }); 
   }, 
   registerByEmail ({ commit }, userInfo) {  
