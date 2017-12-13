@@ -52,13 +52,8 @@ const mutations = {
       active: false
     })
     state.leftPanelItemList[0].children.push({
-      name: '专家',
+      name: '知识产权',
       count: data.expertDataCount,
-      active: false
-    })
-    state.leftPanelItemList[0].children.push({
-      name: '专利',
-      count: data.patentDataCount,
       active: false
     })
   },

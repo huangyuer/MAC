@@ -26,7 +26,7 @@
     </div>
     <div class="img-container">
       <div class="img-real-container">
-        <img :src="cover_">
+        <img :src="cover">
       </div>
     </div>
   </div>

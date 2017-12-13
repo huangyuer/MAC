@@ -16,7 +16,7 @@
     </div>
     <div class="inners">
       <image-text-item type="图书" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt" :content="i.highlight"
-                       :cover="i.cover" :keywords="i.keywords" v-for="i in allPageBookList"
+                       :cover="preFix+i.cover" :keywords="i.keywords" v-for="i in allPageBookList"
                        :key="i.id"></image-text-item>
     </div>
     <div class="subtitle" style="margin-top: 21px;">
