@@ -149,6 +149,7 @@ const actions = {
     let promise = api.searchRequirement(data)
     promise.then((response) => {
       // TODO:  企业需求现在没有数据
+      commit('setSearchContextData', [])
     }, (response) => {
 
     })
@@ -183,11 +184,17 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
         context.chiefEditor = ''
-        context.type = '知识产权'
+        if (d[i]._type === 'experts') {
+          context.type = '专家'
+        } else {
+          context.type = '专利'
+        }
         context.name = d[i]._source.name
         context.publishedAt = d[i]._source.createdAt
         context.cover = d[i]._source.avatar
         context.keywords = d[i]._source.categories
+        context.highlight = d[i]._source.intro
+        temp.push(context)
       }
       commit('setSearchContextData', temp)
     }, (response) => {
@@ -280,6 +287,11 @@ const mutations = {
     state.allPageKnowledgeList = []
     for (var i = 0; i < g.length; i++) {
       var knowledge = new knowledgeItem()
+      if (g[i]._type === 'experts') {
+        knowledge.type = '专家'
+      } else {
+        knowledge.type = '专利'
+      }
       knowledge.name = g[i]._source.name
       knowledge.cover = g[i]._source.avatar
       knowledge.summary = g[i]._source.experience
