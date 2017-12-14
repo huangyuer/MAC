@@ -129,9 +129,9 @@
       VueParticles
     },
     methods: {
- 
+
       listBooks: function () {
-        this.$router.pusu('/book/list') 
+        this.$router.pusu('/book/list')
       },
       listBooksByLib: function (lib) {
         this.$router.push('/book/list?lib=' + encodeURI(lib))
@@ -150,7 +150,7 @@
         this.$store.commit('setLoggedOut')
         window.history.go(0)
         this.$store.push('/')
- 
+
       },
       // 移动端menu切换显示
       toggleMenu: function (event) {
@@ -160,10 +160,75 @@
         if (this.searchContent) {
           this.$store.commit('setSearchContent', this.searchContent)
         }
-        if (this.searchContent) {
-          this.$router.push('/search/result/context')
-        } else {
-          this.$router.push('/search/result/null')
+        switch (this.currentLevelOneCategory.nickName) {
+          case 'all':
+            this.$router.push('/search/result')
+            break
+          case 'book':
+            let p1 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchBook', p1)
+            this.$router.push('/search/result/context')
+            break
+          case 'project':
+            let p2 = {
+              rows: 9,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchProject', p2)
+            this.$router.push('/search/result/media')
+            break
+          case 'engineer':
+            let p3 = {
+              rows: 9,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchEngineer', p3)
+            this.$router.push('/search/result/media')
+            break
+          case 'pic':
+            let p4 = {
+              rows: 9,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchMedia', p4)
+            this.$router.push('/search/result/media')
+            break
+          case 'requirement':
+            let p5 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchRequirement', p5)
+            this.$router.push('/search/result/context')
+            break
+          case 'anli':
+            let p6 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchLiteriture', p6)
+            this.$router.push('/search/result/context')
+            break
+          case 'knowledge':
+            let p7 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.dispatch('searchExpertPatent', p7)
+            this.$router.push('/search/result/context')
+            break
+          default:
+            break
         }
       },
       setActiveLevelOneCategory (ind) {
@@ -176,6 +241,9 @@
       },
       levelOneCategoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
+      },
+      currentLevelOneCategory: function () {
+        return this.$store.state.searchComponent.currentLevelOneCategory
       }
     },
     mounted () {

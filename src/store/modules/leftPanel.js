@@ -4,6 +4,7 @@ const state = {
   leftPanelItemList: [
     {
       name: '没有找到相关文献',
+      type: '',          //代表每个categoryItem的类型、
       children: []
     }
   ],
@@ -21,6 +22,7 @@ const mutations = {
       }
     ]
     state.leftPanelItemList[0].name = '所有类别'
+    state.leftPanelItemList[0].type = 'searchAll'
     state.leftPanelItemList[0].children.push({
       name: '图书',
       count: data.allDataCount,
@@ -63,6 +65,39 @@ const mutations = {
       d.children[i].active = false
     }
     d.children[data.childIndex].active = true
+  },
+  //搜索图书的时候展示的数据
+  setLeftPanelClickBookCategory (state, data) {
+    let a = data[0].data
+    let b = data[1].data
+    state.leftPanelItemList.push(
+      {
+        name: '',
+        type: '',
+        children: []
+      }
+    )
+    for (var i = 0; i < state.leftPanelItemList.length; i++) {
+      state.leftPanelItemList[i].children = []
+    }
+    state.leftPanelItemList[0].name = '中图分类'
+    state.leftPanelItemList[0].type = 'bookCategory'
+    state.leftPanelItemList[1].name = '子库分类'
+    state.leftPanelItemList[1].type = 'bookCategory'
+    for (var i = 0; i < a.length; i++) {
+      state.leftPanelItemList[0].children.push({
+        name: a[i].key,
+        count: a[i].doc_count,
+        active: false
+      })
+    }
+    for (var i = 0; i < b.length; i++) {
+      state.leftPanelItemList[1].children.push({
+        name: b[i].key,
+        count: b[i].doc_count,
+        active: false
+      })
+    }
   }
 }
 

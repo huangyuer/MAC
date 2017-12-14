@@ -201,6 +201,41 @@ const actions = {
     }, (response) => {
 
     })
+  },
+  searchBookLeftPanel ({commit}) {
+    let promise1 = api.searchBookClcs()
+    let promise2 = api.searchBookSublibs()
+    Promise.all([promise1, promise2]).then(function (resp) {
+      commit('setLeftPanelClickBookCategory', resp)
+    })
+  },
+  searchBookClcsDataList ({commit}, data) {
+    let promise = api.searchBookClcsDataList(data)
+    promise.then((response) => {
+      let d = data.hits
+      let total = data.total
+      for(var i = 0;i<d.length;i++){
+        var context = new contextItem()
+        context.id = d[i]._id
+        context.chiefEditor = d[i]._source.chiefEditor
+        context.type = '图书'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.publishedAt
+        context.cover = d[i]._source.cover
+        context.keywords = d[i]._source.keywords
+        context.keywords = d[i]._source.keywords
+      }
+    }, (response) => {
+
+    })
+  },
+  searchBookSublibsDataList ({commit}, data) {
+    let promise = api.searchBookSublibsDataList(data)
+    promise.then((response) => {
+
+    }, (response) => {
+
+    })
   }
 }
 
