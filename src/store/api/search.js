@@ -42,4 +42,28 @@ export default {
     let promise = axios.post(apiUrl, data)
     return promise
   },
+  //搜索图书时，侧边栏展示clcs分类
+  searchBookClcs () {
+    let apiUrl = `${config.API_HOST}/search/book/clcs`
+    let promise = axios.get(apiUrl)
+    return promise
+  },
+  //搜索图书时，侧边栏展示sublibs分类
+  searchBookSublibs () {
+    let apiUrl = `${config.API_HOST}/search/book/sublibs`
+    let promise = axios.get(apiUrl)
+    return promise
+  },
+  //通过clcs字段搜索图书
+  searchBookClcsDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/clcs`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //通过sublibs搜索图书
+  searchBookSublibsDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/sublibs`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  }
 }

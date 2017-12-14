@@ -1,5 +1,5 @@
 <template>
- 
+
   <div class="category-item">
     <div class="level-1-category">
       <div class="inner">
@@ -45,8 +45,8 @@
           parentIndex: this.ids,
           childIndex: ids
         }
+        console.log(this.obj)
         this.$store.commit('setActiveLevel2Category', p)
-        console.log(obj)
         if (obj.name === '图书' || obj.name === '企业需求' || obj.name === '工程文献' || obj.name === '知识产权') {
           switch (obj.name) {
             case '图书':
@@ -57,6 +57,7 @@
               }
               this.$store.dispatch('searchBook', p1)
               this.$store.commit('setActiveLevelOneCategory', 1)
+              this.$store.dispatch('searchBookLeftPanel')
               break
             case '企业需求':
               let p5 = {
@@ -125,6 +126,18 @@
 
           }
           this.$router.push('/search/result/media')
+        }
+        if (this.obj.type === 'bookCategory') {
+          var pp = {
+            rows: 10,
+            page: 1,
+            content: obj.name
+          }
+          if (p.parentIndex === 0) {
+            this.$store.dispatch('searchBookClcsDataList', pp)
+          } else {
+            this.$store.dispatch('searchBookSublibsDataList', pp)
+          }
         }
       }
     },
