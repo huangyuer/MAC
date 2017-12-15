@@ -215,6 +215,13 @@ const actions = {
       commit('setLeftPanelClickBookCategory', resp)
     })
   },
+  searchProjectLeftPanel ({commit}, data) {
+    let promise1 = api.searchProjectEra(data)
+    let promise2 = api.searchProjectArea(data)
+    Promise.all([promise1, promise2]).then(function (resp) {
+      commit('setLeftPanelClickProject', resp)
+    })
+  },
   searchBookClcsDataList ({commit}, data) {
     let promise = api.searchBookClcsDataList(data)
     promise.then((response) => {

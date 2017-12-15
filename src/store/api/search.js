@@ -70,5 +70,18 @@ export default {
     let apiUrl = `${config.API_HOST}/search/sublibs`
     let promise = axios.post(apiUrl, data)
     return promise
+  },
+  //搜索工程时，侧边栏展示年代
+  searchProjectEra (data) {
+    let apiUrl = `${config.API_HOST}/search/project/era`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //搜索工程时，侧边栏展示地区
+  searchProjectArea (data) {
+    let apiUrl = `${config.API_HOST}/search/project/area`
+    let promise = axios.post(apiUrl, data)
+    return promise
   }
+
 }

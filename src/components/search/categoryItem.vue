@@ -112,6 +112,7 @@
               }
               this.$store.dispatch('searchProject', p2)
               this.$store.commit('setActiveLevelOneCategory', 2)
+              this.$store.dispatch('searchProjectLeftPanel',p2)
               break
             case '工程师':
               let p3 = {
