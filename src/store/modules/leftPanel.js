@@ -147,7 +147,52 @@ const mutations = {
       count: c.total,
       active: false
     })
+  },
+  setLeftPanelClickProject (state, data) {
+    state.leftPanelItemList = []
+    let a = data[0].data
+    let b = data[1].data
+    if (a.length > 0 || b.length > 0) {
 
+      state.leftPanelItemList.push({
+        name: '',
+        type: '',
+        children: []
+      })
+      state.leftPanelItemList.push({
+        name: '',
+        type: '',
+        children: []
+      })
+      state.leftPanelItemList[0].name = '年代'
+      state.leftPanelItemList[0].type = 'projectSecond'
+      state.leftPanelItemList[1].name = '地区'
+      state.leftPanelItemList[1].type = 'projectSecond'
+      for (var i = 0; i < a.length; i++) {
+        state.leftPanelItemList[0].children.push({
+          name: a[i].key,
+          count: a[i].doc_count,
+          active: false
+        })
+      }
+      for (var i = 0; i < b.length; i++) {
+        if (b[i].key) {
+          state.leftPanelItemList[1].children.push({
+            name: b[i].key,
+            count: b[i].doc_count,
+            active: false
+          })
+        }
+      }
+    } else {
+      state.leftPanelItemList = [
+        {
+          name: '没有找到相关文献',
+          type: '',          //代表每个categoryItem的类型、
+          children: []
+        }
+      ]
+    }
   }
 }
 
