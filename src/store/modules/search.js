@@ -11,6 +11,7 @@ import {
 } from '../objectDeclare'
 
 const state = {
+  serverPic: 'http://118.178.238.202:9988/',
   allPageBookList: [],//搜索'全部'的时候图书的列表
   allPageProjectList: [
     {
@@ -72,7 +73,7 @@ const actions = {
     let promise = api.searchBook(data)
     promise.then((response) => {
       commit('searchBook', response.data)
-      let d = response.data.hits.hits
+      let d = response.data.hits
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -83,7 +84,7 @@ const actions = {
         context.publishedAt = d[i]._source.publishedAt
         context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
         context.keywords = d[i]._source.keywords
-        context.highlight = d[i].inner_hits.bookchapters.hits.hits[0].highlight.content[0]
+        context.keywords = d[i]._source.summary
         temp.push(context)
       }
       commit('setSearchContextData', temp)
@@ -202,29 +203,58 @@ const actions = {
 
     })
   },
-  searchBookLeftPanel ({commit}) {
-    let promise1 = api.searchBookClcs()
-    let promise2 = api.searchBookSublibs()
-    Promise.all([promise1, promise2]).then(function (resp) {
+  searchBookLeftPanel ({commit}, data) {
+    let p = {
+      searchContent: data
+    }
+    let promise1 = api.searchBookClcs(p)
+    let promise2 = api.searchBookSublibs(p)
+    let promise3 = api.searchBookChapter(p)
+    let promise4 = api.searchBook(p)
+    Promise.all([promise1, promise2, promise3, promise4]).then(function (resp) {
       commit('setLeftPanelClickBookCategory', resp)
     })
   },
   searchBookClcsDataList ({commit}, data) {
     let promise = api.searchBookClcsDataList(data)
     promise.then((response) => {
-      let d = data.hits
-      let total = data.total
-      for(var i = 0;i<d.length;i++){
+      let d = response.data.hits
+      let total = response.data.total
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
         context.id = d[i]._id
         context.chiefEditor = d[i]._source.chiefEditor
         context.type = '图书'
         context.name = d[i]._source.name
         context.publishedAt = d[i]._source.publishedAt
-        context.cover = d[i]._source.cover
+        context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
         context.keywords = d[i]._source.keywords
-        context.keywords = d[i]._source.keywords
+        context.highlight = d[i]._source.summary
+        temp.push(context)
       }
+      commit('setSearchContextData', temp)
+    }, (response) => {
+
+    })
+  },
+  searchBookChapterDataList ({commit}, data) {
+    let promise = api.searchBookChapter(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      let total = response.data.total
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.id = d[i]._id
+        context.type = '图书章节'
+        context.name = d[i]._source.name
+        for (var jj = 0; jj < d[i].highlight.content.length; jj++) {
+          context.highlight += d[i].highlight.content[jj]
+        }
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
     }, (response) => {
 
     })
@@ -232,7 +262,22 @@ const actions = {
   searchBookSublibsDataList ({commit}, data) {
     let promise = api.searchBookSublibsDataList(data)
     promise.then((response) => {
-
+      let d = response.data.hits
+      let total = response.data.total
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.id = d[i]._id
+        context.chiefEditor = d[i]._source.chiefEditor
+        context.type = '图书'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.publishedAt
+        context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
+        context.keywords = d[i]._source.keywords
+        context.keywords = d[i]._source.keywords
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
     }, (response) => {
 
     })
@@ -243,19 +288,17 @@ const mutations = {
   searchAll (state, data) {
     console.log(data)
     state.allPageBookList = []
-    let a = data.allData
+    let a = data.bookData
     for (var i = 0; i < a.length; i++) {
       let b = new bookItem()
-      let t = a[i].inner_hits.bookchapters.hits.hits//这是一个highlight的数组
-      let tt = t[0].highlight.content
       b.publisher = a[i]._source.publisher
       b.chiefEditor = a[i]._source.chiefEditor
       b.isbn = a[i]._source.isbn
       b.name = a[i]._source.name
       b.keywords = a[i]._source.keywords
       b.publishedAt = a[i]._source.publishedAt
-      b.highlight = tt[0].replace('[').replace(']')
-      b.cover = a[i]._source.cover
+      b.highlight =
+        b.cover = a[i]._source.cover
       state.allPageBookList.push(b)
     }
     let b = data.projectData
@@ -336,7 +379,7 @@ const mutations = {
     }
   },
   searchBook (state, data) {
-    let d = data.hits.hits
+    let d = data.hits
     state.bookTotal = data.hits.total
     for (var i = 0; i < d.length; i++) {
       var book = new bookItem()
@@ -346,7 +389,7 @@ const mutations = {
       book.cover = d[i]._source.cover
       book.publishedAt = d[i]._source.publishedAt
       book.keywords = d[i]._source.keywords
-      book.highlight = d[i].inner_hits.bookchapters.hits.hits[0].highlight.content[0]
+      book.highlight = d[i]._source.summary
       state.bookList.push(book)
     }
   },

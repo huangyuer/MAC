@@ -12,6 +12,11 @@ export default {
     let promise = axios.post(apiUrl, data)
     return promise
   },
+  searchBookChapter (data) {
+    let apiUrl = `${config.API_HOST}/search/bookchapter`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
   searchProject (data) {
     let apiUrl = `${config.API_HOST}/search/project`
     let promise = axios.post(apiUrl, data)
@@ -43,15 +48,15 @@ export default {
     return promise
   },
   //搜索图书时，侧边栏展示clcs分类
-  searchBookClcs () {
+  searchBookClcs (data) {
     let apiUrl = `${config.API_HOST}/search/book/clcs`
-    let promise = axios.get(apiUrl)
+    let promise = axios.post(apiUrl, data)
     return promise
   },
   //搜索图书时，侧边栏展示sublibs分类
-  searchBookSublibs () {
+  searchBookSublibs (data) {
     let apiUrl = `${config.API_HOST}/search/book/sublibs`
-    let promise = axios.get(apiUrl)
+    let promise = axios.post(apiUrl, data)
     return promise
   },
   //通过clcs字段搜索图书
