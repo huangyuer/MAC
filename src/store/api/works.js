@@ -3,10 +3,11 @@ import config from '../config';
 
 
 export default{
-	getLatest (category, limit, page) {  
+	getLatest (category,era, limit, page) {  
     category = encodeURI(category);
-    let apiUrl = `${config.API_HOST}/works?category=${category}&limit=${limit}&page=${page}&orderBy=latest`;
-     
+    era = encodeURI(era);
+    let apiUrl = `${config.API_HOST}/works?category=${category}&era=${era}&limit=${limit}&page=${page}&orderBy=latest`;
+    
    	let promise = Vue.http.get(apiUrl);
    	return promise;
   }, 

@@ -14,8 +14,7 @@
           <span>注 册</span>
         </div>
       </div>
-      <div v-show="loggedIn" class="grzx_grzx">
- 
+      <div v-show="loggedIn" class="grzx_grzx"> 
         <router-link to="/user/info">
           <a href="javascript:void(0);">
             <img src="../../assets/images/grzx_ico1.png" alt="">
@@ -34,16 +33,8 @@
         <router-link to="/about_us"><a href="javascript:void(0);">关于我们</a></router-link>
       </div>
  
-          <router-link to="/user/info">
-            <a href="javascript:void(0);">
-              <img src="../../assets/images/grzx_ico1.png" alt="">
-            </a>
-          </router-link>
-          <router-link to="">
-            <a href="javascript:void(0);" @click="logout()">
-              <p>退出登录</p>
-            </a>
-          </router-link>
+          
+        
         </div>
 
         <div class="z_home home ">

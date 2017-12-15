@@ -8,6 +8,7 @@
 
       <!--工程-->
       <div class="engineer_list">
+        <router-link :to="'/project/list'">
         <div class="engineer_list_left">
           <div class="engineer_list_left_img">
             <img src="../../assets/images/project_avatar.png"/>
@@ -15,14 +16,26 @@
           <h4>工程项目</h4>
           <p>收录了从古代到改革开放依赖的著名工程师，包括等等</p>
         </div>
+      </router-link>
         <div class="engineer_list_right">
-          <ul>
-            <li v-for="project in projectList">
-              <router-link :to="'/project/info/' + project.id">
-                <project-item :project="project"></project-item>
-              </router-link>
-            </li>
-          </ul>
+          <div>
+            <ul>
+              <li v-for="project in projects">
+                <router-link :to="'/project/info/' + project._id">
+                  <project-item :project="project"></project-item>
+                </router-link>
+              </li>
+            </ul>
+          </div>
+          <div class="clear"></div> 
+          <div style="margin:20px;" class="paginator">
+            <el-pagination
+              background
+              @current-change="handleCurrentChange"
+              layout="prev, pager, next"
+              :total="projectsTotal" :current-page="currentPage" :page-size="pageSize">
+            </el-pagination>
+          </div>
         </div>
       </div>
       <div class="clear"></div>
@@ -43,36 +56,47 @@
     },
     data() {
       return {
-        projectList: [
-          {
-            id: '1',
-            imgUrl: '',
-            title: '隋代敝肩坦弧拱桥赵州桥桥台及基地地质图',
-            author: '桥梁工程师李春',
-            category: '建筑',
-            count: 232,
-            date: '隋大业元年（605年）'
-          },
-          {
-            id: '2',
-            imgUrl: '',
-            title: '隋代敝肩坦弧拱桥赵州桥桥台及基地地质图',
-            author: '桥梁工程师李春',
-            category: '建筑',
-            count: 233,
-            date: '隋大业元年（605年）'
-          },
-          {
-            id: '3',
-            imgUrl: '',
-            title: '隋代敝肩坦弧拱桥赵州桥桥台及基地地质图',
-            author: '桥梁工程师李春',
-            category: '建筑',
-            count: 232,
-            date: '隋大业元年（605年）'
-          }
-        ]
+         
       }
+    },
+    mounted(){ 
+      this.getLatestWorks();
+    },
+    computed:{
+      projects(){
+        return this.$store.getters.works;
+      },
+      projectsTotal(){
+        return this.$store.getters.worksTotal;
+      },
+      currentCategory(){
+        let category = this.$route.query.category || '';  
+        return category;
+      },
+      currentEra(){
+        let era = this.$route.query.era || '';  
+        return era;
+      },
+      pageSize(){
+        let pageSize = this.$route.query.limit || 20;  
+        return parseInt(pageSize);
+      },
+      currentPage(){
+        let currentPage = this.$route.query.page || 1;  
+        return parseInt(currentPage);
+      }
+    },
+    watch: { 
+       '$route': 'getLatestWorks'
+    },
+    methods: { 
+      getLatestWorks: function(category,limit,page){
+        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra, 'limit': 20, 'page': 1}); 
+      },  
+      handleCurrentChange(val) { 
+        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra,  'limit': this.pageSize, 'page': val}); 
+         
+      },
     }
   }
 

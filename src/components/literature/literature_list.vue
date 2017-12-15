@@ -8,6 +8,7 @@
 
       <!--工程文献-->
       <div class="engineer_list">
+        <router-link :to="'/literature/list'">
         <div class="engineer_list_left">
           <div class="engineer_list_left_img">
             <img src="../../assets/images/literature_avatar.png"/>
@@ -15,14 +16,26 @@
           <h4>工程文献</h4>
           <p>收录了从古代到改革开放以来的著名工程师，包括等等</p>
         </div>
+      </router-link>
         <div class="literature_list_right">
+          <div>
           <ul>
-            <li v-for="literature in literatureList">
-              <router-link :to="'/literature/info/' + literature.id">
+            <li v-for="literature in literatures">
+              <router-link :to="'/literature/info/' + literature._id">
                 <literature-item :literature="literature"></literature-item>
               </router-link>
             </li>
           </ul>
+          </div>
+          <div class="clear"></div> 
+          <div style="margin:20px;" class="paginator">
+            <el-pagination
+              background
+              @current-change="handleCurrentChange"
+              layout="prev, pager, next"
+              :total="literaturesTotal" :current-page="currentPage" :page-size="pageSize">
+            </el-pagination>
+          </div>
         </div>
       </div>
       <div class="clear"></div>
@@ -42,40 +55,47 @@
       literatureItem
     },
     data() {
-      return {
-        literatureList: [
-          {
-            id: '1',
-            imgUrl: '',
-            title: '最早的手工业工程技术文献——《考工记》',
-            info: '《考工记》是中国目前所见最早的手 工业工程技术文献,也是最早的指导工程实践的规范,在中国乃至世界的科技史、工程史和文化史上都占有重要地位。',
-            author: '作者不详',
-            category: '手工业工程',
-            count: 232,
-            date: '春秋战国'
-          },
-          {
-            id: '2',
-            imgUrl: '',
-            title: '最早的手工业工程技术文献——《考工记》',
-            info: '《考工记》是中国目前所见最早的手 工业工程技术文献,也是最早的指导工程实践的规范,在中国乃至世界的科技史、工程史和文化史上都占有重要地位。',
-            author: '作者不详',
-            category: '手工业工程',
-            count: 232,
-            date: '春秋战国'
-          },
-          {
-            id: '3',
-            imgUrl: '',
-            title: '最早的手工业工程技术文献——《考工记》',
-            info: '《考工记》是中国目前所见最早的手 工业工程技术文献,也是最早的指导工程实践的规范,在中国乃至世界的科技史、工程史和文化史上都占有重要地位。',
-            author: '作者不详',
-            category: '手工业工程',
-            count: 232,
-            date: '春秋战国'
-          }
-        ]
+      return { 
       }
+    },
+    mounted(){ 
+      this.getLatestLiteratures();
+    },
+    computed:{
+      literatures(){
+        return this.$store.getters.literatures;
+      },
+      literaturesTotal(){
+        return this.$store.getters.literaturesTotal;
+      },
+      currentCategory(){
+        let category = this.$route.query.category || '';  
+        return category;
+      },
+      currentEra(){
+        let era = this.$route.query.era || '';  
+        return era;
+      },
+      pageSize(){
+        let pageSize = this.$route.query.limit || 20;  
+        return parseInt(pageSize);
+      },
+      currentPage(){
+        let currentPage = this.$route.query.page || 1;  
+        return parseInt(currentPage);
+      }
+    },
+    watch: { 
+       '$route': 'getLatestLiteratures'
+    },
+    methods: { 
+      getLatestLiteratures: function(category,limit,page){
+        this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory,'era': this.currentEra,  'limit': 20, 'page': 1}); 
+      },  
+      handleCurrentChange(val) { 
+        this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory, 'era': this.currentEra, 'limit': this.pageSize, 'page': val}); 
+         
+      },
     }
   }
 

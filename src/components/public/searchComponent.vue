@@ -35,7 +35,13 @@
 
   export default {
     mounted: function () {
+ 
       //this.setActiveLevelOneCategory(0)
+ 
+      console.log(this.$route.name)
+      if (this.$route.name === 'searchAll') {
+        this.setActiveLevelOneCategory(0)
+      } 
     },
     data () {
       return {
@@ -132,6 +138,47 @@
               page: 1
             }
             this.$store.dispatch('searchBook', p)
+            break
+          case 'project':
+            var p = {
+              searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+              rows: 9,
+              page: 1
+            }
+            this.$store.dispatch('searchProject', p)
+            break
+          case 'engineer':
+            var p = {
+              searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+              rows: 9,
+              page: 1
+            }
+            this.$store.dispatch('searchEngineer', p)
+            break
+          case 'pic':
+            var p = {
+              searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+              rows: 9,
+              page: 1
+            }
+            this.$store.dispatch('searchMedia', p)
+            break
+          case 'requirement':
+            var p = {
+              searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+              rows: 10,
+              page: 1
+            }
+            this.$store.dispatch('searchRequirement', p)
+            break
+          case 'knowledge':
+            var p = {
+              searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+              rows: 9,
+              page: 1
+            }
+            this.$store.dispatch('searchExpertPatent', p)
+            break
           default:
             break
         }

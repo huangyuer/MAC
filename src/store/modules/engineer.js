@@ -107,7 +107,7 @@ const actions = {
     });
   }, 
   getLatestEngineers ({ commit,state }, params) {  
-    let promise = api.getLatest(params.category, params.limit, params.page);
+    let promise = api.getLatest(params.profession, params.era,  params.limit, params.page);
     promise.then((response) => {
       console.log(response.data);
       commit('setLatestEngineers', response.data); 

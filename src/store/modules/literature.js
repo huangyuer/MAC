@@ -85,7 +85,7 @@ const actions = {
     });
   }, 
   getLatestLiteratures ({ commit,state }, params) {  
-    let promise = api.getLatest(params.category, params.limit, params.page);
+    let promise = api.getLatest(params.category, params.era, params.limit, params.page);
     promise.then((response) => {
       console.log(response.data);
       commit('setLatestLiteratures', response.data); 

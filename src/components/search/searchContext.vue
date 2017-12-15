@@ -5,7 +5,7 @@
       <div class="result">
         <span>找到<span>77,123,211</span>条结果</span>
       </div>
-      <image-text-item type="图 书" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt" :cover="i.cover"
+      <image-text-item :idd="i.id" :type="i.type" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt" :cover="i.cover"
                        :keywords="i.keywords" v-for="i in searchContextData" :content="i.highlight" :key="i.id"></image-text-item>
     </div>
     <patinator @click="pageClick" :total="bookTotal"></patinator>

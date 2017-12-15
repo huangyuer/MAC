@@ -19,7 +19,7 @@
   export default {
     data () {
       return {
-        engineerTitles: [{name: '精选', url: '/selected'}, {name: '古代', url: '/selected'}, {name: '近代', url: '/selected'}, {name: '新中国', url: '/selected'}, {name: '新时期', url: '/selected'}],
+        engineerTitles: [{name: '精选', url: '/selected'}, {name: '古代', url: '?era=古代'}, {name: '近代', url: '?era=近代'}, {name: '现代', url: '?era=现代'}, {name: '当代', url: '?era=当代'}],
         searchContent: ''
       }
     },

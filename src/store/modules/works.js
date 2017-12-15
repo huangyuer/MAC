@@ -73,7 +73,7 @@ const getters = {
 // actions
 const actions = { 
   getHottestWorks ({ commit, state }, params) {  
-    let promise = api.getHottest(params.category, params.limit, params.page);
+    let promise = api.getHottest(params.profession,params.era, params.limit, params.page);
     promise.then((response) => {
       console.log(response.data);
       commit('setHottestWorks', response.data); 
@@ -85,7 +85,7 @@ const actions = {
     });
   }, 
   getLatestWorks ({ commit,state }, params) {  
-    let promise = api.getLatest(params.category, params.limit, params.page);
+    let promise = api.getLatest(params.category, params.era, params.limit, params.page);
     promise.then((response) => {
       console.log(response.data);
       commit('setLatestWorks', response.data); 

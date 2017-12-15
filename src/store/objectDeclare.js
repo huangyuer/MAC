@@ -9,6 +9,7 @@ export function levelOneCategoryItem () {
 }
 
 export function bookItem () {
+  this.id = ''
   this.publisher = ''
   this.chiefEditor = ''
   this.isbn = ''
@@ -39,6 +40,7 @@ export function mediaItem () {
 }
 
 export function contextItem () {
+  this.id = ''
   this.chiefEditor = ''
   this.type = ''
   this.name = ''

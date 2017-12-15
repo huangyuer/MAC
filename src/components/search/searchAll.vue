@@ -106,7 +106,7 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item type="知识产权" :name="i.name" :year="i.createdAt" :content="i.summary"
+      <image-text-item :type="i.type" :name="i.name" :year="i.createdAt" :content="i.summary"
                        v-for="i in allPageKnowledgeList" :key="i.id"></image-text-item>
     </div>
     <div style="margin-bottom: 80px;"></div>
