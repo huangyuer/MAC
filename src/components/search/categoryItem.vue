@@ -46,6 +46,7 @@
           childIndex: ids
         }
         console.log(this.obj)
+        console.log(obj.name)
         this.$store.commit('setActiveLevel2Category', p)
         if (obj.name === '图书' || obj.name === '企业需求' || obj.name === '工程文献' || obj.name === '知识产权') {
           switch (obj.name) {
@@ -57,7 +58,16 @@
               }
               this.$store.dispatch('searchBook', p1)
               this.$store.commit('setActiveLevelOneCategory', 1)
-              this.$store.dispatch('searchBookLeftPanel')
+              this.$store.dispatch('searchBookLeftPanel', this.searchContent)
+              break
+            case '图书章节':
+              let ppt = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: 1,
+              }
+              this.$store.dispatch('searchBookChapter', ppt)
+              this.$store.commit('setActivelevelOneCategory', 1)
               break
             case '企业需求':
               let p5 = {
@@ -127,16 +137,29 @@
           }
           this.$router.push('/search/result/media')
         }
+        //左边栏，点击图书以后
         if (this.obj.type === 'bookCategory') {
           var pp = {
             rows: 10,
             page: 1,
             content: obj.name
           }
+          console.log(p.parentIndex)
           if (p.parentIndex === 0) {
             this.$store.dispatch('searchBookClcsDataList', pp)
-          } else {
+          } else if (p.parentIndex === 1) {
             this.$store.dispatch('searchBookSublibsDataList', pp)
+          } else if (p.parentIndex === 2) {
+            var pps = {
+              rows: 10,
+              page: 1,
+              searchContent: this.searchContent
+            }
+            if (obj.name === '书籍章节') {
+              this.$store.dispatch('searchBookChapterDataList', pps)
+            } else {
+              this.$store.dispatch('searchBook', pps)
+            }
           }
         }
       }

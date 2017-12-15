@@ -63,6 +63,7 @@
               page: 1,
             }
             this.$store.dispatch('searchBook', p1)
+            this.$store.dispatch('searchBookLeftPanel', this.searchContent)
             this.$router.push('/search/result/context')
             break
           case 'project':
@@ -138,6 +139,8 @@
               page: 1
             }
             this.$store.dispatch('searchBook', p)
+            this.$store.dispatch('searchBookLeftPanel', this.searchContent)
+            this.$router.push('/search/result/context')
             break
           case 'project':
             var p = {

@@ -8,7 +8,9 @@
         <div class="category">
           <span>{{type}}</span>
         </div>
-        <span>{{author}}</span>-<span>{{name}}</span>-<span>{{year_}}年</span>
+        <div class="category-brother" v-show="type=='图书'">
+          <span>{{author}}</span>-<span>{{name}}</span>-<span>{{year_}}年</span>
+        </div>
       </div>
       <div class="content">
         <span v-html="content">
@@ -26,7 +28,7 @@
     </div>
     <div class="img-container">
       <div class="img-real-container">
-        <img :src="cover">
+        <img v-show="type=='图书'" :src="cover">
       </div>
     </div>
   </div>
@@ -36,7 +38,7 @@
 </style>
 <script>
   export default {
-    props: ['idd','type', 'author', 'name', 'year', 'content', 'keywords', 'cover'],
+    props: ['idd', 'type', 'author', 'name', 'year', 'content', 'keywords', 'cover'],
     mounted: function () {
       let t = document.getElementsByTagName('em')
 //      for (var i = 0; i < t.length; i++) {

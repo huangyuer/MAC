@@ -28,9 +28,7 @@
       overflow: hidden;
       position: relative;
       margin-top: 30px;
-      & > .image-item:first-child {
-        float: left;
-      }
+
       & > .image-item:last-child {
         float: right;
       }
@@ -40,6 +38,9 @@
         right: 0;
         margin-left: auto;
         margin-right: auto;
+      }
+      & > .image-item:first-child {
+        float: left;
       }
     }
     .result + .row {
