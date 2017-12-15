@@ -12,9 +12,11 @@
         <p>
           <span v-for="profission in engineer.professions">{{profission}}&nbsp;</span>
         </p>
-        <img v-show="engineer.avatar === ''" src="../../assets/images/default.jpg" />
 
-        <img v-show="engineer.avatar !==''" :src="engineer.avatar + '?x-oss-process=image/resize,w_230'" />
+        <div class="engineer_info_right_img">
+          <img v-show="engineer.avatar === ''" src="../../assets/images/default.jpg" />
+          <img v-show="engineer.avatar !==''" :src="engineer.avatar + '?x-oss-process=image/resize,w_230'" />
+        </div>
 
         <div class="divider" style="margin: 30px 0;"></div>
         <h4><span>|&nbsp;</span><span v-text="engineer.name" class="blue"></span></h4>

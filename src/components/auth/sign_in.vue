@@ -35,19 +35,19 @@
         isRemembered: false
       }
     },
-    computed: { 
+    computed: {
       loginError () {
         return this.$store.getters.loginError;
       },
       loggedIn () {
-        return this.$store.getters.loggedIn; 
+        return this.$store.getters.loggedIn;
       }
     },
-    watch: { 
+    watch: {
       loggedIn: {
-        handler: function (val, oldVal) {  
+        handler: function (val, oldVal) {
           console.log('loggedIn');
-          if(val){ 
+          if(val){
             this.$router.push({path: '/'});
           }
         }
@@ -62,11 +62,11 @@
         return msg;
       },
       // 登录
-      login: function() {  
+      login: function() {
         let msg = this.checkLoginValidation();
         if (msg !== '') {
             alert(msg);
-            reutrn;
+            return;
         }
         this.$store.dispatch('login', {'username': this.phone, 'password': this.password});
       },

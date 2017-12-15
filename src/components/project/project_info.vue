@@ -17,9 +17,11 @@
         <p>
           <span v-for="category in project.categories">{{category}}&nbsp;</span>
         </p>
-        <img v-show="project.cover === ''" src="../../assets/images/default.jpg" />
+        <div class="engineer_info_right_img">
+          <img v-show="project.cover === ''" src="../../assets/images/default.jpg" />
+          <img v-show="project.cover !==''" :src="project.cover + '?x-oss-process=image/resize,w_230'" />
+        </div>
 
-        <img v-show="project.cover !==''" :src="project.cover + '?x-oss-process=image/resize,w_230'" />
         <div class="divider" style="margin: 30px 0;"></div>
         <h4><span>|&nbsp;</span><span v-text="project.title" class="blue"></span></h4>
         <h5 v-text="project.category"></h5>
