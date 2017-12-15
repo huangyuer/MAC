@@ -1,8 +1,8 @@
 <template>
   <div class="search-all">
-    <div class="title">
-      <span>找到<span>77,638,132</span>条结果</span>
-    </div>
+    <!--<div class="title">-->
+    <!--<span>找到<span>77,638,132</span>条结果</span>-->
+    <!--</div>-->
     <div class="subtitle">
       <div class="inner">
         <span>相关图书</span>
