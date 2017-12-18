@@ -5,8 +5,10 @@
       <div class="result">
         <span>找到<span>77,123,211</span>条结果</span>
       </div>
-      <image-text-item :idd="i.id" :type="i.type" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt" :cover="i.cover"
-                       :keywords="i.keywords" v-for="i in searchContextData" :content="i.highlight" :key="i.id"></image-text-item>
+      <image-text-item :idd="i.id" :type="i.type" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt"
+                       :cover="i.cover"
+                       :keywords="i.keywords" v-for="i in searchContextData" :content="i.highlight"
+                       :key="i.id"></image-text-item>
     </div>
     <patinator @click="pageClick" :total="bookTotal"></patinator>
   </div>
@@ -41,9 +43,9 @@
         return this.$store.state.search.bookList
       },
       bookTotal: function () {
-        return parseInt(this.$store.state.search.bookTotal)
+        return this.$store.state.paginator.total
       },
-      searchContextData:function(){
+      searchContextData: function () {
         return this.$store.state.searchContext.searchContextData
       }
     },

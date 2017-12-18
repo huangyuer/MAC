@@ -71,6 +71,7 @@
             }
             this.$store.dispatch('searchProject', p2)
             this.$router.push('/search/result/media')
+            this.$store.dispatch('searchProjectLeftPanel', p2)
             break
           case 'engineer':
             let p3 = {
@@ -80,6 +81,7 @@
             }
             this.$store.dispatch('searchEngineer', p3)
             this.$router.push('/search/result/media')
+            this.$store.dispatch('searchEngineerLeftPanel', p3)
             break
           case 'pic':
             let p4 = {
@@ -89,6 +91,7 @@
             }
             this.$store.dispatch('searchMedia', p4)
             this.$router.push('/search/result/media')
+            this.$store.dispatch('searchMediaLeftPanel', p4)
             break
           case 'requirement':
             let p5 = {
@@ -98,6 +101,7 @@
             }
             this.$store.dispatch('searchRequirement', p5)
             this.$router.push('/search/result/context')
+            this.$store.dispatch('searchRequirementLeftPanel', p5)
             break
           case 'anli':
             let p6 = {

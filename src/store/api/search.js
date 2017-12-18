@@ -82,6 +82,35 @@ export default {
     let apiUrl = `${config.API_HOST}/search/project/area`
     let promise = axios.post(apiUrl, data)
     return promise
+  },
+  //点击搜索上方的'工程师'或则searchAll界面上的'工程师'时
+  searchEngineerEraDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/engineer/category/era`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'工程师'或则searchAll界面上的'工程师'时
+  searchEngineerTradesDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/engineer/category/trades`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'企业需求'或则searchAll界面上的'需求'时
+  searchRequirementProvinceDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/requirement/category/province`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'企业需求'或则searchAll界面上的'需求'时
+  searchRequirementWayDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/requirement/category/way`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'企业需求'或则searchAll界面上的'工程师'时
+  searchMediaDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/media/category`
+    let promise = axios.post(apiUrl, data)
+    return promise
   }
-
 }

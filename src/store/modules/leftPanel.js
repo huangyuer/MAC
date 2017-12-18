@@ -82,6 +82,123 @@ const mutations = {
       active: false
     })
   },
+  //搜索工程师的时候展示的数据
+  setLeftPanelClickEngineerCategory (state, data) {
+    state.leftPanelItemList = []
+    let a = data[0].data
+    let b = data[1].data
+    state.leftPanelItemList.push(
+      {
+        name: '',
+        type: '',
+        children: []
+      }
+    )
+    state.leftPanelItemList.push(
+      {
+        name: '',
+        type: '',
+        children: []
+      }
+    )
+    state.leftPanelItemList[0].name = '年代'
+    state.leftPanelItemList[0].type = 'engineerCategory'
+    state.leftPanelItemList[1].type = 'engineerCategory'
+    state.leftPanelItemList[1].name = '行业'
+    for (var i = 0; i < a.length; i++) {
+      if (a[i].key) {
+        state.leftPanelItemList[0].children.push({
+          name: a[i].key,
+          count: a[i].doc_count,
+          active: false
+        })
+      }
+    }
+    for (var i = 0; i < b.length; i++) {
+      state.leftPanelItemList[1].children.push({
+        name: b[i].key,
+        count: b[i].doc_count,
+        active: false
+      })
+    }
+  },
+  //搜索'企业需求'时展示的数据
+  setLeftPanelClickRequirementCategory (state, data) {
+    state.leftPanelItemList = []
+    let a = data[0].data
+    let b = data[1].data
+    if (a.length > 0 || b.length > 0) {
+      state.leftPanelItemList.push({
+        name: '',
+        type: '',
+        children: []
+      })
+      state.leftPanelItemList.push({
+        name: '',
+        type: '',
+        children: []
+      })
+      state.leftPanelItemList[0].name = '省份'
+      state.leftPanelItemList[0].type = 'requirementCategory'
+      state.leftPanelItemList[1].type = 'requirementCategory'
+      state.leftPanelItemList[1].name = '途径'
+      for (var i = 0; i < a.length; i++) {
+        if (a[i].key) {
+          state.leftPanelItemList[0].children.push({
+            name: a[i].key,
+            count: a[i].doc_count,
+            active: false
+          })
+        }
+      }
+      for (var i = 0; i < b.length; i++) {
+        if (b[i].key) {
+          state.leftPanelItemList[1].children.push({
+            name: b[i].key,
+            count: b[i].doc_count,
+            active: false
+          })
+        }
+      }
+    } else {
+      state.leftPanelItemList = [
+        {
+          name: '没有找到相关文献',
+          type: '',          //代表每个categoryItem的类型、
+          children: []
+        }
+      ]
+    }
+  },
+  setLeftPanelClickMediaCategorys (state, data) {
+    state.leftPanelItemList = []
+    console.log(data)
+    let a = data[0].hits.total
+    let b = data[1].hits.total
+    let c = data[2].hits.total
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+    state.leftPanelItemList[0].name = '结果列表'
+    state.leftPanelItemList[0].type = 'mediaCateogry'
+    state.leftPanelItemList[0].children.push({
+      name: '图表',
+      count: a,
+      active: false
+    })
+    state.leftPanelItemList[0].children.push({
+      name: '公式',
+      count: b,
+      active: false
+    })
+    state.leftPanelItemList[0].children.push({
+      name: '图片',
+      count: c,
+      active: false
+    })
+  },
   setActiveLevel2Category (state, data) {
     let d = state.leftPanelItemList[data.parentIndex]
     for (var i = 0; i < d.children.length; i++) {
@@ -153,7 +270,6 @@ const mutations = {
     let a = data[0].data
     let b = data[1].data
     if (a.length > 0 || b.length > 0) {
-
       state.leftPanelItemList.push({
         name: '',
         type: '',
