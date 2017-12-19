@@ -12,10 +12,12 @@
         <p>
           <span v-for="profission in engineer.professions">{{profission}}&nbsp;</span>
         </p>
-        <img v-show="engineer.avatar === ''" src="../../assets/images/default.jpg" />
 
-        <img v-show="engineer.avatar !==''" :src="engineer.avatar + '?x-oss-process=image/resize,w_230'" /> 
-        
+        <div class="engineer_info_right_img">
+          <img v-show="engineer.avatar === ''" src="../../assets/images/default.jpg" />
+          <img v-show="engineer.avatar !==''" :src="engineer.avatar + '?x-oss-process=image/resize,w_230'" />
+        </div>
+
         <div class="divider" style="margin: 30px 0;"></div>
         <h4><span>|&nbsp;</span><span v-text="engineer.name" class="blue"></span></h4>
         <h5 v-text="engineer.category"></h5>
@@ -30,15 +32,16 @@
         <div class="divider" style="margin: 30px 0;"></div>
       </div>
     </div>
+    <div class="clear"></div>
   </div>
 </template>
 
 <script>
   import backBar from '../public/back_bar.vue'
-  export default { 
+  export default {
     data () {
       return {
-         
+
       }
     },
     components: {
@@ -47,11 +50,11 @@
     mounted(){
       this.getData();
     },
-    computed: { 
+    computed: {
       engineerError () {
           return this.$store.getters.engineerError;
       },
-      engineerId(){ 
+      engineerId(){
         console.log(this.$route.params.engineerId);
         return this.$route.params.engineerId || '0';
       },
@@ -61,7 +64,7 @@
     },
     watch:{
       engineerError: {
-        handler: function (val, oldVal) { 
+        handler: function (val, oldVal) {
           if(val){
             this.error = val;
             this.$message({
@@ -70,20 +73,20 @@
               type: 'error'
             });
             this.$store.commit('clearEngineerError');
-          } 
+          }
         },
         deep: true
       },
       '$route': 'getData'
     },
     methods: {
-      getData: function() { 
+      getData: function() {
         console.log(this.engineerId);
-        this.$store.dispatch('getEngineerDetail', {'engineerId': this.engineerId});    
+        this.$store.dispatch('getEngineerDetail', {'engineerId': this.engineerId});
       },
       backHome:function(){
         this.$router.push('/engineer/list');
       }
-    }  
+    }
   }
 </script>

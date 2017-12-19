@@ -13,13 +13,15 @@
            <span>{{project.era}}</span>
         </p>
         <h4><span>|&nbsp;</span><span class="blue">所属类别</span></h4>
-        
+
         <p>
           <span v-for="category in project.categories">{{category}}&nbsp;</span>
         </p>
-        <img v-show="project.cover === ''" src="../../assets/images/default.jpg" />
+        <div class="engineer_info_right_img">
+          <img v-show="project.cover === ''" src="../../assets/images/default.jpg" />
+          <img v-show="project.cover !==''" :src="project.cover + '?x-oss-process=image/resize,w_230'" />
+        </div>
 
-        <img v-show="project.cover !==''" :src="project.cover + '?x-oss-process=image/resize,w_230'" /> 
         <div class="divider" style="margin: 30px 0;"></div>
         <h4><span>|&nbsp;</span><span v-text="project.title" class="blue"></span></h4>
         <h5 v-text="project.category"></h5>
@@ -34,6 +36,7 @@
         <div class="divider" style="margin: 30px 0;"></div>
       </div>
     </div>
+    <div class="clear"></div>
   </div>
 </template>
 
@@ -41,7 +44,7 @@
   import backBar from '../public/back_bar.vue'
   export default {
     data () {
-      return { 
+      return {
       }
     },
     components: {
@@ -50,11 +53,11 @@
     mounted(){
       this.getData();
     },
-    computed: { 
+    computed: {
       worksError () {
           return this.$store.getters.worksError;
       },
-      worksId(){  
+      worksId(){
         return this.$route.params.projectId || '0';
       },
       project(){
@@ -63,7 +66,7 @@
     },
     watch:{
       worksError: {
-        handler: function (val, oldVal) { 
+        handler: function (val, oldVal) {
           if(val){
             this.error = val;
             this.$message({
@@ -72,19 +75,19 @@
               type: 'error'
             });
             this.$store.commit('clearWorksError');
-          } 
+          }
         },
         deep: true
       },
       '$route': 'getData'
     },
     methods: {
-      getData: function() { 
-        this.$store.dispatch('getWorksDetail', {'worksId': this.worksId});    
+      getData: function() {
+        this.$store.dispatch('getWorksDetail', {'worksId': this.worksId});
       },
       backHome:function(){
         this.$router.push('/project/list');
       }
-    }  
+    }
   }
 </script>

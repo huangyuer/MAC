@@ -4,9 +4,9 @@
     <div class="zhmm2">
       <input type="text" placeholder="请输入手机号" class="input_111" v-model="phone">
     </div>
-    <div class="zhmm3"> 
+    <div class="zhmm3">
       <input type="text" placeholder="验证码" v-model="vercode">
-      <a id="btn-get-vercode" href="javascript:void(0);" @click="getVerCode()">{{text}}</a> 
+      <a id="btn-get-vercode" href="javascript:void(0);" @click="getVerCode()">{{text}}</a>
     </div>
     <div class="clear"></div>
     <div class="zhmm2">
@@ -47,9 +47,7 @@
         time: 0
       }
     },
-    watch: {
-    },
-    computed: { 
+    computed: {
       loginError () {
         return this.$store.getters.loginError;
       },
@@ -57,42 +55,42 @@
         return this.time > 0 ? this.time + '秒后重试' : '获取验证码'
       },
       loggedIn () {
-        return this.$store.getters.loggedIn; 
+        return this.$store.getters.loggedIn;
       },
       registered(){
-        return this.$store.getters.registered; 
+        return this.$store.getters.registered;
       },
       registerSuccess(){
-        return this.$store.getters.registerSuccess; 
+        return this.$store.getters.registerSuccess;
       },
       registerError(){
-        return this.$store.getters.registerError; 
+        return this.$store.getters.registerError;
       }
     },
-    watch: { 
+    watch: {
       loggedIn: {
-        handler: function (val, oldVal) {  
+        handler: function (val, oldVal) {
           console.log('loggedIn');
-          if(val){ 
+          if(val){
             this.$router.push({path: '/'});
           }
         }
       },
       registerSuccess: {
-        handler: function (val, oldVal) {   
-          if(val){ 
+        handler: function (val, oldVal) {
+          if(val){
             this.$router.push({path: '/'});
           }
         }
       },
       registerError: {
-        handler: function (val, oldVal) {   
+        handler: function (val, oldVal) {
           alert(val);
         }
       }
     },
-    methods: { 
-      register: function() { 
+    methods: {
+      register: function() {
         // 检查手机号是否有效
         if(this.phone === '' || !validator.isMobilePhone(this.phone, 'zh-CN')){
           alert('请输入有效的手机号');
@@ -116,7 +114,7 @@
           return;
         }
         this.$store.dispatch('registerByMobile', {'username': this.phone,'vercode': this.vercode, 'mobile': this.phone, 'password': this.password, 'repassword': this.repassword});
-      },  
+      },
       stopClick: function(){
         if(this.time > 0){
           return true;
@@ -124,7 +122,7 @@
           return false;
         }
       },
-      getVerCode: function(){  
+      getVerCode: function(){
         if(this.registered){
           this.$router.push('/');
         }
@@ -151,7 +149,7 @@
           console.log(error);
         });
       },
-      timer() { 
+      timer() {
         if (this.time > 0) {
           //document.getElementById("btn-get-vercode").disabled = ' disabled';
           this.time = this.time - 1;

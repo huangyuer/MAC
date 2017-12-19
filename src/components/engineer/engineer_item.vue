@@ -3,12 +3,13 @@
 
     <img v-show="engineer.avatar === ''" src="../../assets/images/default.jpg" />
 
-    <img v-show="engineer.avatar !==''" :src="engineer.avatar + '?x-oss-process=image/resize,m_fill,w_230,h_180'" /> 
+    <img v-show="engineer.avatar !==''" :src="engineer.avatar + '?x-oss-process=image/resize,m_fill,w_230,h_180'" />
 
     <div class="engineer_item">
       <h4 v-text="engineer.name"></h4>
-      <p>{{engineer.summary|substr}}</p>
-      <p v-text="engineer.categories"></p>
+      <p>{{engineer.summary}}</p>
+      <!--<p>{{engineer.summary|substr}}</p>-->
+      <!--<p v-text="engineer.categories"></p>-->
       <div class="divider"></div>
       <div class="engineer_item_footer">
         <img src="../../assets/images/eye_close_up.png"/>
@@ -21,7 +22,7 @@
 </template>
 
 <script>
-  export default { 
+  export default {
     data () {
       return {
         url: 'http://118.178.238.202:9988/'
@@ -37,16 +38,16 @@
         date: ''
       }
     },
-    filters: {
-      substr: function(value){
-        if(! value) return '';
-        value = value.toString(); 
-        if(value.length > 40){
-          return value.substr(0, 40) + '...';
-        }else{
-          return value;
-        }
-      },
-    }
+    // filters: {
+    //   substr: function(value){
+    //     if(! value) return '';
+    //     value = value.toString();
+    //     if(value.length > 40){
+    //       return value.substr(0, 40) + '...';
+    //     }else{
+    //       return value;
+    //     }
+    //   },
+    // }
   }
 </script>
