@@ -1,6 +1,6 @@
 const state = {
   rows: 10,
-  total: '',
+  total: -1,
 }
 
 const actions = {}

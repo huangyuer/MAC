@@ -7,7 +7,7 @@
       <div class="inner">
         <span>相关图书</span>
         <div class="right">
-          <span>查看全部</span>
+          <span @click="redirectSeeAll('book')">查看全部</span>
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-jiantou-left"></use>
           </svg>
@@ -24,7 +24,7 @@
       <div class="inner">
         <span>相关工程</span>
         <div class="right">
-          <span>查看全部</span>
+          <span @click="redirectSeeAll('project')">查看全部</span>
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-jiantou-left"></use>
           </svg>
@@ -40,7 +40,7 @@
       <div class="inner">
         <span>相关工程师</span>
         <div class="right">
-          <span>查看全部</span>
+          <span @click="redirectSeeAll('engineer')">查看全部</span>
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-jiantou-left"></use>
           </svg>
@@ -56,7 +56,7 @@
       <div class="inner">
         <span>相关多媒体</span>
         <div class="right">
-          <span>查看全部</span>
+          <span @click="redirectSeeAll('media')">查看全部</span>
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-jiantou-left"></use>
           </svg>
@@ -72,7 +72,7 @@
       <div class="inner">
         <span>企业需求</span>
         <div class="right">
-          <span>查看全部</span>
+          <span @click="redirectSeeAll('requirement')">查看全部</span>
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-jiantou-left"></use>
           </svg>
@@ -87,7 +87,7 @@
       <div class="inner">
         <span>工程文献</span>
         <div class="right">
-          <span>查看全部</span>
+          <span @click="redirectSeeAll('literature')">查看全部</span>
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-jiantou-left"></use>
           </svg>
@@ -102,7 +102,7 @@
       <div class="inner">
         <span>知识产权</span>
         <div class="right">
-          <span>查看全部</span>
+          <span @click="redirectSeeAll('knowledge')">查看全部</span>
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-jiantou-left"></use>
           </svg>
@@ -139,7 +139,91 @@
         preFix: 'http://118.178.238.202:9988/'
       }
     },
-    methods: {},
+    methods: {
+      redirectSeeAll: function (category) {
+        switch (category) {
+          case 'book':
+            let p1 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.commit('setActiveLevelOneCategory', 1)
+            this.$store.dispatch('searchBook', p1)
+            this.$store.dispatch('searchBookLeftPanel', this.searchContent)
+            this.$router.push('/search/result/context')
+            break
+          case 'project':
+            let p2 = {
+              rows: 9,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.commit('setActiveLevelOneCategory', 2)
+            this.$store.dispatch('searchProject', p2)
+            this.$router.push('/search/result/media')
+            this.$store.dispatch('searchProjectLeftPanel', p2)
+            break
+          case 'engineer':
+            let p3 = {
+              rows: 9,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.commit('setActiveLevelOneCategory', 3)
+            this.$store.dispatch('searchEngineer', p3)
+            this.$router.push('/search/result/media')
+            this.$store.dispatch('searchEngineerLeftPanel', p3)
+            break
+          case 'media':
+            let p4 = {
+              rows: 9,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.commit('setActiveLevelOneCategory', 4)
+            this.$store.dispatch('searchMedia', p4)
+            this.$router.push('/search/result/media')
+            this.$store.dispatch('searchMediaLeftPanel', p4)
+            break
+          case 'literature':
+            let p6 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.commit('setActiveLevelOneCategory', 6)
+            this.$store.dispatch('searchLiteriture', p6)
+            this.$router.push('/search/result/context')
+            this.$store.dispatch('searchLiteratureLeftPanel', p6)
+            break
+          case 'knowledge':
+            let p7 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.commit('setActiveLevelOneCategory', 7)
+            this.$store.dispatch('searchExpertPatent', p7)
+            this.$router.push('/search/result/context')
+            this.$store.dispatch('searchKnowledgeLeftPanel', p7)
+            break
+          case 'requirement':
+            let p5 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+            }
+            this.$store.commit('setActiveLevelOneCategory', 5)
+            this.$store.dispatch('searchRequirement', p5)
+            this.$router.push('/search/result/context')
+            this.$store.dispatch('searchRequirementLeftPanel', p5)
+            break
+          default:
+            break
+        }
+      }
+    },
     computed: {
       allPageBookList: function () {
         return this.$store.state.search.allPageBookList

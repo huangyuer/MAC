@@ -16,9 +16,20 @@
 </style>
 <script>
   export default {
-    props: ['total',],
     mounted: function () {
       console.log('mounted....')
+      this.displayPageList = []
+      var t = this.totalPage > 5 ? 5 : this.totalPage
+      for (var i = 1; i <= t; i++) {
+        var p = {
+          name: i,
+          active: false
+        }
+        if (i === 1) {
+          p.active = true
+        }
+        this.displayPageList.push(p)
+      }
     },
     components: {},
     data () {
@@ -156,6 +167,9 @@
       firstPage: function () {
         return this.displayPageList[0]
       },
+      total: function () {
+        return this.$store.state.paginator.total
+      }
     },
     filters: {},
     watch: {

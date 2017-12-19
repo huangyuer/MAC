@@ -98,6 +98,8 @@ const actions = {
     promise.then((response) => {
       commit('searchProject', response.data)
       let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
@@ -116,6 +118,8 @@ const actions = {
     let promise = api.searchEngineer(data)
     promise.then((response) => {
       let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
@@ -134,6 +138,8 @@ const actions = {
     let promise = api.searchMedia(data)
     promise.then((response) => {
       let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
@@ -152,6 +158,8 @@ const actions = {
     let promise = api.searchRequirement(data)
     promise.then((response) => {
       // TODO:  企业需求现在没有数据
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       commit('setSearchContextData', [])
     }, (response) => {
 
@@ -162,6 +170,8 @@ const actions = {
     promise.then((response) => {
       commit('searchLiteriture', response.data)
       let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -183,6 +193,8 @@ const actions = {
     let promise = api.searchExpertPatent(data)
     promise.then((response) => {
       let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()

@@ -3,7 +3,7 @@
     <tool-bar></tool-bar>
     <div class="inner">
       <div class="result">
-        <span>找到<span>77,123,211</span>条结果</span>
+        <span>找到<span style="width: 30px;text-align: center;display: inline-block;">{{total}}</span>条结果</span>
       </div>
       <div class="row" v-for="i in searchMediaData" :key="i.id">
         <image-item :cover="j.url" :title="j.title" :summary="j.description" v-for="j in i.children"
@@ -40,7 +40,7 @@
     },
     computed: {
       total: function () {
-        return this.$store.state.searchMedia.total
+        return this.$store.state.paginator.total
       },
       searchMediaData: function () {
         return this.$store.state.searchMedia.searchMediaData
