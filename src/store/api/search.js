@@ -82,6 +82,54 @@ export default {
     let apiUrl = `${config.API_HOST}/search/project/area`
     let promise = axios.post(apiUrl, data)
     return promise
+  },
+  //点击搜索上方的'工程师'或则searchAll界面上的'工程师'时
+  searchEngineerEraDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/engineer/category/era`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'工程师'或则searchAll界面上的'工程师'时
+  searchEngineerTradesDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/engineer/category/trades`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'企业需求'或则searchAll界面上的'需求'时
+  searchRequirementProvinceDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/requirement/category/province`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'企业需求'或则searchAll界面上的'需求'时
+  searchRequirementWayDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/requirement/category/way`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'企业需求'或则searchAll界面上的'工程师'时
+  searchMediaDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/media/category`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'工程文献'或则searchAll界面上的'工程师'时
+  searchLiteratureEraDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/literature/category/era`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'工程文献'或则searchAll界面上的'工程师'时
+  searchLiteratureCategoryDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/literature/category/category`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击搜索上方的'知识产权'或则searchAll界面上的'工程师'时
+  searchKnowledgeCategoryDataList (data) {
+    let apiUrl = `${config.API_HOST}/search/knowledge/category`
+    let promise = axios.post(apiUrl, data)
+    return promise
   }
 
 }

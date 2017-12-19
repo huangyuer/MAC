@@ -77,6 +77,7 @@
               }
               this.$store.dispatch('searchRequirement', p5)
               this.$store.commit('setActiveLevelOneCategory', 5)
+              this.$store.dispatch('searchRequirementLeftPanel', p5)
               break
             case '工程文献':
               let p6 = {
@@ -86,6 +87,7 @@
               }
               this.$store.dispatch('searchLiteriture', p6)
               this.$store.commit('setActiveLevelOneCategory', 6)
+              this.$store.dispatch('searchLiteratureLeftPanel', p6)
               break
             case '知识产权':
               let p7 = {
@@ -95,6 +97,7 @@
               }
               this.$store.dispatch('searchExpertPatent', p7)
               this.$store.commit('setActiveLevelOneCategory', 7)
+              this.$store.dispatch('searchKnowledgeLeftPanel', p7)
               break
 
             default:
@@ -112,7 +115,7 @@
               }
               this.$store.dispatch('searchProject', p2)
               this.$store.commit('setActiveLevelOneCategory', 2)
-              this.$store.dispatch('searchProjectLeftPanel',p2)
+              this.$store.dispatch('searchProjectLeftPanel', p2)
               break
             case '工程师':
               let p3 = {
@@ -122,6 +125,7 @@
               }
               this.$store.dispatch('searchEngineer', p3)
               this.$store.commit('setActiveLevelOneCategory', 3)
+              this.$store.dispatch('searchEngineerLeftPanel', p3)
               break
             case '多媒体':
               let p4 = {
@@ -130,6 +134,7 @@
                 page: 1,
               }
               this.$store.dispatch('searchMedia', p4)
+              this.$store.dispatch('searchMediaLeftPanel', p4)
               this.$store.commit('setActiveLevelOneCategory', 4)
               break
             default:
@@ -143,7 +148,8 @@
           var pp = {
             rows: 10,
             page: 1,
-            content: obj.name
+            content: obj.name,
+            searchContent: this.searchContent
           }
           console.log(p.parentIndex)
           if (p.parentIndex === 0) {

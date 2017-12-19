@@ -3,12 +3,14 @@
     <tool-bar></tool-bar>
     <div class="inner">
       <div class="result">
-        <span>找到<span>77,123,211</span>条结果</span>
+        <span>找到<span style="width: 30px;text-align: center;display: inline-block;">{{total}}</span>条结果</span>
       </div>
-      <image-text-item :idd="i.id" :type="i.type" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt" :cover="i.cover"
-                       :keywords="i.keywords" v-for="i in searchContextData" :content="i.highlight" :key="i.id"></image-text-item>
+      <image-text-item :idd="i.id" :type="i.type" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt"
+                       :cover="i.cover"
+                       :keywords="i.keywords" v-for="i in searchContextData" :content="i.highlight"
+                       :key="i.id"></image-text-item>
     </div>
-    <patinator @click="pageClick" :total="bookTotal"></patinator>
+    <patinator @click="pageClick"></patinator>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -40,12 +42,12 @@
       bookList: function () {
         return this.$store.state.search.bookList
       },
-      bookTotal: function () {
-        return parseInt(this.$store.state.search.bookTotal)
+      total: function () {
+        return this.$store.state.paginator.total
       },
-      searchContextData:function(){
+      searchContextData: function () {
         return this.$store.state.searchContext.searchContextData
-      }
+      },
     },
     filters: {}
   }

@@ -74,6 +74,7 @@
             }
             this.$store.dispatch('searchProject', p2)
             this.$router.push('/search/result/media')
+            this.$store.dispatch('searchProjectLeftPanel', p2)
             break
           case 'engineer':
             let p3 = {
@@ -83,6 +84,7 @@
             }
             this.$store.dispatch('searchEngineer', p3)
             this.$router.push('/search/result/media')
+            this.$store.dispatch('searchEngineerLeftPanel', p3)
             break
           case 'pic':
             let p4 = {
@@ -92,6 +94,7 @@
             }
             this.$store.dispatch('searchMedia', p4)
             this.$router.push('/search/result/media')
+            this.$store.dispatch('searchMediaLeftPanel', p4)
             break
           case 'requirement':
             let p5 = {
@@ -101,6 +104,7 @@
             }
             this.$store.dispatch('searchRequirement', p5)
             this.$router.push('/search/result/context')
+            this.$store.dispatch('searchRequirementLeftPanel', p5)
             break
           case 'anli':
             let p6 = {
@@ -110,6 +114,7 @@
             }
             this.$store.dispatch('searchLiteriture', p6)
             this.$router.push('/search/result/context')
+            this.$store.dispatch('searchLiteratureLeftPanel', p6)
             break
           case 'knowledge':
             let p7 = {
@@ -119,6 +124,7 @@
             }
             this.$store.dispatch('searchExpertPatent', p7)
             this.$router.push('/search/result/context')
+            this.$store.dispatch('searchKnowledgeLeftPanel', p7)
             break
           default:
             break

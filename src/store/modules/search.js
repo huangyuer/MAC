@@ -74,6 +74,7 @@ const actions = {
     promise.then((response) => {
       commit('searchBook', response.data)
       let d = response.data.hits
+      commit('setPaginatorTotal', response.data.total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -97,6 +98,8 @@ const actions = {
     promise.then((response) => {
       commit('searchProject', response.data)
       let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
@@ -115,6 +118,8 @@ const actions = {
     let promise = api.searchEngineer(data)
     promise.then((response) => {
       let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
@@ -133,6 +138,8 @@ const actions = {
     let promise = api.searchMedia(data)
     promise.then((response) => {
       let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
@@ -151,6 +158,8 @@ const actions = {
     let promise = api.searchRequirement(data)
     promise.then((response) => {
       // TODO:  企业需求现在没有数据
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       commit('setSearchContextData', [])
     }, (response) => {
 
@@ -161,6 +170,8 @@ const actions = {
     promise.then((response) => {
       commit('searchLiteriture', response.data)
       let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -182,6 +193,8 @@ const actions = {
     let promise = api.searchExpertPatent(data)
     promise.then((response) => {
       let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -285,6 +298,52 @@ const actions = {
         temp.push(context)
       }
       commit('setSearchContextData', temp)
+    }, (response) => {
+
+    })
+  },
+  searchEngineerLeftPanel ({commit}, data) {
+    let promise1 = api.searchEngineerEraDataList(data)
+    promise1.then((response) => {
+    }, (response) => {
+
+    })
+    let promise2 = api.searchEngineerTradesDataList(data)
+    promise2.then((response) => {
+
+    }, (response) => {
+
+    })
+    Promise.all([promise1, promise2]).then(function (resp) {
+      commit('setLeftPanelClickEngineerCategory', resp)
+    })
+  },
+  searchRequirementLeftPanel ({commit}, data) {
+    let promise1 = api.searchRequirementProvinceDataList(data)
+    let promise2 = api.searchRequirementWayDataList(data)
+    Promise.all([promise1, promise2]).then(function (resp) {
+      commit('setLeftPanelClickRequirementCategory', resp)
+    })
+  },
+  searchMediaLeftPanel ({commit}, data) {
+    let promise = api.searchMediaDataList(data)
+    promise.then((response) => {
+      commit('setLeftPanelClickMediaCategorys', response.data)
+    }, (response) => {
+
+    })
+  },
+  searchLiteratureLeftPanel ({commit}, data) {
+    let promise1 = api.searchLiteratureEraDataList(data)
+    let promise2 = api.searchLiteratureCategoryDataList(data)
+    Promise.all([promise1, promise2]).then(function (resp) {
+      commit('setLeftPanelClickLiterature', resp)
+    })
+  },
+  searchKnowledgeLeftPanel ({commit}, data) {
+    let promise = api.searchKnowledgeCategoryDataList(data)
+    promise.then((response) => {
+      commit('setLeftPanelClickKnowledgeCategorys', response.data)
     }, (response) => {
 
     })
