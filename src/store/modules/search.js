@@ -263,6 +263,7 @@ const actions = {
     promise.then((response) => {
       let d = response.data.hits
       let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -363,8 +364,8 @@ const mutations = {
       b.name = a[i]._source.name
       b.keywords = a[i]._source.keywords
       b.publishedAt = a[i]._source.publishedAt
-      b.highlight =
-        b.cover = a[i]._source.cover
+      b.highlight = a[i]._source.summary
+      b.cover = a[i]._source.cover
       state.allPageBookList.push(b)
     }
     let b = data.projectData

@@ -48,7 +48,7 @@
         console.log(this.obj)
         console.log(obj.name)
         this.$store.commit('setActiveLevel2Category', p)
-        if (obj.name === '图书' || obj.name === '企业需求' || obj.name === '工程文献' || obj.name === '知识产权') {
+        if (obj.name === '图书' || obj.name === '图书章节' || obj.name === '企业需求' || obj.name === '工程文献' || obj.name === '知识产权') {
           switch (obj.name) {
             case '图书':
               let p1 = {
@@ -66,8 +66,11 @@
                 searchContent: this.searchContent,
                 page: 1,
               }
-              this.$store.dispatch('searchBookChapter', ppt)
-              this.$store.commit('setActivelevelOneCategory', 1)
+//              this.$store.dispatch('searchBookChapter', ppt)
+              this.$store.dispatch('searchBookChapterDataList', ppt)
+              this.$store.commit('setActiveLevelOneCategory', 1)
+              this.$store.dispatch('searchBookLeftPanel', this.searchContent)
+
               break
             case '企业需求':
               let p5 = {
