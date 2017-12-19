@@ -111,6 +111,7 @@
             }
             this.$store.dispatch('searchLiteriture', p6)
             this.$router.push('/search/result/context')
+            this.$store.dispatch('searchLiteratureLeftPanel', p6)
             break
           case 'knowledge':
             let p7 = {
@@ -120,6 +121,7 @@
             }
             this.$store.dispatch('searchExpertPatent', p7)
             this.$router.push('/search/result/context')
+            this.$store.dispatch('searchKnowledgeLeftPanel', p7)
             break
           default:
             break

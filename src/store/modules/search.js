@@ -320,6 +320,21 @@ const actions = {
     }, (response) => {
 
     })
+  },
+  searchLiteratureLeftPanel ({commit}, data) {
+    let promise1 = api.searchLiteratureEraDataList(data)
+    let promise2 = api.searchLiteratureCategoryDataList(data)
+    Promise.all([promise1, promise2]).then(function (resp) {
+      commit('setLeftPanelClickLiterature', resp)
+    })
+  },
+  searchKnowledgeLeftPanel ({commit}, data) {
+    let promise = api.searchKnowledgeCategoryDataList(data)
+    promise.then((response) => {
+      commit('setLeftPanelClickKnowledgeCategorys', response.data)
+    }, (response) => {
+
+    })
   }
 }
 

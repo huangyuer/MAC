@@ -309,6 +309,75 @@ const mutations = {
         }
       ]
     }
+  },
+  setLeftPanelClickLiterature (state, data) {
+    state.leftPanelItemList = []
+    let a = data[0].data
+    let b = data[1].data
+    if (a.length > 0 || b.length > 0) {
+      state.leftPanelItemList.push({
+        name: '',
+        type: '',
+        children: []
+      })
+      state.leftPanelItemList.push({
+        name: '',
+        type: '',
+        children: []
+      })
+      state.leftPanelItemList[0].name = '年代'
+      state.leftPanelItemList[0].type = 'literatureCategory'
+      state.leftPanelItemList[1].name = '类别'
+      state.leftPanelItemList[1].type = 'literatureCategory'
+      for (var i = 0; i < a.length; i++) {
+        state.leftPanelItemList[0].children.push({
+          name: a[i].key,
+          count: a[i].doc_count,
+          active: false
+        })
+      }
+      for (var i = 0; i < b.length; i++) {
+        if (b[i].key) {
+          state.leftPanelItemList[1].children.push({
+            name: b[i].key,
+            count: b[i].doc_count,
+            active: false
+          })
+        }
+      }
+    } else {
+      state.leftPanelItemList = [
+        {
+          name: '没有找到相关文献',
+          type: '',          //代表每个categoryItem的类型、
+          children: []
+        }
+      ]
+    }
+  },
+  setLeftPanelClickKnowledgeCategorys (state, data) {
+    state.leftPanelItemList = []
+    let a = data[0].hits.total
+    let b = data[1].hits.total
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+
+    state.leftPanelItemList[0].name = '类别'
+    state.leftPanelItemList[0].type = 'knowledgeCategory'
+    state.leftPanelItemList[0].children.push({
+      name: '专家',
+      count: a,
+      active: false,
+    })
+    state.leftPanelItemList[0].children.push({
+      name: '专利',
+      count: b,
+      active: false,
+    })
+
   }
 }
 

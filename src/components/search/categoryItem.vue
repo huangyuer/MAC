@@ -87,6 +87,7 @@
               }
               this.$store.dispatch('searchLiteriture', p6)
               this.$store.commit('setActiveLevelOneCategory', 6)
+              this.$store.dispatch('searchLiteratureLeftPanel', p6)
               break
             case '知识产权':
               let p7 = {
@@ -96,6 +97,7 @@
               }
               this.$store.dispatch('searchExpertPatent', p7)
               this.$store.commit('setActiveLevelOneCategory', 7)
+              this.$store.dispatch('searchKnowledgeLeftPanel', p7)
               break
 
             default:
