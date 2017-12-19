@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div class="row" v-for="i in allPageProjectList" :key="i.id">
+    <div class="row" v-show="allPageProjectList[0].children.length>0" v-for="i in allPageProjectList" :key="i.id">
       <image-item :cover="j.cover" :title="j.title" :summary="j.summary" v-for="j in i.children"
                   :key="i.id"></image-item>
     </div>
