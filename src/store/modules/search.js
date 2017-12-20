@@ -85,7 +85,7 @@ const actions = {
         context.publishedAt = d[i]._source.publishedAt
         context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
         context.keywords = d[i]._source.keywords
-        context.keywords = d[i]._source.summary
+        context.highlight = d[i]._source.summary
         temp.push(context)
       }
       commit('setSearchContextData', temp)
