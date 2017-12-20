@@ -25,6 +25,7 @@ export function projectItem () {
   this.summary = ''
   this.highlight = ''
   this.cover = ''
+  this.id = ''
 }
 
 export function engineerItem () {

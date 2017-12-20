@@ -1,6 +1,6 @@
 <template>
   <div class="image-item">
-    <div class="img-container">
+    <div class="img-container" @click="redirectDetail">
       <img :src="cover">
     </div>
     <div class="content">
@@ -33,7 +33,7 @@
 </style>
 <script>
   export default {
-    props: ['cover', 'title', 'summary'],
+    props: ['idd', 'cover', 'title', 'summary', 'type'],
     mounted: function () {
 
     },
@@ -41,7 +41,17 @@
     data () {
       return {}
     },
-    methods: {},
+    methods: {
+      redirectDetail: function () {
+        switch (this.type) {
+          case '工程':
+            this.$router.push('/project/info/' + this.idd)
+            break
+          default:
+            break
+        }
+      }
+    },
     computed: {},
     filters: {}
 

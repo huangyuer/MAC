@@ -53,9 +53,13 @@
     },
     methods: {
       redirectDetail: function () {
-        if (this.type === '图书') {
-          console.log('/book/info/' + this.idd)
-          this.$router.push('/book/info/' + this.idd)
+        switch (this.type) {
+          case '图书':
+            console.log('/book/info/' + this.idd)
+            this.$router.push('/book/info/' + this.idd)
+            break
+          default:
+            break
         }
       }
     },

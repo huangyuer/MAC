@@ -362,6 +362,7 @@ const mutations = {
       b.chiefEditor = a[i]._source.chiefEditor
       b.isbn = a[i]._source.isbn
       b.name = a[i]._source.name
+      b.id = a[i]._id
       b.keywords = a[i]._source.keywords
       b.publishedAt = a[i]._source.publishedAt
       b.highlight = a[i]._source.summary
@@ -376,6 +377,8 @@ const mutations = {
       project.summary = b[i]._source.summary
       project.cover = b[i]._source.cover
       project.highlight = b[i].highlight.content[0]
+      project.id = b[i]._id
+      console.log(project.id)
       temp.push(project)
     }
     for (var i = 0; i < state.allPageProjectList.length; i++) {

@@ -15,7 +15,8 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item type="图书" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt" :content="i.highlight"
+      <image-text-item :idd="i.id" type="图书" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt"
+                       :content="i.highlight"
                        :cover="preFix+i.cover" :keywords="i.keywords" v-for="i in allPageBookList"
                        :key="i.id"></image-text-item>
     </div>
@@ -32,7 +33,7 @@
       </div>
     </div>
     <div class="row" v-show="allPageProjectList[0].children.length>0" v-for="i in allPageProjectList" :key="i.id">
-      <image-item :cover="j.cover" :title="j.title" :summary="j.summary" v-for="j in i.children"
+      <image-item :idd="j.id" type="工程" :cover="j.cover" :title="j.title" :summary="j.summary" v-for="j in i.children"
                   :key="i.id"></image-item>
     </div>
     <div class="subtitle" v-show="allPageEngineerList[0].children.length>0"
