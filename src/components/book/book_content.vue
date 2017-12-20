@@ -39,6 +39,48 @@
   height:100%;
   
 }
+.book_li b{display: inline;}
+
+.book_li h1{
+  font-size:24px;
+  font-family:"";
+  margin-bottom:1em;
+  margin-top:1em;
+  text-align:center;
+  font-weight:normal;
+color:#009264;
+  
+}/*一级标题*/
+/*二级标题*/
+.book_li h2{
+  font-size:22px;
+  font-family:"";
+  font-weight:normal;
+  margin-bottom:1em;
+  margin-top:1em;
+  text-align:center;
+  
+}/*二级标题*/
+/*三级标题*/
+.book_li h3{
+  font-size:18px;
+  font-family:"";
+  font-weight:normal;
+  margin-top:1em;
+  margin-bottom:1em;
+color:#009264;
+  
+}/*三级标题*/
+/*四级标题*/
+.book_li h4{
+  font-size:1em;
+  font-family:"";
+  font-weight:normal;
+  margin-top:1em;
+  margin-bottom:1em;
+  
+}/*四级标题*/
+ 
 
 /*书名页*/
 .tg-title{
@@ -541,7 +583,7 @@ margin-right:2em;
       bookChapterDetailReady: {
         handler: function (val, oldVal) {
           if(val){
-             
+
           } 
         } 
       },
