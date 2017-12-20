@@ -6,7 +6,7 @@
         <span>找到<span style="width: 30px;text-align: center;display: inline-block;">{{total}}</span>条结果</span>
       </div>
       <div class="row" v-for="i in searchMediaData" :key="i.id">
-        <image-item :cover="j.url" :title="j.title" :summary="j.description" v-for="j in i.children"
+        <image-item :type="typess" :idd="j.id" :cover="j.url" :title="j.title" :summary="j.description" v-for="j in i.children"
                     :key="i.id"></image-item>
       </div>
     </div>
@@ -44,6 +44,19 @@
       },
       searchMediaData: function () {
         return this.$store.state.searchMedia.searchMediaData
+      },
+      typess: function () {
+        let currentLevelOneCategory = this.$store.state.searchComponent.currentLevelOneCategory
+        switch (currentLevelOneCategory.nickName) {
+          case 'project':
+            return '工程'
+            break
+          case 'engineer':
+            return '工程师'
+            break
+          default:
+            break
+        }
       }
     },
     filters: {}
