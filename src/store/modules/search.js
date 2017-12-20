@@ -103,6 +103,7 @@ const actions = {
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
+        media.id = d[i]._id
         media.url = d[i]._source.cover
         media.description = d[i]._source.summary
         media.title = d[i]._source.title
@@ -123,9 +124,11 @@ const actions = {
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
+        media.id = d[i]._id
         media.url = d[i]._source.avagtar
         media.description = d[i]._source.summary
         media.title = d[i]._source.name
+        media.id = d[i]._id
         temp.push(media)
       }
       commit('setSearchMediaData', temp)
@@ -146,6 +149,7 @@ const actions = {
         media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
         media.description = d[i]._source.description
         media.title = d[i]._source.title
+        media.id = d[i]._id
         temp.push(media)
       }
       commit('setSearchMediaData', temp)

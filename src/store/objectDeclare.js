@@ -39,6 +39,7 @@ export function mediaItem () {
   this.url = ''
   this.description = ''
   this.title = ''
+  this.id = ''
 }
 
 export function contextItem () {
@@ -75,4 +76,5 @@ export function knowledgeItem () {
   this.cover = ''
   this.summary = ''
   this.createdAt = ''
+  this.id = ''
 }

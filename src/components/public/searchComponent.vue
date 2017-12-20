@@ -11,7 +11,7 @@
                 v-for="i,index in categoryList">{{i.name}}</span>
         </div>
         <div class="search-content">
-          <input v-model="searchContent" class="search-input" placeholder="请输入关键字">
+          <input @keydown.enter="clickSearch" v-model="searchContent" class="search-input" placeholder="请输入关键字">
           <div class="search-btn" @click="clickSearch">
             <span>搜索</span>
           </div>
@@ -35,13 +35,13 @@
 
   export default {
     mounted: function () {
- 
+
       //this.setActiveLevelOneCategory(0)
- 
+
       console.log(this.$route.name)
       if (this.$route.name === 'searchAll') {
         this.setActiveLevelOneCategory(0)
-      } 
+      }
     },
     data () {
       return {
@@ -131,6 +131,10 @@
         }
       },
       clickSearch: function () {
+        if (!this.currentLevelOneCategory) {
+          this.$store.commit('setActiveLevelOneCategory', 0)
+          this.$router.push('/search/result')
+        }
         switch (this.currentLevelOneCategory.nickName) {
           case 'all':
             var p = {
