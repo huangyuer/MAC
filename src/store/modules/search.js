@@ -85,7 +85,7 @@ const actions = {
         context.publishedAt = d[i]._source.publishedAt
         context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
         context.keywords = d[i]._source.keywords
-        context.keywords = d[i]._source.summary
+        context.highlight = d[i]._source.summary
         temp.push(context)
       }
       commit('setSearchContextData', temp)
@@ -362,6 +362,7 @@ const mutations = {
       b.chiefEditor = a[i]._source.chiefEditor
       b.isbn = a[i]._source.isbn
       b.name = a[i]._source.name
+      b.id = a[i]._id
       b.keywords = a[i]._source.keywords
       b.publishedAt = a[i]._source.publishedAt
       b.highlight = a[i]._source.summary
@@ -376,6 +377,8 @@ const mutations = {
       project.summary = b[i]._source.summary
       project.cover = b[i]._source.cover
       project.highlight = b[i].highlight.content[0]
+      project.id = b[i]._id
+      console.log(project.id)
       temp.push(project)
     }
     for (var i = 0; i < state.allPageProjectList.length; i++) {
@@ -385,6 +388,7 @@ const mutations = {
     var temp = []
     for (var i = 0; i < c.length; i++) {
       var engineer = new engineerItem()
+      engineer.id = c[i]._id
       engineer.name = c[i]._source.name
       engineer.avatar = c[i]._source.avagtar
       engineer.summary = c[i]._source.summary
@@ -423,6 +427,7 @@ const mutations = {
     state.allPageLiteratureList = []
     for (var i = 0; i < f.length; i++) {
       var literature = new literatureItem()
+      literature.id = f[i]._id
       literature.name = f[i]._source.name
       literature.cover = f[i]._source.cover
       literature.summary = f[i]._source.summary

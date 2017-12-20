@@ -25,9 +25,11 @@ export function projectItem () {
   this.summary = ''
   this.highlight = ''
   this.cover = ''
+  this.id = ''
 }
 
 export function engineerItem () {
+  this.id = ''
   this.name = ''
   this.avatar = ''
   this.summary = ''
@@ -51,6 +53,7 @@ export function contextItem () {
 }
 
 export function requirementItem () {
+  this.id = ''
   this.name = ''
   this.province = ''
   this.city = ''
@@ -60,6 +63,7 @@ export function requirementItem () {
 }
 
 export function literatureItem () {
+  this.id = ''
   this.name = ''
   this.cover = ''
   this.summary = ''

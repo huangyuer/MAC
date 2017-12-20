@@ -53,9 +53,15 @@
     },
     methods: {
       redirectDetail: function () {
-        if (this.type === '图书') {
-          console.log('/book/info/' + this.idd)
-          this.$router.push('/book/info/' + this.idd)
+        switch (this.type) {
+          case '图书':
+            console.log('/book/info/' + this.idd)
+            this.$router.push('/book/info/' + this.idd)
+            break
+          case '工程文献':
+            this.$router.push('/literature/info/' + this.idd)
+          default:
+            break
         }
       }
     },
