@@ -47,6 +47,8 @@
           case '工程':
             this.$router.push('/project/info/' + this.idd)
             break
+          case '工程师':
+            this.$router.push('/engineer/info/' + this.idd)
           default:
             break
         }
