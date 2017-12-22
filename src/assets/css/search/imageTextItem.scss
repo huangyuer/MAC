@@ -36,8 +36,9 @@
         }
       }
       .category-brother {
-        display: inline-block;vertical-align: middle;
-        width:85%;
+        display: inline-block;
+        vertical-align: middle;
+        width: 85%;
       }
       span {
         font-size: 12px;
@@ -58,10 +59,15 @@
       margin-top: 8px;
       color: #1E518A;
       font-size: 12px;
-      span {
+      & span {
         margin-right: 7px;
         display: inline-block;
         vertical-align: middle;
+      }
+      & > span:nth-child(2){
+        width:80%;
+        height:20px;
+        overflow-x: auto;
       }
     }
     .btn-container {

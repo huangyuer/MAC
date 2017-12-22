@@ -55,6 +55,8 @@
         span {
           display: inline-block;
           margin-left: 6px;
+          cursor: pointer;
+          user-select: none;
         }
       }
     }

@@ -242,8 +242,9 @@ const actions = {
   searchBookClcsDataList ({commit}, data) {
     let promise = api.searchBookClcsDataList(data)
     promise.then((response) => {
-      let d = response.data.hits
-      let total = response.data.total
+      let d = response.data.hits.hits
+      let total = response.data.hits.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -289,6 +290,7 @@ const actions = {
     promise.then((response) => {
       let d = response.data.hits
       let total = response.data.total
+      commit('setPaginatorTotal', total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
