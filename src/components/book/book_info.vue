@@ -28,7 +28,7 @@
           <div class="clear"></div>
           <div class="book_bt"><span>内容介绍</span></div>
           <div class="book_info">
-            <p v-if="bookDetail.summary">{{bookDetail.summary}}</p>
+            <p v-if="bookDetail.summary" v-html="bookDetail.summary"></p>
 
             <p v-else>无</p>
 
