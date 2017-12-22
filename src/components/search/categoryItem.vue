@@ -155,11 +155,11 @@
             searchContent: this.searchContent
           }
           console.log(p.parentIndex)
-          if (p.parentIndex === 0) {
+          if (p.parentIndex === 0) {//中图分类
             this.$store.dispatch('searchBookClcsDataList', pp)
-          } else if (p.parentIndex === 1) {
+          } else if (p.parentIndex === 1) {//字库分类
             this.$store.dispatch('searchBookSublibsDataList', pp)
-          } else if (p.parentIndex === 2) {
+          } else if (p.parentIndex === 2) {//内容类别分类
             var pps = {
               rows: 10,
               page: 1,
