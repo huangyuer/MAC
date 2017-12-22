@@ -130,6 +130,18 @@ export default {
     let apiUrl = `${config.API_HOST}/search/knowledge/category`
     let promise = axios.post(apiUrl, data)
     return promise
+  },
+  //工程下点击"年代"类别
+  searchProjectEraChild (data) {
+    let apiUrl = `${config.API_HOST}/search/project/era/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //工程下点击"地区"类别
+  searchProjectAreaChild (data) {
+    let apiUrl = `${config.API_HOST}/search/project/area/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
   }
 
 }

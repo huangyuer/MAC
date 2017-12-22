@@ -172,6 +172,25 @@
             }
           }
         }
+        if (this.obj.type === 'projectSecond') {
+          if (p.parentIndex === 0) {
+            var ppt = {
+              rows: 9,
+              page: 1,
+              searchContent: this.searchContent,
+              content: obj.name
+            }
+            this.$store.dispatch('searchProjectEraChild', ppt)
+          } else if (p.parentIndex === 1) {
+            var ppt = {
+              rows: 9,
+              page: 1,
+              searchContent: this.searchContent,
+              content: obj.name
+            }
+            this.$store.dispatch('searchProjectAreaChild', ppt)
+          }
+        }
       }
     },
     computed: {
