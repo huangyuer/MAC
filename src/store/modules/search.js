@@ -354,6 +354,45 @@ const actions = {
     }, (response) => {
 
     })
+  },
+  searchProjectEraChild ({commit}, data) {
+    let promise = api.searchProjectEraChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      let total = response.data.total
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var media = new mediaItem()
+        media.id = d[i]._id
+        media.url = d[i]._source.cover
+        media.title = d[i]._source.title
+        media.description = d[i]._source.summary
+        temp.push(media)
+      }
+      commit('setSearchMediaData', temp)
+      commit('setPaginatorTotal', total)
+    }, (response) => {
+
+    })
+  },
+  searchProjectAreaChild ({commit}, data) {
+    let promise = api.searchProjectAreaChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      let total = response.data.total
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var media = new mediaItem()
+        media.id = d[i]._id
+        media.url = d[i]._source.cover
+        media.title = d[i]._source.title
+        media.description = d[i]._source.summary
+        temp.push(media)
+      }
+      commit('setSearchMediaData', temp)
+      commit('setPaginatorTotal', total)
+    }, (response) => {
+    })
   }
 }
 
