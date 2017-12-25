@@ -585,7 +585,53 @@ const actions = {
     }, (response) => {
 
     })
-  }
+  },
+  searchExpertChild ({commit}, data) {
+    let promise = api.searchExpertChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      var temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.id = d[i]._id
+        // context.chiefEditor = d[i]._source.chiefEditor
+        context.type = '专家'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.publishedAt
+        context.cover = d[i]._source.avatar
+        context.keywords = d[i]._source.categories
+        context.highlight = d[i]._source.intro
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
+      commit('setPaginatorTotal', response.data.total)
+    }, (response) => {
+
+    })
+  },
+  searchPatentChild ({commit}, data) {
+    let promise = api.searchPatentChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      var temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.id = d[i]._id
+        // context.chiefEditor = d[i]._source.chiefEditor
+        context.type = '专利'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.publishedAt
+        context.cover = ''
+        context.keywords = d[i]._source.categories
+        context.highlight = d[i]._source.content
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
+      commit('setPaginatorTotal', response.data.total)
+    }, (response) => {
+
+    })
+  },
 
 }
 

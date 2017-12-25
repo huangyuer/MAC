@@ -196,5 +196,17 @@ export default {
     let apiUrl = `${config.API_HOST}/search/literature/category/child`
     let promise = axios.post(apiUrl, data)
     return promise
+  },
+  //搜索专家
+  searchExpertChild (data) {
+    let apiUrl = `${config.API_HOST}/search/expert/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //搜索专利
+  searchPatentChild (data) {
+    let apiUrl = `${config.API_HOST}/search/patent/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
   }
 }

@@ -260,6 +260,19 @@
             this.$store.dispatch('searchLiteratureCategoryChild', ppt)
           }
         }
+        if (this.obj.type === 'knowledgeCategory') {
+          var ppt = {
+            searchContent: this.searchContent,
+            content: obj.name,
+            rows: 10,
+            page: 1
+          }
+          if (p.childIndex === 0) {
+            this.$store.dispatch('searchExpertChild', ppt)
+          } else if (p.childIndex === 1) {
+            this.$store.dispatch('searchPatentChild', ppt)
+          }
+        }
       }
     },
     computed: {
