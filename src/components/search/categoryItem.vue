@@ -191,6 +191,49 @@
             this.$store.dispatch('searchProjectAreaChild', ppt)
           }
         }
+        if (this.obj.type === 'engineerCategory') {
+          if (p.parentIndex === 0) {
+            var ppt = {
+              rows: 9,
+              page: 1,
+              searchContent: this.searchContent,
+              content: obj.name
+            }
+            this.$store.dispatch('searchEngineerEraChild', ppt)
+          } else if (p.parentIndex === 1) {
+            var ppt = {
+              rows: 9,
+              page: 1,
+              searchContent: this.searchContent,
+              content: obj.name
+            }
+            this.$store.dispatch('searchEngineerTradeChild', ppt)
+          }
+        }
+        if (this.obj.type === 'mediaCateogry') {
+          if (p.childIndex === 0) {
+            var ppt = {
+              searchContent: this.searchContent,
+              rows: 9,
+              page: 1
+            }
+            this.$store.dispatch('searchBookchart', ppt)
+          } else if (p.childIndex === 1) {
+            var ppt = {
+              searchContent: this.searchContent,
+              rows: 9,
+              page: 1
+            }
+            this.$store.dispatch('searchBookformula', ppt)
+          } else if (p.childIndex === 2) {
+            var ppt = {
+              searchContent: this.searchContent,
+              rows: 9,
+              page: 1
+            }
+            this.$store.dispatch('searchBookimage', ppt)
+          }
+        }
       }
     },
     computed: {

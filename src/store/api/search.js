@@ -142,6 +142,36 @@ export default {
     let apiUrl = `${config.API_HOST}/search/project/area/child`
     let promise = axios.post(apiUrl, data)
     return promise
-  }
+  },
+  //工程师下点击"年代"
+  searchEngineerEraChild (data) {
+    let apiUrl = `${config.API_HOST}/search/engineer/era/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //工程师下点击"行业"
+  searchEngineerTradeChild (data) {
+    let apiUrl = `${config.API_HOST}/search/engineer/trade/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //搜索图表
+  searchBookchart (data) {
+    let apiUrl = `${config.API_HOST}/search/bookchart`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //搜索图片
+  searchBookimage (data) {
+    let apiUrl = `${config.API_HOST}/search/bookimage`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //搜索公式
+  searchBookformula (data) {
+    let apiUrl = `${config.API_HOST}/search/bookformula`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
 
 }
