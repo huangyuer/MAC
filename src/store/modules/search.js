@@ -393,6 +393,106 @@ const actions = {
       commit('setPaginatorTotal', total)
     }, (response) => {
     })
+  },
+  searchEngineerEraChild ({commit}, data) {
+    let promise = api.searchEngineerEraChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      let total = response.data.total
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var media = new mediaItem()
+        media.id = d[i]._id
+        media.url = d[i]._source.avagtar
+        media.title = d[i]._source.name
+        media.description = d[i]._source.summary
+        temp.push(media)
+      }
+      commit('setSearchMediaData', temp)
+      commit('setPaginatorTotal', total)
+    }, (response) => {
+
+    })
+  },
+  searchEngineerTradeChild ({commit}, data) {
+    let promise = api.searchEngineerTradeChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      let total = response.data.total
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var media = new mediaItem()
+        media.id = d[i]._id
+        media.url = d[i]._source.avagtar
+        media.title = d[i]._source.name
+        media.description = d[i]._source.summary
+        temp.push(media)
+      }
+      commit('setSearchMediaData', temp)
+      commit('setPaginatorTotal', total)
+    }, (response) => {
+
+    })
+  },
+  searchBookchart ({commit}, data) {
+    let promise = api.searchBookchart(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      let total = response.data.total
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var media = new mediaItem()
+        media.id = d[i]._id
+        media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
+        media.title = d[i]._source.title
+        media.description = d[i]._source.description
+        temp.push(media)
+      }
+      commit('setSearchMediaData', temp)
+      commit('setPaginatorTotal', total)
+    }, (response) => {
+
+    })
+  },
+  searchBookformula ({commit}, data) {
+    let promise = api.searchBookformula(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      let total = response.data.total
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var media = new mediaItem()
+        media.id = d[i]._id
+        media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
+        media.title = d[i]._source.title
+        media.description = d[i]._source.description
+        temp.push(media)
+      }
+      commit('setSearchMediaData', temp)
+      commit('setPaginatorTotal', total)
+    }, (response) => {
+
+    })
+  },
+  searchBookimage ({commit}, data) {
+    let promise = api.searchBookimage(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      let total = response.data.total
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var media = new mediaItem()
+        media.id = d[i]._id
+        media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
+        media.title = d[i]._source.title
+        media.description = d[i]._source.description
+        temp.push(media)
+      }
+      commit('setSearchMediaData', temp)
+      commit('setPaginatorTotal', total)
+    }, (response) => {
+
+    })
   }
 }
 
