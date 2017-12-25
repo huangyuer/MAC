@@ -234,6 +234,32 @@
             this.$store.dispatch('searchBookimage', ppt)
           }
         }
+        if (this.obj.type === 'requirementCategory') {
+          var ppt = {
+            searchContent: this.searchContent,
+            content: obj.name,
+            rows: 10,
+            page: 1
+          }
+          if (p.parentIndex === 0) {
+            this.$store.dispatch('searchRequirementProvinceChild', ppt)
+          } else if (p.parentIndex === 1) {
+            this.$store.dispatch('searchRequirementWayChild', ppt)
+          }
+        }
+        if (this.obj.type === 'literatureCategory') {
+          var ppt = {
+            searchContent: this.searchContent,
+            content: obj.name,
+            rows: 10,
+            page: 1
+          }
+          if (p.parentIndex === 0) {
+            this.$store.dispatch('searchLiteratureEraChild', ppt)
+          } else if (p.parentIndex === 1) {
+            this.$store.dispatch('searchLiteratureCategoryChild', ppt)
+          }
+        }
       }
     },
     computed: {

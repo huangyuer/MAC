@@ -493,7 +493,100 @@ const actions = {
     }, (response) => {
 
     })
+  },
+  searchRequirementProvinceChild ({commit}, data) {
+    let promise = api.searchRequirementProvinceChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      var temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.id = d[i]._id
+        // context.chiefEditor = d[i]._source.chiefEditor
+        context.type = '企业需求'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.publishedAt
+        context.cover = ''
+        context.keywords = d[i]._source.categories
+        context.highlight = d[i]._source.content
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
+      commit('setPaginatorTotal', response.data.total)
+    }, (response) => {
+
+    })
+  },
+  searchRequirementWayChild ({commit}, data) {
+    let promise = api.searchRequirementWayChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      var temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.id = d[i]._id
+        // context.chiefEditor = d[i]._source.chiefEditor
+        context.type = '企业需求'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.publishedAt
+        context.cover = ''
+        context.keywords = d[i]._source.categories
+        context.highlight = d[i]._source.content
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
+      commit('setPaginatorTotal', response.data.total)
+    }, (response) => {
+
+    })
+  },
+  searchLiteratureEraChild ({commit}, data) {
+    let promise = api.searchLiteratureEraChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      var temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.id = d[i]._id
+        // context.chiefEditor = d[i]._source.chiefEditor
+        context.type = '工程文献'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.publishedAt
+        context.cover = ''
+        context.keywords = d[i]._source.categories
+        context.highlight = d[i]._source.content
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
+      commit('setPaginatorTotal', response.data.total)
+    }, (response) => {
+
+    })
+  },
+  searchLiteratureCategoryChild ({commit}, data) {
+    let promise = api.searchLiteratureCategoryChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      var temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.id = d[i]._id
+        // context.chiefEditor = d[i]._source.chiefEditor
+        context.type = '工程文献'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.publishedAt
+        context.cover = ''
+        context.keywords = d[i]._source.categories
+        context.highlight = d[i]._source.content
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
+      commit('setPaginatorTotal', response.data.total)
+    }, (response) => {
+
+    })
   }
+
 }
 
 const mutations = {

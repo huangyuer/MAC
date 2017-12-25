@@ -173,5 +173,28 @@ export default {
     let promise = axios.post(apiUrl, data)
     return promise
   },
-
+  //点击企业需求，"省份"
+  searchRequirementProvinceChild (data) {
+    let apiUrl = `${config.API_HOST}/search/requirement/province/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击企业需求，"途径"
+  searchRequirementWayChild (data) {
+    let apiUrl = `${config.API_HOST}/search/requirement/way/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击工程文献，"年代
+  searchLiteratureEraChild (data) {
+    let apiUrl = `${config.API_HOST}/search/literature/era/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //点击工程文献，"类别"
+  searchLiteratureCategoryChild (data) {
+    let apiUrl = `${config.API_HOST}/search/literature/category/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  }
 }
