@@ -11,13 +11,15 @@ const state = {
       name: '图书',
       active: false,
       nickName: 'book',
-      type: 'text'
+      type: 'text',
+      children:['ISBN','作者','出版社']
     },
     {
       name: '工程',
       active: false,
       nickName: 'project',
       type: 'image',
+      children:['']
     },
     {
       name: '工程师',
