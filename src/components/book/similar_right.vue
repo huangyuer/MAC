@@ -4,11 +4,13 @@
       <span>相似图书</span>
       <ul>
         <li>
-          <p>图书名</p>
+          无
+          <!-- <p>图书名</p>
           <p><span>作者名</span>-<span>出版日期</span></p>
-          <p>定价：</p>
+          <p>定价：</p> -->
         </li>
       </ul>
+
     </div>
 
     <div class="clear"></div>
@@ -17,7 +19,7 @@
       <span>相似主题</span>
       <ul>
         <li>
-          2
+          无 
         </li>
       </ul>
     </div>
@@ -28,7 +30,7 @@
       <span>相似作家</span>
       <ul>
         <li>
-          3
+          无 
         </li>
       </ul>
     </div>
