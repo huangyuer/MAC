@@ -15,7 +15,7 @@ const state = {
     },
     {
       name: '工程',
-      acive: false,
+      active: false,
       nickName: 'project',
       type: 'image',
     },
