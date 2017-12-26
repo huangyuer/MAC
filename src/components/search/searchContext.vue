@@ -38,14 +38,27 @@
       pageClick: function (p) {
         console.log(p)
         console.log(this.currentLevelOneCategory.nickName)
+        var ppt = {
+          searchContent: this.searchContent,
+          rows: 10,
+          page: p.clickPage
+        }
         switch (this.currentLevelOneCategory.nickName) {
           case 'book':
+            this.$store.dispatch('searchBook', ppt)
+            this.$store.dispatch('searchBookLeftPanel', this.searchContent)
             break
           case 'anli':
+            this.$store.dispatch('searchLiteriture', ppt)
+            this.$store.dispatch('searchLiteratureLeftPanel', ppt)
             break
           case 'requirement':
+            this.$store.dispatch('searchRequirement', ppt)
+            this.$store.dispatch('searchRequirementLeftPanel', ppt)
             break
           case 'knowledge':
+            this.$store.dispatch('searchExpertPatent', p7)
+            this.$store.dispatch('searchKnowledgeLeftPanel', p7)
             break
           default:
             break

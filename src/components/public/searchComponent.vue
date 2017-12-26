@@ -17,10 +17,10 @@
           </div>
         </div>
         <!--<div class="level-two-category">-->
-          <!--<div class="item" v-for="i,index in 5">-->
-            <!--<input type="checkbox">-->
-            <!--<label>分类{{index}}</label>-->
-          <!--</div>-->
+        <!--<div class="item" v-for="i,index in 5">-->
+        <!--<input type="checkbox">-->
+        <!--<label>分类{{index}}</label>-->
+        <!--</div>-->
         <!--</div>-->
       </div>
     </div>
