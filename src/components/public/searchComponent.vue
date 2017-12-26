@@ -36,12 +36,6 @@
   export default {
     mounted: function () {
 
-      //this.setActiveLevelOneCategory(0)
-
-      console.log(this.$route.name)
-      if (this.$route.name === 'searchAll') {
-        this.setActiveLevelOneCategory(0)
-      }
     },
     data () {
       return {

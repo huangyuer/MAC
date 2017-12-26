@@ -23,6 +23,7 @@
 
   export default {
     mounted: function () {
+      console.log('searchContext mounted...')
     },
     watch: {},
     components: {
@@ -48,7 +49,18 @@
       searchContextData: function () {
         return this.$store.state.searchContext.searchContextData
       },
+      searchContent: function () {
+        return this.$store.state.searchComponent.searchContent
+      },
+      currentLevelOneCategory: function () {
+        let d = this.$store.state.searchComponent.levelOneCategoryList
+        for (var i = 0; i < d.length; i++) {
+          if (d[i].active === true) {
+            return d[i]
+          }
+        }
+      }
     },
-    filters: {}
+    filters: {},
   }
 </script>

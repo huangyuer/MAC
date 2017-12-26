@@ -17,7 +17,7 @@ import {
   BookList,
   BookInfo,
   BookContent,
- 
+
   Selected,
   EngineerList,
   EngineerInfo,
@@ -25,7 +25,7 @@ import {
   ProjectInfo,
   LiteratureList,
   LiteratureInfo,
- 
+
   Login,
   Register,
   ResetPassword,
@@ -98,25 +98,25 @@ export default new Router({
         },
       ]
     },
- 
+
     {
       path: '/about_us',
       component: resolve => require(['../components/about_us.vue'], resolve)
     },
     {
       path: '/auth/login',
- 
-      components: { 
-        'app-body': Login, 
-      }, 
+
+      components: {
+        'app-body': Login,
+      },
     },
     {
       path: '/auth/register',
-      components: { 
-        'app-body': Register, 
-      }, 
-    }, 
-    
+      components: {
+        'app-body': Register,
+      },
+    },
+
     {
       path: '/book/list',
       components: {
@@ -138,25 +138,25 @@ export default new Router({
       components: {
         'app-header': AppHeader,
         'app-body': BookContent,
-        'app-footer': AppFooter 
-      }, 
-    },  
+        'app-footer': AppFooter
+      },
+    },
     {
       path: '/user/info',
       components: {
         'app-header': AppHeader,
         'app-body': UserInfo,
         'app-footer': AppFooter
-      }, 
-    }, 
+      },
+    },
     {
       path: '/user/favorites',
       components: {
         'app-header': AppHeader,
         'app-body': UserFavorites,
         'app-footer': AppFooter
-      }, 
-    },  
+      },
+    },
     {
       path: '/selected',
       components: {
@@ -229,22 +229,22 @@ export default new Router({
         'app-footer': AppFooter
       },
     },
-    { 
+    {
       path: '/user/messages',
       components: {
         'app-header': AppHeader,
         'app-body': UserMessages,
-        'app-footer': AppFooter 
-      }, 
-    },  
+        'app-footer': AppFooter
+      },
+    },
     {
       path: '/user/resources',
       components: {
         'app-header': AppHeader,
         'app-body': UserResources,
-        'app-footer': AppFooter 
-      },  
+        'app-footer': AppFooter
+      },
     },
- 
+
   ]
 })
