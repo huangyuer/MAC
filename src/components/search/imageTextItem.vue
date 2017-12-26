@@ -22,13 +22,13 @@
         <span v-else>无</span>
       </div>
       <div class="btn-container">
-        <div class="btn">在线阅读</div>
+        <div class="btn" v-show="type==='图书'">在线阅读</div>
         <div class="btn" v-show="type=='图书'">加入收藏</div>
       </div>
     </div>
     <div class="img-container">
-      <div class="img-real-container">
-        <img v-show="type=='图书'" :src="cover">
+      <div class="img-real-container" v-show="type=='图书'||type=='专家'">
+        <img :src="cover">
       </div>
     </div>
   </div>
