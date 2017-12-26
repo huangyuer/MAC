@@ -37,12 +37,26 @@
     methods: {
       pageClick: function (p) {
         console.log(this.currentLevelOneCategory.nickName)
+        var ppt = {
+          rows: 9,
+          page: p.clickPage,
+          searchContent: this.searchContent
+        }
         switch (this.currentLevelOneCategory.nickName) {
           case 'project':
+            this.$store.commit('setPaginatorRows', 9)
+            this.$store.dispatch('searchProject', ppt)
+            this.$store.dispatch('searchProjectLeftPanel', ppt)
             break
           case 'engineer':
+            this.$store.commit('setPaginatorRows', 9)
+            this.$store.dispatch('searchEngineer', ppt)
+            this.$store.dispatch('searchEngineerLeftPanel', ppt)
             break
           case 'pic':
+            this.$store.commit('setPaginatorRows', 9)
+            this.$store.dispatch('searchMedia', ppt)
+            this.$store.dispatch('searchMediaLeftPanel', ppt)
             break
           default:
             break
@@ -71,6 +85,9 @@
       },
       categoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
+      },
+      searchContent: function () {
+        return this.$store.state.searchComponent.searchContent
       },
       currentLevelOneCategory: function () {
         return this.$store.state.searchComponent.currentLevelOneCategory

@@ -8,6 +8,9 @@ const actions = {}
 const mutations = {
   setPaginatorTotal (state, data) {
     state.total = data
+  },
+  setPaginatorRows (state, data) {
+    state.rows = data
   }
 }
 
