@@ -11,7 +11,7 @@
                     :key="i.id"></image-item>
       </div>
     </div>
-    <paginator @click="pageClick" :total="total"></paginator>
+    <paginator @pageClick="pageClick" :total="total"></paginator>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -36,7 +36,17 @@
     },
     methods: {
       pageClick: function (p) {
-
+        console.log(this.currentLevelOneCategory.nickName)
+        switch (this.currentLevelOneCategory.nickName) {
+          case 'project':
+            break
+          case 'engineer':
+            break
+          case 'pic':
+            break
+          default:
+            break
+        }
       }
     },
     computed: {
@@ -58,6 +68,12 @@
           default:
             break
         }
+      },
+      categoryList: function () {
+        return this.$store.state.searchComponent.levelOneCategoryList
+      },
+      currentLevelOneCategory: function () {
+        return this.$store.state.searchComponent.currentLevelOneCategory
       }
     },
     filters: {},

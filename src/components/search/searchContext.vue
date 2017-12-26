@@ -10,7 +10,7 @@
                        :keywords="i.keywords" v-for="i in searchContextData" :content="i.highlight"
                        :key="i.id"></image-text-item>
     </div>
-    <patinator @click="pageClick"></patinator>
+    <patinator @pageClick="pageClick"></patinator>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -36,7 +36,20 @@
     },
     methods: {
       pageClick: function (p) {
-
+        console.log(p)
+        console.log(this.currentLevelOneCategory.nickName)
+        switch (this.currentLevelOneCategory.nickName) {
+          case 'book':
+            break
+          case 'anli':
+            break
+          case 'requirement':
+            break
+          case 'knowledge':
+            break
+          default:
+            break
+        }
       }
     },
     computed: {

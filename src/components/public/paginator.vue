@@ -46,7 +46,7 @@
         this.$emit('pageClick', p)
         let lastPage = this.lastPage
         let firstPage = this.firstPage
-        console.log('currentPage: ' + name + ', firstPage:  ' + firstPage.name + ',  lastPage: ' + lastPage.name)
+//        console.log('currentPage: ' + name + ', firstPage:  ' + firstPage.name + ',  lastPage: ' + lastPage.name)
         // 代表是最后一页
         if (name === lastPage.name) {
           if (this.displayPageList.length > 4) {
@@ -70,7 +70,7 @@
               this.displayPageList.push(t)
             }
           } else {
-            console.log('bingo...')
+//            console.log('bingo...')
             this.setActivePage(this.lastPage.name)
           }
         }
