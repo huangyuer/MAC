@@ -10,7 +10,7 @@
                        :keywords="i.keywords" v-for="i in searchContextData" :content="i.highlight"
                        :key="i.id"></image-text-item>
     </div>
-    <patinator @click="pageClick"></patinator>
+    <patinator @pageClick="pageClick"></patinator>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -23,6 +23,7 @@
 
   export default {
     mounted: function () {
+      console.log('searchContext mounted...')
     },
     watch: {},
     components: {
@@ -35,7 +36,20 @@
     },
     methods: {
       pageClick: function (p) {
-
+        console.log(p)
+        console.log(this.currentLevelOneCategory.nickName)
+        switch (this.currentLevelOneCategory.nickName) {
+          case 'book':
+            break
+          case 'anli':
+            break
+          case 'requirement':
+            break
+          case 'knowledge':
+            break
+          default:
+            break
+        }
       }
     },
     computed: {
@@ -48,7 +62,18 @@
       searchContextData: function () {
         return this.$store.state.searchContext.searchContextData
       },
+      searchContent: function () {
+        return this.$store.state.searchComponent.searchContent
+      },
+      currentLevelOneCategory: function () {
+        let d = this.$store.state.searchComponent.levelOneCategoryList
+        for (var i = 0; i < d.length; i++) {
+          if (d[i].active === true) {
+            return d[i]
+          }
+        }
+      }
     },
-    filters: {}
+    filters: {},
   }
 </script>

@@ -16,12 +16,12 @@
             <span>搜索</span>
           </div>
         </div>
-        <div class="level-two-category">
-          <div class="item" v-for="i,index in 5">
-            <input type="checkbox">
-            <label>分类{{index}}</label>
-          </div>
-        </div>
+        <!--<div class="level-two-category">-->
+          <!--<div class="item" v-for="i,index in 5">-->
+            <!--<input type="checkbox">-->
+            <!--<label>分类{{index}}</label>-->
+          <!--</div>-->
+        <!--</div>-->
       </div>
     </div>
   </div>
@@ -36,12 +36,6 @@
   export default {
     mounted: function () {
 
-      //this.setActiveLevelOneCategory(0)
-
-      console.log(this.$route.name)
-      if (this.$route.name === 'searchAll') {
-        this.setActiveLevelOneCategory(0)
-      }
     },
     data () {
       return {

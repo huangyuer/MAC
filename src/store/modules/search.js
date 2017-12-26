@@ -662,7 +662,6 @@ const mutations = {
       project.cover = b[i]._source.cover
       project.highlight = b[i].highlight.content[0]
       project.id = b[i]._id
-      console.log(project.id)
       temp.push(project)
     }
     for (var i = 0; i < state.allPageProjectList.length; i++) {
