@@ -16,12 +16,12 @@
             <span>搜索</span>
           </div>
         </div>
-        <!--<div class="level-two-category">-->
-        <!--<div class="item" v-for="i,index in 5">-->
-        <!--<input type="checkbox">-->
-        <!--<label>分类{{index}}</label>-->
-        <!--</div>-->
-        <!--</div>-->
+        <div class="level-two-category">
+          <div class="item" v-for="i,index in currentLevelOneCategory.children">
+            <input type="checkbox" @click="setChildStatus(index,currentLevelOneCategory.name)">
+            <label>{{i.name}}</label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -137,10 +137,18 @@
             this.$store.dispatch('searchAll', p)
             break
           case 'book':
+            var pp = this.levelOneCategoryList[1].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             var p = {
               searchContent: this.searchContent ? this.searchContent : this.searchContent_,
               rows: 10,
-              page: 1
+              page: 1,
+              keywords: keywords
             }
             this.$store.dispatch('searchBook', p)
             this.$store.dispatch('searchBookLeftPanel', this.searchContent)
@@ -189,6 +197,13 @@
           default:
             break
         }
+      },
+      setChildStatus: function (a, b) {
+        let p = {
+          name: b,
+          index: a
+        }
+        this.$store.commit('setLevelOneCategoryChildStatus', p)
       }
     },
     computed: {
@@ -204,9 +219,12 @@
         }
 
       },
+      levelOneCategoryList: function () {
+        return this.$store.state.searchComponent.levelOneCategoryList
+      },
       currentLevelOneCategory: function () {
         return this.$store.state.searchComponent.currentLevelOneCategory
-      }
+      },
     },
     watch: {
       searchContent_: function (val) {
