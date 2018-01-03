@@ -51,13 +51,21 @@
             this.$router.push('/search/result')
             break
           case 'book':
+            var pp = this.levelOneCategoryList[1].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p1 = {
               rows: 10,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords
             }
             this.$store.dispatch('searchBook', p1)
-            this.$store.dispatch('searchBookLeftPanel', this.searchContent)
+            this.$store.dispatch('searchBookLeftPanel', p1)
             this.$router.push('/search/result/context')
             break
           case 'project':
@@ -151,7 +159,7 @@
               keywords: keywords
             }
             this.$store.dispatch('searchBook', p)
-            this.$store.dispatch('searchBookLeftPanel', this.searchContent)
+            this.$store.dispatch('searchBookLeftPanel', p)
             this.$router.push('/search/result/context')
             break
           case 'project':

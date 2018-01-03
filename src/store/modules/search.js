@@ -222,7 +222,8 @@ const actions = {
   },
   searchBookLeftPanel ({commit}, data) {
     let p = {
-      searchContent: data
+      searchContent: data.searchContent,
+      keywords: data.keywords
     }
     let promise1 = api.searchBookClcs(p)
     let promise2 = api.searchBookSublibs(p)
