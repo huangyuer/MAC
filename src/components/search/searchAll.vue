@@ -48,11 +48,11 @@
         </div>
       </div>
     </div>
-    <div class="row" v-for="i in allPageEngineerList" :key="i.id">
+    <div class="row" v-for="i in allPageEngineerList" :key="i.id" v-if="allPageEngineerList[0].children.length>0">
       <image-item :idd="j.id" type="工程师" :cover="j.avatar" :title="j.name" :summary="j.summary" v-for="j in i.children"
                   :key="i.id"></image-item>
     </div>
-    <div class="subtitle" v-show="allPageMediaList[0].children.length>0"
+    <div id="mediaAll" class="subtitle" v-show="allPageMediaList[0].children.length>0"
          :class="{'m-top-21':allPageMediaList[0].children.length>0}">
       <div class="inner">
         <span>相关多媒体</span>
@@ -64,7 +64,7 @@
         </div>
       </div>
     </div>
-    <div class="row" v-for="i  in allPageMediaList" :key="i.id">
+    <div class="row" v-for="i  in allPageMediaList" :key="i.id" v-if="allPageMediaList[0].children.length>0">
       <image-item :cover="preFix+j.url" :title="j.title" :summary="j.description" v-for="j in i.children"
                   :key="j.id"></image-item>
     </div>
