@@ -8,11 +8,13 @@ import {
   contextItem,
   requirementItem,
   literatureItem,
+  bookChapterItem,
 } from '../objectDeclare'
 
 const state = {
   serverPic: 'http://118.178.238.202:9988/',
   allPageBookList: [],//搜索'全部'的时候图书的列表
+  allChapterList: [],//搜索'全部'的时候图书章节的列表
   allPageProjectList: [
     {
       children: []
@@ -666,6 +668,19 @@ const mutations = {
       b.highlight = a[i]._source.summary
       b.cover = a[i]._source.cover
       state.allPageBookList.push(b)
+    }
+    let tts = data.bookChapterData
+    for (var i = 0; i < tts.length; i++) {
+      var chapter = new bookChapterItem()
+      chapter.title = tts[i]._source.title
+      chapter.id = tts[i]._id
+      let dd_ = tts[i].highlight.content
+      var sst = ''
+      for (var i = 0; i < dd_.length; i++) {
+        sst += dd_[i]
+      }
+      chapter.content = sst
+      state.allChapterList.push(chapter)
     }
     let b = data.projectData
     var temp = []
