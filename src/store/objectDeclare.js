@@ -20,6 +20,13 @@ export function bookItem () {
   this.highlight = ''
 }
 
+export function bookChapterItem () {
+  this.id = ''
+  this.title = ''
+  this.content = ''
+  this.createdAt = ''
+}
+
 export function projectItem () {
   this.title = ''
   this.summary = ''

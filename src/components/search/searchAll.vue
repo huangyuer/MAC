@@ -20,6 +20,28 @@
                        :cover="preFix+i.cover" :keywords="i.keywords" v-for="i in allPageBookList"
                        :key="i.id"></image-text-item>
     </div>
+
+
+    <div class="subtitle" v-show="allChapterList.length>0" :class="{'m-top-21':allChapterList.length>0}">
+      <div class="inner">
+        <span>相关章节</span>
+        <div class="right">
+          <span @click="redirectSeeAll('chapter')">查看全部</span>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-jiantou-left"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="inners">
+      <image-text-item :idd="i.id" type="章节" :author="i.chiefEditor" :name="i.title" :year="i.publishedAt"
+                       :content="i.content"
+                       :cover="preFix+i.cover" :keywords="i.keywords" v-for="i in allChapterList"
+                       :key="i.id"></image-text-item>
+    </div>
+
+
+
     <div class="subtitle" v-show="allPageProjectList[0].children.length>0"
          :class="{'m-top-21':allPageProjectList[0].children.length>0}">
       <div class="inner">
@@ -231,6 +253,9 @@
       },
       allPageProjectList: function () {
         return this.$store.state.search.allPageProjectList
+      },
+      allChapterList: function() {
+        return this.$store.state.search.allChapterList
       },
       allPageEngineerList: function () {
         return this.$store.state.search.allPageEngineerList
