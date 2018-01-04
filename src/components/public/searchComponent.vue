@@ -210,7 +210,7 @@
             }
             this.$store.dispatch('searchProject', p)
             this.$store.dispatch('searchProjectLeftPanel', p)
-            brfeak
+            break
           case 'engineer':
             var pp = this.levelOneCategoryList[3].children
             var keywords = []
