@@ -235,6 +235,8 @@
               page: 1
             }
             this.$store.dispatch('searchMedia', p)
+            this.$router.push('/search/result/media')
+            this.$store.dispatch('searchMediaLeftPanel', p)
             break
           case 'requirement':
             var pp = this.levelOneCategoryList[5].children
