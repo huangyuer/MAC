@@ -55,18 +55,22 @@ const state = {
         {
           name: '标题',
           active: false,
+          keyword: 'title',
         },
         {
           name: '简介',
           active: false,
+          keyword: 'summary',
         },
         {
           name: '内容',
           active: false,
+          keyword: 'content',
         },
         {
           name: '分类',
           active: false,
+          keyword: 'categories'
         }
       ]
     },
@@ -79,23 +83,33 @@ const state = {
         {
           name: '姓名',
           active: false,
+          keyword: 'name',
         },
         {
           name: '学校',
           active: false,
+          keyword: 'education',
         },
         {
           name: '简介',
           active: false,
+          keyword: 'summary',
         },
         {
           name: '内容',
           active: false,
+          keyword: 'content',
         },
         {
           name: '行业',
           active: false,
-        }
+          keyword: 'trades'
+        },
+        {
+          name: '年代',
+          active: false,
+          keyword: 'era'
+        },
       ]
     },
     {
@@ -113,19 +127,23 @@ const state = {
       children: [
         {
           name: '名称',
-          active: false
+          active: false,
+          keyword: 'name',
         },
         {
           name: '内容',
           active: false,
+          keyword: 'content',
         },
         {
           name: '途径',
           active: false,
+          keyword: 'way',
         },
         {
           name: '类别',
           active: false,
+          keyword: 'categories',
         }
       ]
     },
@@ -139,18 +157,23 @@ const state = {
         {
           name: '名称',
           active: false,
+          keyword: 'name',
         },
         {
           name: '简介',
           active: false,
+          keyword: 'summary',
+
         },
         {
           name: '内容',
           active: false,
+          keyword: 'content',
         },
         {
           name: '类别',
           active: false,
+          keyword: 'categories',
         }
       ]
     },

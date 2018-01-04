@@ -162,9 +162,22 @@ const actions = {
     let promise = api.searchRequirement(data)
     promise.then((response) => {
       // TODO:  企业需求现在没有数据
+      let d = response.data.hits
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.id = d[i]._id
+        context.type = '企业需求'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.createdAt
+        context.cover = ''
+        context.keywords = d[i]._source.categories
+        context.highlight = d[i]._source.content
+        temp.push(context)
+      }
       let total = response.data.total
       commit('setPaginatorTotal', total)
-      commit('setSearchContextData', [])
+      commit('setSearchContextData', temp)
     }, (response) => {
 
     })
@@ -185,7 +198,7 @@ const actions = {
         context.publishedAt = d[i]._source.createdAt
         context.cover = d[i]._source.cover
         context.keywords = d[i]._source.categories
-        context.highlight = d[i].highlight.content[0]
+        context.highlight = d[i]._source.summary
         temp.push(context)
       }
       commit('setSearchContextData', temp)

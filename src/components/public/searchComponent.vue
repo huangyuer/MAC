@@ -69,24 +69,40 @@
             this.$router.push('/search/result/context')
             break
           case 'project':
+            var pp = this.levelOneCategoryList[2].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p2 = {
               rows: 9,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords
             }
             this.$store.dispatch('searchProject', p2)
-            this.$router.push('/search/result/media')
             this.$store.dispatch('searchProjectLeftPanel', p2)
+            this.$router.push('/search/result/media')
             break
           case 'engineer':
+            var pp = this.levelOneCategoryList[3].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p3 = {
               rows: 9,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords,
             }
             this.$store.dispatch('searchEngineer', p3)
-            this.$router.push('/search/result/media')
             this.$store.dispatch('searchEngineerLeftPanel', p3)
+            this.$router.push('/search/result/media')
             break
           case 'pic':
             let p4 = {
@@ -99,20 +115,36 @@
             this.$store.dispatch('searchMediaLeftPanel', p4)
             break
           case 'requirement':
+            var pp = this.levelOneCategoryList[3].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p5 = {
               rows: 10,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords,
             }
             this.$store.dispatch('searchRequirement', p5)
-            this.$router.push('/search/result/context')
             this.$store.dispatch('searchRequirementLeftPanel', p5)
+            this.$router.push('/search/result/context')
             break
           case 'anli':
+            var pp = this.levelOneCategoryList[6].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p6 = {
               rows: 10,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords
             }
             this.$store.dispatch('searchLiteriture', p6)
             this.$router.push('/search/result/context')
@@ -163,20 +195,38 @@
             this.$router.push('/search/result/context')
             break
           case 'project':
+            var pp = this.levelOneCategoryList[2].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             var p = {
               searchContent: this.searchContent ? this.searchContent : this.searchContent_,
               rows: 9,
-              page: 1
+              page: 1,
+              keywords: keywords
             }
             this.$store.dispatch('searchProject', p)
+            this.$store.dispatch('searchProjectLeftPanel', p)
             break
           case 'engineer':
+            var pp = this.levelOneCategoryList[3].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             var p = {
               searchContent: this.searchContent ? this.searchContent : this.searchContent_,
               rows: 9,
-              page: 1
+              page: 1,
+              keywords: keywords
             }
             this.$store.dispatch('searchEngineer', p)
+            this.$store.dispatch('searchEngineerLeftPanel', p)
             break
           case 'pic':
             var p = {
@@ -187,18 +237,45 @@
             this.$store.dispatch('searchMedia', p)
             break
           case 'requirement':
+            var pp = this.levelOneCategoryList[5].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             var p = {
               searchContent: this.searchContent ? this.searchContent : this.searchContent_,
               rows: 10,
-              page: 1
+              page: 1,
+              keywords: keywords
             }
             this.$store.dispatch('searchRequirement', p)
+            this.$store.dispatch('searchRequirementLeftPanel', p)
+            break
+          case 'anli':
+            var pp = this.levelOneCategoryList[6].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
+            var p = {
+              searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+              rows: 9,
+              page: 1,
+              keywords: keywords
+            }
+            this.$store.dispatch('searchLiteriture', p)
+            this.$router.push('/search/result/context')
+            this.$store.dispatch('searchLiteratureLeftPanel', p)
             break
           case 'knowledge':
             var p = {
               searchContent: this.searchContent ? this.searchContent : this.searchContent_,
               rows: 9,
-              page: 1
+              page: 1,
             }
             this.$store.dispatch('searchExpertPatent', p)
             break
