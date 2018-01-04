@@ -330,11 +330,13 @@ const mutations = {
       state.leftPanelItemList[1].name = '类别'
       state.leftPanelItemList[1].type = 'literatureCategory'
       for (var i = 0; i < a.length; i++) {
-        state.leftPanelItemList[0].children.push({
-          name: a[i].key,
-          count: a[i].doc_count,
-          active: false
-        })
+        if (a[i].key) {
+          state.leftPanelItemList[0].children.push({
+            name: a[i].key,
+            count: a[i].doc_count,
+            active: false
+          })
+        }
       }
       for (var i = 0; i < b.length; i++) {
         if (b[i].key) {
