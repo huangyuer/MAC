@@ -120,9 +120,8 @@
       return {
         isSignedIn: false,
         isMenuClicked: false,
-        searchContent: '',
-
         isLibListShow: false,
+        searchContent_: '',
       }
     },
     components: {
@@ -157,20 +156,32 @@
         this.isMenuClicked = !this.isMenuClicked
       },
       clickSearch: function () {
-        if (this.searchContent) {
-          this.$store.commit('setSearchContent', this.searchContent)
-        }
         switch (this.currentLevelOneCategory.nickName) {
           case 'all':
-            this.$router.push('/search/result')
+            var p = {
+              searchContent: this.searchContent
+            }
+            this.$store.dispatch('searchAll', p)
+            setTimeout(() => {
+              this.$router.push('/search/result')
+            }, 2000)
             break
           case 'book':
+            var pp = this.levelOneCategoryList[1].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p1 = {
               rows: 10,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords
             }
             this.$store.dispatch('searchBook', p1)
+            this.$store.dispatch('searchBookLeftPanel', p1)
             this.$router.push('/search/result/context')
             break
           case 'project':
@@ -244,6 +255,17 @@
       },
       currentLevelOneCategory: function () {
         return this.$store.state.searchComponent.currentLevelOneCategory
+      },
+      searchContent: {
+        get: function () {
+          return this.$store.state.searchComponent.searchContent
+        },
+        set: function (val) {
+          setCookie('searchContent', val)
+          this.$store.commit('setSearchContent', val)
+          console.log(val)
+          this.searchContent_ = val
+        }
       }
     },
     mounted () {
@@ -253,8 +275,7 @@
     },
     watch: {
       searchContent: function (val) {
-        setCookie('searchContent', val)
-        console.log(val)
+
       }
     }
   }

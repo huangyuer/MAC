@@ -41,7 +41,6 @@
     </div>
 
 
-
     <div class="subtitle" v-show="allPageProjectList[0].children.length>0"
          :class="{'m-top-21':allPageProjectList[0].children.length>0}">
       <div class="inner">
@@ -148,10 +147,13 @@
 
   export default {
     mounted: function () {
-      let p = {
-        searchContent: this.searchContent
-      }
-      this.$store.dispatch('searchAll', p)
+//      setTimeout(() => {
+//        let p = {
+//          searchContent: this.searchContent
+//        }
+//        this.$store.dispatch('searchAll', p)
+//      }, 2000)
+
     },
     components: {
       imageTextItem,
@@ -254,7 +256,7 @@
       allPageProjectList: function () {
         return this.$store.state.search.allPageProjectList
       },
-      allChapterList: function() {
+      allChapterList: function () {
         return this.$store.state.search.allChapterList
       },
       allPageEngineerList: function () {
