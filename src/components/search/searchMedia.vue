@@ -37,18 +37,39 @@
     methods: {
       pageClick: function (p) {
         console.log(this.currentLevelOneCategory.nickName)
-        var ppt = {
-          rows: 9,
-          page: p.clickPage,
-          searchContent: this.searchContent
-        }
         switch (this.currentLevelOneCategory.nickName) {
           case 'project':
+            var pp = this.levelOneCategoryList[2].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
+            var ppt = {
+              rows: 9,
+              page: p.clickPage,
+              searchContent: this.searchContent,
+              keywords: keywords
+            }
             this.$store.commit('setPaginatorRows', 9)
             this.$store.dispatch('searchProject', ppt)
             this.$store.dispatch('searchProjectLeftPanel', ppt)
             break
           case 'engineer':
+            var pp = this.levelOneCategoryList[3].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
+            var ppt = {
+              rows: 9,
+              page: p.clickPage,
+              searchContent: this.searchContent,
+              keywords: keywords
+            }
             this.$store.commit('setPaginatorRows', 9)
             this.$store.dispatch('searchEngineer', ppt)
             this.$store.dispatch('searchEngineerLeftPanel', ppt)
@@ -91,7 +112,10 @@
       },
       currentLevelOneCategory: function () {
         return this.$store.state.searchComponent.currentLevelOneCategory
-      }
+      },
+      levelOneCategoryList: function () {
+        return this.$store.state.searchComponent.levelOneCategoryList
+      },
     },
     filters: {},
   }

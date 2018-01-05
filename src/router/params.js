@@ -40,6 +40,12 @@ const NotFound404 = resolve => {
     resolve(require('../components/public/NotFound404.vue'))
   })
 }
+
+const MediaPopup = resolve => {
+  require.ensure(['../components/public/MediaPopup.vue'], () => {
+    resolve(require('../components/public/MediaPopup.vue'))
+  })
+}
 const AppFooter = resolve => {
   require.ensure(['../components/public/AppFooter.vue'], () => {
     resolve(require('../components/public/AppFooter.vue'))
@@ -78,7 +84,6 @@ const BookContent = resolve => {
   })
 }
 
- 
 const Selected = resolve => {
   require.ensure(['../components/selected.vue'], () => {
     resolve(require('../components/selected.vue'))
@@ -121,7 +126,6 @@ const LiteratureInfo = resolve => {
   })
 }
 
- 
 const Login = resolve => {
   require.ensure(['../components/auth/sign_in.vue'], () => {
     resolve(require('../components/auth/sign_in.vue'))
@@ -159,9 +163,8 @@ const UserResources = resolve => {
   require.ensure(['../components/usercenter/user_resources.vue'], () => {
     resolve(require('../components/usercenter/user_resources.vue'))
   })
- 
-} 
- 
+
+}
 
 export {
   homePage,
@@ -178,7 +181,8 @@ export {
   BookList,
   BookInfo,
   BookContent,
- 
+  MediaPopup,
+
   Selected,
   EngineerList,
   EngineerInfo,

@@ -278,7 +278,10 @@
     computed: {
       searchContent: function () {
         return this.$store.state.searchComponent.searchContent
-      }
+      },
+      levelOneCategoryList: function () {
+        return this.$store.state.searchComponent.levelOneCategoryList
+      },
     },
     filters: {}
 
