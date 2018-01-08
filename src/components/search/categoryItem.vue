@@ -215,7 +215,20 @@
             if (obj.name === '书籍章节') {
               this.$store.dispatch('searchBookChapterDataList', pps)
             } else {
-              this.$store.dispatch('searchBook', pps)
+              var pp = this.levelOneCategoryList[1].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
+              var p1 = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: 1,
+                keywords: keywords
+              }
+              this.$store.dispatch('searchBook', p1)
             }
           }
         }
