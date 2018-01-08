@@ -1,4 +1,5 @@
 import api from '../api/search'
+import router from '../../router/index'
 import {
   knowledgeItem,
   bookItem,
@@ -63,12 +64,13 @@ const actions = {
     let promise = api.searchAll(data)
     promise.then((response) => {
       if (response.data.state === '1') {
+        router.push('/search/result')
         commit('searchAll', response.data.data)
         //发送到leftPanel.js中去
         commit('setAllPageLeftPanel', response.data.data)
       }
     }, (response) => {
-
+      console.log('error')
     })
   },
   searchBook ({commit}, data) {
@@ -676,8 +678,8 @@ const mutations = {
       chapter.id = tts[i]._id
       let dd_ = tts[i].highlight.content
       var sst = ''
-      for (var i = 0; i < dd_.length; i++) {
-        sst += dd_[i]
+      for (var j = 0; j < dd_.length; j++) {
+        sst += dd_[j]
       }
       chapter.content = sst
       state.allChapterList.push(chapter)
