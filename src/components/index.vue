@@ -186,19 +186,36 @@
             this.$router.push('/search/result/context')
             break
           case 'project':
+            var pp = this.levelOneCategoryList[2].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p2 = {
               rows: 9,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords,
             }
+
             this.$store.dispatch('searchProject', p2)
             this.$router.push('/search/result/media')
             break
           case 'engineer':
+            var pp = this.levelOneCategoryList[3].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p3 = {
               rows: 9,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords
             }
             this.$store.dispatch('searchEngineer', p3)
             this.$router.push('/search/result/media')
@@ -213,19 +230,35 @@
             this.$router.push('/search/result/media')
             break
           case 'requirement':
+            var pp = this.levelOneCategoryList[3].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p5 = {
               rows: 10,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords,
             }
             this.$store.dispatch('searchRequirement', p5)
             this.$router.push('/search/result/context')
             break
           case 'anli':
+            var pp = this.levelOneCategoryList[6].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p6 = {
               rows: 10,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords,
             }
             this.$store.dispatch('searchLiteriture', p6)
             this.$router.push('/search/result/context')
