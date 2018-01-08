@@ -51,42 +51,74 @@
         if (obj.name === '图书' || obj.name === '图书章节' || obj.name === '企业需求' || obj.name === '工程文献' || obj.name === '知识产权') {
           switch (obj.name) {
             case '图书':
+              var pp = this.levelOneCategoryList[1].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
               let p1 = {
                 rows: 10,
                 searchContent: this.searchContent,
                 page: 1,
+                keywords: keywords
               }
               this.$store.dispatch('searchBook', p1)
               this.$store.commit('setActiveLevelOneCategory', 1)
-              this.$store.dispatch('searchBookLeftPanel', this.searchContent)
+              this.$store.dispatch('searchBookLeftPanel', p1)
               break
             case '图书章节':
+              var pp = this.levelOneCategoryList[1].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
               let ppt = {
                 rows: 10,
                 searchContent: this.searchContent,
                 page: 1,
+                keywords: keywords
               }
 //              this.$store.dispatch('searchBookChapter', ppt)
               this.$store.dispatch('searchBookChapterDataList', ppt)
               this.$store.commit('setActiveLevelOneCategory', 1)
-              this.$store.dispatch('searchBookLeftPanel', this.searchContent)
+              this.$store.dispatch('searchBookLeftPanel', ppt)
 
               break
             case '企业需求':
+              var pp = this.levelOneCategoryList[3].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
               let p5 = {
                 rows: 10,
                 searchContent: this.searchContent,
                 page: 1,
+                keywords: keywords
               }
               this.$store.dispatch('searchRequirement', p5)
               this.$store.commit('setActiveLevelOneCategory', 5)
               this.$store.dispatch('searchRequirementLeftPanel', p5)
               break
             case '工程文献':
+              var pp = this.levelOneCategoryList[6].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
               let p6 = {
                 rows: 10,
                 searchContent: this.searchContent,
                 page: 1,
+                keywords: keywords
               }
               this.$store.dispatch('searchLiteriture', p6)
               this.$store.commit('setActiveLevelOneCategory', 6)
@@ -111,16 +143,31 @@
         if (obj.name === '工程' || obj.name === '工程师' || obj.name === '多媒体') {
           switch (obj.name) {
             case '工程':
+              var pp = this.levelOneCategoryList[2].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
               let p2 = {
                 rows: 9,
                 searchContent: this.searchContent,
                 page: 1,
+                keywords: keywords
               }
               this.$store.dispatch('searchProject', p2)
               this.$store.commit('setActiveLevelOneCategory', 2)
               this.$store.dispatch('searchProjectLeftPanel', p2)
               break
             case '工程师':
+              var pp = this.levelOneCategoryList[3].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
               let p3 = {
                 rows: 9,
                 searchContent: this.searchContent,
@@ -278,7 +325,10 @@
     computed: {
       searchContent: function () {
         return this.$store.state.searchComponent.searchContent
-      }
+      },
+      levelOneCategoryList: function () {
+        return this.$store.state.searchComponent.levelOneCategoryList
+      },
     },
     filters: {}
 

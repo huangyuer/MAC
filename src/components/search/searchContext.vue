@@ -38,27 +38,66 @@
       pageClick: function (p) {
         console.log(p)
         console.log(this.currentLevelOneCategory.nickName)
-        var ppt = {
-          searchContent: this.searchContent,
-          rows: 10,
-          page: p.clickPage
-        }
         switch (this.currentLevelOneCategory.nickName) {
           case 'book':
+            var pp = this.levelOneCategoryList[1].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
+            var ppt = {
+              searchContent: this.searchContent,
+              rows: 10,
+              page: p.clickPage,
+              keywords: keywords,
+            }
             this.$store.dispatch('searchBook', ppt)
-            this.$store.dispatch('searchBookLeftPanel', this.searchContent)
+            this.$store.dispatch('searchBookLeftPanel', ppt)
             break
           case 'anli':
+            var pp = this.levelOneCategoryList[6].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
+            var ppt = {
+              searchContent: this.searchContent,
+              rows: 10,
+              page: p.clickPage,
+              keywords: keywords,
+            }
             this.$store.dispatch('searchLiteriture', ppt)
             this.$store.dispatch('searchLiteratureLeftPanel', ppt)
             break
           case 'requirement':
+            var pp = this.levelOneCategoryList[5].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
+            var ppt = {
+              searchContent: this.searchContent,
+              rows: 10,
+              page: p.clickPage,
+              keywords: keywords,
+            }
             this.$store.dispatch('searchRequirement', ppt)
             this.$store.dispatch('searchRequirementLeftPanel', ppt)
             break
           case 'knowledge':
-            this.$store.dispatch('searchExpertPatent', p7)
-            this.$store.dispatch('searchKnowledgeLeftPanel', p7)
+            var ppt = {
+              searchContent: this.searchContent,
+              rows: 10,
+              page: p.clickPage,
+            }
+            this.$store.dispatch('searchExpertPatent', ppt)
+            this.$store.dispatch('searchKnowledgeLeftPanel', ppt)
             break
           default:
             break
@@ -85,6 +124,9 @@
             return d[i]
           }
         }
+      },
+      levelOneCategoryList: function () {
+        return this.$store.state.searchComponent.levelOneCategoryList
       }
     },
     filters: {},

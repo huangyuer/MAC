@@ -17,6 +17,7 @@ import {
   BookList,
   BookInfo,
   BookContent,
+  MediaPopup,
 
   Selected,
   EngineerList,
@@ -76,6 +77,7 @@ export default new Router({
             'leftPanel': leftPanel,
             'middlePanel': searchMedia,
             'rightPanel': rightPanel,
+            'media-popup': MediaPopup
           }
         },
         {
