@@ -163,9 +163,6 @@
               searchContent: this.searchContent
             }
             this.$store.dispatch('searchAll', p)
-            setTimeout(() => {
-              this.$router.push('/search/result')
-            }, 2000)
             break
           case 'book':
             var pp = this.levelOneCategoryList[1].children
@@ -201,6 +198,7 @@
             }
 
             this.$store.dispatch('searchProject', p2)
+            this.$store.dispatch('searchProjectLeftPanel', p2)
             this.$router.push('/search/result/media')
             break
           case 'engineer':
@@ -218,6 +216,7 @@
               keywords: keywords
             }
             this.$store.dispatch('searchEngineer', p3)
+            this.$store.dispatch('searchEngineerLeftPanel', p3)
             this.$router.push('/search/result/media')
             break
           case 'pic':
@@ -227,6 +226,7 @@
               page: 1,
             }
             this.$store.dispatch('searchMedia', p4)
+            this.$store.dispatch('searchMediaLeftPanel', p4)
             this.$router.push('/search/result/media')
             break
           case 'requirement':
@@ -244,6 +244,7 @@
               keywords: keywords,
             }
             this.$store.dispatch('searchRequirement', p5)
+            this.$store.dispatch('searchRequirementLeftPanel', p5)
             this.$router.push('/search/result/context')
             break
           case 'anli':
@@ -261,6 +262,7 @@
               keywords: keywords,
             }
             this.$store.dispatch('searchLiteriture', p6)
+            this.$store.dispatch('searchLiteratureLeftPanel', p6)
             this.$router.push('/search/result/context')
             break
           case 'knowledge':
@@ -271,6 +273,7 @@
             }
             this.$store.dispatch('searchExpertPatent', p7)
             this.$router.push('/search/result/context')
+            this.$store.dispatch('searchKnowledgeLeftPanel', p7)
             break
           default:
             break

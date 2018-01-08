@@ -58,7 +58,8 @@ export default new Router({
       components: {
         'app-header': AppHeader,
         'app-body': SearchIndex,
-        'app-footer': AppFooter
+        'app-footer': AppFooter,
+        'media-popup': MediaPopup
       },
       children: [
         {
@@ -77,7 +78,6 @@ export default new Router({
             'leftPanel': leftPanel,
             'middlePanel': searchMedia,
             'rightPanel': rightPanel,
-            'media-popup': MediaPopup
           }
         },
         {
