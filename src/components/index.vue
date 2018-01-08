@@ -97,7 +97,8 @@
       <div class="slist">
         <form action="">
 
-          <input v-model="searchContent" type="text" class="s_in" placeholder="请输入关键字" style="outline: none">
+          <input @keydown.enter="clickSearch" v-model="searchContent" type="text" class="s_in" placeholder="请输入关键字"
+                 style="outline: none">
           <input @click="clickSearch" class="s_btn" readonly value="搜索" style="cursor: pointer;outline: none">
 
         </form>

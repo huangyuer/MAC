@@ -48,6 +48,10 @@
         console.log(this.currentLevelOneCategory.type)
         switch (this.currentLevelOneCategory.nickName) {
           case 'all':
+            let p = {
+              searchContent: this.searchContent
+            }
+            this.$store.dispatch('searchAll', p)
             this.$router.push('/search/result')
             break
           case 'book':
