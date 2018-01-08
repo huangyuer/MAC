@@ -20,6 +20,7 @@ import rightPanel from './modules/rightPanel'
 import paginator from './modules/paginator'
 import searchMedia from './modules/searchMedia'
 import searchContext from './modules/searchContext'
+import mediaPopup from './modules/mediaPopup'
 
 Vue.use(Vuex)
 
@@ -48,7 +49,8 @@ export default new Vuex.Store({
     searchContext,
     works,
     literature,
-    engineer
+    engineer,
+    mediaPopup,
   },
   strict: debug
 })

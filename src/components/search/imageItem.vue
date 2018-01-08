@@ -18,7 +18,7 @@
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-tupian"></use>
           </svg>
-          <span>查看原图</span>
+          <span @click="seeOrign">查看原图</span>
           <svg style="margin-left: 12px;" class="icon" aria-hidden="true">
             <use xlink:href="#icon-yanjing"></use>
           </svg>
@@ -52,6 +52,12 @@
           default:
             break
         }
+      },
+      seeOrign: function () {
+        this.$store.commit('setMediaPopupUrl', this.cover)
+        this.$store.commit('setMediaPopupStatus', true)
+        this.$store.commit('setMediaPopupContent', this.summary)
+        this.$store.commit('setMediaPopupTitle', this.title)
       }
     },
     computed: {},
