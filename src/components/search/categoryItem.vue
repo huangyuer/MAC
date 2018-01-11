@@ -67,6 +67,7 @@
               this.$store.dispatch('searchBook', p1)
               this.$store.commit('setActiveLevelOneCategory', 1)
               this.$store.dispatch('searchBookLeftPanel', p1)
+              this.$store.commit('setPaginatorCategory', {parent: 'book'})
               break
             case '图书章节':
               var pp = this.levelOneCategoryList[1].children
@@ -86,7 +87,7 @@
               this.$store.dispatch('searchBookChapterDataList', ppt)
               this.$store.commit('setActiveLevelOneCategory', 1)
               this.$store.dispatch('searchBookLeftPanel', ppt)
-
+              this.$store.commit('setPaginatorCategory', {parent: 'bookChapter'})
               break
             case '企业需求':
               var pp = this.levelOneCategoryList[3].children
@@ -105,6 +106,7 @@
               this.$store.dispatch('searchRequirement', p5)
               this.$store.commit('setActiveLevelOneCategory', 5)
               this.$store.dispatch('searchRequirementLeftPanel', p5)
+              this.$store.commit('setPaginatorCategory', {parent: 'requirement'})
               break
             case '工程文献':
               var pp = this.levelOneCategoryList[6].children
@@ -123,6 +125,7 @@
               this.$store.dispatch('searchLiteriture', p6)
               this.$store.commit('setActiveLevelOneCategory', 6)
               this.$store.dispatch('searchLiteratureLeftPanel', p6)
+              this.$store.commit('setPaginatorCategory', {parent: 'anli'})
               break
             case '知识产权':
               let p7 = {
@@ -133,6 +136,7 @@
               this.$store.dispatch('searchExpertPatent', p7)
               this.$store.commit('setActiveLevelOneCategory', 7)
               this.$store.dispatch('searchKnowledgeLeftPanel', p7)
+              this.$store.commit('setPaginatorCategory', {parent: 'knowledge'})
               break
 
             default:
@@ -159,6 +163,7 @@
               this.$store.dispatch('searchProject', p2)
               this.$store.commit('setActiveLevelOneCategory', 2)
               this.$store.dispatch('searchProjectLeftPanel', p2)
+              this.$store.commit('setPaginatorCategory', {parent: 'project'})
               break
             case '工程师':
               var pp = this.levelOneCategoryList[3].children
@@ -176,6 +181,7 @@
               this.$store.dispatch('searchEngineer', p3)
               this.$store.commit('setActiveLevelOneCategory', 3)
               this.$store.dispatch('searchEngineerLeftPanel', p3)
+              this.$store.commit('setPaginatorCategory', {parent: 'engineer'})
               break
             case '多媒体':
               let p4 = {
@@ -186,6 +192,7 @@
               this.$store.dispatch('searchMedia', p4)
               this.$store.dispatch('searchMediaLeftPanel', p4)
               this.$store.commit('setActiveLevelOneCategory', 4)
+              this.$store.commit('setPaginatorCategory', {parent: 'pic'})
               break
             default:
               break
@@ -204,8 +211,10 @@
           console.log(p.parentIndex)
           if (p.parentIndex === 0) {//中图分类
             this.$store.dispatch('searchBookClcsDataList', pp)
+            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'clcs'})
           } else if (p.parentIndex === 1) {//字库分类
             this.$store.dispatch('searchBookSublibsDataList', pp)
+            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'sublib'})
           } else if (p.parentIndex === 2) {//内容类别分类
             var pps = {
               rows: 10,
@@ -214,6 +223,7 @@
             }
             if (obj.name === '书籍章节') {
               this.$store.dispatch('searchBookChapterDataList', pps)
+              this.$store.commit('setPaginatorCategory', {parent: 'bookChapter', child: ''})
             } else {
               var pp = this.levelOneCategoryList[1].children
               var keywords = []
@@ -229,6 +239,7 @@
                 keywords: keywords
               }
               this.$store.dispatch('searchBook', p1)
+              this.$store.commit('setPaginatorCategory', {parent: 'book', child: ''})
             }
           }
         }
@@ -241,6 +252,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchProjectEraChild', ppt)
+            this.$store.commit('setPaginatorCategory', {parent: 'project', child: 'era'})
           } else if (p.parentIndex === 1) {
             var ppt = {
               rows: 9,
@@ -249,6 +261,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchProjectAreaChild', ppt)
+            this.$store.commit('setPaginatorCategory', {parent: 'project', child: 'area'})
           }
         }
         if (this.obj.type === 'engineerCategory') {
@@ -260,6 +273,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchEngineerEraChild', ppt)
+            this.$store.commit('setPaginatorCategory', {parent: 'engineer', child: 'era'})
           } else if (p.parentIndex === 1) {
             var ppt = {
               rows: 9,
@@ -268,6 +282,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchEngineerTradeChild', ppt)
+            this.$store.commit('setPaginatorCategory', {parent: 'engineer', child: 'trade'})
           }
         }
         if (this.obj.type === 'mediaCateogry') {
@@ -278,6 +293,7 @@
               page: 1
             }
             this.$store.dispatch('searchBookchart', ppt)
+            this.$store.commit('setPaginatorCategory', {parent: 'pic', child: 'bookChart'})
           } else if (p.childIndex === 1) {
             var ppt = {
               searchContent: this.searchContent,

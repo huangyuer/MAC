@@ -168,21 +168,37 @@
       redirectSeeAll: function (category) {
         switch (category) {
           case 'book':
+            var pp = this.levelOneCategoryList[1].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p1 = {
               rows: 10,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords
             }
             this.$store.commit('setActiveLevelOneCategory', 1)
             this.$store.dispatch('searchBook', p1)
-            this.$store.dispatch('searchBookLeftPanel', this.searchContent)
+            this.$store.dispatch('searchBookLeftPanel', p1)
             this.$router.push('/search/result/context')
             break
           case 'project':
+            var pp = this.levelOneCategoryList[2].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p2 = {
               rows: 9,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords,
             }
             this.$store.commit('setActiveLevelOneCategory', 2)
             this.$store.dispatch('searchProject', p2)
@@ -190,10 +206,18 @@
             this.$store.dispatch('searchProjectLeftPanel', p2)
             break
           case 'engineer':
+            var pp = this.levelOneCategoryList[3].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p3 = {
               rows: 9,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords,
             }
             this.$store.commit('setActiveLevelOneCategory', 3)
             this.$store.dispatch('searchEngineer', p3)
@@ -212,10 +236,18 @@
             this.$store.dispatch('searchMediaLeftPanel', p4)
             break
           case 'literature':
+            var pp = this.levelOneCategoryList[6].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p6 = {
               rows: 10,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords,
             }
             this.$store.commit('setActiveLevelOneCategory', 6)
             this.$store.dispatch('searchLiteriture', p6)
@@ -234,15 +266,43 @@
             this.$store.dispatch('searchKnowledgeLeftPanel', p7)
             break
           case 'requirement':
+            var pp = this.levelOneCategoryList[3].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
             let p5 = {
               rows: 10,
               searchContent: this.searchContent,
               page: 1,
+              keywords: keywords,
             }
             this.$store.commit('setActiveLevelOneCategory', 5)
             this.$store.dispatch('searchRequirement', p5)
             this.$router.push('/search/result/context')
             this.$store.dispatch('searchRequirementLeftPanel', p5)
+            break
+          case 'chapter':
+            var pp = this.levelOneCategoryList[1].children
+            var keywords = []
+            for (var i = 0; i < pp.length; i++) {
+              if (pp[i].active === true) {
+                keywords.push(pp[i].keyword)
+              }
+            }
+            var p8 = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+              keywords: keywords
+            }
+            this.$store.dispatch('searchBookChapterDataList', p8)
+            this.$store.commit('setActiveLevelOneCategory', 1)
+            this.$store.dispatch('searchBookLeftPanel', p8)
+            this.$router.push('/search/result/context')
+//            this.$store.commit('setPaginatorCategory', {parent: 'bookChapter'})
             break
           default:
             break
@@ -276,7 +336,10 @@
       },
       searchContent: function () {
         return this.$store.state.searchComponent.searchContent
-      }
+      },
+      levelOneCategoryList: function () {
+        return this.$store.state.searchComponent.levelOneCategoryList
+      },
     },
     filters: {}
 

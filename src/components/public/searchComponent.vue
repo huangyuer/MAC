@@ -71,6 +71,7 @@
             this.$store.dispatch('searchBook', p1)
             this.$store.dispatch('searchBookLeftPanel', p1)
             this.$router.push('/search/result/context')
+            this.$store.commit('setPaginatorCategory', {parent: 'book'})
             break
           case 'project':
             var pp = this.levelOneCategoryList[2].children
@@ -89,6 +90,7 @@
             this.$store.dispatch('searchProject', p2)
             this.$store.dispatch('searchProjectLeftPanel', p2)
             this.$router.push('/search/result/media')
+            this.$store.commit('setPaginatorCategory', {parent: 'project'})
             break
           case 'engineer':
             var pp = this.levelOneCategoryList[3].children
@@ -107,6 +109,7 @@
             this.$store.dispatch('searchEngineer', p3)
             this.$store.dispatch('searchEngineerLeftPanel', p3)
             this.$router.push('/search/result/media')
+            this.$store.commit('setPaginatorCategory', {parent: 'engineer'})
             break
           case 'pic':
             let p4 = {
@@ -117,6 +120,7 @@
             this.$store.dispatch('searchMedia', p4)
             this.$router.push('/search/result/media')
             this.$store.dispatch('searchMediaLeftPanel', p4)
+            this.$store.commit('setPaginatorCategory', {parent: 'pic'})
             break
           case 'requirement':
             var pp = this.levelOneCategoryList[3].children
@@ -135,6 +139,7 @@
             this.$store.dispatch('searchRequirement', p5)
             this.$store.dispatch('searchRequirementLeftPanel', p5)
             this.$router.push('/search/result/context')
+            this.$store.commit('setPaginatorCategory', {parent: 'requirement'})
             break
           case 'anli':
             var pp = this.levelOneCategoryList[6].children
@@ -153,6 +158,7 @@
             this.$store.dispatch('searchLiteriture', p6)
             this.$router.push('/search/result/context')
             this.$store.dispatch('searchLiteratureLeftPanel', p6)
+            this.$store.commit('setPaginatorCategory', {parent: 'anli'})
             break
           case 'knowledge':
             let p7 = {
@@ -163,6 +169,7 @@
             this.$store.dispatch('searchExpertPatent', p7)
             this.$router.push('/search/result/context')
             this.$store.dispatch('searchKnowledgeLeftPanel', p7)
+            this.$store.commit('setPaginatorCategory', {parent: 'knowledge'})
             break
           default:
             break
@@ -197,6 +204,7 @@
             this.$store.dispatch('searchBook', p)
             this.$store.dispatch('searchBookLeftPanel', p)
             this.$router.push('/search/result/context')
+            this.$store.commit('setPaginatorCategory', {parent: 'book'})
             break
           case 'project':
             var pp = this.levelOneCategoryList[2].children
@@ -214,6 +222,7 @@
             }
             this.$store.dispatch('searchProject', p)
             this.$store.dispatch('searchProjectLeftPanel', p)
+            this.$store.commit('setPaginatorCategory', {parent: 'project'})
             break
           case 'engineer':
             var pp = this.levelOneCategoryList[3].children
@@ -231,6 +240,7 @@
             }
             this.$store.dispatch('searchEngineer', p)
             this.$store.dispatch('searchEngineerLeftPanel', p)
+            this.$store.commit('setPaginatorCategory', {parent: 'engineer'})
             break
           case 'pic':
             var p = {
@@ -241,6 +251,7 @@
             this.$store.dispatch('searchMedia', p)
             this.$router.push('/search/result/media')
             this.$store.dispatch('searchMediaLeftPanel', p)
+            this.$store.commit('setPaginatorCategory', {parent: 'pic'})
             break
           case 'requirement':
             var pp = this.levelOneCategoryList[5].children
@@ -258,6 +269,7 @@
             }
             this.$store.dispatch('searchRequirement', p)
             this.$store.dispatch('searchRequirementLeftPanel', p)
+            this.$store.commit('setPaginatorCategory', {parent: 'requirement'})
             break
           case 'anli':
             var pp = this.levelOneCategoryList[6].children
@@ -276,6 +288,7 @@
             this.$store.dispatch('searchLiteriture', p)
             this.$router.push('/search/result/context')
             this.$store.dispatch('searchLiteratureLeftPanel', p)
+            this.$store.commit('setPaginatorCategory', {parent: 'anli'})
             break
           case 'knowledge':
             var p = {
@@ -284,6 +297,7 @@
               page: 1,
             }
             this.$store.dispatch('searchExpertPatent', p)
+            this.$store.commit('setPaginatorCategory', {parent: 'knowledge'})
             break
           default:
             break
