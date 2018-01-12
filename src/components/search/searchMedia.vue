@@ -120,6 +120,20 @@
               break
           }
         }
+        if (paginatorCategory.parent === 'pic') {
+          switch (paginatorCategory.child) {
+            case '':
+              break
+            case 'bookChart':
+              break
+            case 'bookFormula':
+              break
+            case 'bookImage':
+              break
+            default:
+              break
+          }
+        }
       }
     },
     computed: {

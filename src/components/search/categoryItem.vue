@@ -301,13 +301,15 @@
               page: 1
             }
             this.$store.dispatch('searchBookformula', ppt)
-          } else if (p.childIndex === 2) {
+            this.$store.commit('setPaginatorCategory', {parent: 'pic', child: 'bookFormula'})
+          } else if (p.childsIndex === 2) {
             var ppt = {
               searchContent: this.searchContent,
               rows: 9,
               page: 1
             }
             this.$store.dispatch('searchBookimage', ppt)
+            this.$store.commit('setPaginatorCategory', {parent: 'pic', child: 'bookImage'})
           }
         }
         if (this.obj.type === 'requirementCategory') {
