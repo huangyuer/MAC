@@ -211,10 +211,10 @@
           console.log(p.parentIndex)
           if (p.parentIndex === 0) {//中图分类
             this.$store.dispatch('searchBookClcsDataList', pp)
-            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'clcs',content:obj.name})
+            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'clcs', content: obj.name})
           } else if (p.parentIndex === 1) {//字库分类
             this.$store.dispatch('searchBookSublibsDataList', pp)
-            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'sublib',content: obj.name})
+            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'sublib', content: obj.name})
           } else if (p.parentIndex === 2) {//内容类别分类
             var pps = {
               rows: 10,
@@ -252,7 +252,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchProjectEraChild', ppt)
-            this.$store.commit('setPaginatorCategory', {parent: 'project', child: 'era'})
+            this.$store.commit('setPaginatorCategory', {parent: 'project', child: 'era', content: obj.name})
           } else if (p.parentIndex === 1) {
             var ppt = {
               rows: 9,
@@ -261,7 +261,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchProjectAreaChild', ppt)
-            this.$store.commit('setPaginatorCategory', {parent: 'project', child: 'area'})
+            this.$store.commit('setPaginatorCategory', {parent: 'project', child: 'area', content: obj.name})
           }
         }
         if (this.obj.type === 'engineerCategory') {
