@@ -38,7 +38,59 @@
       pageClick: function (p) {
         console.log(p)
         console.log(this.currentLevelOneCategory.nickName)
-        
+        let paginatorCategory = this.paginatorCategory
+        if (paginatorCategory.parent === 'book') {//点击图书的时候
+          var pp = this.levelOneCategoryList[1].children
+          var keywords = []
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword)
+            }
+          }
+          switch (paginatorCategory.child) {
+            case '':
+              var p1 = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords
+              }
+              this.$store.dispatch('searchBook', p1)
+              this.$store.commit('setActiveLevelOneCategory', 1)
+              this.$store.dispatch('searchBookLeftPanel', p1)
+              break
+            case 'clcs':
+              var p1 = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords,
+                content: paginatorCategory.content,
+              }
+              this.$store.dispatch('searchBookClcsDataList', p1)
+              break
+            case 'sublib':
+              var p1 = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords,
+                content: paginatorCategory.content,
+              }
+              this.$store.dispatch('searchBookSublibsDataList', p1)
+              break
+            default:
+              break
+          }
+        }
+        if (paginatorCategory.parent === 'bookChapter') {
+          var p1 = {
+            rows: 10,
+            searchContent: this.searchContent,
+            page: p.clickPage,
+          }
+          this.$store.dispatch('searchBookChapterDataList', p1)
+        }
       }
     },
     computed: {

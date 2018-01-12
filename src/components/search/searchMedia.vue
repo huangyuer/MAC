@@ -37,50 +37,102 @@
     methods: {
       pageClick: function (p) {
         console.log(this.currentLevelOneCategory.nickName)
-        switch (this.currentLevelOneCategory.nickName) {
-          case 'project':
-            var pp = this.levelOneCategoryList[2].children
-            var keywords = []
-            for (var i = 0; i < pp.length; i++) {
-              if (pp[i].active === true) {
-                keywords.push(pp[i].keyword)
+        let paginatorCategory = this.paginatorCategory
+        if (paginatorCategory.parent === 'project') {
+          var pp = this.levelOneCategoryList[2].children
+          var keywords = []
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword)
+            }
+          }
+          switch (paginatorCategory.child) {
+            case '':
+              var p = {
+                rows: 9,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords
               }
-            }
-            var ppt = {
-              rows: 9,
-              page: p.clickPage,
-              searchContent: this.searchContent,
-              keywords: keywords
-            }
-            this.$store.commit('setPaginatorRows', 9)
-            this.$store.dispatch('searchProject', ppt)
-            this.$store.dispatch('searchProjectLeftPanel', ppt)
-            break
-          case 'engineer':
-            var pp = this.levelOneCategoryList[3].children
-            var keywords = []
-            for (var i = 0; i < pp.length; i++) {
-              if (pp[i].active === true) {
-                keywords.push(pp[i].keyword)
+              this.$store.dispatch('searchProject', p)
+              break
+            case 'era':
+              var p = {
+                rows: 9,
+                page: p.clickPage,
+                searchContent: this.searchContent,
+                content: paginatorCategory.content,
               }
+              this.$store.dispatch('searchProjectEraChild', p)
+              break
+            case 'area':
+              var p = {
+                rows: 9,
+                page: p.clickPage,
+                searchContent: this.searchContent,
+                content: paginatorCategory.content,
+              }
+              this.$store.dispatch('searchProjectAreaChild', p)
+              break
+            default:
+              break
+          }
+        }
+        if (paginatorCategory.parent === 'engineer') {
+          var pp = this.levelOneCategoryList[3].children
+          var keywords = []
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword)
             }
-            var ppt = {
-              rows: 9,
-              page: p.clickPage,
-              searchContent: this.searchContent,
-              keywords: keywords
-            }
-            this.$store.commit('setPaginatorRows', 9)
-            this.$store.dispatch('searchEngineer', ppt)
-            this.$store.dispatch('searchEngineerLeftPanel', ppt)
-            break
-          case 'pic':
-            this.$store.commit('setPaginatorRows', 9)
-            this.$store.dispatch('searchMedia', ppt)
-            this.$store.dispatch('searchMediaLeftPanel', ppt)
-            break
-          default:
-            break
+          }
+          switch (paginatorCategory.child) {
+            case '':
+              var p = {
+                rows: 9,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords,
+              }
+              this.$store.dispatch('searchEngineer', p)
+              break
+            case 'era':
+              var p = {
+                rows: 9,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords,
+                content: paginatorCategory.content,
+              }
+              this.$store.dispatch('searchEngineerEraChild', p)
+              break
+            case 'trade':
+              var p = {
+                rows: 9,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords,
+                content: paginatorCategory.content,
+              }
+              this.$store.dispatch('searchEngineerTradeChild', p)
+              break
+            default:
+              break
+          }
+        }
+        if (paginatorCategory.parent === 'pic') {
+          switch (paginatorCategory.child) {
+            case '':
+              break
+            case 'bookChart':
+              break
+            case 'bookFormula':
+              break
+            case 'bookImage':
+              break
+            default:
+              break
+          }
         }
       }
     },
@@ -115,6 +167,9 @@
       },
       levelOneCategoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
+      },
+      paginatorCategory: function () {
+        return this.$store.state.paginator.paginatorCategory
       },
     },
     filters: {},

@@ -211,10 +211,10 @@
           console.log(p.parentIndex)
           if (p.parentIndex === 0) {//中图分类
             this.$store.dispatch('searchBookClcsDataList', pp)
-            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'clcs'})
+            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'clcs', content: obj.name})
           } else if (p.parentIndex === 1) {//字库分类
             this.$store.dispatch('searchBookSublibsDataList', pp)
-            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'sublib'})
+            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'sublib', content: obj.name})
           } else if (p.parentIndex === 2) {//内容类别分类
             var pps = {
               rows: 10,
@@ -252,7 +252,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchProjectEraChild', ppt)
-            this.$store.commit('setPaginatorCategory', {parent: 'project', child: 'era'})
+            this.$store.commit('setPaginatorCategory', {parent: 'project', child: 'era', content: obj.name})
           } else if (p.parentIndex === 1) {
             var ppt = {
               rows: 9,
@@ -261,7 +261,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchProjectAreaChild', ppt)
-            this.$store.commit('setPaginatorCategory', {parent: 'project', child: 'area'})
+            this.$store.commit('setPaginatorCategory', {parent: 'project', child: 'area', content: obj.name})
           }
         }
         if (this.obj.type === 'engineerCategory') {
@@ -273,7 +273,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchEngineerEraChild', ppt)
-            this.$store.commit('setPaginatorCategory', {parent: 'engineer', child: 'era'})
+            this.$store.commit('setPaginatorCategory', {parent: 'engineer', child: 'era', content: obj.name})
           } else if (p.parentIndex === 1) {
             var ppt = {
               rows: 9,
@@ -282,7 +282,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchEngineerTradeChild', ppt)
-            this.$store.commit('setPaginatorCategory', {parent: 'engineer', child: 'trade'})
+            this.$store.commit('setPaginatorCategory', {parent: 'engineer', child: 'trade', content: obj.name})
           }
         }
         if (this.obj.type === 'mediaCateogry') {
@@ -301,13 +301,15 @@
               page: 1
             }
             this.$store.dispatch('searchBookformula', ppt)
-          } else if (p.childIndex === 2) {
+            this.$store.commit('setPaginatorCategory', {parent: 'pic', child: 'bookFormula'})
+          } else if (p.childsIndex === 2) {
             var ppt = {
               searchContent: this.searchContent,
               rows: 9,
               page: 1
             }
             this.$store.dispatch('searchBookimage', ppt)
+            this.$store.commit('setPaginatorCategory', {parent: 'pic', child: 'bookImage'})
           }
         }
         if (this.obj.type === 'requirementCategory') {

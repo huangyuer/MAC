@@ -4,6 +4,7 @@ const state = {
   paginatorCategory: {
     parent: '',
     child: '',
+    content: '',
   },//记录当前一级分类、二级分类
 }
 
@@ -22,6 +23,9 @@ const mutations = {
     }
     if (data.hasOwnProperty('child')) {
       state.paginatorCategory.child = data.child
+    }
+    if (data.hasOwnProperty('content')) {
+      state.paginatorCategory.content = data.content
     }
   }
 }
