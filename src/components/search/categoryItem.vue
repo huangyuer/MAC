@@ -211,10 +211,10 @@
           console.log(p.parentIndex)
           if (p.parentIndex === 0) {//中图分类
             this.$store.dispatch('searchBookClcsDataList', pp)
-            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'clcs'})
+            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'clcs',content:obj.name})
           } else if (p.parentIndex === 1) {//字库分类
             this.$store.dispatch('searchBookSublibsDataList', pp)
-            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'sublib'})
+            this.$store.commit('setPaginatorCategory', {parent: 'book', child: 'sublib',content: obj.name})
           } else if (p.parentIndex === 2) {//内容类别分类
             var pps = {
               rows: 10,
