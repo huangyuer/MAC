@@ -273,7 +273,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchEngineerEraChild', ppt)
-            this.$store.commit('setPaginatorCategory', {parent: 'engineer', child: 'era'})
+            this.$store.commit('setPaginatorCategory', {parent: 'engineer', child: 'era', content: obj.name})
           } else if (p.parentIndex === 1) {
             var ppt = {
               rows: 9,
@@ -282,7 +282,7 @@
               content: obj.name
             }
             this.$store.dispatch('searchEngineerTradeChild', ppt)
-            this.$store.commit('setPaginatorCategory', {parent: 'engineer', child: 'trade'})
+            this.$store.commit('setPaginatorCategory', {parent: 'engineer', child: 'trade', content: obj.name})
           }
         }
         if (this.obj.type === 'mediaCateogry') {

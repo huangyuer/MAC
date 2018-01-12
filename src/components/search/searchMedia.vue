@@ -78,6 +78,48 @@
               break
           }
         }
+        if (paginatorCategory.parent === 'engineer') {
+          var pp = this.levelOneCategoryList[3].children
+          var keywords = []
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword)
+            }
+          }
+          switch (paginatorCategory.child) {
+            case '':
+              var p = {
+                rows: 9,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords,
+              }
+              this.$store.dispatch('searchEngineer', p)
+              break
+            case 'era':
+              var p = {
+                rows: 9,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords,
+                content: paginatorCategory.content,
+              }
+              this.$store.dispatch('searchEngineerEraChild', p)
+              break
+            case 'trade':
+              var p = {
+                rows: 9,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords,
+                content: paginatorCategory.content,
+              }
+              this.$store.dispatch('searchEngineerTradeChild', p)
+              break
+            default:
+              break
+          }
+        }
       }
     },
     computed: {
