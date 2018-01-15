@@ -38,6 +38,7 @@
       pageClick: function (p) {
         console.log(this.currentLevelOneCategory.nickName)
         let paginatorCategory = this.paginatorCategory
+        console.log('parent: ' + paginatorCategory.parent + ', child:' + paginatorCategory.child)
         if (paginatorCategory.parent === 'project') {
           var pp = this.levelOneCategoryList[2].children
           var keywords = []
@@ -121,14 +122,22 @@
           }
         }
         if (paginatorCategory.parent === 'pic') {
+          var p = {
+            rows: 9,
+            page: p.clickPage,
+            searchContent: this.searchContent,
+          }
           switch (paginatorCategory.child) {
             case '':
               break
             case 'bookChart':
+              this.$store.dispatch('searchBookchart', p)
               break
             case 'bookFormula':
+              this.$store.dispatch('searchBookformula', p)
               break
             case 'bookImage':
+              this.$store.dispatch('searchBookimage', p)
               break
             default:
               break
