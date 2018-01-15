@@ -5,7 +5,7 @@
       <div class="result">
         <span>找到<span style="width: 37px;text-align: center;display: inline-block;">{{total}}</span>条结果</span>
       </div>
-      <image-text-item :idd="i.id" :type="i.type" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt"
+      <image-text-item :obj="i" :idd="i.id" :type="i.type" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt"
                        :cover="i.cover"
                        :keywords="i.keywords" v-for="i in searchContextData" :content="i.highlight"
                        :key="i.id"></image-text-item>

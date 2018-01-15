@@ -72,6 +72,8 @@
             this.$store.dispatch('searchBookLeftPanel', p1)
             this.$router.push('/search/result/context')
             this.$store.commit('setPaginatorCategory', {parent: 'book', child: ''})
+            //获取登录用户的所有收藏数列表
+            this.$store.dispatch('getUserFavoriteBooks')
             break
           case 'project':
             var pp = this.levelOneCategoryList[2].children
