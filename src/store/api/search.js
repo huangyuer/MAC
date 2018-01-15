@@ -208,5 +208,23 @@ export default {
     let apiUrl = `${config.API_HOST}/search/patent/child`
     let promise = axios.post(apiUrl, data)
     return promise
+  },
+  // 获取登录用户收藏的图书
+  getUserFavoriteBooks (data) {
+    let apiUrl = `${config.API_HOST}/users/favorite/books`
+    let promise = axios.get(apiUrl)
+    return promise
+  },
+  // 收藏图书
+  addUserFavoriteBooks (data) {
+    let apiUrl = `${config.API_HOST}/users/add/favorite/book`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //取消收藏图书
+  removeUserFavoriteBooks (data) {
+    let apiUrl = `${config.API_HOST}/users/cancel/favorite/book`
+    let promise = axios.post(apiUrl, data)
+    return promise
   }
 }

@@ -22,8 +22,9 @@
         <span v-else>无</span>
       </div>
       <div class="btn-container">
-        <div class="btn" v-show="type==='图书'">在线阅读</div>
-        <div class="btn" v-show="type=='图书'">加入收藏</div>
+        <div class="btn" v-show="type==='图书'" @click="redirectDetail">在线阅读</div>
+        <div v-if="!obj.isFavorited" class="btn" v-show="type=='图书'" @click="addFavorite">加入收藏</div>
+        <div v-else class="btn" v-show="type=='图书'" @click="removeFavorite">取消收藏</div>
       </div>
     </div>
     <div class="img-container">
@@ -38,7 +39,7 @@
 </style>
 <script>
   export default {
-    props: ['idd', 'type', 'author', 'name', 'year', 'content', 'keywords', 'cover'],
+    props: ['obj', 'idd', 'type', 'author', 'name', 'year', 'content', 'keywords', 'cover'],
     mounted: function () {
       let t = document.getElementsByTagName('em')
 //      for (var i = 0; i < t.length; i++) {
@@ -63,6 +64,18 @@
           default:
             break
         }
+      },
+      addFavorite: function () {
+        let p = {
+          bookId: this.idd
+        }
+        this.$store.dispatch('addUserFavoriteBooks', p)
+      },
+      removeFavorite: function () {
+        let p = {
+          bookId: this.idd
+        }
+        this.$store.dispatch('removeUserFavoriteBooks', p)
       }
     },
     computed: {

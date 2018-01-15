@@ -18,6 +18,7 @@ export function bookItem () {
   this.publishedAt = ''
   this.cover = ''
   this.highlight = ''
+  this.isFavorited = false
 }
 
 export function bookChapterItem () {
@@ -58,6 +59,7 @@ export function contextItem () {
   this.cover = ''
   this.keywords = ''
   this.highlight = ''
+  this.isFavorited = false
 }
 
 export function requirementItem () {

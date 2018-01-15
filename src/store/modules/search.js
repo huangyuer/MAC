@@ -75,10 +75,17 @@ const actions = {
   },
   searchBook ({commit}, data) {
     let promise = api.searchBook(data)
-    promise.then((response) => {
-      commit('searchBook', response.data)
-      let d = response.data.hits
-      commit('setPaginatorTotal', response.data.total)
+    let promise1 = api.getUserFavoriteBooks(data)
+    Promise.all([promise, promise1]).then(function (resp) {
+      commit('searchBook', resp[0].data)
+      let d = resp[0].data.hits
+      let favList = resp[1].data
+      let ll = []
+      for (var i = 0; i < favList.length; i++) {
+        ll.push(favList[i]._id)
+      }
+      console.log(ll)
+      commit('setPaginatorTotal', resp[0].data.total)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -90,12 +97,16 @@ const actions = {
         context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
         context.keywords = d[i]._source.keywords
         context.highlight = d[i]._source.summary
+        if (ll.indexOf(d[i]._id) > 0) {
+          context.isFavorited = true
+        } else {
+          context.isFavorited = false
+        }
         temp.push(context)
       }
       commit('setSearchContextData', temp)
-    }, (response) => {
-
     })
+
   },
   searchProject ({commit}, data) {
     let promise = api.searchProject(data)
@@ -650,6 +661,36 @@ const actions = {
 
     })
   },
+  getUserFavoriteBooks ({commit}, data) {
+    let promise = api.getUserFavoriteBooks(data)
+    promise.then((response) => {
+
+    }, (response) => {
+
+    })
+  },
+  addUserFavoriteBooks ({commit}, data) {
+    let promise = api.addUserFavoriteBooks(data)
+    promise.then((response) => {
+      if (response.data.hasOwnProperty('success')) {
+        alert('收藏成功')
+        commit('addUserFavoriteBooks', data)
+      }
+    }, (response) => {
+
+    })
+  },
+  removeUserFavoriteBooks ({commit}, data) {
+    let promise = api.removeUserFavoriteBooks(data)
+    promise.then((response) => {
+      if (response.data.hasOwnProperty('success')) {
+        alert('取消成功')
+        commit('removeUserFavoriteBooks', data)
+      }
+    }, (response) => {
+
+    })
+  }
 
 }
 
