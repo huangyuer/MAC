@@ -91,6 +91,44 @@
           }
           this.$store.dispatch('searchBookChapterDataList', p1)
         }
+        if (paginatorCategory.parent === 'requirement') {
+          var pp = this.levelOneCategoryList[3].children
+          var keywords = []
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword)
+            }
+          }
+          switch (paginatorCategory.child) {
+            case '':
+              var pp = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords
+              }
+              this.$store.dispatch('searchRequirement', pp)
+              break
+            case 'province':
+              var pp = {
+                rows: 10,
+                page: p.clickPage,
+                content: paginatorCategory.content,
+                searchContent: this.searchContent,
+              }
+              this.$store.dispatch('searchRequirementProvinceChild', pp)
+              break
+            case 'way':
+              var pp = {
+                rows: 10,
+                page: p.clickPage,
+                content: paginatorCategory.content,
+                searchContent: this.searchContent,
+              }
+              this.$store.dispatch('searchRequirementWayChild', pp)
+              break
+          }
+        }
       }
     },
     computed: {

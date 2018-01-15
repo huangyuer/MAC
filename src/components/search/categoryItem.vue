@@ -313,15 +313,25 @@
           }
         }
         if (this.obj.type === 'requirementCategory') {
+          var pp = this.levelOneCategoryList[3].children
+          var keywords = []
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword)
+            }
+          }
           var ppt = {
             searchContent: this.searchContent,
             content: obj.name,
             rows: 10,
-            page: 1
+            page: 1,
+            keywords: keywords,
           }
           if (p.parentIndex === 0) {
             this.$store.dispatch('searchRequirementProvinceChild', ppt)
+            this.$store.commit('setPaginatorCategory', {parent: 'requirement', child: 'province', content: obj.name})
           } else if (p.parentIndex === 1) {
+            this.$store.commit('setPaginatorCategory', {parent: 'requirement', child: 'way', content: obj.name})
             this.$store.dispatch('searchRequirementWayChild', ppt)
           }
         }
