@@ -343,8 +343,10 @@
             page: 1
           }
           if (p.parentIndex === 0) {
+            this.$sotre.commit('setPaginatorCategory', {parent: 'anli', child: 'era', content: obj.name})
             this.$store.dispatch('searchLiteratureEraChild', ppt)
           } else if (p.parentIndex === 1) {
+            this.$sotre.commit('setPaginatorCategory', {parent: 'anli', child: 'category', content: obj.name})
             this.$store.dispatch('searchLiteratureCategoryChild', ppt)
           }
         }
@@ -357,7 +359,9 @@
           }
           if (p.childIndex === 0) {
             this.$store.dispatch('searchExpertChild', ppt)
+            this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: 'expert'})
           } else if (p.childIndex === 1) {
+            this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: 'patent'})
             this.$store.dispatch('searchPatentChild', ppt)
           }
         }

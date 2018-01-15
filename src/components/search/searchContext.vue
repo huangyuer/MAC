@@ -129,6 +129,64 @@
               break
           }
         }
+        if (paginatorCategory.parent === 'anli') {
+          var pp = this.levelOneCategoryList[6].children
+          var keywords = []
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword)
+            }
+          }
+          switch (paginatorCategory.child) {
+            case '':
+              var pp = {
+                rows: 10,
+                searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords
+              }
+              this.$store.dispatch('searchLiteriture', pp)
+              break
+            case 'era':
+              var pp = {
+                rows: 10, searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords,
+              }
+              this.$store.dispatch('searchLiteratureEraChild', pp)
+              break
+            case  'category':
+              var pp = {
+                rows: 10, searchContent: this.searchContent,
+                page: p.clickPage,
+                keywords: keywords,
+              }
+              this.$store.dispatch('searchLiteratureCategoryChild', pp)
+              break
+            default:
+              break
+          }
+        }
+        if (paginatorCategory.parent === 'knowledge') {
+          let pp = {
+            rows: 10,
+            searchContent: this.searchContent,
+            page: p.clickPage,
+          }
+          switch (paginatorCategory.child) {
+            case '':
+              this.$store.dispatch('searchExpertPatent', pp)
+              break
+            case 'expert':
+              this.$store.dispatch('searchExpertChild', pp)
+              break
+            case 'patent':
+              this.$store.dispatch('searchPatentChild', pp)
+              break
+            default:
+              break
+          }
+        }
       }
     },
     computed: {
