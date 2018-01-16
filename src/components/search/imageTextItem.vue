@@ -23,8 +23,10 @@
       </div>
       <div class="btn-container">
         <div class="btn" v-show="type==='图书'" @click="redirectDetail">在线阅读</div>
-        <div v-if="!obj.isFavorited" class="btn" v-show="type=='图书'" @click="addFavorite">加入收藏</div>
-        <div v-else class="btn" v-show="type=='图书'" @click="removeFavorite">取消收藏</div>
+        <template v-show="type==='图书'">
+          <div v-if="!obj.isFavorited" class="btn" v-show="type=='图书'" @click="addFavorite">加入收藏</div>
+          <div v-else class="btn" v-show="type=='图书'" @click="removeFavorite">取消收藏</div>
+        </template>
       </div>
     </div>
     <div class="img-container">

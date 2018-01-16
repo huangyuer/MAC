@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item :idd="i.id" type="图书" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt"
+      <image-text-item :obj="i" :idd="i.id" type="图书" :author="i.chiefEditor" :name="i.name" :year="i.publishedAt"
                        :content="i.highlight"
                        :cover="preFix+i.cover" :keywords="i.keywords" v-for="i in allPageBookList"
                        :key="i.id"></image-text-item>
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item :idd="i.id" type="章节" :author="i.chiefEditor" :name="i.title" :year="i.publishedAt"
+      <image-text-item :obj="i" :idd="i.id" type="章节" :author="i.chiefEditor" :name="i.title" :year="i.publishedAt"
                        :content="i.content"
                        :cover="preFix+i.cover" :keywords="i.keywords" v-for="i in allChapterList"
                        :key="i.id"></image-text-item>
@@ -102,7 +102,7 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item type="企业需求" :name="i.name" :year="i.createdAt" :content="i.content"
+      <image-text-item :obj="i" type="企业需求" :name="i.name" :year="i.createdAt" :content="i.content"
                        :keywords="i.keywords" v-for="i in allPageRequirementList" :key="i.id"></image-text-item>
     </div>
     <div class="subtitle" v-show="allPageLiteratureList.length>0" :class="{'m-top-21':allPageLiteratureList.length>0}">
@@ -117,7 +117,7 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item :idd="i.id" type="工程文献" :name="i.name" :year="i.createdAt" :content="i.summary"
+      <image-text-item :obj="i" :idd="i.id" type="工程文献" :name="i.name" :year="i.createdAt" :content="i.summary"
                        v-for="i in allPageLiteratureList" :key="i.id"></image-text-item>
     </div>
     <div class="subtitle" v-show="allPageKnowledgeList.length>0" :class="{'m-top-21':allPageKnowledgeList.length>0}">
@@ -132,7 +132,7 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item :type="i.type" :name="i.name" :year="i.createdAt" :content="i.summary"
+      <image-text-item :obj="i" :type="i.type" :name="i.name" :year="i.createdAt" :content="i.summary"
                        v-for="i in allPageKnowledgeList" :key="i.id"></image-text-item>
     </div>
     <div style="margin-bottom: 80px;"></div>
@@ -147,13 +147,6 @@
 
   export default {
     mounted: function () {
-//      setTimeout(() => {
-//        let p = {
-//          searchContent: this.searchContent
-//        }
-//        this.$store.dispatch('searchAll', p)
-//      }, 2000)
-
     },
     components: {
       imageTextItem,
