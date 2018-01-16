@@ -131,6 +131,7 @@ const actions = {
         media.url = d[i]._source.cover
         media.description = d[i]._source.summary
         media.title = d[i]._source.title
+        media.clicks = d[i]._source.clicks
         temp.push(media)
       }
       commit('setSearchMediaData', temp)
@@ -152,6 +153,7 @@ const actions = {
         media.url = d[i]._source.avagtar
         media.description = d[i]._source.summary
         media.title = d[i]._source.name
+        media.clicks = d[i]._source.clicks
         media.id = d[i]._id
         temp.push(media)
       }
@@ -173,6 +175,7 @@ const actions = {
         media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
         media.description = d[i]._source.description
         media.title = d[i]._source.title
+        media.clicks = d[i]._source.clicks
         media.id = d[i]._id
         temp.push(media)
       }

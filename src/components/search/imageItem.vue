@@ -22,7 +22,7 @@
           <svg style="margin-left: 12px;" class="icon" aria-hidden="true">
             <use xlink:href="#icon-yanjing"></use>
           </svg>
-          <span>12次查看</span>
+          <span>{{clicks}}次查看</span>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
 </style>
 <script>
   export default {
-    props: ['idd', 'cover', 'title', 'summary', 'type'],
+    props: ['clicks', 'idd', 'cover', 'title', 'summary', 'type'],
     mounted: function () {
 
     },
