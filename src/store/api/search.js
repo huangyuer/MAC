@@ -210,7 +210,7 @@ export default {
     return promise
   },
   // 获取登录用户收藏的图书
-  getUserFavoriteBooks (data) {
+  getUserFavoriteBooks () {
     let apiUrl = `${config.API_HOST}/users/favorite/books`
     let promise = axios.get(apiUrl)
     return promise

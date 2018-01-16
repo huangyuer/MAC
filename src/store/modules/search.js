@@ -62,12 +62,21 @@ const getters = {}
 const actions = {
   searchAll ({commit}, data) {
     let promise = api.searchAll(data)
+    let promise1 = api.getUserFavoriteBooks()
+    Promise.all([promise, promise1]).then(function (resp) {
+      router.push('/search/result')
+      commit('searchAll', resp[0].data.data)
+      //发送到leftPanel.js中去
+      commit('setAllPageLeftPanel', resp[0].data.data)
+      let tt = []
+      for (var i = 0; i < resp[1].data.length; i++) {
+        tt.push(resp[1].data[i]._id)
+      }
+      commit('setAllPageBookFav', tt)
+    })
     promise.then((response) => {
       if (response.data.state === '1') {
-        router.push('/search/result')
-        commit('searchAll', response.data.data)
-        //发送到leftPanel.js中去
-        commit('setAllPageLeftPanel', response.data.data)
+
       }
     }, (response) => {
       console.log('error')
@@ -675,6 +684,7 @@ const actions = {
       if (response.data.hasOwnProperty('success')) {
         alert('收藏成功')
         commit('addUserFavoriteBooks', data)
+        commit('baddUserFavoriteBooks', data)
       }
     }, (response) => {
 
@@ -686,6 +696,7 @@ const actions = {
       if (response.data.hasOwnProperty('success')) {
         alert('取消成功')
         commit('removeUserFavoriteBooks', data)
+        commit('bremoveUserFavoriteBooks', data)
       }
     }, (response) => {
 
@@ -695,8 +706,14 @@ const actions = {
 }
 
 const mutations = {
+  setAllPageBookFav (state, data) {
+    for (var i = 0; i < state.allPageBookList.length; i++) {
+      if (data.indexOf(state.allPageBookList[i].id) > -1) {
+        state.allPageBookList[i].isFavorited = true
+      }
+    }
+  },
   searchAll (state, data) {
-    console.log(data)
     state.allPageBookList = []
     let a = data.bookData
     for (var i = 0; i < a.length; i++) {
@@ -831,6 +848,20 @@ const mutations = {
   },
   searchExpert (state, data) {},
   searchPatent (state, data) {},
+  baddUserFavoriteBooks (state, data) {
+    for (var i = 0; i < state.allPageBookList.length; i++) {
+      if (data.bookId === state.allPageBookList[i].id) {
+        state.allPageBookList[i].isFavorited = true
+      }
+    }
+  },
+  bremoveUserFavoriteBooks (state, data) {
+    for (var i = 0; i < state.allPageBookList.length; i++) {
+      if (data.bookId === state.allPageBookList[i].id) {
+        state.allPageBookList[i].isFavorited = false
+      }
+    }
+  }
 }
 
 export default {
