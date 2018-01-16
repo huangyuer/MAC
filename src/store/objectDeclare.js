@@ -48,6 +48,7 @@ export function mediaItem () {
   this.description = ''
   this.title = ''
   this.id = ''
+  this.clicks = -1
 }
 
 export function contextItem () {
