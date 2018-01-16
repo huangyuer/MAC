@@ -7,7 +7,7 @@
       <svg id="svvg" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"
            @mousemove='listener($event)'>
         <!--<circle :x="140" :y="140" :r="r" stroke="black" stroke-width="0" fill="white"></circle>-->
-        <text style="cursor: pointer" v-for="i in textTags"
+        <text @click="clickTag(i)" style="cursor: pointer" v-for="i in textTags"
               :font-size='11>height / 20 * (600 / (600-i.z))?14:height / 20 * (600 / (600-i.z))'
               :fill-opacity='((400+i.z)/600)' :x="i.x" :y="i.y" :z="i.z">{{i.text}}
         </text>
@@ -74,6 +74,15 @@
       }
     },
     methods: {
+      clickTag: function (tag) {
+        console.log(tag.text)
+        this.$store.commit('setSearchContent', tag.text)
+        let p = {
+          searchContent: tag.text
+        }
+        this.$store.dispatch('searchAll', p)
+        this.$router.push('/search/result')
+      },
       getTags: function () {
         let tagsNum = this.tags.length
         let tags = []
