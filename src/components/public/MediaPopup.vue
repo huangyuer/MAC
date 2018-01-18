@@ -33,7 +33,6 @@
 <script>
   export default {
     mounted: function () {
-
     },
     components: {},
     data () {
