@@ -21,17 +21,25 @@
     top: 100px;
     margin: auto;
     .inner {
-      position: relative;
+      position: absolute;
+      left:0;
+      right:0;
+      top:0;
+      bottom:0;
+      margin:auto;
       padding: 10px;
       display: grid;
       grid-template-columns: 1fr 367px;
       grid-gap: 20px;
       background-color: white;
       .item {
+        overflow: auto;
         img {
           height: 100%;
-          width: 100%;
         }
+      }
+      .item1 {
+        overflow: auto;
       }
       .item2 {
         display: grid;
