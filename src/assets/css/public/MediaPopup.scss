@@ -1,13 +1,13 @@
 @import '../global';
 
 .media-popup {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
-  //background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, .3);
   z-index: 999;
   .container {
     display: flex;
@@ -18,18 +18,28 @@
     right: 0;
     left: 0;
     bottom: 0;
-    top:  100px;
+    top: 100px;
     margin: auto;
     .inner {
-      position: relative;
+      position: absolute;
+      left:0;
+      right:0;
+      top:0;
+      bottom:0;
+      margin:auto;
       padding: 10px;
       display: grid;
       grid-template-columns: 1fr 367px;
       grid-gap: 20px;
       background-color: white;
-      .item img {
-        height: 100%;
-        width: 100%;
+      .item {
+        overflow: auto;
+        img {
+          height: 100%;
+        }
+      }
+      .item1 {
+        overflow: auto;
       }
       .item2 {
         display: grid;
