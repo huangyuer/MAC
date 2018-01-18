@@ -6,7 +6,8 @@
         <span>找到<span style="width: 30px;text-align: center;display: inline-block;">{{total}}</span>条结果</span>
       </div>
       <div class="row" v-for="i in searchMediaData" :key="i.id">
-        <image-item :clicks="j.clicks" :type="typess" :idd="j.id" :cover="j.url" :title="j.title" :summary="j.description"
+        <image-item :clicks="j.clicks" :type="typess" :idd="j.id" :cover="j.url" :title="j.title"
+                    :summary="j.description"
                     v-for="j in i.children"
                     :key="i.id"></image-item>
       </div>

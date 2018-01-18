@@ -21,6 +21,7 @@ import paginator from './modules/paginator'
 import searchMedia from './modules/searchMedia'
 import searchContext from './modules/searchContext'
 import mediaPopup from './modules/mediaPopup'
+import toolBar from './modules/toolBar'
 
 Vue.use(Vuex)
 
@@ -51,6 +52,7 @@ export default new Vuex.Store({
     literature,
     engineer,
     mediaPopup,
+    toolBar,
   },
   strict: debug
 })
