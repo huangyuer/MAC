@@ -1,6 +1,5 @@
 <template>
-  <div id="searchIndex" style="font-size: 0;
-">
+  <div id="searchIndex" style="font-size: 0;">
     <search-component></search-component>
     <div class="gap" style="height: 22px;"></div>
     <div class="inner" style="width:    1302px;margin:   0 auto;">
