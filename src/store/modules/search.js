@@ -13,6 +13,7 @@ import {
 } from '../objectDeclare'
 
 const state = {
+  searchStatus: false,
   serverPic: 'http://118.178.238.202:9988/',
   allPageBookList: [],//搜索'全部'的时候图书的列表
   allChapterList: [],//搜索'全部'的时候图书章节的列表
@@ -709,6 +710,9 @@ const actions = {
 }
 
 const mutations = {
+  setSearchState (state, data) {
+    state.searchStatus = data
+  },
   setAllPageBookFav (state, data) {
     for (var i = 0; i < state.allPageBookList.length; i++) {
       if (data.indexOf(state.allPageBookList[i].id) > -1) {

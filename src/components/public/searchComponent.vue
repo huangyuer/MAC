@@ -314,6 +314,9 @@
       }
     },
     computed: {
+      searchStatus: function () {
+        return this.$store.state.search.searchStatus
+      },
       categoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
       },
