@@ -272,7 +272,16 @@ const actions = {
         context.publishedAt = d[i]._source.createdAt
         context.cover = d[i]._source.avatar
         context.keywords = d[i]._source.categories
-        context.highlight = d[i]._source.intro
+        if (d[i].hasOwnProperty('highlight')) {
+          var tt = ''
+          var hdd = d[i].highlight.intro
+          for (var j = 0; j < hdd.length; j++) {
+            tt = tt + hdd[j]
+          }
+          context.highlight = tt
+        } else {
+          context.highlight = d[i]._source.intro
+        }
         temp.push(context)
       }
       commit('setSearchContextData', temp)
