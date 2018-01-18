@@ -106,7 +106,17 @@ const actions = {
         context.publishedAt = d[i]._source.publishedAt
         context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
         context.keywords = d[i]._source.keywords
-        context.highlight = d[i]._source.summary
+        var stt = ''
+        console.log(d[i].hasOwnProperty('highlight'))
+        if (d[i].hasOwnProperty('highlight')) {
+          var bdd = d[i].highlight.summary
+          for (var j = 0; j < bdd.length; j++) {
+            stt = stt + bdd[j]
+          }
+          context.highlight = stt
+        } else {
+          context.highlight = d[i]._source.summary
+        }
         if (ll.indexOf(d[i]._id) > 0) {
           context.isFavorited = true
         } else {
@@ -226,7 +236,16 @@ const actions = {
         context.publishedAt = d[i]._source.createdAt
         context.cover = d[i]._source.cover
         context.keywords = d[i]._source.categories
-        context.highlight = d[i]._source.summary
+        if (d[i].hasOwnProperty('highlight')) {
+          var tt = ''
+          var dd = d[i].highlight.content
+          for (var j = 0; j < dd.length; j++) {
+            tt = tt + dd[j]
+          }
+          context.highlight = tt
+        } else {
+          context.highlight = d[i]._source.summary
+        }
         temp.push(context)
       }
       commit('setSearchContextData', temp)
@@ -732,7 +751,12 @@ const mutations = {
       b.id = a[i]._id
       b.keywords = a[i]._source.keywords
       b.publishedAt = a[i]._source.publishedAt
-      b.highlight = a[i]._source.summary
+      var stt = ''
+      let bbd = a[i].highlight.summary
+      for (var j = 0; j < bbd.length; j++) {
+        stt = stt + bbd[j]
+      }
+      b.highlight = stt
       b.cover = a[i]._source.cover
       state.allPageBookList.push(b)
     }
@@ -770,7 +794,12 @@ const mutations = {
       engineer.id = c[i]._id
       engineer.name = c[i]._source.name
       engineer.avatar = c[i]._source.avagtar
-      engineer.summary = c[i]._source.summary
+      let stt = ''
+      let bbd = c[i].highlight.summary
+      for (var j = 0; j < bbd.length; j++) {
+        stt = stt + bbd[j]
+      }
+      engineer.summary = stt
       temp.push(engineer)
     }
     for (var i = 0; i < state.allPageEngineerList.length; i++) {
@@ -809,7 +838,12 @@ const mutations = {
       literature.id = f[i]._id
       literature.name = f[i]._source.name
       literature.cover = f[i]._source.cover
-      literature.summary = f[i]._source.summary
+      var stt = ''
+      var bbd = f[i].highlight.summary
+      for (var j = 0; j < bbd.length; j++) {
+        stt = stt + bbd[j]
+      }
+      literature.summary = stt
       literature.createdAt = f[i]._source.createdAt
       state.allPageLiteratureList.push(literature)
     }
@@ -840,7 +874,6 @@ const mutations = {
       book.cover = d[i]._source.cover
       book.publishedAt = d[i]._source.publishedAt
       book.keywords = d[i]._source.keywords
-      book.highlight = d[i]._source.summary
       state.bookList.push(book)
     }
   },

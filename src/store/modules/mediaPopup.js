@@ -3,6 +3,7 @@ const state = {
   url: '',
   content: '',
   title: '',
+  clicks: '',
 }
 
 const actions = {}
@@ -19,6 +20,9 @@ const mutations = {
   },
   setMediaPopupTitle (state, data) {
     state.title = data
+  },
+  setMediaClicks (state, data) {
+    state.clicks = data
   }
 }
 

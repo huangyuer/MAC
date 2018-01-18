@@ -19,7 +19,7 @@
             <svg style="margin-left: 12px;" class="icon" aria-hidden="true">
               <use xlink:href="#icon-yanjing"></use>
             </svg>
-            <span>12次查看</span>
+            <span>{{clicks}}次查看</span>
           </div>
         </div>
       </div>
@@ -56,6 +56,9 @@
       title: function () {
         return this.$store.state.mediaPopup.title
       },
+      clicks: function () {
+        return this.$store.state.mediaPopup.clicks
+      }
     },
     filters: {}
 
