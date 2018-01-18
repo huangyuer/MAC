@@ -778,6 +778,7 @@ const mutations = {
       b.cover = a[i]._source.cover
       state.allPageBookList.push(b)
     }
+    state.allChapterList = []
     let tts = data.bookChapterData
     for (var i = 0; i < tts.length; i++) {
       var chapter = new bookChapterItem()
@@ -792,6 +793,17 @@ const mutations = {
       state.allChapterList.push(chapter)
     }
     let b = data.projectData
+    state.allPageProjectList = [
+      {
+        children: []
+      },
+      {
+        children: []
+      },
+      {
+        children: []
+      }
+    ]
     var temp = []
     for (var i = 0; i < b.length; i++) {
       var project = new projectItem()
@@ -806,6 +818,17 @@ const mutations = {
       state.allPageProjectList[i].children = temp.slice(3 * i, 3 * (i + 1))
     }
     let c = data.engineerData
+    state.allPageEngineerList = [
+      {
+        children: []
+      },
+      {
+        children: []
+      },
+      {
+        children: []
+      }
+    ]
     var temp = []
     for (var i = 0; i < c.length; i++) {
       var engineer = new engineerItem()
@@ -824,6 +847,17 @@ const mutations = {
       state.allPageEngineerList[i].children = temp.slice(3 * i, 3 * (i + 1))
     }
     let d = data.mediaData
+    state.allPageMediaList = [
+      {
+        children: []
+      },
+      {
+        children: []
+      },
+      {
+        children: []
+      }
+    ]
     var temp = []
     for (var i = 0; i < d.length; i++) {
       var media = new mediaItem()
