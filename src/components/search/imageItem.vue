@@ -9,7 +9,7 @@
           <span>{{title}}</span>
         </div>
         <div class="text">
-          <span>{{summary}}</span>
+          <span v-html="summary"></span>
         </div>
         <div class="underline">
 
@@ -58,6 +58,7 @@
         this.$store.commit('setMediaPopupStatus', true)
         this.$store.commit('setMediaPopupContent', this.summary)
         this.$store.commit('setMediaPopupTitle', this.title)
+        this.$store.commit('setMediaClicks', this.clicks)
       }
     },
     computed: {},

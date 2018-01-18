@@ -38,6 +38,11 @@
         span p span {
           color: red;
         }
+        span {
+          &  span {
+            color: red;
+          }
+        }
       }
       .underline {
         width: 100%;
