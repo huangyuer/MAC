@@ -85,6 +85,69 @@
               }
               this.$store.dispatch('searchProject', p)
               break
+            case 'engineer':
+              var pp = this.levelOneCategoryList[3].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
+              var p = {
+                searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+                rows: 9,
+                page: 1,
+                keywords: keywords
+              }
+              this.$store.dispatch('searchEngineer', p)
+              break
+            case 'pic':
+              var p = {
+                searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+                rows: 9,
+                page: 1
+              }
+              this.$store.dispatch('searchMedia', p)
+              break
+            case 'requirement':
+              var pp = this.levelOneCategoryList[5].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
+              var p = {
+                searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+                rows: 10,
+                page: 1,
+                keywords: keywords
+              }
+              this.$store.dispatch('searchRequirement', p)
+              break
+            case 'anli':
+              var pp = this.levelOneCategoryList[6].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
+              var p = {
+                searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+                rows: 9,
+                page: 1,
+                keywords: keywords
+              }
+              this.$store.dispatch('searchLiteriture', p)
+              break
+            case 'knowledge':
+              var p = {
+                searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+                rows: 9,
+                page: 1,
+              }
+              this.$store.dispatch('searchExpertPatent', p)
             default:
               break
           }
@@ -122,9 +185,79 @@
                 rows: 9,
                 page: 1,
                 keywords: keywords,
-                sort:true
+                sort: true
               }
               this.$store.dispatch('searchProject', p)
+              break
+            case 'engineer':
+              var pp = this.levelOneCategoryList[3].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
+              var p = {
+                searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+                rows: 9,
+                page: 1,
+                keywords: keywords,
+                sort: true,
+              }
+              this.$store.dispatch('searchEngineer', p)
+              break
+            case 'pic':
+              var p = {
+                searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+                rows: 9,
+                page: 1,
+                sort: true,
+              }
+              this.$store.dispatch('searchMedia', p)
+              break
+            case 'requirement':
+              var pp = this.levelOneCategoryList[5].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
+              var p = {
+                searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+                rows: 10,
+                page: 1,
+                keywords: keywords,
+                sort: true
+              }
+              this.$store.dispatch('searchRequirement', p)
+              break
+            case 'anli':
+              var pp = this.levelOneCategoryList[6].children
+              var keywords = []
+              for (var i = 0; i < pp.length; i++) {
+                if (pp[i].active === true) {
+                  keywords.push(pp[i].keyword)
+                }
+              }
+              var p = {
+                searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+                rows: 9,
+                page: 1,
+                keywords: keywords,
+                sort: true,
+              }
+              this.$store.dispatch('searchLiteriture', p)
+              break
+            case 'knowledge':
+              var p = {
+                searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+                rows: 9,
+                page: 1,
+                sort: true,
+              }
+              this.$store.dispatch('searchExpertPatent', p)
+              break
             default:
               break
           }
