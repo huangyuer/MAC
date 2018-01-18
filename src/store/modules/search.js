@@ -96,6 +96,7 @@ const actions = {
       }
       console.log(ll)
       commit('setPaginatorTotal', resp[0].data.total)
+      commit('setPaginatorRows', 10)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -147,6 +148,7 @@ const actions = {
       }
       commit('setSearchMediaData', temp)
       commit('setSearchMediaTotal', response.data.total)
+      commit('setPaginatorRows', 9)
     }, (response) => {
 
     })
@@ -170,6 +172,7 @@ const actions = {
       }
       commit('setSearchMediaData', temp)
       commit('setSearchMediaTotal', response.data.total)
+      commit('setPaginatorRows', 9)
     }, (response) => {
 
     })
@@ -192,6 +195,7 @@ const actions = {
       }
       commit('setSearchMediaData', temp)
       commit('setSearchMediaTotal', response.data.total)
+      commit('setPaginatorRows', 9)
     }, (response) => {
 
     })
@@ -215,6 +219,7 @@ const actions = {
       }
       let total = response.data.total
       commit('setPaginatorTotal', total)
+      commit('setPaginatorRows', 10)
       commit('setSearchContextData', temp)
     }, (response) => {
 
@@ -227,6 +232,7 @@ const actions = {
       let d = response.data.hits
       let total = response.data.total
       commit('setPaginatorTotal', total)
+      commit('setPaginatorRows', 10)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -259,6 +265,7 @@ const actions = {
       let d = response.data.hits
       let total = response.data.total
       commit('setPaginatorTotal', total)
+      commit('setPaginatorRows', 10)
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
@@ -480,6 +487,7 @@ const actions = {
       }
       commit('setSearchMediaData', temp)
       commit('setPaginatorTotal', total)
+      commit('setPaginatorRows', 9)
     }, (response) => {
 
     })
@@ -500,6 +508,7 @@ const actions = {
       }
       commit('setSearchMediaData', temp)
       commit('setPaginatorTotal', total)
+      commit('setPaginatorRows', 9)
     }, (response) => {
 
     })
@@ -873,18 +882,7 @@ const mutations = {
     }
   },
   searchBook (state, data) {
-    let d = data.hits
-    state.bookTotal = data.hits.total
-    for (var i = 0; i < d.length; i++) {
-      var book = new bookItem()
-      book.name = d[i]._source.name
-      book.id = d[i]._id
-      book.chiefEditor = d[i]._source.chiefEditor
-      book.cover = d[i]._source.cover
-      book.publishedAt = d[i]._source.publishedAt
-      book.keywords = d[i]._source.keywords
-      state.bookList.push(book)
-    }
+
   },
   searchProject (state, data) {
 
