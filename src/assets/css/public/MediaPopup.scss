@@ -27,9 +27,11 @@
       grid-template-columns: 1fr 367px;
       grid-gap: 20px;
       background-color: white;
-      .item img {
-        height: 100%;
-        width: 100%;
+      .item {
+        img {
+          height: 100%;
+          width: 100%;
+        }
       }
       .item2 {
         display: grid;
