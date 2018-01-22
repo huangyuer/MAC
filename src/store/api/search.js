@@ -226,5 +226,11 @@ export default {
     let apiUrl = `${config.API_HOST}/users/cancel/favorite/book`
     let promise = axios.post(apiUrl, data)
     return promise
+  },
+  // http://home.tjdesignx.com/#/selected   设计到的搜索
+  searchHybrid (data) {
+    let apiUrl = `${config.API_HOST}/search/hybrid`
+    let promise = axios.post(apiUrl, data)
+    return promise
   }
 }

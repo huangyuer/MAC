@@ -352,6 +352,7 @@ const actions = {
         context.id = d[i]._id
         context.type = '图书章节'
         context.name = d[i]._source.name
+        context.pdf = d[i]._source.pdf
         for (var jj = 0; jj < d[i].highlight.content.length; jj++) {
           context.highlight += d[i].highlight.content[jj]
         }
@@ -742,6 +743,15 @@ const actions = {
     }, (response) => {
 
     })
+  },
+  searchHybrid ({commit}, data) {
+    let promise = api.searchHybrid(data)
+    promise.then((response) => {
+      console.log(response)
+      commit('searchHybrid', response.data)
+    }, (response) => {
+
+    })
   }
 
 }
@@ -783,6 +793,7 @@ const mutations = {
     for (var i = 0; i < tts.length; i++) {
       var chapter = new bookChapterItem()
       chapter.title = tts[i]._source.title
+      chapter.pdf = tts[i]._source.pdf
       chapter.id = tts[i]._id
       let dd_ = tts[i].highlight.content
       var sst = ''
@@ -942,6 +953,9 @@ const mutations = {
         state.allPageBookList[i].isFavorited = false
       }
     }
+  },
+  searchHybrid (state, data) {
+
   }
 }
 

@@ -302,7 +302,7 @@
             }
             this.$store.dispatch('searchBookformula', ppt)
             this.$store.commit('setPaginatorCategory', {parent: 'pic', child: 'bookFormula'})
-          } else if (p.childsIndex === 2) {
+          } else if (p.childIndex === 2) {
             var ppt = {
               searchContent: this.searchContent,
               rows: 9,

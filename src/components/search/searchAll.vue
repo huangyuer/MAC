@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="inners">
-      <image-text-item :obj="i" :idd="i.id" type="章节" :author="i.chiefEditor" :name="i.title" :year="i.publishedAt"
+      <image-text-item :obj="i" :idd="i.id" type="图书章节" :author="i.chiefEditor" :name="i.title" :year="i.publishedAt"
                        :content="i.content"
                        :cover="preFix+i.cover" :keywords="i.keywords" v-for="i in allChapterList"
                        :key="i.id"></image-text-item>

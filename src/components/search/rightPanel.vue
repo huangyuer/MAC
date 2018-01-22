@@ -81,6 +81,7 @@
           searchContent: tag.text
         }
         this.$store.dispatch('searchAll', p)
+        this.$store.commit('setActiveLevelOneCategory', 0)
         this.$router.push('/search/result')
       },
       getTags: function () {

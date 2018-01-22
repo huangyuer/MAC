@@ -26,6 +26,7 @@ export function bookChapterItem () {
   this.title = ''
   this.content = ''
   this.createdAt = ''
+  this.pdf = ''
 }
 
 export function projectItem () {
@@ -61,6 +62,7 @@ export function contextItem () {
   this.keywords = ''
   this.highlight = ''
   this.isFavorited = false
+  this.pdf = ''
 }
 
 export function requirementItem () {
