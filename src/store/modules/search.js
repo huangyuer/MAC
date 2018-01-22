@@ -1,4 +1,5 @@
 import api from '../api/search'
+import {getCookie} from '../../utils/cookie'
 import router from '../../router/index'
 import {
   knowledgeItem,
@@ -66,25 +67,31 @@ const getters = {}
 const actions = {
   searchAll ({commit}, data) {
     let promise = api.searchAll(data)
-    let promise1 = api.getUserFavoriteBooks()
-    Promise.all([promise, promise1]).then(function (resp) {
-      router.push('/search/result')
-      commit('searchAll', resp[0].data.data)
-      //发送到leftPanel.js中去
-      commit('setAllPageLeftPanel', resp[0].data.data)
-      let tt = []
-      for (var i = 0; i < resp[1].data.length; i++) {
-        tt.push(resp[1].data[i]._id)
-      }
-      commit('setAllPageBookFav', tt)
-    })
-    promise.then((response) => {
-      if (response.data.state === '1') {
+    let userInfo = getCookie('userInfo')
+    if(userInfo){
+      let promise1 = api.getUserFavoriteBooks()
+      Promise.all([promise, promise1]).then(function (resp) {
+        router.push('/search/result')
+        commit('searchAll', resp[0].data.data)
+        //发送到leftPanel.js中去
+        commit('setAllPageLeftPanel', resp[0].data.data)
+        let tt = []
+        for (var i = 0; i < resp[1].data.length; i++) {
+          tt.push(resp[1].data[i]._id)
+        }
+        commit('setAllPageBookFav', tt)
+      })
+    } else {
+      promise.then((response) => {
+        router.push('/search/result')
+        commit('searchAll',response.data.data)
+        //发送到leftPanel.js中去
+        commit('setAllPageLeftPanel', response.data.data)
+      }, (response) => {
+        console.log('error')
+      })
+    }
 
-      }
-    }, (response) => {
-      console.log('error')
-    })
   },
   searchBook ({commit}, data) {
     let promise = api.searchBook(data)
