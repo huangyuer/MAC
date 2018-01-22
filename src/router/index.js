@@ -31,6 +31,7 @@ import {
   Register,
   ResetPassword,
   UserInfo,
+  ChangePassword,
   UserFavorites,
   UserMessages,
   UserResources
@@ -113,6 +114,14 @@ export default new Router({
       },
     },
     {
+      path: '/auth/password/reset',
+
+      components: {
+        'app-body': ResetPassword,
+      },
+    },
+    
+    {
       path: '/auth/register',
       components: {
         'app-body': Register,
@@ -149,6 +158,13 @@ export default new Router({
         'app-header': AppHeader,
         'app-body': UserInfo,
         'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/user/password/change',
+
+      components: {
+        'app-body': ChangePassword,
       },
     },
     {

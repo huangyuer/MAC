@@ -22,6 +22,7 @@ import searchMedia from './modules/searchMedia'
 import searchContext from './modules/searchContext'
 import mediaPopup from './modules/mediaPopup'
 import toolBar from './modules/toolBar'
+import user from './modules/user'
 
 Vue.use(Vuex)
 
@@ -53,6 +54,7 @@ export default new Vuex.Store({
     engineer,
     mediaPopup,
     toolBar,
+    user
   },
   strict: debug
 })

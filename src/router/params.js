@@ -144,11 +144,18 @@ const ResetPassword = resolve => {
   })
 }
 
+const ChangePassword = resolve => {
+  require.ensure(['../components/usercenter/password_change.vue'], () => {
+    resolve(require('../components/usercenter/password_change.vue'))
+  })
+}
+
 const UserInfo = resolve => {
   require.ensure(['../components/usercenter/user_info.vue'], () => {
     resolve(require('../components/usercenter/user_info.vue'))
   })
 }
+
 const UserFavorites = resolve => {
   require.ensure(['../components/usercenter/user_favorites.vue'], () => {
     resolve(require('../components/usercenter/user_favorites.vue'))
@@ -195,6 +202,7 @@ export {
   Register,
   ResetPassword,
   UserInfo,
+  ChangePassword,
   UserFavorites,
   UserMessages,
   UserResources
