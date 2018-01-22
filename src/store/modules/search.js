@@ -735,7 +735,7 @@ const actions = {
         commit('baddUserFavoriteBooks', data)
       }
     }, (response) => {
-
+      alert('请先登录')
     })
   },
   removeUserFavoriteBooks ({commit}, data) {
