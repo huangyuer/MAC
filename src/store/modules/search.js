@@ -526,6 +526,7 @@ const actions = {
         media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
         media.title = d[i]._source.title
         media.description = d[i]._source.description
+        media.clicks = d[i]._source.clicks
         temp.push(media)
       }
       commit('setSearchMediaData', temp)
@@ -546,6 +547,7 @@ const actions = {
         media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
         media.title = d[i]._source.title
         media.description = d[i]._source.description
+        media.clicks = d[i]._source.clicks
         temp.push(media)
       }
       commit('setSearchMediaData', temp)
@@ -566,6 +568,7 @@ const actions = {
         media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
         media.title = d[i]._source.title
         media.description = d[i]._source.description
+        media.clicks = d[i]._source.clicks
         temp.push(media)
       }
       commit('setSearchMediaData', temp)
@@ -779,12 +782,16 @@ const mutations = {
       b.id = a[i]._id
       b.keywords = a[i]._source.keywords
       b.publishedAt = a[i]._source.publishedAt
-      var stt = ''
-      let bbd = a[i].highlight.summary
-      for (var j = 0; j < bbd.length; j++) {
-        stt = stt + bbd[j]
+      if (a[i].hasOwnProperty('highlight')) {
+        var stt = ''
+        let bbd = a[i].highlight.summary
+        for (var j = 0; j < bbd.length; j++) {
+          stt = stt + bbd[j]
+        }
+        b.highlight = stt
+      } else {
+        b.highlight = ''
       }
-      b.highlight = stt
       b.cover = a[i]._source.cover
       state.allPageBookList.push(b)
     }
@@ -847,11 +854,15 @@ const mutations = {
       engineer.name = c[i]._source.name
       engineer.avatar = c[i]._source.avagtar
       let stt = ''
-      let bbd = c[i].highlight.summary
-      for (var j = 0; j < bbd.length; j++) {
-        stt = stt + bbd[j]
+      if (c[i].hasOwnProperty('highlight')) {
+        let bbd = c[i].highlight.summary
+        for (var j = 0; j < bbd.length; j++) {
+          stt = stt + bbd[j]
+        }
+        engineer.summary = stt
+      } else {
+        engineer.summary = ''
       }
-      engineer.summary = stt
       temp.push(engineer)
     }
     for (var i = 0; i < state.allPageEngineerList.length; i++) {

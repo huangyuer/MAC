@@ -81,7 +81,7 @@
         this.$store.dispatch('removeUserFavoriteBooks', p)
       },
       redirectChapterDetail: function () {
-        window.location.href = 'http://47.98.32.49/pdfviewer/pc?pdf=' + this.obj.pdf
+        window.open('http://47.98.32.49/pdfviewer/pc?pdf=' + this.obj.pdf)
       }
     },
     computed: {
