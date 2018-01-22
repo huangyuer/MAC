@@ -57,7 +57,7 @@
             name: '城市空间',
           },
           {
-            name: '和谐号',
+            name: '工程',
           },
           {
             name: '城际高铁',
@@ -81,6 +81,7 @@
           searchContent: tag.text
         }
         this.$store.dispatch('searchAll', p)
+        this.$store.commit('setActiveLevelOneCategory', 0)
         this.$router.push('/search/result')
       },
       getTags: function () {
