@@ -57,6 +57,9 @@ const state = {
   bookList: [],//搜索图书列表
   literatureList: [],
   bookTotal: '',
+  hybridEngineerList: [],
+  hybridProjectList: [],
+  hybridLiteratureList: [],
 }
 
 const getters = {}
