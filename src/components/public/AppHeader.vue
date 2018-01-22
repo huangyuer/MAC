@@ -34,14 +34,13 @@
       </div>
 
 
+      <!--</div>-->
 
-        <!--</div>-->
-
-        <!--<div class="z_home home ">-->
-          <!--<router-link to="/"><a href="javascript:void(0);">首页</a></router-link>-->
-          <!--|-->
-          <!--<router-link to="/about_us"><a href="javascript:void(0);">关于我们</a></router-link>-->
-        <!--</div>-->
+      <!--<div class="z_home home ">-->
+      <!--<router-link to="/"><a href="javascript:void(0);">首页</a></router-link>-->
+      <!--|-->
+      <!--<router-link to="/about_us"><a href="javascript:void(0);">关于我们</a></router-link>-->
+      <!--</div>-->
 
     </div>
   </div>
@@ -73,7 +72,7 @@
       // 退出登录
       logout: function () {
         deleteCookie('sessionToken')
-
+        deleteCookie('userInfo')
         this.$store.commit('setLoggedOut')
         this.$router.push({path: '/'})
 
