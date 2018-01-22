@@ -130,6 +130,7 @@
           }
           switch (paginatorCategory.child) {
             case '':
+              this.$store.dispatch('searchMedia', p)
               break
             case 'bookChart':
               this.$store.dispatch('searchBookchart', p)
