@@ -1,25 +1,25 @@
 <template>
-  <div class="engineer_wrapper"> 
+  <div class="engineer_wrapper">
     <engineer-header-bg></engineer-header-bg>
     <engineer-header-bar></engineer-header-bar>
 
-    <div class="engineer_list_wrapper"> 
+    <div class="engineer_list_wrapper">
       <!--工程师-->
       <div class="engineer_list">
         <router-link :to="'/engineer/list'">
-        <div class="engineer_list_left">
-          <div class="engineer_list_left_img">
-            <img src="../assets/images/engineer_avatar.png"/>
+          <div class="engineer_list_left">
+            <div class="engineer_list_left_img">
+              <img src="../assets/images/engineer_avatar.png"/>
+            </div>
+            <h4>工程师</h4>
+            <p>收录了从古代到改革开放以来的著名工程师，包括等等</p>
           </div>
-          <h4>工程师</h4>
-          <p>收录了从古代到改革开放以来的著名工程师，包括等等</p>
-        </div>
         </router-link>
         <div class="engineer_list_right">
           <ul>
             <li v-for="engineer in engineers">
               <router-link :to="'/engineer/info/' + engineer._id">
-                <engineer-item :engineer="engineer"></engineer-item>
+                <engineer-item :engineer="engineer._source"></engineer-item>
               </router-link>
             </li>
           </ul>
@@ -37,19 +37,19 @@
       <!--工程-->
       <div class="engineer_list">
         <router-link :to="'/project/list'">
-        <div class="engineer_list_left">
-          <div class="engineer_list_left_img">
-            <img src="../assets/images/project_avatar.png"/>
+          <div class="engineer_list_left">
+            <div class="engineer_list_left_img">
+              <img src="../assets/images/project_avatar.png"/>
+            </div>
+            <h4>工程项目</h4>
+            <p>收录了从古代到改革开放依赖的著名工程师，包括等等</p>`
           </div>
-          <h4>工程项目</h4>
-          <p>收录了从古代到改革开放依赖的著名工程师，包括等等</p>
-        </div>
-      </router-link>
+        </router-link>
         <div class="engineer_list_right">
           <ul>
             <li v-for="project in works">
               <router-link :to="'/project/info/' + project._id">
-                <project-item :project="project"></project-item>
+                <project-item :project="project._source"></project-item>
               </router-link>
             </li>
           </ul>
@@ -66,19 +66,19 @@
       <!--工程文献-->
       <div class="engineer_list">
         <router-link :to="'/literature/list'">
-        <div class="engineer_list_left">
-          <div class="engineer_list_left_img">
-            <img src="../assets/images/literature_avatar.png"/>
+          <div class="engineer_list_left">
+            <div class="engineer_list_left_img">
+              <img src="../assets/images/literature_avatar.png"/>
+            </div>
+            <h4>工程文献</h4>
+            <p>收录了从古代到改革开放以来的著名工程师，包括等等</p>
           </div>
-          <h4>工程文献</h4>
-          <p>收录了从古代到改革开放以来的著名工程师，包括等等</p>
-        </div>
-      </router-link>
+        </router-link>
         <div class="literature_list_right">
           <ul>
             <li v-for="literature in literatures">
               <router-link :to="'/literature/info/' + literature._id">
-                <literature-item :literature="literature"></literature-item>
+                <literature-item :literature="literature._source"></literature-item>
               </router-link>
             </li>
           </ul>
@@ -102,35 +102,40 @@
   import engineerItem from './engineer/engineer_item.vue'
   import projectItem from './project/project_item.vue'
   import literatureItem from './literature/literature_item.vue'
+
   export default {
-    data() {
-      return { 
-      }
+    data () {
+      return {}
     },
-    mounted(){
-      this.getData();
+    mounted () {
+      let p = {
+        searchContent: '工程',
+        category: '0',
+      }
+      this.$store.dispatch('searchHybrid', p)
+      this.getData()
     },
     computed: {
-      engineers(){
-        return this.$store.getters.engineers;
+      engineers () {
+        return this.$store.state.search.hybridEngineerList
       },
-      literatures(){
-        return this.$store.getters.literatures;
+      literatures () {
+        return this.$store.state.search.hubridLiteratureList
       },
-      currentCategory(){
-        let category = this.$route.query.category || '';  
-        return category;
+      currentCategory () {
+        let category = this.$route.query.category || ''
+        return category
       },
-      currentEra(){
-        let era = this.$route.query.era || '';  
-        return era;
+      currentEra () {
+        let era = this.$route.query.era || ''
+        return era
       },
-      currentProfession(){
-        let profession = this.$route.query.profession || '';  
-        return profession;
+      currentProfession () {
+        let profession = this.$route.query.profession || ''
+        return profession
       },
-      works(){
-        return this.$store.getters.works;
+      works () {
+        return this.$store.state.search.hybridProjectList
       }
     },
     components: {
@@ -140,23 +145,35 @@
       projectItem,
       literatureItem
     },
-    watch: { 
-       '$route': 'getData'
+    watch: {
+      '$route': 'getData'
     },
-    methods: { 
-      getLatestWorks: function(){
-        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory, 'era': this.currentEra, 'limit': 6, 'page': 1}); 
-      }, 
-      getLatestEngineers: function(profession, era){
-        this.$store.dispatch('getLatestEngineers', {profession: this.currentProfession, 'era': this.currentEra, 'limit': 6, 'page': 1}); 
+    methods: {
+      getLatestWorks: function () {
+        this.$store.dispatch('getLatestWorks', {
+          'category': this.currentCategory,
+          'era': this.currentEra,
+          'limit': 6,
+          'page': 1
+        })
       },
-      getLatestLiteratures: function(){
-        this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory, 'era': this.currentEra, 'limit': 6, 'page': 1}); 
-      }, 
-      getData: function(){
-        this.getLatestWorks();
-        this.getLatestEngineers();
-        this.getLatestLiteratures();
+      getLatestEngineers: function (profession, era) {
+        this.$store.dispatch('getLatestEngineers', {
+          profession: this.currentProfession,
+          'era': this.currentEra,
+          'limit': 6,
+          'page': 1
+        })
+      },
+      getLatestLiteratures: function () {
+        this.$store.dispatch('getLatestLiteratures', {
+          'category': this.currentCategory,
+          'era': this.currentEra,
+          'limit': 6,
+          'page': 1
+        })
+      },
+      getData: function () {
       }
     }
   }

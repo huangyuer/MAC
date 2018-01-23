@@ -60,7 +60,7 @@ const state = {
   bookTotal: '',
   hybridEngineerList: [],
   hybridProjectList: [],
-  hybridLiteratureList: [],
+  hubridLiteratureList: [],
 }
 
 const getters = {}
@@ -1013,7 +1013,9 @@ const mutations = {
     }
   },
   searchHybrid (state, data) {
-
+    state.hybridEngineerList = data.engineerData
+    state.hybridProjectList = data.projectData
+    state.hubridLiteratureList = data.literatureData
   }
 }
 
