@@ -1,9 +1,9 @@
 <template>
   <div class="engineer_item_wrapper">
 
-    <img v-show="engineer.avatar === ''" src="../../assets/images/default.jpg" />
+    <img v-show="engineer.avagtar === ''" src="../../assets/images/default.jpg" />
 
-    <img v-show="engineer.avatar !==''" :src="engineer.avatar + '?x-oss-process=image/resize,m_fill,w_230,h_180'" />
+    <img v-show="engineer.avagtar !==''" :src="engineer.avagtar" />
 
     <div class="engineer_item">
       <h4 v-text="engineer.name"></h4>
@@ -28,16 +28,7 @@
         url: 'http://118.178.238.202:9988/'
       }
     },
-    props: {
-      engineer: {
-        cover: '',
-        title: '',
-        info: '',
-        category: '',
-        count: 0,
-        date: ''
-      }
-    },
+    props: ['engineer'],
     // filters: {
     //   substr: function(value){
     //     if(! value) return '';
