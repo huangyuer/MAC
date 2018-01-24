@@ -163,7 +163,12 @@ const UserResources = resolve => {
   require.ensure(['../components/usercenter/user_resources.vue'], () => {
     resolve(require('../components/usercenter/user_resources.vue'))
   })
+}
 
+const LoadingComponent = resolve => {
+  require.ensure(['../components/public/loadingComponent.vue'], () => {
+    resolve(require('../components/public/loadingComponent.vue'))
+  })
 }
 
 export {
@@ -197,6 +202,7 @@ export {
   UserInfo,
   UserFavorites,
   UserMessages,
-  UserResources
+  UserResources,
   // paginator,
+  LoadingComponent
 }

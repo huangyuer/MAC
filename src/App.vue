@@ -4,6 +4,7 @@
     <router-view name="app-body"></router-view>
     <router-view name="app-footer"></router-view>
     <router-view name="media-popup"></router-view>
+    <router-view name="loading-component"></router-view>
   </div>
 </template>
 
