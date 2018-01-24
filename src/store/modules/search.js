@@ -185,7 +185,10 @@ const actions = {
   },
   searchProject ({commit}, data) {
     let promise = api.searchProject(data)
+    commit('setLoadingState', true)
     promise.then((response) => {
+      commit('setLoadingState', false)
+
       commit('searchProject', response.data)
       let d = response.data.hits
       let total = response.data.total
@@ -204,11 +207,13 @@ const actions = {
       commit('setSearchMediaTotal', response.data.total)
       commit('setPaginatorRows', 9)
     }, (response) => {
-
+      alert('网络错误，请刷新页面')
     })
   },
   searchEngineer ({commit}, data) {
     let promise = api.searchEngineer(data)
+    commit('setLoadingState', true)
+
     promise.then((response) => {
       let d = response.data.hits
       let total = response.data.total
@@ -227,12 +232,15 @@ const actions = {
       commit('setSearchMediaData', temp)
       commit('setSearchMediaTotal', response.data.total)
       commit('setPaginatorRows', 9)
+      commit('setLoadingState', false)
+
     }, (response) => {
 
     })
   },
   searchMedia ({commit}, data) {
     let promise = api.searchMedia(data)
+    commit('setLoadingState', true)
     promise.then((response) => {
       let d = response.data.hits
       let total = response.data.total
@@ -250,8 +258,9 @@ const actions = {
       commit('setSearchMediaData', temp)
       commit('setSearchMediaTotal', response.data.total)
       commit('setPaginatorRows', 9)
+      commit('setLoadingState', false)
     }, (response) => {
-
+      alert('网络错误，请刷新页面')
     })
   },
   searchRequirement ({commit}, data) {
@@ -281,6 +290,7 @@ const actions = {
   },
   searchLiteriture ({commit}, data) {
     let promise = api.searchLiteriture(data)
+    commit('setLoadingState', true)
     promise.then((response) => {
       commit('searchLiteriture', response.data)
       let d = response.data.hits
@@ -309,12 +319,14 @@ const actions = {
         temp.push(context)
       }
       commit('setSearchContextData', temp)
+      commit('setLoadingState', false)
     }, (response) => {
 
     })
   },
   searchExpertPatent ({commit}, data) {
     let promise = api.searchExpertPatent(data)
+    commit('setSearchState', true)
     promise.then((response) => {
       let d = response.data.hits
       let total = response.data.total
@@ -346,6 +358,7 @@ const actions = {
         temp.push(context)
       }
       commit('setSearchContextData', temp)
+      commit('setSearchState', true)
     }, (response) => {
 
     })
@@ -370,8 +383,10 @@ const actions = {
   searchProjectLeftPanel ({commit}, data) {
     let promise1 = api.searchProjectEra(data)
     let promise2 = api.searchProjectArea(data)
+    commit('setLoadingState', true)
     Promise.all([promise1, promise2]).then(function (resp) {
       commit('setLeftPanelClickProject', resp)
+      commit('setLoadingState', false)
     })
   },
   searchBookClcsDataList ({commit}, data) {
@@ -447,46 +462,56 @@ const actions = {
   },
   searchEngineerLeftPanel ({commit}, data) {
     let promise1 = api.searchEngineerEraDataList(data)
-    promise1.then((response) => {
-    }, (response) => {
-
-    })
+    commit('setLoadingState', true)
+    // promise1.then((response) => {
+    // }, (response) => {
+    //
+    // })
     let promise2 = api.searchEngineerTradesDataList(data)
-    promise2.then((response) => {
-
-    }, (response) => {
-
-    })
+    // promise2.then((response) => {
+    //
+    // }, (response) => {
+    //
+    // })
     Promise.all([promise1, promise2]).then(function (resp) {
       commit('setLeftPanelClickEngineerCategory', resp)
+      commit('setLoadingState', false)
     })
   },
   searchRequirementLeftPanel ({commit}, data) {
     let promise1 = api.searchRequirementProvinceDataList(data)
     let promise2 = api.searchRequirementWayDataList(data)
+    commit('setLoadingState', true)
     Promise.all([promise1, promise2]).then(function (resp) {
       commit('setLeftPanelClickRequirementCategory', resp)
+      commit('setLoadingState', false)
     })
   },
   searchMediaLeftPanel ({commit}, data) {
     let promise = api.searchMediaDataList(data)
+    commit('setLoadingState', true)
     promise.then((response) => {
       commit('setLeftPanelClickMediaCategorys', response.data)
+      commit('setLoadingState', false)
     }, (response) => {
-
+      alert('网络错误，请刷新页面')
     })
   },
   searchLiteratureLeftPanel ({commit}, data) {
     let promise1 = api.searchLiteratureEraDataList(data)
     let promise2 = api.searchLiteratureCategoryDataList(data)
+    commit('setLoadingState', true)
     Promise.all([promise1, promise2]).then(function (resp) {
       commit('setLeftPanelClickLiterature', resp)
+      commit('setLoadingState', false)
     })
   },
   searchKnowledgeLeftPanel ({commit}, data) {
+    commit('setLoadingState', true)
     let promise = api.searchKnowledgeCategoryDataList(data)
     promise.then((response) => {
       commit('setLeftPanelClickKnowledgeCategorys', response.data)
+      commit('setLoadingState', false)
     }, (response) => {
 
     })
@@ -706,6 +731,7 @@ const actions = {
   },
   searchLiteratureCategoryChild ({commit}, data) {
     let promise = api.searchLiteratureCategoryChild(data)
+    commit('setLoadingState', true)
     promise.then((response) => {
       let d = response.data.hits
       var temp = []
@@ -723,6 +749,7 @@ const actions = {
       }
       commit('setSearchContextData', temp)
       commit('setPaginatorTotal', response.data.total)
+      commit('setLoadingState', true)
     }, (response) => {
 
     })
