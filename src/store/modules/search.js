@@ -798,6 +798,7 @@ const actions = {
     promise.then((response) => {
       if (response.data.hasOwnProperty('success')) {
         alert('取消成功')
+        window.history.go(0)
         commit('removeUserFavoriteBooks', data)
         commit('bremoveUserFavoriteBooks', data)
       }

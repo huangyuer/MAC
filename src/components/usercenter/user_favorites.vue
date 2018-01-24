@@ -7,12 +7,12 @@
       <p>收藏夹</p>
     </div>
     <div class="grzx_rightul">
-      <ul>
+     <!--  <ul>
         <li><a href="" class="a_hover">图书</a></li>
         <li><a href="">工程师</a></li>
         <li><a href="">工程图书</a></li>
         <li><a href="">公式</a></li> 
-      </ul>
+      </ul> -->
     </div>
     <div class="grzx_right_table">
       <table width="100%" border="1">
@@ -25,7 +25,7 @@
           <td width="80%">{{book.name}}</td>
           <td width="20%">
             <router-link :to="'/book/info/' + book._id">详情</router-link>
-            <a @click="cancelFavoriteBook" href="javascript:;">取消收藏</a>
+            <a @click="cancelFavoriteBook(book)" href="javascript:;">取消收藏</a>
           </td>
         </tr> 
       </table>
@@ -49,7 +49,9 @@
     },
  
     methods: {
-      // 初始化请求基本信息数据 
+      cancelFavoriteBook: function(book){
+        this.$store.dispatch('removeUserFavoriteBooks', {'bookId': book._id})
+      } 
     },
     computed: {
       favoriteBooks(){

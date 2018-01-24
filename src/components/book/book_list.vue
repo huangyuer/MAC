@@ -23,7 +23,7 @@
                   </p>
                   <div class="clear"></div>
                   <span v-text="book.bindingFormat.length < 90 ? book.bindingFormat : book.bindingFormat.substring(0, 90) + '...'"></span>
-                  <a class="fav" v-show="!book.isFav" @click="addToFav()"><small></small><span>加入收藏夹</span></a>
+                  <a class="fav" v-show="!book.isFav" @click="addToFav(book)"><small></small><span>加入收藏夹</span></a>
                   <a class="fav" v-show="book.isFav" @click="removeFromFav()"><small></small><span>已加入收藏夹</span></a>
                 </dd>
               </dl>
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+  import {checkLoginCookie, getCookie} from '../../assets/js/cookie'
   import toolBar from '../search/toolBar.vue'
   import navBar from '../public/nav_bar.vue'
   import searchComponent from '../public/searchComponent.vue'
@@ -99,6 +100,15 @@
       books () {
         return this.$store.getters.books;
       },
+      userInfo () {  
+        let userInfo = getCookie('userInfo');
+        if (userInfo) {
+          let user = JSON.parse(userInfo);
+          return user;
+        } else { 
+          return this.$store.getters.userInfo;
+        }
+      },
       isSearchResult () {
         return this.$store.getters.books.isSearchResult;
       },
@@ -148,8 +158,8 @@
         this.$store.dispatch('searchBooks', {'keywords': keywords, 'limit': limit, 'page': page});
       },
       // 加入收藏夹
-      addToFav: function () {
-        //
+      addToFav: function (book) { 
+        this.$store.dispatch('addUserFavoriteBooks', {'bookId': book._id, 'userId': this.userInfo.userId})
       },
       // 移除收藏夹
       removeFromFav: function () {
