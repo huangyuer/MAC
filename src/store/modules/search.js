@@ -68,9 +68,11 @@ const actions = {
   searchAll ({commit}, data) {
     let promise = api.searchAll(data)
     let userInfo = getCookie('userInfo')
+    commit('setLoadingState', true)
     if (userInfo) {
       let promise1 = api.getUserFavoriteBooks()
       Promise.all([promise, promise1]).then(function (resp) {
+        commit('setLoading  State', false)
         router.push('/search/result')
         commit('searchAll', resp[0].data.data)
         //发送到leftPanel.js中去
@@ -83,6 +85,7 @@ const actions = {
       })
     } else {
       promise.then((response) => {
+        commit('setLoadingState', false)
         router.push('/search/result')
         commit('searchAll', response.data.data)
         //发送到leftPanel.js中去
@@ -96,9 +99,12 @@ const actions = {
   searchBook ({commit}, data) {
     let promise = api.searchBook(data)
     let userInfo = getCookie('userInfo')
+    commit('setLoadingState', true)
     if (userInfo) {
       let promise1 = api.getUserFavoriteBooks(data)
       Promise.all([promise, promise1]).then(function (resp) {
+        commit('setLoadingState', false)
+
         commit('searchBook', resp[0].data)
         let d = resp[0].data.hits
         let favList = resp[1].data
@@ -141,6 +147,8 @@ const actions = {
       })
     } else {
       promise.then((response) => {
+        commit('setLoadingState', false)
+
         commit('searchBook', response.data)
         let d = response.data.hits
         commit('setPaginatorTotal', response.data.total)
@@ -351,8 +359,12 @@ const actions = {
     let promise2 = api.searchBookSublibs(p)
     let promise3 = api.searchBookChapter(p)
     let promise4 = api.searchBook(p)
+    commit('setLoadingState', true)
+
     Promise.all([promise1, promise2, promise3, promise4]).then(function (resp) {
       commit('setLeftPanelClickBookCategory', resp)
+      commit('setLoadingState', false)
+
     })
   },
   searchProjectLeftPanel ({commit}, data) {

@@ -34,7 +34,8 @@ import {
   ChangePassword,
   UserFavorites,
   UserMessages,
-  UserResources
+  UserResources,
+  LoadingComponent
 } from './params'
 // 配置路由
 export default new Router({
@@ -60,7 +61,8 @@ export default new Router({
         'app-header': AppHeader,
         'app-body': SearchIndex,
         'app-footer': AppFooter,
-        'media-popup': MediaPopup
+        'media-popup': MediaPopup,
+        'loading-component': LoadingComponent,
       },
       children: [
         {
