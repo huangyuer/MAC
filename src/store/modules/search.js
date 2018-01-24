@@ -91,7 +91,7 @@ const actions = {
         //发送到leftPanel.js中去
         commit('setAllPageLeftPanel', response.data.data)
       }, (response) => {
-        console.log('error')
+        alert('网络错误，请刷新页面')
       })
     }
 
