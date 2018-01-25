@@ -61,28 +61,37 @@ const state = {
   hybridEngineerList: [],
   hybridProjectList: [],
   hubridLiteratureList: [],
+  ll: [],
 }
 
 const getters = {}
 const actions = {
+
   searchAll ({commit}, data) {
+    commit('setLoadingState', true)
     let promise = api.searchAll(data)
     let userInfo = getCookie('userInfo')
-    commit('setLoadingState', true)
     if (userInfo) {
-      let promise1 = api.getUserFavoriteBooks()
-      Promise.all([promise, promise1]).then(function (resp) {
-        commit('setLoading  State', false)
+      promise.then((response) => {
+        commit('setLoadingState', false)
         router.push('/search/result')
-        commit('searchAll', resp[0].data.data)
+        commit('searchAll', response.data.data)
         //发送到leftPanel.js中去
-        commit('setAllPageLeftPanel', resp[0].data.data)
-        let tt = []
-        for (var i = 0; i < resp[1].data.length; i++) {
-          tt.push(resp[1].data[i]._id)
-        }
-        commit('setAllPageBookFav', tt)
+        commit('setAllPageLeftPanel', response.data.data)
+        let promise1 = api.getUserFavoriteBooks()
+        promise1.then((response) => {
+          let tt = []
+          for (var i = 0; i < response.data.length; i++) {
+            tt.push(response.data[i]._id)
+          }
+          commit('setAllPageBookFav', tt)
+        }, (response) => {
+
+        })
+      }, (response) => {
+        alert('网络错误，请刷新页面')
       })
+
     } else {
       promise.then((response) => {
         commit('setLoadingState', false)
@@ -98,52 +107,109 @@ const actions = {
   },
   searchBook ({commit}, data) {
     let promise = api.searchBook(data)
+    let promise1 = api.getUserFavoriteBooks(data)
     let userInfo = getCookie('userInfo')
     commit('setLoadingState', true)
     if (userInfo) {
-      let promise1 = api.getUserFavoriteBooks(data)
-      Promise.all([promise, promise1]).then(function (resp) {
-        commit('setLoadingState', false)
-
-        commit('searchBook', resp[0].data)
-        let d = resp[0].data.hits
-        let favList = resp[1].data
-        let ll = []
-        for (var i = 0; i < favList.length; i++) {
-          ll.push(favList[i]._id)
-        }
-        console.log(ll)
-        commit('setPaginatorTotal', resp[0].data.total)
-        commit('setPaginatorRows', 10)
-        let temp = []
-        for (var i = 0; i < d.length; i++) {
-          var context = new contextItem()
-          context.id = d[i]._id
-          context.chiefEditor = d[i]._source.chiefEditor
-          context.type = '图书'
-          context.name = d[i]._source.name
-          context.publishedAt = d[i]._source.publishedAt
-          context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
-          context.keywords = d[i]._source.keywords
-          var stt = ''
-          console.log(d[i].hasOwnProperty('highlight'))
-          if (d[i].hasOwnProperty('highlight')) {
-            var bdd = d[i].highlight.summary
-            for (var j = 0; j < bdd.length; j++) {
-              stt = stt + bdd[j]
+      promise1.then((response) => {
+        promise.then((response) => {
+          let d = response.data.hits
+          commit('setLoadingState', false)
+          commit('searchBook', response.data)
+          commit('setPaginatorTotal', response.data.total)
+          commit('setPaginatorRows', 10)
+          let temp = []
+          for (var i = 0; i < d.length; i++) {
+            var context = new contextItem()
+            context.id = d[i]._id
+            context.chiefEditor = d[i]._source.chiefEditor
+            context.type = '图书'
+            context.name = d[i]._source.name
+            context.publishedAt = d[i]._source.publishedAt
+            context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
+            context.keywords = d[i]._source.keywords
+            var stt = ''
+            console.log(d[i].hasOwnProperty('highlight'))
+            if (d[i].hasOwnProperty('highlight')) {
+              var bdd = d[i].highlight.summary
+              for (var j = 0; j < bdd.length; j++) {
+                stt = stt + bdd[j]
+              }
+              context.highlight = stt
+            } else {
+              context.highlight = d[i]._source.summary
             }
-            context.highlight = stt
-          } else {
-            context.highlight = d[i]._source.summary
+            if (state.ll.indexOf(d[i]._id) > 0) {
+              context.isFavorited = true
+            } else {
+              context.isFavorited = false
+            }
+            temp.push(context)
           }
-          if (ll.indexOf(d[i]._id) > 0) {
-            context.isFavorited = true
-          } else {
-            context.isFavorited = false
+          commit('setSearchContextData', temp)
+          promise1.then((response) => {
+            let favList = response.data
+            let ll = []
+            for (var i = 0; i < favList.length; i++) {
+              ll.push(favList[i]._id)
+            }
+            state.ll = ll
+          }, (response) => {
+
+          })
+        })
+      }, (response) => {
+        promise.then((response) => {
+          let d = response.data.hits
+          commit('setLoadingState', false)
+          commit('searchBook', response.data)
+          commit('setPaginatorTotal', response.data.total)
+          commit('setPaginatorRows', 10)
+          let temp = []
+          for (var i = 0; i < d.length; i++) {
+            var context = new contextItem()
+            context.id = d[i]._id
+            context.chiefEditor = d[i]._source.chiefEditor
+            context.type = '图书'
+            context.name = d[i]._source.name
+            context.publishedAt = d[i]._source.publishedAt
+            context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
+            context.keywords = d[i]._source.keywords
+            var stt = ''
+            console.log(d[i].hasOwnProperty('highlight'))
+            if (d[i].hasOwnProperty('highlight')) {
+              var bdd = d[i].highlight.summary
+              for (var j = 0; j < bdd.length; j++) {
+                stt = stt + bdd[j]
+              }
+              context.highlight = stt
+            } else {
+              context.highlight = d[i]._source.summary
+            }
+            if (state.ll.indexOf(d[i]._id) > 0) {
+              context.isFavorited = true
+            } else {
+              context.isFavorited = false
+            }
+            temp.push(context)
           }
-          temp.push(context)
-        }
-        commit('setSearchContextData', temp)
+          commit('setSearchContextData', temp)
+          promise1.then((response) => {
+            let favList = response.data
+            let ll = []
+            for (var i = 0; i < favList.length; i++) {
+              ll.push(favList[i]._id)
+            }
+            state.ll = ll
+          }, (response) => {
+
+          })
+        })
+
+      })
+
+      Promise.all([promise, promise1]).then(function (resp) {
+
       })
     } else {
       promise.then((response) => {

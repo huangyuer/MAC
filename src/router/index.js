@@ -52,7 +52,8 @@ export default new Router({
     {
       path: '/',
       components: {
-        'app-body': homePage
+        'app-body': homePage,
+        'loading-component': LoadingComponent,
       }
     },
     {
@@ -122,7 +123,7 @@ export default new Router({
         'app-body': ResetPassword,
       },
     },
-    
+
     {
       path: '/auth/register',
       components: {
