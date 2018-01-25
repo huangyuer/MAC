@@ -80,18 +80,26 @@
     },
     computed: {
       loggedIn () {
+        try {
+          let logged = this.$store.getters.loggedIn
+          if (logged) {
+            return true
+          }
+          let userInfo = getCookie('userInfo')
+          if (userInfo) {
+            try {
+              let user = JSON.parse(userInfo)
+              return user
+            } catch (e) {
+              return this.$store.getters.userInfo
+            }
+          } else {
+            return this.$store.getters.userInfo
+          }
+        } catch (e) {
 
-        let logged = this.$store.getters.loggedIn
-        if (logged) {
-          return true
         }
-        let userInfo = getCookie('userInfo')
-        if (userInfo) {
-          let user = JSON.parse(userInfo)
-          return user
-        } else {
-          return this.$store.getters.userInfo
-        }
+
       },
     },
     filters: {}

@@ -15,7 +15,6 @@ const mutations = {
     } else {
       state.loadingState = false
     }
-    console.log(state.loadingQueue.indexOf('a'))
   }
 }
 
