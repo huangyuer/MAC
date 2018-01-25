@@ -8,7 +8,8 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 
-import { Pagination, Tree, Table, TableColumn,Button, MessageBox,Message, } from 'element-ui'
+import { Pagination, Tree, Table, TableColumn, Button, MessageBox, Message, } from 'element-ui'
+
 Vue.use(Pagination)
 Vue.use(Tree)
 Vue.use(Table)
@@ -22,9 +23,8 @@ import { AUTH_TOKEN } from './assets/js/config'
 import './assets/iconfont/iconfont.css'
 import './assets/iconfont/iconfont'
 
-
 // 全局配置axios
-axios.defaults.timeout = 5000
+axios.defaults.timeout = 120000
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 axios.defaults.headers.common.Authorization = AUTH_TOKEN
 

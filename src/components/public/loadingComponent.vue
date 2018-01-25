@@ -2,6 +2,9 @@
   <div class="loading-component" v-show="loadingState">
     <div class="gif-container">
       <img src="../../../src/assets/images/loading.gif">
+      <div class="text-container">
+        <span>正在加载,请稍后...</span>
+      </div>
     </div>
   </div>
 </template>

@@ -73,22 +73,26 @@ const actions = {
     let userInfo = getCookie('userInfo')
     if (userInfo) {
       promise.then((response) => {
-        commit('setLoadingState', false)
         router.push('/search/result')
         commit('searchAll', response.data.data)
         //发送到leftPanel.js中去
         commit('setAllPageLeftPanel', response.data.data)
         let promise1 = api.getUserFavoriteBooks()
         promise1.then((response) => {
+          commit('setLoadingState', false)
+
           let tt = []
           for (var i = 0; i < response.data.length; i++) {
             tt.push(response.data[i]._id)
           }
           commit('setAllPageBookFav', tt)
         }, (response) => {
+          commit('setLoadingState', false)
 
         })
       }, (response) => {
+        console.log(response)
+        commit('setLoadingState', false)
         alert('网络错误，请刷新页面')
       })
 
@@ -100,6 +104,7 @@ const actions = {
         //发送到leftPanel.js中去
         commit('setAllPageLeftPanel', response.data.data)
       }, (response) => {
+        commit('setLoadingState', false)
         alert('网络错误，请刷新页面')
       })
     }
