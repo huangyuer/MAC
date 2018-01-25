@@ -301,6 +301,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var context = new contextItem()
         context.chiefEditor = ''
+        context.id = d[i]._id
         context.type = '工程文献'
         context.name = d[i]._source.name
         context.publishedAt = d[i]._source.createdAt

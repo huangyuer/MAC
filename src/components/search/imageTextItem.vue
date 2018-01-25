@@ -24,6 +24,7 @@
       <div class="btn-container">
         <div class="btn" v-show="type==='图书'" @click="redirectDetail">在线阅读</div>
         <div class="btn" v-show="type==='图书章节'" @click="redirectChapterDetail">在线阅读</div>
+        <div class="btn" v-show="type==='工程文献'" @click="redirectDetail">在线阅读</div>
         <template v-show="type==='图书'">
           <div v-if="!obj.isFavorited" class="btn" v-show="type=='图书'" @click="addFavorite">加入收藏</div>
           <div v-else class="btn" v-show="type=='图书'" @click="removeFavorite">取消收藏</div>
@@ -63,7 +64,9 @@
             this.$router.push('/book/info/' + this.idd)
             break
           case '工程文献':
+            console.log('/literature/info' + this.idd)
             this.$router.push('/literature/info/' + this.idd)
+            break
           default:
             break
         }
