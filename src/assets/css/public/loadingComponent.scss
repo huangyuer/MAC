@@ -12,8 +12,9 @@
   background-color: rgba(0, 0, 0, .3);
   z-index: 99999;
   .gif-container {
-    height: 30px;
-    width: 30px;
+    text-align: center;
+    height: 64px;
+    width: 200px;
     position: absolute;
     left: 0;
     right: 0;
@@ -21,5 +22,10 @@
     bottom: 0;
     margin: auto;
     user-select: none;
+    .text-container {
+      position: absolute;
+      bottom: -20px;text-align: center;
+      width:  200px;
+    }
   }
 }
