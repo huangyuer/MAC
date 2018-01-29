@@ -217,19 +217,19 @@ const mutations = {
         children: []
       }
     )
-    state.leftPanelItemList.push(
-      {
-        name: '',
-        type: '',
-        children: []
-      }
-    )
+    // state.leftPanelItemList.push(
+    //   {
+    //     name: '',
+    //     type: '',
+    //     children: []
+    //   }
+    // )
     state.leftPanelItemList[0].name = '中图分类'
     state.leftPanelItemList[0].type = 'bookCategory'
     state.leftPanelItemList[1].name = '子库分类'
     state.leftPanelItemList[1].type = 'bookCategory'
-    state.leftPanelItemList[2].name = '内容类别'
-    state.leftPanelItemList[2].type = 'bookCategory'
+    // state.leftPanelItemList[2].name = '内容类别'
+    // state.leftPanelItemList[2].type = 'bookCategory'
     for (var i = 0; i < a.length; i++) {
       state.leftPanelItemList[0].children.push({
         name: a[i].key,
@@ -244,16 +244,16 @@ const mutations = {
         active: false
       })
     }
-    state.leftPanelItemList[2].children.push({
-      name: '书籍',
-      count: d.total,
-      active: false
-    })
-    state.leftPanelItemList[2].children.push({
-      name: '书籍章节',
-      count: c.total,
-      active: false
-    })
+    // state.leftPanelItemList[2].children.push({
+    //   name: '书籍',
+    //   count: d.total,
+    //   active: false
+    // })
+    // state.leftPanelItemList[2].children.push({
+    //   name: '书籍章节',
+    //   count: c.total,
+    //   active: false
+    // })
   },
   setLeftPanelClickProject (state, data) {
     state.leftPanelItemList = []
