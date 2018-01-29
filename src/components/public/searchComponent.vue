@@ -178,6 +178,10 @@
         }
       },
       clickSearch: function () {
+        let toot = {
+          name: this.searchContent
+        }
+        this.$store.dispatch('updateHotWords', toot)
         if (!this.currentLevelOneCategory) {
           this.$store.commit('setActiveLevelOneCategory', 0)
           this.$router.push('/search/result')
