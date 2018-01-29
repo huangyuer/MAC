@@ -1,7 +1,7 @@
 <template>
   <div class="search-component">
     <img class="img-bg" src="../../assets/images/search-background.png">
-    <div class="inner">
+    <div class="inner"> 
       <div class="left">
         <img class="left-img" src="../../assets/images/search-word.png">
       </div>
@@ -11,7 +11,7 @@
                 v-for="i,index in categoryList">{{i.name}}</span>
         </div>
         <div class="search-content">
-          <input @keydown.enter="clickSearch" v-model="searchContent" class="search-input" placeholder="请输入关键字">
+          <input @keydown.enter="clickSearch" v-model="searchContent_" :placeholder="placeholder" class="search-input">
           <div class="search-btn" @click="clickSearch">
             <span>搜索</span>
           </div>
@@ -40,6 +40,7 @@
     data () {
       return {
         searchContent_: '',
+        placeholder: '全文检索'
       }
     },
     methods: {
@@ -182,6 +183,7 @@
           name: this.searchContent
         }
         this.$store.dispatch('updateHotWords', toot)
+        this.$store.dispatch('getHotWordList')
         if (!this.currentLevelOneCategory) {
           this.$store.commit('setActiveLevelOneCategory', 0)
           this.$router.push('/search/result')

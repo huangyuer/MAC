@@ -1,5 +1,5 @@
 const state = {
-  searchContent: '工程',
+  searchContent: '全文检索',
   levelOneCategoryList: [
     {
       name: '全部',
