@@ -50,6 +50,7 @@ export function mediaItem () {
   this.title = ''
   this.id = ''
   this.clicks = 0
+  this.type = ''
 }
 
 export function contextItem () {

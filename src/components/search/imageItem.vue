@@ -18,7 +18,7 @@
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-tupian"></use>
           </svg>
-          <span @click="seeOrign">查看原图</span>
+          <span @click="seeOrign">查看详情</span>
           <svg style="margin-left: 12px;" class="icon" aria-hidden="true">
             <use xlink:href="#icon-yanjing"></use>
           </svg>
@@ -43,22 +43,35 @@
     },
     methods: {
       redirectDetail: function () {
+        console.log(this.type)
         switch (this.type) {
           case '工程':
             this.$router.push('/project/info/' + this.idd)
             break
           case '工程师':
             this.$router.push('/engineer/info/' + this.idd)
+            break
+          case 'bookimages':
+            this.$router.push('/media/detail/' + this.idd)
+            break
+          case 'bookcharts':
+            this.$router.push('/media/detail/' + this.idd)
+            break
+          case 'bookformulas':
+            this.$router.push('/media/detail/' + this.idd)
+            break
           default:
             break
         }
       },
       seeOrign: function () {
-        this.$store.commit('setMediaPopupUrl', this.cover)
-        this.$store.commit('setMediaPopupStatus', true)
-        this.$store.commit('setMediaPopupContent', this.summary)
-        this.$store.commit('setMediaPopupTitle', this.title)
+//        this.$store.commit('setMediaPopupUrl', this.cover)
+//        this.$store.commit('setMediaPopupStatus', true)
+//        this.$store.commit('setMediaPopupContent', this.summary)
+//        this.$store.commit('setMediaPopupTitle', this.title)
         this.$store.commit('setMediaClicks', this.clicks)
+        this.$store.commit('setMediaDetailType', this.type)
+        this.$router.push('/media/detail/' + this.idd)
       }
     },
     computed: {},

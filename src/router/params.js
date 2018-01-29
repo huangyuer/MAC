@@ -20,6 +20,11 @@ const searchMedia = resolve => {
     resolve(require('../components/search/searchMedia.vue'))
   })
 }
+const mediaDetail = resolve => {
+  require.ensure(['../components/search/mediaDetail.vue'], () => {
+    resolve(require('../components/search/mediaDetail.vue'))
+  })
+}
 const searchAll = resolve => {
   require.ensure(['../components/search/searchAll.vue'], () => {
     resolve(require('../components/search/searchAll.vue'))
@@ -212,5 +217,6 @@ export {
   UserMessages,
   UserResources,
   // paginator,
-  LoadingComponent
+  LoadingComponent,
+  mediaDetail,
 }

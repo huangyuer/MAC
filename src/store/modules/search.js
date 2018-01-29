@@ -323,6 +323,7 @@ const actions = {
         media.description = d[i]._source.description
         media.title = d[i]._source.title
         media.clicks = d[i]._source.clicks
+        media.type = d[i]._type
         media.id = d[i]._id
         temp.push(media)
       }
@@ -913,8 +914,8 @@ const actions = {
     }, (response) => {
 
     })
-  }
-
+  },
+  
 }
 
 const mutations = {

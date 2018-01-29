@@ -35,7 +35,8 @@ import {
   UserFavorites,
   UserMessages,
   UserResources,
-  LoadingComponent
+  LoadingComponent,
+  mediaDetail
 } from './params'
 // 配置路由
 export default new Router({
@@ -54,6 +55,14 @@ export default new Router({
       components: {
         'app-body': homePage,
         'loading-component': LoadingComponent,
+      }
+    },
+    {
+      path: '/media/detail/:mediaID',
+      components: {
+        'app-body': mediaDetail,
+        'app-header': AppHeader,
+        'app-footer': AppFooter,
       }
     },
     {
