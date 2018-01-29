@@ -1,7 +1,7 @@
 <template>
   <div class="search-component">
     <img class="img-bg" src="../../assets/images/search-background.png">
-    <div class="inner"> 
+    <div class="inner">
       <div class="left">
         <img class="left-img" src="../../assets/images/search-word.png">
       </div>
