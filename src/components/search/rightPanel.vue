@@ -25,45 +25,12 @@
 //      this.CY = parseInt((document.getElementById('svvg').height) / 2)
       this.CX = 140
       this.CY = 140
+      this.$store.dispatch('getHotWordList')
       this.getTags()
     },
     components: {},
     data () {
       return {
-        tags: [
-          {
-            name: '詹天佑',
-          },
-          {
-            name: '郦道元',
-          },
-          {
-            name: '工程师史',
-          },
-          {
-            name: '地下空间',
-          },
-          {
-            name: '同济大学',
-          },
-          {
-            name: '建筑工程',
-          }, {
-            name: '城市轨道',
-          },
-          {
-            name: '轨道交通',
-          }, {
-            name: '城市空间',
-          },
-          {
-            name: '工程',
-          },
-          {
-            name: '城际高铁',
-          },
-
-        ],
         textTags: [],
         speedX: Math.PI / 360,
         speedY: Math.PI / 360,
@@ -139,6 +106,9 @@
       },
       showCloud: function () {
         return this.$store.state.rightPanel.showCloud
+      },
+      tags: function () {
+        return this.$store.state.rightPanel.tags
       }
     },
     watch: {

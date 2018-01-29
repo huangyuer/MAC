@@ -232,5 +232,5 @@ export default {
     let apiUrl = `${config.API_HOST}/search/hybrid`
     let promise = axios.post(apiUrl, data)
     return promise
-  }
+  },
 }

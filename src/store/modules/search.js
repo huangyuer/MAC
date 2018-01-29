@@ -914,8 +914,8 @@ const actions = {
     }, (response) => {
 
     })
-  }
-
+  },
+  
 }
 
 const mutations = {
