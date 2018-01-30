@@ -50,7 +50,7 @@ const state = {
       name: '章节',
       active: false,
       nickName: 'chapterTitle',
-      type: 'text',
+      type: 'chapterT',
     },
     {
       name: '工程',
