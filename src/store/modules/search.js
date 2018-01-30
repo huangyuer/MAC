@@ -1039,7 +1039,17 @@ const mutations = {
       project.title = b[i]._source.title
       project.summary = b[i]._source.summary
       project.cover = b[i]._source.cover
-      project.highlight = b[i].highlight.content[0]
+      var stts = ''
+      if (b[i].hasOwnProperty('highlight')) {
+        var qqp = b[i].highlight.content
+        for (var j = 0; j < qqp.length; j++) {
+          stts = stts + qqp[j]
+        }
+        project.highlight = stts
+      } else {
+        project.highlight = b[i]._source.summary
+      }
+      // project.highlight = b[i].highlight.content[0]
       project.id = b[i]._id
       temp.push(project)
     }
