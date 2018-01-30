@@ -97,7 +97,8 @@
       <div class="slist">
         <form action="">
 
-          <input @keydown.enter="clickSearch" v-model="searchContent" type="text" class="s_in" placeholder="请输入关键字"
+          <input @keydown.enter="clickSearch" v-model="searchContent_" :placeholder="placeholder" type="text"
+                 class="s_in"
                  style="outline: none">
           <input @click="clickSearch" class="s_btn" readonly value="搜索" style="cursor: pointer;outline: none">
 
@@ -123,6 +124,7 @@
         isMenuClicked: false,
         isLibListShow: false,
         searchContent_: '',
+        placeholder: '全文检索',
       }
     },
     components: {
@@ -313,6 +315,9 @@
     watch: {
       searchContent: function (val) {
 
+      },
+      searchContent_: function (val) {
+        this.$store.commit('setSearchContent', val)
       }
     }
   }

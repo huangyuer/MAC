@@ -127,47 +127,37 @@ const mutations = {
     state.leftPanelItemList = []
     let a = data[0].data
     let b = data[1].data
-    if (a.length > 0 || b.length > 0) {
-      state.leftPanelItemList.push({
-        name: '',
-        type: '',
-        children: []
-      })
-      state.leftPanelItemList.push({
-        name: '',
-        type: '',
-        children: []
-      })
-      state.leftPanelItemList[0].name = '省份'
-      state.leftPanelItemList[0].type = 'requirementCategory'
-      state.leftPanelItemList[1].type = 'requirementCategory'
-      state.leftPanelItemList[1].name = '途径'
-      for (var i = 0; i < a.length; i++) {
-        if (a[i].key) {
-          state.leftPanelItemList[0].children.push({
-            name: a[i].key,
-            count: a[i].doc_count,
-            active: false
-          })
-        }
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+    state.leftPanelItemList[0].name = '省份'
+    state.leftPanelItemList[0].type = 'requirementCategory'
+    state.leftPanelItemList[1].type = 'requirementCategory'
+    state.leftPanelItemList[1].name = '途径'
+    for (var i = 0; i < a.length; i++) {
+      if (a[i].key) {
+        state.leftPanelItemList[0].children.push({
+          name: a[i].key,
+          count: a[i].doc_count,
+          active: false
+        })
       }
-      for (var i = 0; i < b.length; i++) {
-        if (b[i].key) {
-          state.leftPanelItemList[1].children.push({
-            name: b[i].key,
-            count: b[i].doc_count,
-            active: false
-          })
-        }
+    }
+    for (var i = 0; i < b.length; i++) {
+      if (b[i].key) {
+        state.leftPanelItemList[1].children.push({
+          name: b[i].key,
+          count: b[i].doc_count,
+          active: false
+        })
       }
-    } else {
-      state.leftPanelItemList = [
-        {
-          name: '没有找到相关文献',
-          type: '',          //代表每个categoryItem的类型、
-          children: []
-        }
-      ]
     }
   },
   setLeftPanelClickMediaCategorys (state, data) {
@@ -227,19 +217,19 @@ const mutations = {
         children: []
       }
     )
-    state.leftPanelItemList.push(
-      {
-        name: '',
-        type: '',
-        children: []
-      }
-    )
+    // state.leftPanelItemList.push(
+    //   {
+    //     name: '',
+    //     type: '',
+    //     children: []
+    //   }
+    // )
     state.leftPanelItemList[0].name = '中图分类'
     state.leftPanelItemList[0].type = 'bookCategory'
     state.leftPanelItemList[1].name = '子库分类'
     state.leftPanelItemList[1].type = 'bookCategory'
-    state.leftPanelItemList[2].name = '内容类别'
-    state.leftPanelItemList[2].type = 'bookCategory'
+    // state.leftPanelItemList[2].name = '内容类别'
+    // state.leftPanelItemList[2].type = 'bookCategory'
     for (var i = 0; i < a.length; i++) {
       state.leftPanelItemList[0].children.push({
         name: a[i].key,
@@ -254,113 +244,94 @@ const mutations = {
         active: false
       })
     }
-    state.leftPanelItemList[2].children.push({
-      name: '书籍',
-      count: d.total,
-      active: false
-    })
-    state.leftPanelItemList[2].children.push({
-      name: '书籍章节',
-      count: c.total,
-      active: false
-    })
+    // state.leftPanelItemList[2].children.push({
+    //   name: '书籍',
+    //   count: d.total,
+    //   active: false
+    // })
+    // state.leftPanelItemList[2].children.push({
+    //   name: '书籍章节',
+    //   count: c.total,
+    //   active: false
+    // })
   },
   setLeftPanelClickProject (state, data) {
     state.leftPanelItemList = []
     let a = data[0].data
     let b = data[1].data
-    if (a.length > 0 || b.length > 0) {
-      state.leftPanelItemList.push({
-        name: '',
-        type: '',
-        children: []
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+    state.leftPanelItemList[0].name = '年代'
+    state.leftPanelItemList[0].type = 'projectSecond'
+    state.leftPanelItemList[1].name = '地区'
+    state.leftPanelItemList[1].type = 'projectSecond'
+    for (var i = 0; i < a.length; i++) {
+      state.leftPanelItemList[0].children.push({
+        name: a[i].key,
+        count: a[i].doc_count,
+        active: false
       })
-      state.leftPanelItemList.push({
-        name: '',
-        type: '',
-        children: []
-      })
-      state.leftPanelItemList[0].name = '年代'
-      state.leftPanelItemList[0].type = 'projectSecond'
-      state.leftPanelItemList[1].name = '地区'
-      state.leftPanelItemList[1].type = 'projectSecond'
-      for (var i = 0; i < a.length; i++) {
-        state.leftPanelItemList[0].children.push({
-          name: a[i].key,
-          count: a[i].doc_count,
+    }
+    for (var i = 0; i < b.length; i++) {
+      if (b[i].key) {
+        state.leftPanelItemList[1].children.push({
+          name: b[i].key,
+          count: b[i].doc_count,
           active: false
         })
       }
-      for (var i = 0; i < b.length; i++) {
-        if (b[i].key) {
-          state.leftPanelItemList[1].children.push({
-            name: b[i].key,
-            count: b[i].doc_count,
-            active: false
-          })
-        }
-      }
-    } else {
-      state.leftPanelItemList = [
-        {
-          name: '没有找到相关文献',
-          type: '',          //代表每个categoryItem的类型、
-          children: []
-        }
-      ]
     }
   },
   setLeftPanelClickLiterature (state, data) {
     state.leftPanelItemList = []
     let a = data[0].data
     let b = data[1].data
-    if (a.length > 0 || b.length > 0) {
-      state.leftPanelItemList.push({
-        name: '',
-        type: '',
-        children: []
-      })
-      state.leftPanelItemList.push({
-        name: '',
-        type: '',
-        children: []
-      })
-      state.leftPanelItemList[0].name = '年代'
-      state.leftPanelItemList[0].type = 'literatureCategory'
-      state.leftPanelItemList[1].name = '类别'
-      state.leftPanelItemList[1].type = 'literatureCategory'
-      for (var i = 0; i < a.length; i++) {
-        if (a[i].key) {
-          state.leftPanelItemList[0].children.push({
-            name: a[i].key,
-            count: a[i].doc_count,
-            active: false
-          })
-        }
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+    state.leftPanelItemList[0].name = '年代'
+    state.leftPanelItemList[0].type = 'literatureCategory'
+    state.leftPanelItemList[1].name = '类别'
+    state.leftPanelItemList[1].type = 'literatureCategory'
+    for (var i = 0; i < a.length; i++) {
+      if (a[i].key) {
+        state.leftPanelItemList[0].children.push({
+          name: a[i].key,
+          count: a[i].doc_count,
+          active: false
+        })
       }
-      for (var i = 0; i < b.length; i++) {
-        if (b[i].key) {
-          state.leftPanelItemList[1].children.push({
-            name: b[i].key,
-            count: b[i].doc_count,
-            active: false
-          })
-        }
+    }
+    for (var i = 0; i < b.length; i++) {
+      if (b[i].key) {
+        state.leftPanelItemList[1].children.push({
+          name: b[i].key,
+          count: b[i].doc_count,
+          active: false
+        })
       }
-    } else {
-      state.leftPanelItemList = [
-        {
-          name: '没有找到相关文献',
-          type: '',          //代表每个categoryItem的类型、
-          children: []
-        }
-      ]
     }
   },
   setLeftPanelClickKnowledgeCategorys (state, data) {
     state.leftPanelItemList = []
     let a = data[0].hits.total
     let b = data[1].hits.total
+    let c = data[2].hits.total
     state.leftPanelItemList.push({
       name: '',
       type: '',
@@ -377,6 +348,11 @@ const mutations = {
     state.leftPanelItemList[0].children.push({
       name: '专利',
       count: b,
+      active: false,
+    })
+    state.leftPanelItemList[0].children.push({
+      name: '科研成果',
+      count: c,
       active: false,
     })
 

@@ -11,7 +11,7 @@
                 v-for="i,index in categoryList">{{i.name}}</span>
         </div>
         <div class="search-content">
-          <input @keydown.enter="clickSearch" v-model="searchContent" class="search-input" placeholder="请输入关键字">
+          <input @keydown.enter="clickSearch" v-model="searchContent_" :placeholder="placeholder" class="search-input">
           <div class="search-btn" @click="clickSearch">
             <span>搜索</span>
           </div>
@@ -40,6 +40,7 @@
     data () {
       return {
         searchContent_: '',
+        placeholder: '全文检索'
       }
     },
     methods: {
@@ -72,11 +73,23 @@
             this.$store.dispatch('searchBookLeftPanel', p1)
             this.$router.push('/search/result/context')
             this.$store.commit('setPaginatorCategory', {parent: 'book', child: ''})
-            //获取登录用户的所有收藏数列表
+//            //获取登录用户的所有收藏数列表
             this.$store.dispatch('getUserFavoriteBooks')
             break
+          case 'chapterTitle':
+            let ppst = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+              keywords: []
+            }
+            this.$store.dispatch('searchBookChapterDataList', ppst)
+            this.$store.dispatch('searchBookLeftPanel', ppst)
+            this.$router.push('/search/result/context')
+            this.$store.commit('setPaginatorCategory', {parent: 'bookChapter', child: ''})
+            break
           case 'project':
-            var pp = this.levelOneCategoryList[2].children
+            var pp = this.levelOneCategoryList[3].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -95,7 +108,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'project', child: ''})
             break
           case 'engineer':
-            var pp = this.levelOneCategoryList[3].children
+            var pp = this.levelOneCategoryList[4].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -125,7 +138,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'pic', child: ''})
             break
           case 'requirement':
-            var pp = this.levelOneCategoryList[3].children
+            var pp = this.levelOneCategoryList[6].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -144,7 +157,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'requirement', child: ''})
             break
           case 'anli':
-            var pp = this.levelOneCategoryList[6].children
+            var pp = this.levelOneCategoryList[7].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -178,6 +191,11 @@
         }
       },
       clickSearch: function () {
+        let toot = {
+          name: this.searchContent
+        }
+        this.$store.dispatch('updateHotWords', toot)
+        this.$store.dispatch('getHotWordList')
         if (!this.currentLevelOneCategory) {
           this.$store.commit('setActiveLevelOneCategory', 0)
           this.$router.push('/search/result')
@@ -204,9 +222,21 @@
               keywords: keywords
             }
             this.$store.dispatch('searchBook', p)
-            this.$store.dispatch('searchBookLeftPanel', p)
+            this.$store.dispatchs('searchBookLeftPanel', p)
             this.$router.push('/search/result/context')
             this.$store.commit('setPaginatorCategory', {parent: 'book', child: ''})
+            break
+          case 'chapterTitle':
+            let ppst = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+              keywords: []
+            }
+            this.$store.dispatch('searchBookChapterDataList', ppst)
+            this.$store.dispatch('searchBookLeftPanel', ppst)
+            this.$router.push('/search/result/context')
+            this.$store.commit('setPaginatorCategory', {parent: 'bookChapter', child: ''})
             break
           case 'project':
             var pp = this.levelOneCategoryList[2].children
@@ -300,6 +330,7 @@
             }
             this.$store.dispatch('searchExpertPatent', p)
             this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: ''})
+            this.$store.dispatch('searchKnowledgeLeftPanel', p)
             break
           default:
             break
@@ -320,13 +351,14 @@
       categoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
       },
-      searchContent: {
-        get: function () {
-          return this.$store.state.searchComponent.searchContent
-        },
-        set: function (val) {
-          this.searchContent_ = val
-        }
+      searchContent: function () {
+//        get: function () {
+//          return this.$store.state.searchComponent.searchContent
+//        },
+//        set: function (val) {
+//          this.searchContent_ = val
+//        }
+        return this.$store.state.searchComponent.searchContent
 
       },
       levelOneCategoryList: function () {
