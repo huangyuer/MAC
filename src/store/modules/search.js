@@ -411,24 +411,56 @@ const actions = {
         context.chiefEditor = ''
         if (d[i]._type === 'experts') {
           context.type = '专家'
-        } else {
-          context.type = '专利'
-        }
-        context.name = d[i]._source.name
-        context.publishedAt = d[i]._source.createdAt
-        context.cover = d[i]._source.avatar
-        context.keywords = d[i]._source.categories
-        if (d[i].hasOwnProperty('highlight')) {
-          var tt = ''
-          var hdd = d[i].highlight.intro
-          for (var j = 0; j < hdd.length; j++) {
-            tt = tt + hdd[j]
+          context.name = d[i]._source.name
+          context.publishedAt = d[i]._source.createdAt
+          context.cover = d[i]._source.avatar
+          context.keywords = d[i]._source.categories
+          if (d[i].hasOwnProperty('highlight')) {
+            var tt = ''
+            var hdd = d[i].highlight.intro
+            for (var j = 0; j < hdd.length; j++) {
+              tt = tt + hdd[j]
+            }
+            context.highlight = tt
+          } else {
+            context.highlight = d[i]._source.intro
           }
-          context.highlight = tt
-        } else {
-          context.highlight = d[i]._source.intro
+          temp.push(context)
+        } else if (d[i]._type === 'patents') {
+          context.type = '专利'
+          context.name = d[i]._source.name
+          context.publishedAt = d[i]._source.createdAt
+          context.cover = d[i]._source.avatar
+          context.keywords = d[i]._source.categories
+          if (d[i].hasOwnProperty('highlight')) {
+            var tt = ''
+            var hdd = d[i].highlight.intro
+            for (var j = 0; j < hdd.length; j++) {
+              tt = tt + hdd[j]
+            }
+            context.highlight = tt
+          } else {
+            context.highlight = d[i]._source.intro
+          }
+          temp.push(context)
+        } else if (d[i]._type === 'achievements') {
+          context.type = '科研成果'
+          context.name = d[i]._source.name
+          context.cover = d[i]._source.cover
+          context.publishedAt = d[i]._source.createdAt
+          context.keywords = d[i]._source.categories
+          if (d[i].hasOwnProperty('highlight')) {
+            var tt = ''
+            var hdd = d[i].highlight.content
+            for (var j = 0; j < hdd.length; j++) {
+              tt = tt + hdd[j]
+            }
+            context.highlight = tt
+          } else {
+            context.highlight = d[i]._source.content
+          }
+          temp.push(context)
         }
-        temp.push(context)
       }
       commit('setSearchContextData', temp)
       commit('setSearchState', true)
@@ -873,6 +905,26 @@ const actions = {
 
     })
   },
+  searchAchievementChild ({commit}, data) {
+    let promise = api.searchAchievementChild(data)
+    promise.then((response) => {
+      let d = response.data.hits
+      var temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem()
+        context.id = d[i]._id
+        context.type = '科研成果'
+        context.name = d[i]._source.name
+        context.publishedAt = d[i]._source.createdAt
+        context.cover = d[i]._source.cover
+        context.keywords = d[i]._source.categories
+        context.highlight = d[i]._source.content
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
+      commit('setPaginatorTotal', response.data.total)
+    })
+  },
   getUserFavoriteBooks ({commit}, data) {
     let promise = api.getUserFavoriteBooks(data)
     promise.then((response) => {
@@ -915,7 +967,7 @@ const actions = {
 
     })
   },
-  
+
 }
 
 const mutations = {

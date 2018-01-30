@@ -363,6 +363,9 @@
           } else if (p.childIndex === 1) {
             this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: 'patent'})
             this.$store.dispatch('searchPatentChild', ppt)
+          } else if (p.childIndex === 2) {
+            this.$store.dispatch('searchAchievementChild',ppt)
+            this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: 'achievement'})
           }
         }
       }

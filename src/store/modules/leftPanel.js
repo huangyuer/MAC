@@ -331,6 +331,7 @@ const mutations = {
     state.leftPanelItemList = []
     let a = data[0].hits.total
     let b = data[1].hits.total
+    let c = data[2].hits.total
     state.leftPanelItemList.push({
       name: '',
       type: '',
@@ -347,6 +348,11 @@ const mutations = {
     state.leftPanelItemList[0].children.push({
       name: '专利',
       count: b,
+      active: false,
+    })
+    state.leftPanelItemList[0].children.push({
+      name: '科研成果',
+      count: c,
       active: false,
     })
 
