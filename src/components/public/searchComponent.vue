@@ -76,8 +76,20 @@
             //获取登录用户的所有收藏数列表
             this.$store.dispatch('getUserFavoriteBooks')
             break
+          case 'chapterTitle':
+            let ppst = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+              keywords: []
+            }
+            this.$store.dispatch('searchBookChapterDataList', ppst)
+            this.$store.dispatch('searchBookLeftPanel', ppst)
+            this.$router.push('/search/result/context')
+            this.$store.commit('setPaginatorCategory', {parent: 'bookChapter', child: ''})
+            break
           case 'project':
-            var pp = this.levelOneCategoryList[2].children
+            var pp = this.levelOneCategoryList[3].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -96,7 +108,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'project', child: ''})
             break
           case 'engineer':
-            var pp = this.levelOneCategoryList[3].children
+            var pp = this.levelOneCategoryList[4].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -126,7 +138,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'pic', child: ''})
             break
           case 'requirement':
-            var pp = this.levelOneCategoryList[3].children
+            var pp = this.levelOneCategoryList[6].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -145,7 +157,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'requirement', child: ''})
             break
           case 'anli':
-            var pp = this.levelOneCategoryList[6].children
+            var pp = this.levelOneCategoryList[7].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
