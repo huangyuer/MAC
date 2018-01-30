@@ -73,7 +73,7 @@
             this.$store.dispatch('searchBookLeftPanel', p1)
             this.$router.push('/search/result/context')
             this.$store.commit('setPaginatorCategory', {parent: 'book', child: ''})
-            //获取登录用户的所有收藏数列表
+//            //获取登录用户的所有收藏数列表
             this.$store.dispatch('getUserFavoriteBooks')
             break
           case 'chapterTitle':
@@ -222,9 +222,21 @@
               keywords: keywords
             }
             this.$store.dispatch('searchBook', p)
-            this.$store.dispatch('searchBookLeftPanel', p)
+            this.$store.dispatchs('searchBookLeftPanel', p)
             this.$router.push('/search/result/context')
             this.$store.commit('setPaginatorCategory', {parent: 'book', child: ''})
+            break
+          case 'chapterTitle':
+            let ppst = {
+              rows: 10,
+              searchContent: this.searchContent,
+              page: 1,
+              keywords: []
+            }
+            this.$store.dispatch('searchBookChapterDataList', ppst)
+            this.$store.dispatch('searchBookLeftPanel', ppst)
+            this.$router.push('/search/result/context')
+            this.$store.commit('setPaginatorCategory', {parent: 'bookChapter', child: ''})
             break
           case 'project':
             var pp = this.levelOneCategoryList[2].children
@@ -339,13 +351,14 @@
       categoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
       },
-      searchContent: {
-        get: function () {
-          return this.$store.state.searchComponent.searchContent
-        },
-        set: function (val) {
-          this.searchContent_ = val
-        }
+      searchContent: function () {
+//        get: function () {
+//          return this.$store.state.searchComponent.searchContent
+//        },
+//        set: function (val) {
+//          this.searchContent_ = val
+//        }
+        return this.$store.state.searchComponent.searchContent
 
       },
       levelOneCategoryList: function () {
