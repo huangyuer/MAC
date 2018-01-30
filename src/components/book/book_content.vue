@@ -10,20 +10,19 @@
       <div class="main_left">
         <div class="list_cent">
           <div class="book_li">
-            <p v-html="bookChapterDetail.contentRaw" style="font-size: 14px !important;"></p>
+            <p v-html="bookChapterDetail.contentRaw"></p>
           </div>
         </div>
       </div>
 
-      <similar-right></similar-right>
-
+     <!--  <similar-right></similar-right> -->
+      <list-right></list-right>
     </div>
     <div class="clear"></div>
   </div>
 </template>
 
-<style scoped>
-
+<style scoped> 
 
   /*注释*/
   .footnote {
@@ -44,6 +43,14 @@
     display: inline;
   }
 
+  .book_li p {
+    color: rgb(111, 111, 111);
+    font-size:16px;
+    line-height: 30px;
+    text-indent: 2em;
+    padding-top: 20px;
+  }
+ 
   .book_li h1 {
     font-size: 24px;
     font-family: "";
@@ -57,14 +64,13 @@
 
   /*一级标题*/
   /*二级标题*/
-  .book_li h2 {
+  .book_li  p  h2 {
     font-size: 22px;
     font-family: "";
     font-weight: normal;
-    margin-bottom: 1em;
-    margin-top: 1em;
-    text-align: center;
-
+    margin-bottom: 2em; 
+    margin-top: 2em;
+    text-align: center; 
   }
 
   /*二级标题*/
@@ -656,6 +662,7 @@
   import categoryLeft from '../book/category_left.vue'
   import similarRight from '../book/similar_right.vue'
   import { DataTree } from '../../utils/data_tree'
+  import listRight from '../book/list_right.vue'
 
   export default {
     name: 'book_info',
@@ -671,7 +678,8 @@
       navBar,
       searchComponent,
       categoryLeft,
-      similarRight
+      similarRight,
+      listRight
     },
     mounted: function () {
       this.init()
@@ -717,5 +725,3 @@
   }
 </script>
 
-<style>
-</style>

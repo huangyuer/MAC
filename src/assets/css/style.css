@@ -164,62 +164,7 @@ html,body{width: 100%;height: 100%;min-width:1240px; min-height:840px; margin: 0
 .book_title span{float: right;margin-right: 20px;color: #1e518a;}
 .book_list ul li{height: 35px;line-height: 35px;border-bottom: 1px solid #e9e9e9;}
 .book_list ul li a{font-size: 14px;color: #8f8890;margin-left: 30px;}
-.book_li{margin:20px;}
-.book_li p{font-size: 14px;color: #1E518A;}
-.book_li h1{font-size: 26px;color: #1E518A;}
-.book_li h2{font-size: 22px;color: #1E518A;}
-.book_li h3{font-size: 18px;color: #1E518A;}
-.book_li dl{margin-top: 20px;}
-.book_li dt{float: left;width: 160px;}
-.book_li dd{float: left;font-size: 12px;}
-.book_li dd p span{color:#4A4A4A;}
-.book_li dd a{color: #E5740B;font-size: 14px;}
-.book_li dd a:hover{text-decoration: underline}
-.book_li dd p{font-size: 14px;line-height: 26px;color: #1E518A;}
-.book_bt{height: 40px;line-height: 40px;background: #1E518A; color: #fff; margin-top: 20px;font-size: 14px;}
-.book_bt span{margin-left: 20px;}
-.book_info {font-size: 14px;color: #555555;margin:20px;line-height: 28px;}
-.location{height: 30px;line-height: 30px;background: #1e518a;font-size: 14px;color: #fff;}
-.location a{color: #fff;}
-.location a:hover{color: #fff;}
-.location p{margin-left: 20px;}
-.dl_title{padding-top: 20px;font-size: 16px;margin: 10px;}
-.list_li3{margin:0 10px;margin-bottom: 20px;}
-.list_li3 dl{overflow: hidden;padding-bottom: 5px;border-bottom: 1px solid #eaeaea;}
-.list_li3 dt{width: 63px;float: left;}
-.list_li3 dd{width: 202px;float: left;}
-.list_li3{margin-top: 20px;}
-.list_li3 dl{margin-top: 10px}
-.list_li3 dd em{float: left;border: 1px solid #f89e8f;line-height: 20px;padding:0 5px;border-radius: 5px;color: #f89e8f;margin-right: 10px;}
-.list_li3 dd p a{color: #1e518a;;font-size: 14px;}
-.list_li3 span{color: #666782;margin-top: 5px;display: block;}
-.list_li3 small{margin-top: 5px;display: block;}
-.book_li b{font-size: 16px;display: block;}
-.list_li5{margin:0 10px;margin-bottom: 20px;}
-.list_li5 dl{overflow: hidden;padding-bottom: 5px;border-bottom: 1px solid #eaeaea;}
-.list_li5 dt{width: 80px;float: left;}
-.list_li5 dd{width: 180px;float: left;}
-.list_li5{margin-top: 20px;}
-.list_li5 dl{margin-top: 10px}
-.list_li5 dd em{float: left;border: 1px solid #f89e8f;line-height: 20px;padding:0 5px;border-radius: 5px;color: #f89e8f;margin-right: 10px;}
-.list_li5 dd p a{color: #000;font-size: 14px;}
-.list_li5 span{color: #666782;margin-top: 5px;display: block;}
-.list_li5 small{margin-top: 5px;display: block;}
-.list_img5{margin:0 20px;margin-top: 10px;overflow: hidden;}
-.list_img5 ul li{float: left;text-align: center;width: 48%;margin:0 1%;margin-top: 0px;padding-bottom:10px;padding-top:10px;}
-.list_img5 p{color: #333;font-size: 14px;line-height: 28px;}
-.list_img5 span{color:#999;font-size: 12px;}
-.list_img5 img{width: 100%;}
-@media only screen and (max-width: 701px) {
-.book_li > p{text-align: center;}
-.book_li dt{text-align: center;width: 100%}
-.book_li dd{width: 100%}
-.list_li3 dt{width: 25%;float: left;}
-.list_li3 dt img{width: 90%;}
-.list_li3 dd{width: 75%;float: left;}
-.book_lb ul li:first-child{margin-top: 0px;}
-
-}
+.book_li{margin:20px;} 
 .list_left_bg2{background: #ebf3fb !important;}
 .dl_img{margin-left: 20px;}
 .dl_info{margin-left: 20px;margin-right: 20px;margin-top: 10px;}
@@ -544,9 +489,9 @@ select,button{cursor:pointer}
 table{border-collapse:collapse;border-spacing:0}
 .clear{clear:both;}
 /*title*/
-h1 { font-size:50px;}
-h2 { font-size:40px;}
-h3 { font-size:30px;}
+h1 { font-size:50px;margin-bottom: 20px;}
+h2 { font-size:40px;margin-bottom: 20px;}
+h3 { font-size:30px;margin-bottom: 20px;}
 h4 { font-size:14px;}
 h5 { font-size:12px;}
 h6 { font-size:9px;}
