@@ -14,37 +14,43 @@ const state = {
       nickName: 'book',
       type: 'text',
       children: [
-        {
-          name: 'ISBN',
-          active: false,
-          keyword: 'isbn',
-        },
-        {
-          name: '作者',
-          active: false,
-          keyword: 'chiefEditor',
-        },
-        {
-          name: '书名',
-          active: false,
-          keyword: 'name',
-        },
-        {
-          name: '类别',
-          active: false,
-          keyword: 'series',
-        },
-        {
-          name: '关键字',
-          active: false,
-          keyword: 'keywords',
-        },
-        {
-          name: '简介',
-          active: false,
-          keyword: 'summary'
-        },
+        // {
+        //   name: 'ISBN',
+        //   active: false,
+        //   keyword: 'isbn',
+        // },
+        // {
+        //   name: '作者',
+        //   active: false,
+        //   keyword: 'chiefEditor',
+        // },
+        // {
+        //   name: '书名',
+        //   active: false,
+        //   keyword: 'name',
+        // },
+        // {
+        //   name: '类别',
+        //   active: false,
+        //   keyword: 'series',
+        // },
+        // {
+        //   name: '关键字',
+        //   active: false,
+        //   keyword: 'keywords',
+        // },
+        // {
+        //   name: '简介',
+        //   active: false,
+        //   keyword: 'summary'
+        // },
       ],
+    },
+    {
+      name: '章节',
+      active: false,
+      nickName: 'chapterTitle',
+      type: 'text',
     },
     {
       name: '工程',

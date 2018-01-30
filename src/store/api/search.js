@@ -209,6 +209,12 @@ export default {
     let promise = axios.post(apiUrl, data)
     return promise
   },
+  // 搜索科研成果
+  searchAchievementChild (data) {
+    let apiUrl = `${config.API_HOST}/search/achievement/child`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
   // 获取登录用户收藏的图书
   getUserFavoriteBooks () {
     let apiUrl = `${config.API_HOST}/users/favorite/books`

@@ -183,6 +183,9 @@
             case 'patent':
               this.$store.dispatch('searchPatentChild', pp)
               break
+            case 'achievement':
+              this.$store.dispatch('searchAchievementChild', pp)
+              break
             default:
               break
           }

@@ -306,6 +306,7 @@
             }
             this.$store.dispatch('searchExpertPatent', p)
             this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: ''})
+            this.$store.dispatch('searchKnowledgeLeftPanel', p)
             break
           default:
             break
