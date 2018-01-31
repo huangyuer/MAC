@@ -732,6 +732,7 @@ const actions = {
         media.title = d[i]._source.title
         media.description = d[i]._source.description
         media.clicks = d[i]._source.clicks
+        media.type = d[i]._type
         temp.push(media)
       }
       commit('setSearchMediaData', temp)
@@ -753,6 +754,7 @@ const actions = {
         media.title = d[i]._source.title
         media.description = d[i]._source.description
         media.clicks = d[i]._source.clicks
+        media.type = d[i]._type
         temp.push(media)
       }
       commit('setSearchMediaData', temp)
@@ -774,6 +776,7 @@ const actions = {
         media.title = d[i]._source.title
         media.description = d[i]._source.description
         media.clicks = d[i]._source.clicks
+        media.type = d[i]._type
         temp.push(media)
       }
       commit('setSearchMediaData', temp)

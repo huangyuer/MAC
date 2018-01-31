@@ -1,11 +1,15 @@
 const state = {
+  mediaDetail: '',
   mediaType: '',
 }
 
 const actions = {}
 
 const mutations = {
-  setMediaDetailType (state, data) {
+  setMediaDetail (state, data) {
+    state.mediaDetail = data
+  },
+  setMediaType (state, data) {
     state.mediaType = data
   }
 }

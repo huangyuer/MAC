@@ -9,13 +9,13 @@
       <div class="left-panel">
         <div class="inner">
           <div class="title">
-            附表：上岛咖啡鉴定色
+            {{mediaDetail.title}}
           </div>
           <div class="img-container">
-            <img src="../../../src/assets/images/bg.8096c88.jpg">
+            <img :src="mediaDetail.url">
           </div>
           <div class="content">
-            <span>CAD的教学方法是什么呢？</span>
+            <span>{{mediaDetail.description}}</span>
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
             <span>所属类别</span>
           </div>
           <div class="category">
-            <span>建筑、桥梁</span>
+            <span>{{mediaType}}</span>
           </div>
           <div class="underline">
 
@@ -36,7 +36,7 @@
             <span>其它</span>
           </div>
           <div class="category">
-            <span>12次查看 </span>
+            <span>{{mediaDetail.clicks}}次查看 </span>
           </div>
           <div class="underline">
 
@@ -63,7 +63,26 @@
         this.$router.go(-1)
       }
     },
-    computed: {},
+    computed: {
+      mediaDetail: function () {
+        return this.$store.state.mediaDetail.mediaDetail
+      },
+      mediaType: function () {
+        switch (this.mediaDetail.type) {
+          case 'bookformulas':
+            return '公式'
+            break
+          case 'bookimages':
+            return '图片'
+            break
+          case 'bookcharts':
+            return '图表'
+            break
+          default:
+            break
+        }
+      }
+    },
     filters: {}
 
   }
