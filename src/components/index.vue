@@ -185,7 +185,7 @@
             this.$router.push('/search/result/context')
             break
           case 'project':
-            var pp = this.levelOneCategoryList[2].children
+            var pp = this.levelOneCategoryList[3].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -204,7 +204,7 @@
             this.$router.push('/search/result/media')
             break
           case 'engineer':
-            var pp = this.levelOneCategoryList[3].children
+            var pp = this.levelOneCategoryList[5].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -232,7 +232,7 @@
             this.$router.push('/search/result/media')
             break
           case 'requirement':
-            var pp = this.levelOneCategoryList[3].children
+            var pp = this.levelOneCategoryList[7].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -250,7 +250,7 @@
             this.$router.push('/search/result/context')
             break
           case 'anli':
-            var pp = this.levelOneCategoryList[6].children
+            var pp = this.levelOneCategoryList[8].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
