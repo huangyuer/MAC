@@ -45,28 +45,32 @@
         console.log(this.searchContent)
         let p = {
           searchContent: this.searchContent,
-          category: '0'
+          category: '0',
+          keywords: []
         }
-        // this.$store.dispatch('searchHybrid', p)
-        this.$store.dispatch('searchProject', p)
-        this.$router.push('/engineer/search/result')
+        this.$store.dispatch('searchHybrid', p)
+        // this.$store.dispatch('searchProject', p)
+        this.$router.push('/history/search/result')
       },
       search: function (type) {
         console.log(type)
         if (type === 'all') {
           var p = {
             searchContent: this.searchContent === '' ? '工程' : this.searchContent,
-            category: '0'
+              category: '0',
+              keywords: []
           }
           this.$store.dispatch('searchHybrid', p)
         } else {
           var p = {
             searchContent: this.searchContent === '' ? '工程' : this.searchContent,
-            content: type,
-            category: '1',
+              content: type,
+              category: '1',
+              keywords: []
           }
           this.$store.dispatch('searchHybrid', p)
         }
+        this.$router.push('/history/search/result')
       }
     }
   }

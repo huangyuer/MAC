@@ -21,6 +21,9 @@ import {
 
   Selected,
   EngineerList,
+  HistorySearchResult,
+  LiteratureSearchResult,
+  ProjectSearchResult,
   EngineerSearchResult,
   EngineerInfo,
   ProjectList,
@@ -205,10 +208,34 @@ export default new Router({
       },
     },
     { 
+      path: '/history/search/result',
+      components: {
+        'app-header': AppHeader,
+        'app-body': HistorySearchResult,
+        'app-footer': AppFooter
+      },
+    },
+    { 
       path: '/engineer/search/result',
       components: {
         'app-header': AppHeader,
         'app-body': EngineerSearchResult,
+        'app-footer': AppFooter
+      },
+    },
+    { 
+      path: '/literature/search/result',
+      components: {
+        'app-header': AppHeader,
+        'app-body': LiteratureSearchResult,
+        'app-footer': AppFooter
+      },
+    },
+    { 
+      path: '/project/search/result',
+      components: {
+        'app-header': AppHeader,
+        'app-body': ProjectSearchResult,
         'app-footer': AppFooter
       },
     },

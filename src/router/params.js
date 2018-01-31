@@ -101,9 +101,25 @@ const EngineerList = resolve => {
   })
 }
 
+const HistorySearchResult = resolve => {
+  require.ensure(['../components/search_result.vue'], () => {
+    resolve(require('../components/search_result.vue'))
+  })
+}
 const EngineerSearchResult = resolve => {
-  require.ensure(['../components/engineer/search_result.vue'], () => {
-    resolve(require('../components/engineer/search_result.vue'))
+  require.ensure(['../components/engineer/engineer_search_result.vue'], () => {
+    resolve(require('../components/engineer/engineer_search_result.vue'))
+  })
+}
+const LiteratureSearchResult = resolve => {
+  require.ensure(['../components/literature/literature_search_result.vue'], () => {
+    resolve(require('../components/literature/literature_search_result.vue'))
+  })
+}
+
+const ProjectSearchResult = resolve => {
+  require.ensure(['../components/project/project_search_result.vue'], () => {
+    resolve(require('../components/project/project_search_result.vue'))
   })
 }
 
@@ -225,5 +241,8 @@ export {
   // paginator,
   LoadingComponent,
   mediaDetail,
-  EngineerSearchResult
+  HistorySearchResult,
+  LiteratureSearchResult,
+  EngineerSearchResult,
+  ProjectSearchResult
 }

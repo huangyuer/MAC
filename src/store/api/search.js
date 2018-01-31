@@ -37,7 +37,7 @@ export default {
     let promise = axios.post(apiUrl, data)
     return promise
   },
-  searchLiteriture (data) {
+  searchLiterature (data) {
     let apiUrl = `${config.API_HOST}/search/literature`
     let promise = axios.post(apiUrl, data)
     return promise
