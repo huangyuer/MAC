@@ -11,7 +11,8 @@
                 v-for="i,index in categoryList">{{i.name}}</span>
         </div>
         <div class="search-content">
-          <input @keydown.enter="clickSearch" v-model="searchContent_" :placeholder="placeholder" class="search-input">
+          <input id="search-input" @keydown.enter="clickSearch" v-model="searchContent" :placeholder="placeholder"
+                 class="search-input">
           <div class="search-btn" @click="clickSearch">
             <span>搜索</span>
           </div>
@@ -239,7 +240,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'bookChapter', child: ''})
             break
           case 'project':
-            var pp = this.levelOneCategoryList[2].children
+            var pp = this.levelOneCategoryList[3].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -257,7 +258,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'project', child: ''})
             break
           case 'engineer':
-            var pp = this.levelOneCategoryList[3].children
+            var pp = this.levelOneCategoryList[4].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -286,7 +287,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'pic', child: ''})
             break
           case 'requirement':
-            var pp = this.levelOneCategoryList[5].children
+            var pp = this.levelOneCategoryList[6].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -304,7 +305,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'requirement', child: ''})
             break
           case 'anli':
-            var pp = this.levelOneCategoryList[6].children
+            var pp = this.levelOneCategoryList[7].children
             var keywords = []
             for (var i = 0; i < pp.length; i++) {
               if (pp[i].active === true) {
@@ -351,15 +352,13 @@
       categoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
       },
-      searchContent: function () {
-//        get: function () {
-//          return this.$store.state.searchComponent.searchContent
-//        },
-//        set: function (val) {
-//          this.searchContent_ = val
-//        }
-        return this.$store.state.searchComponent.searchContent
-
+      searchContent: {
+        get: function () {
+          return this.$store.state.searchComponent.searchContent
+        },
+        set: function (val) {
+          this.searchContent_ = val
+        }
       },
       levelOneCategoryList: function () {
         return this.$store.state.searchComponent.levelOneCategoryList
