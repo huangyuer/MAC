@@ -139,7 +139,7 @@
                 page: 1,
                 keywords: keywords
               }
-              this.$store.dispatch('searchLiteriture', p)
+              this.$store.dispatch('searchLiterature', p)
               break
             case 'knowledge':
               var p = {
@@ -247,7 +247,7 @@
                 keywords: keywords,
                 sort: true,
               }
-              this.$store.dispatch('searchLiteriture', p)
+              this.$store.dispatch('searchLiterature', p)
               break
             case 'knowledge':
               var p = {

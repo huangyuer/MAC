@@ -377,11 +377,11 @@ const actions = {
 
     })
   },
-  searchLiteriture ({commit}, data) {
-    let promise = api.searchLiteriture(data)
+  searchLiterature ({commit}, data) {
+    let promise = api.searchLiterature(data)
     commit('setLoadingState', true)
     promise.then((response) => {
-      commit('searchLiteriture', response.data)
+      commit('searchLiterature', response.data)
       let d = response.data.hits
       let total = response.data.total
       commit('setPaginatorTotal', total)
@@ -1226,7 +1226,7 @@ const mutations = {
   searchEngineer (state, data) {},
   searchMedia (state, data) {},
   searchRequirement (state, data) {},
-  searchLiteriture (state, data) {
+  searchLiterature (state, data) {
 
   },
   searchExpert (state, data) {},

@@ -263,7 +263,7 @@
               page: 1,
               keywords: keywords,
             }
-            this.$store.dispatch('searchLiteriture', p6)
+            this.$store.dispatch('searchLiterature', p6)
             this.$store.dispatch('searchLiteratureLeftPanel', p6)
             this.$router.push('/search/result/context')
             break
