@@ -981,13 +981,17 @@ const actions = {
   searchHybrid ({commit}, data) {
     let promise = api.searchHybrid(data)
     promise.then((response) => {
-      console.log(response)
       commit('searchHybrid', response.data)
     }, (response) => {
 
     })
   },
+  addClickCount ({commit}, data) {
+    let promise = api.addClickCount(data)
+    promise.then((response) => {
 
+    })
+  }
 }
 
 const mutations = {
