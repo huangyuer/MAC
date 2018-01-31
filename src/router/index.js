@@ -21,6 +21,7 @@ import {
 
   Selected,
   EngineerList,
+  EngineerSearchResult,
   EngineerInfo,
   ProjectList,
   ProjectInfo,
@@ -200,6 +201,14 @@ export default new Router({
       components: {
         'app-header': AppHeader,
         'app-body': EngineerList,
+        'app-footer': AppFooter
+      },
+    },
+    { 
+      path: '/engineer/search/result',
+      components: {
+        'app-header': AppHeader,
+        'app-body': EngineerSearchResult,
         'app-footer': AppFooter
       },
     },

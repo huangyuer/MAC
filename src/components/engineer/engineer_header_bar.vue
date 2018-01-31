@@ -3,7 +3,7 @@
     <div class="engineer_header_bar">
       <ul>
         <li v-for="title in engineerTitles">
-          <a @click="search(title.type)" class="link" v-text="title.name"></a>
+          <a href="javascript:;" @click="search(title.type)" class="link" v-text="title.name"></a>
         </li>
       </ul>
       <div class="engineer-search">
@@ -48,6 +48,7 @@
           category: '0'
         }
         this.$store.dispatch('searchHybrid', p)
+        this.$router.push('/engineer/search/result')
       },
       search: function (type) {
         console.log(type)

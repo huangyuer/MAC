@@ -293,7 +293,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = d[i]._source.avagtar
+        media.url = d[i]._source.avatar
         media.description = d[i]._source.summary
         media.title = d[i]._source.name
         media.clicks = d[i]._source.clicks
@@ -669,7 +669,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = d[i]._source.avagtar
+        media.url = d[i]._source.avatar
         media.title = d[i]._source.name
         media.description = d[i]._source.summary
         temp.push(media)
@@ -690,7 +690,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = d[i]._source.avagtar
+        media.url = d[i]._source.avatar
         media.title = d[i]._source.name
         media.description = d[i]._source.summary
         temp.push(media)
@@ -1073,7 +1073,7 @@ const mutations = {
       var engineer = new engineerItem()
       engineer.id = c[i]._id
       engineer.name = c[i]._source.name
-      engineer.avatar = c[i]._source.avagtar
+      engineer.avatar = c[i]._source.avatar
       let stt = ''
       if (c[i].hasOwnProperty('highlight')) {
         let bbd = c[i].highlight.summary

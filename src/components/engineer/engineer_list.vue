@@ -19,12 +19,12 @@
         </router-link>
         <div class="engineer_list_right">
           <div>
-          <ul>
-            <li v-for="engineer in engineers">
-              <router-link :to="'/engineer/info/' + engineer._id">
-                <engineer-item :engineer="engineer"></engineer-item>
-              </router-link>
-            </li>
+          <ul> 
+              <li v-for="engineer in engineers">
+                <router-link :to="'/engineer/info/' + engineer._id">
+                  <engineer-item :engineer="engineer"></engineer-item>
+                </router-link>
+              </li> 
           </ul> 
           </div>
           <div style="clear:both;"></div>
@@ -50,7 +50,7 @@
   export default {
     data() {
       return {
-
+        
       }
     },
     components: {
@@ -65,6 +65,7 @@
       engineers () { 
         return this.$store.getters.engineers;  
       },
+      
       isSearchResult () { 
         return this.$store.getters.engineers.isSearchResult;  
       },

@@ -101,6 +101,12 @@ const EngineerList = resolve => {
   })
 }
 
+const EngineerSearchResult = resolve => {
+  require.ensure(['../components/engineer/search_result.vue'], () => {
+    resolve(require('../components/engineer/search_result.vue'))
+  })
+}
+
 const EngineerInfo = resolve => {
   require.ensure(['../components/engineer/engineer_info.vue'], () => {
     resolve(require('../components/engineer/engineer_info.vue'))
@@ -219,4 +225,5 @@ export {
   // paginator,
   LoadingComponent,
   mediaDetail,
+  EngineerSearchResult
 }
