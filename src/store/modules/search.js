@@ -15,6 +15,13 @@ import {
 
 const state = {
   searchStatus: false,
+  engineerSearchResults: [],
+  totalEngineerSearchResults: 0,
+  projectSearchResults: [],
+  totalProjectSearchResults: 0,
+  literatureSearchResults: [],
+  totalLiteratureSearchResults: 0,
+
   serverPic: 'http://118.178.238.202:9988/',
   allPageBookList: [],//搜索'全部'的时候图书的列表
   allChapterList: [],//搜索'全部'的时候图书章节的列表
@@ -64,7 +71,14 @@ const state = {
   ll: [],
 }
 
-const getters = {}
+const getters = { 
+  engineerSearchResults: state => state.engineerSearchResults,
+  totalEngineerSearchResults: state => state.totalEngineerSearchResults,
+  projectSearchResults: state => state.projectSearchResults,
+  totalProjectSearchResults: state => state.totalProjectSearchResults,
+  literatureSearchResults: state => state.literatureSearchResults,
+  totalLiteratureSearchResults: state => state.totalLiteratureSearchResults,
+}
 const actions = {
 
   searchAll ({commit}, data) {
@@ -293,6 +307,8 @@ const actions = {
       }
       commit('setSearchMediaData', temp)
       commit('setSearchMediaTotal', response.data.total)
+      commit('setProjectSearchResults', d)
+      commit('setTotalProjectSearchResults', response.data.total)
       commit('setPaginatorRows', 9)
     }, (response) => {
       alert('网络错误，请刷新页面')
@@ -317,8 +333,10 @@ const actions = {
         media.id = d[i]._id
         temp.push(media)
       }
-      commit('setSearchMediaData', temp)
+      commit('setSearchMediaData', temp) 
       commit('setSearchMediaTotal', response.data.total)
+      commit('setEngineerSearchResults', d)
+      commit('setTotalEngineerSearchResults', response.data.total)
       commit('setPaginatorRows', 9)
       commit('setLoadingState', false)
 
@@ -410,6 +428,8 @@ const actions = {
       }
       commit('setSearchContextData', temp)
       commit('setLoadingState', false)
+      commit('setLiteratureSearchResults', d)
+      commit('setTotalLiteratureSearchResults', response.data.total)
     }, (response) => {
 
     })
@@ -981,6 +1001,11 @@ const actions = {
   searchHybrid ({commit}, data) {
     let promise = api.searchHybrid(data)
     promise.then((response) => {
+<<<<<<< HEAD
+=======
+      console.log(response)
+      commit('setSearchContent', data['searchContent'])
+>>>>>>> 71aa47b587bf8e1a62f201a2332bedec1f32ca68
       commit('searchHybrid', response.data)
     }, (response) => {
 
@@ -997,6 +1022,24 @@ const actions = {
 const mutations = {
   setSearchState (state, data) {
     state.searchStatus = data
+  },
+  setEngineerSearchResults (state, data) {
+    state.engineerSearchResults = data
+  },
+  setTotalEngineerSearchResults (state, total) {
+    state.totalEngineerSearchResults = total
+  },
+  setProjectSearchResults (state, data) {
+    state.projectSearchResults = data
+  },
+  setTotalProjectSearchResults (state, total) {
+    state.totalProjectSearchResults = total
+  },
+  setLiteratureSearchResults (state, data) {
+    state.literatureSearchResults = data
+  },
+  setTotalLiteratureSearchResults (state, total) {
+    state.totalLiteratureSearchResults = total
   },
   setAllPageBookFav (state, data) {
     for (var i = 0; i < state.allPageBookList.length; i++) {
