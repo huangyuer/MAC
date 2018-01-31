@@ -871,7 +871,7 @@ const actions = {
       }
       commit('setSearchContextData', temp)
       commit('setPaginatorTotal', response.data.total)
-      commit('setLoadingState', true)
+      commit('setLoadingState', false)
     }, (response) => {
 
     })
