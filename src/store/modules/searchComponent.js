@@ -7,7 +7,7 @@ const state = {
       nickName: 'all',
       type: 'all',
       children: [],
-    },
+    },//0
     {
       name: '图书',
       active: false,
@@ -45,13 +45,13 @@ const state = {
         //   keyword: 'summary'
         // },
       ],
-    },
+    },//1
     {
       name: '章节',
       active: false,
       nickName: 'chapterTitle',
       type: 'chapterT',
-    },
+    },//2
     {
       name: '工程',
       active: false,
@@ -79,7 +79,7 @@ const state = {
           keyword: 'categories'
         }
       ]
-    },
+    },//3
     {
       name: '工程师',
       active: false,
@@ -117,14 +117,14 @@ const state = {
           keyword: 'era'
         },
       ]
-    },
+    },//5
     {
       name: '多媒体',
       active: false,
       nickName: 'pic',
       type: 'image',
       children: [],
-    },
+    },//6
     {
       name: '企业需求',
       active: false,
@@ -152,8 +152,7 @@ const state = {
           keyword: 'categories',
         }
       ]
-    },
-
+    },//7
     {
       name: '工程文献',
       active: false,
@@ -182,14 +181,14 @@ const state = {
           keyword: 'categories',
         }
       ]
-    },
+    },//8
     {
       name: '知识产权',
       active: false,
       nickName: 'knowledge',
       type: 'text',
       children: []
-    },
+    },//9
 
   ],
   currentLevelOneCategory: '',

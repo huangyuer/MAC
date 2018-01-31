@@ -24,6 +24,7 @@ import mediaPopup from './modules/mediaPopup'
 import toolBar from './modules/toolBar'
 import loadingComponent from './modules/loadingComponent'
 import user from './modules/user'
+import mediaDetail from './modules/mediaDetail'
 
 Vue.use(Vuex)
 
@@ -56,7 +57,8 @@ export default new Vuex.Store({
     mediaPopup,
     toolBar,
     loadingComponent,
-    user
+    user,
+    mediaDetail,
   },
   strict: debug
 })
