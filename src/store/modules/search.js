@@ -1003,6 +1003,11 @@ const mutations = {
   },
   searchAll (state, data) {
     state.allPageBookList = []
+    let allCount = data.bookChapterDataCount + data.bookDataCount + data.engineerDataCount + data.engineerDataCount + data.literatureDataCount + data.mediaDataCount + data.projectDataCount + data.requirementDataCount
+    console.log(allCount)
+    if (allCount === 0) {
+      router.push('/search/result/null')
+    }
     let a = data.bookData
     for (var i = 0; i < a.length; i++) {
       let b = new bookItem()
