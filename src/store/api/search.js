@@ -239,4 +239,10 @@ export default {
     let promise = axios.post(apiUrl, data)
     return promise
   },
+  // 增加点击数
+  addClickCount (data) {
+    let apiUrl = `${config.API_HOST}/search/click/count`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  }
 }

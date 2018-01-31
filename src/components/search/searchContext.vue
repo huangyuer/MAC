@@ -145,7 +145,7 @@
                 page: p.clickPage,
                 keywords: keywords
               }
-              this.$store.dispatch('searchLiteriture', pp)
+              this.$store.dispatch('searchLiterature', pp)
               break
             case 'era':
               var pp = {
