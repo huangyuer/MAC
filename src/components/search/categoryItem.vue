@@ -343,10 +343,10 @@
             page: 1
           }
           if (p.parentIndex === 0) {
-            this.$sotre.commit('setPaginatorCategory', {parent: 'anli', child: 'era', content: obj.name})
+            this.$store.commit('setPaginatorCategory', {parent: 'anli', child: 'era', content: obj.name})
             this.$store.dispatch('searchLiteratureEraChild', ppt)
           } else if (p.parentIndex === 1) {
-            this.$sotre.commit('setPaginatorCategory', {parent: 'anli', child: 'category', content: obj.name})
+            this.$store.commit('setPaginatorCategory', {parent: 'anli', child: 'category', content: obj.name})
             this.$store.dispatch('searchLiteratureCategoryChild', ppt)
           }
         }
@@ -364,7 +364,7 @@
             this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: 'patent'})
             this.$store.dispatch('searchPatentChild', ppt)
           } else if (p.childIndex === 2) {
-            this.$store.dispatch('searchAchievementChild',ppt)
+            this.$store.dispatch('searchAchievementChild', ppt)
             this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: 'achievement'})
           }
         }
