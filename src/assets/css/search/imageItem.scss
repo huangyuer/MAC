@@ -27,6 +27,7 @@
         font-weight: bold;
         height: 20px;
         overflow: hidden;
+        cursor: pointer;
       }
       .text {
         font-size: 12px;
@@ -39,7 +40,7 @@
           color: red;
         }
         span {
-          &  span {
+          & span {
             color: red;
           }
         }

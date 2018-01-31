@@ -97,7 +97,7 @@
       <div class="slist">
         <form action="">
 
-          <input @keydown.enter="clickSearch" v-model="searchContent_" :placeholder="placeholder" type="text"
+          <input @keydown.enter="clickSearch" v-model="searchContent" :placeholder="placeholder" type="text"
                  class="s_in"
                  style="outline: none">
           <input @click="clickSearch" class="s_btn" readonly value="搜索" style="cursor: pointer;outline: none">

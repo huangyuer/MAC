@@ -1,11 +1,11 @@
 <template>
   <div class="image-item">
-    <div class="img-container" @click="redirectDetail">
+    <div class="img-container" @click="seeOrign">
       <img :src="cover">
     </div>
     <div class="content">
       <div class="inner">
-        <div class="title">
+        <div class="title" @click="seeOrign">
           <span>{{title}}</span>
         </div>
         <div class="text">
@@ -33,13 +33,15 @@
 </style>
 <script>
   export default {
-    props: ['clicks', 'idd', 'cover', 'title', 'summary', 'type'],
+    props: ['obj', 'clicks', 'idd', 'cover', 'title', 'summary', 'type'],
     mounted: function () {
 
     },
     components: {},
     data () {
-      return {}
+      return {
+        mediaType: ''
+      }
     },
     methods: {
       redirectDetail: function () {
@@ -47,18 +49,23 @@
         switch (this.type) {
           case '工程':
             this.$router.push('/project/info/' + this.idd)
-            break
+            this.mediaType = 'project'
+            sbreak
           case '工程师':
             this.$router.push('/engineer/info/' + this.idd)
+            this.mediaType = 'engineer'
             break
           case 'bookimages':
             this.$router.push('/media/detail/' + this.idd)
+            this.mediaType = 'bookimages'
             break
           case 'bookcharts':
             this.$router.push('/media/detail/' + this.idd)
+            this.mediaType = 'bookchart'
             break
           case 'bookformulas':
             this.$router.push('/media/detail/' + this.idd)
+            this.mediaType = 'bookformula'
             break
           default:
             break
@@ -69,8 +76,35 @@
 //        this.$store.commit('setMediaPopupStatus', true)
 //        this.$store.commit('setMediaPopupContent', this.summary)
 //        this.$store.commit('setMediaPopupTitle', this.title)
+        console.log(this.type)
+        switch (this.type) {
+//          case '工程':
+//            this.$router.push('/project/info/' + this.idd)
+//            this.mediaType = 'project'
+//            sbreak
+//          case '工程师':
+//            this.$router.push('/engineer/info/' + this.idd)
+//            this.mediaType = 'engineer'
+//            break
+          case 'bookimages':
+            console.log('adfasdfasf')
+//            this.$router.push('/media/detail/' + this.idd)
+            this.mediaType = 'bookimages'
+            break
+          case 'bookcharts':
+//            this.$router.push('/media/detail/' + this.idd)
+            this.mediaType = 'bookchart'
+            break
+          case 'bookformulas':
+//            this.$router.push('/media/detail/' + this.idd)
+            this.mediaType = 'bookformula'
+            break
+          default:
+            break
+        }
         this.$store.commit('setMediaClicks', this.clicks)
-        this.$store.commit('setMediaDetailType', this.type)
+        this.$store.commit('setMediaDetail', this.obj)
+        this.$store.commit('setMediaType', this.mediaType)
         this.$router.push('/media/detail/' + this.idd)
       }
     },
