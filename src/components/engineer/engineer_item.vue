@@ -1,9 +1,9 @@
 <template>
   <div class="engineer_item_wrapper">
 
-    <img v-show="engineer.avagtar === ''" src="../../assets/images/default.jpg" />
+    <img v-show="engineer.avatar === ''" src="../../assets/images/default.jpg"/>
 
-    <img v-show="engineer.avagtar !==''" :src="engineer.avagtar" />
+    <img v-show="engineer.avatar !==''" :src="engineer.avagtar"/>
 
     <div class="engineer_item">
       <h4 v-text="engineer.name"></h4>

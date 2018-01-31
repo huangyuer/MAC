@@ -110,6 +110,23 @@ const actions = {
     }
 
   },
+  searchBookBak ({commit}, data) {
+    let userInfo = getCookie('userInfo')
+    if (userInfo) {// 已经登录
+      let promise1 = api.searchBook(data)
+      let promise2 = api.getUserFavoriteBooks(data)
+      Promise.all([promise1, promise2]).then(function (resp) {
+        commit('searchBookLogin', resp)
+      })
+    } else {
+      let promise = api.searchBook(data)
+      promise.then((response) => {
+
+      }, (response) => {
+
+      })
+    }
+  },
   searchBook ({commit}, data) {
     let promise = api.searchBook(data)
     let promise1 = api.getUserFavoriteBooks(data)
@@ -293,7 +310,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = d[i]._source.avagtar
+        media.url = d[i]._source.avatar
         media.description = d[i]._source.summary
         media.title = d[i]._source.name
         media.clicks = d[i]._source.clicks
@@ -669,7 +686,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = d[i]._source.avagtar
+        media.url = d[i]._source.avatar
         media.title = d[i]._source.name
         media.description = d[i]._source.summary
         temp.push(media)
@@ -690,7 +707,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = d[i]._source.avagtar
+        media.url = d[i]._source.avatar
         media.title = d[i]._source.name
         media.description = d[i]._source.summary
         temp.push(media)
@@ -1073,7 +1090,7 @@ const mutations = {
       var engineer = new engineerItem()
       engineer.id = c[i]._id
       engineer.name = c[i]._source.name
-      engineer.avatar = c[i]._source.avagtar
+      engineer.avatar = c[i]._source.avatar
       let stt = ''
       if (c[i].hasOwnProperty('highlight')) {
         let bbd = c[i].highlight.summary
@@ -1160,6 +1177,40 @@ const mutations = {
   },
   searchBook (state, data) {
 
+  },
+  searchBookNotlogin (state, data) {
+
+  },
+  searchBookLogin (state, data) {
+    let bookData = data[0].hits
+    let favData = data[1].hits
+    let temp = []
+    for (var i = 0; i < bookData.length; i++) {
+      var context = new contextItem()
+      context.id = bookData[i]._id
+      context.chiefEditor = bookData[i]._source.chiefEditor
+      context.name = bookData[i]._source.name
+      context.publishedAt = bookData[i]._source.publishedAt
+      context.keywords = bookData[i]._source.keywords
+      context.cover = 'http://118.178.238.202:9988/' + bookData[i]._source.cover
+      context.type = '图书'
+      var highlightString = ''
+      if (bookData[i].hasOwnProperty('highlight')) {
+        var summaryHighLight = bookData[i].highlight.summary
+        for (var j = 0; j < summaryHighLight.length; j++) {
+          highlightString = highlightString + summaryHighLight[j]
+        }
+        context.highlight = highlightString
+      } else {
+        context.highlight = bookData[i]._source.summary
+      }
+      if (state.ll.indexOf(bookData[i]._id) > 0) {
+        context.isFavorited = true
+      } else {
+        context.isFavorited = false
+      }
+      temp.push(context)
+    }
   },
   searchProject (state, data) {
 
