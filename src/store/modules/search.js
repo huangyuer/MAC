@@ -1001,14 +1001,22 @@ const actions = {
   searchHybrid ({commit}, data) {
     let promise = api.searchHybrid(data)
     promise.then((response) => {
+<<<<<<< HEAD
+=======
       console.log(response)
       commit('setSearchContent', data['searchContent'])
+>>>>>>> 71aa47b587bf8e1a62f201a2332bedec1f32ca68
       commit('searchHybrid', response.data)
     }, (response) => {
 
     })
   },
+  addClickCount ({commit}, data) {
+    let promise = api.addClickCount(data)
+    promise.then((response) => {
 
+    })
+  }
 }
 
 const mutations = {
