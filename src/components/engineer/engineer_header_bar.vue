@@ -47,7 +47,8 @@
           searchContent: this.searchContent,
           category: '0'
         }
-        this.$store.dispatch('searchHybrid', p)
+        // this.$store.dispatch('searchHybrid', p)
+        this.$store.dispatch('searchProject', p)
         this.$router.push('/engineer/search/result')
       },
       search: function (type) {
