@@ -171,7 +171,7 @@
               page: 1,
               keywords: keywords
             }
-            this.$store.dispatch('searchLiteriture', p6)
+            this.$store.dispatch('searchLiterature', p6)
             this.$router.push('/search/result/context')
             this.$store.dispatch('searchLiteratureLeftPanel', p6)
             this.$store.commit('setPaginatorCategory', {parent: 'anli', child: ''})
@@ -223,7 +223,7 @@
               keywords: keywords
             }
             this.$store.dispatch('searchBook', p)
-            this.$store.dispatchs('searchBookLeftPanel', p)
+            this.$store.dispatch('searchBookLeftPanel', p)
             this.$router.push('/search/result/context')
             this.$store.commit('setPaginatorCategory', {parent: 'book', child: ''})
             break
@@ -318,7 +318,7 @@
               page: 1,
               keywords: keywords
             }
-            this.$store.dispatch('searchLiteriture', p)
+            this.$store.dispatch('searchLiterature', p)
             this.$router.push('/search/result/context')
             this.$store.dispatch('searchLiteratureLeftPanel', p)
             this.$store.commit('setPaginatorCategory', {parent: 'anli', child: ''})
