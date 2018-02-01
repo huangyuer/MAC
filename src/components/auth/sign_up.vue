@@ -137,6 +137,7 @@
         promise.then(function(response){
           console.log(response.data.status);
           if(response.data.status === true){
+            alert('手机已注册，请直接登录');
             self.$router.push('/auth/login');
           }else{
             if(self.time === 0){

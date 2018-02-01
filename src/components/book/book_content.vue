@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<style scoped> 
+<style> 
 
   /*注释*/
   .footnote {
@@ -43,33 +43,36 @@
     display: inline;
   }
 
+
+
   .book_li p {
+    display: block;
     color: rgb(111, 111, 111);
     font-size:16px;
     line-height: 30px;
     text-indent: 2em;
-    padding-top: 20px;
+    padding-top: 10px;
   }
  
   .book_li h1 {
-    font-size: 24px;
+    font-size: 2.4em;
     font-family: "";
-    margin-bottom: 1em;
-    margin-top: 1em;
+    
     text-align: center;
     font-weight: normal;
     color: #009264;
+    line-height: 2em;
 
   }
 
   /*一级标题*/
   /*二级标题*/
-  .book_li  p  h2 {
-    font-size: 22px;
+  .book_li   h2 {
+    font-size: 1.5em;
+    line-height: 2em;
     font-family: "";
     font-weight: normal;
-    margin-bottom: 2em; 
-    margin-top: 2em;
+    margin-bottom: 1em;  
     text-align: center; 
   }
 
@@ -479,7 +482,7 @@
 
   /*居左*/
   /**/
-  .right {
+  book_li.right {
     text-align: right;
 
   }
@@ -618,6 +621,9 @@
   .songti {
     font-family: "songti";
 
+  }
+  .search-content{
+    float:left;
   }
 
   /*宋体*/

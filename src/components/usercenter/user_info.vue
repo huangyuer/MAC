@@ -204,11 +204,14 @@
         this.$store.dispatch('putUser', this.userForm);  
       }
     },
-    mounted () {
-
+    mounted () { 
       //this.initData()
-      this.$store.dispatch("getUserFullInfo", {'userId': this.userInfo.userId})
-
+      let userId = getCookie('userInfo');
+      if(userId !== ''){
+        this.$store.dispatch("getUserFullInfo", {'userId': this.userInfo.userId})
+      }else{
+        this.$router.push('/auth/login')
+      } 
     }
   }
 </script>

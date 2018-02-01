@@ -152,6 +152,7 @@
         }else{
           this.getLatestBooks(this.currentCategory, this.currentClc, this.currentLib, this.pageSize, val);
         }
+        document.documentElement.scrollTop = 0;
       },
       search: function(limit, page){
         let keywords = this.searchForm.keywords;

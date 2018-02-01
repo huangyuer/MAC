@@ -80,8 +80,8 @@
         deleteCookie('sessionToken')
         deleteCookie('userInfo')
         this.$store.commit('setLoggedOut')
-        this.$router.push({path: '/'})
-
+        console.log('logged out')
+        window.location.href = '/'
       },
     },
     computed: {

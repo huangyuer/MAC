@@ -17,8 +17,9 @@
     text-align: center;
     color: #ffffff;
     cursor: pointer;
-    user-select: none;
+    user-select: none; 
     .container {
+      a{color:white;}
       & > span:nth-child(odd) {
         color: #ffffff;
       }

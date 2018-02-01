@@ -1,9 +1,7 @@
 <template>
   <div class="list_left">
 
-    <div class="class_title">
-      <span>所有类别</span>
-    </div>
+    
     <div class="clear" style="border-bottom: 1px solid #fff;"></div>
 
     <div class="class_title">
@@ -108,14 +106,17 @@
     methods: {
       listBooksByCategory: function(category){
         this.$router.push('/book/list?category=' + encodeURI(category));
+        document.documentElement.scrollTop = 0;
       },
 
       listBooksByClc: function(clc){
         this.$router.push('/book/list?clc=' + encodeURI(clc));
+        document.documentElement.scrollTop = 0;
       },
 
       listBooksByLib: function(lib){
         this.$router.push('/book/list?lib=' + encodeURI(lib));
+        document.documentElement.scrollTop = 0;
       },
       showLibMenu: function () {
         this.$store.commit('showLibMenu')

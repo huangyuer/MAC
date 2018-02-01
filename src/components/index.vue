@@ -32,7 +32,7 @@
               </li>
             </ul>
           </li>
-          <li><a href="/#/selected" class="menu_item link">工程与工程师</a></li>
+          <li><a href="/#/selected" class="menu_item link">工程师史</a></li>
           <li><a href="http://trade.tjdesignx.com/#/" class="menu_item link">版权贸易</a></li>
           <li><a href="http://bbs.tjdesignx.com/#/" class="menu_item link">工程技术论坛</a></li>
           <li><a href="http://x.tjdesignx.com/#/" class="menu_item link">同济设计在线</a></li>
@@ -151,7 +151,7 @@
         deleteCookie('sessionToken')
         this.$store.commit('setLoggedOut')
         window.history.go(0)
-        this.$store.push('/')
+        this.$router.push('/')
 
       },
       // 移动端menu切换显示
