@@ -21,6 +21,8 @@ const state = {
     nickname: '',
     school: '',
     roles: [],
+    degree: '',
+    speciality: '',
     truename: '', //真实姓名
     IDCard: '', // 身份证扫描件
     IDCardNo: '', // 身份证号

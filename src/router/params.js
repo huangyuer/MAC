@@ -4,6 +4,12 @@ const homePage = resolve => {
   })
 }
 
+const AboutUs = resolve => {
+  require.ensure(['../components/about_us.vue'], () => {
+    resolve(require('../components/about_us.vue'))
+  })
+}
+
 const SearchIndex = resolve => {
   require.ensure(['../components/search/searchIndex.vue'], () => {
     resolve(require('../components/search/searchIndex.vue'))
@@ -229,6 +235,7 @@ export {
   ProjectInfo,
   LiteratureList,
   LiteratureInfo,
+  AboutUs,
 
   Login,
   Register,
