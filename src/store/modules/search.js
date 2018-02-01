@@ -71,7 +71,7 @@ const state = {
   ll: [],
 }
 
-const getters = { 
+const getters = {
   engineerSearchResults: state => state.engineerSearchResults,
   totalEngineerSearchResults: state => state.totalEngineerSearchResults,
   projectSearchResults: state => state.projectSearchResults,
@@ -333,7 +333,7 @@ const actions = {
         media.id = d[i]._id
         temp.push(media)
       }
-      commit('setSearchMediaData', temp) 
+      commit('setSearchMediaData', temp)
       commit('setSearchMediaTotal', response.data.total)
       commit('setEngineerSearchResults', d)
       commit('setTotalEngineerSearchResults', response.data.total)
@@ -1000,9 +1000,11 @@ const actions = {
   },
   searchHybrid ({commit}, data) {
     let promise = api.searchHybrid(data)
-    promise.then((response) => { 
+ 
+    promise.then((response) => {
       console.log(response)
-      commit('setSearchContent', data['searchContent']) 
+      commit('setSearchContent', data['searchContent'])
+ 
       commit('searchHybrid', response.data)
     }, (response) => {
 
