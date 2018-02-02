@@ -62,13 +62,13 @@
         </div>
       </div>
 
-      <div class="top_login1" v-show="isSignedIn">
+      <div class="top_login1" v-show="loggedIn">
         <router-link to="/user/info">
           <a href="javascript:void(0);" class="login_btn1">个人中心</a>
         </router-link>
         <a href="javascript:void(0);" class="reg_btn1" @click="logout()">退出登录</a>
       </div>
-      <div class="top_login1" v-show="!isSignedIn">
+      <div class="top_login1" v-show="!loggedIn">
         <router-link to="/auth/login">
           <a href="javascript:void(0);" class="login_btn1">登录</a>
         </router-link>
@@ -286,6 +286,26 @@
       }
     },
     computed: {
+      loggedIn () {
+        try {
+          let logged = this.$store.getters.loggedIn
+          if (logged) {
+            return true
+          }
+          let userInfo = getCookie('userInfo')
+          if (userInfo) {
+            try {
+              let user = JSON.parse(userInfo)
+              return user
+            } catch (e) {
+              return this.$store.getters.userInfo
+            }
+          } else {
+            return this.$store.getters.userInfo
+          }
+        } catch (e) {
+        }
+      },
       sublibs () {
         return this.$store.getters.sublibs
       },
