@@ -999,11 +999,11 @@ const actions = {
   },
   searchHybrid ({commit}, data) {
     let promise = api.searchHybrid(data)
- 
+
     promise.then((response) => {
       console.log(response)
       commit('setSearchContent', data['searchContent'])
- 
+
       commit('searchHybrid', response.data)
     }, (response) => {
 
@@ -1204,11 +1204,15 @@ const mutations = {
       literature.name = f[i]._source.name
       literature.cover = f[i]._source.cover
       var stt = ''
-      var bbd = f[i].highlight.summary
-      for (var j = 0; j < bbd.length; j++) {
-        stt = stt + bbd[j]
+      if (f[i].hasOwnProperty('highlight')) {
+        var bbd = f[i].highlight.summary
+        for (var j = 0; j < bbd.length; j++) {
+          stt = stt + bbd[j]
+        }
+        literature.summary = stt
+      } else {
+        literature.summary = f[i]._source.summary
       }
-      literature.summary = stt
       literature.createdAt = f[i]._source.createdAt
       state.allPageLiteratureList.push(literature)
     }
