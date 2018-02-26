@@ -99,7 +99,7 @@
       },
       handleCurrentChange(val) { 
         this.$store.dispatch('getLatestEngineers', {'profession': this.currentProfession, 'era': this.currentEra,  'limit': this.pageSize, 'page': val}); 
-        
+        document.documentElement.scrollTop = 0;
          
       },
     }

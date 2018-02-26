@@ -30,7 +30,7 @@ Vue.use(Vuex)
 
 const state = {
   rootUrl: 'http://118.178.238.202:8000/',
-  coverUrlPrefix: 'http://118.178.238.202:9988/'
+  coverUrlPrefix: 'http://47.98.32.49:9988/'
 }
 
 const debug = process.env.NODE_ENV !== 'production'

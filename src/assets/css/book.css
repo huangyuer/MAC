@@ -1,30 +1,4 @@
-<template>
-  <div class="bg">
-    <search-component></search-component>
-    <nav-bar firstUrl="/" firstNav="首页" secondUrl="/book/list" secondNav="图书列表" :thirdUrl="'/book/info/' + bookId"
-             :thirdNav="bookDetail.name" :fourthUrl="this.$route.fullPath" fourthNav="当前章节"></nav-bar>
-    <div class="list_main">
-
-      <category-left></category-left>
-
-      <div class="main_left">
-        <div class="list_cent">
-          <div class="book_li">
-            <p v-html="bookChapterDetail.contentRaw"></p>
-          </div>
-        </div>
-      </div>
-
-     <!--  <similar-right></similar-right> -->
-      <list-right></list-right>
-    </div>
-    <div class="clear"></div>
-  </div>
-</template>
-
-<style> 
-
-  /*注释*/
+/*注释*/
   .footnote {
     font-size: 0.80em;
     line-height: 1.5em;
@@ -43,36 +17,33 @@
     display: inline;
   }
 
-
-
   .book_li p {
-    display: block;
     color: rgb(111, 111, 111);
     font-size:16px;
     line-height: 30px;
     text-indent: 2em;
-    padding-top: 10px;
+    padding-top: 20px;
   }
  
   .book_li h1 {
-    font-size: 2.4em;
+    font-size: 24px;
     font-family: "";
-    
+    margin-bottom: 1em;
+    margin-top: 1em;
     text-align: center;
     font-weight: normal;
     color: #009264;
-    line-height: 2em;
 
   }
 
   /*一级标题*/
   /*二级标题*/
-  .book_li   h2 {
-    font-size: 1.5em;
-    line-height: 2em;
+  .book_li  p  h2 {
+    font-size: 22px;
     font-family: "";
     font-weight: normal;
-    margin-bottom: 1em;  
+    margin-bottom: 2em; 
+    margin-top: 2em;
     text-align: center; 
   }
 
@@ -482,7 +453,7 @@
 
   /*居左*/
   /**/
-  book_li.right {
+  .right {
     text-align: right;
 
   }
@@ -622,9 +593,6 @@
     font-family: "songti";
 
   }
-  .search-content{
-    float:left;
-  }
 
   /*宋体*/
   .heiti {
@@ -659,75 +627,3 @@
     margin-bottom: 10px;
     margin-right: 2em;
   }
-
-</style>
-
-<script>
-  import navBar from '../public/nav_bar.vue'
-  import searchComponent from '../public/searchComponent.vue'
-  import categoryLeft from '../book/category_left.vue'
-  import similarRight from '../book/similar_right.vue'
-  import { DataTree } from '../../utils/data_tree'
-  import listRight from '../book/list_right.vue'
-
-  export default {
-    name: 'book_info',
-    data () {
-      return {
-        defaultProps: {
-          children: 'children',
-          label: 'name'
-        },
-      }
-    },
-    components: {
-      navBar,
-      searchComponent,
-      categoryLeft,
-      similarRight,
-      listRight
-    },
-    mounted: function () {
-      this.init()
-    },
-    computed: {
-      bookId () {
-        return this.$route.params.bookId || '0'
-      },
-      bookDetail () {
-        return this.$store.getters.bookDetail
-      },
-      src () {
-        let src = this.$route.query.src || ''
-        return decodeURI(src)
-      },
-      bookChapterDetail () {
-        return this.$store.getters.bookChapterDetail
-      },
-      bookChapterDetailReady () {
-        return this.$store.getters.bookChapterDetailReady
-      },
-    },
-    watch: {
-      bookChapterDetailReady: {
-        handler: function (val, oldVal) {
-          if (val) {
-
-          }
-        }
-      },
-      '$route': 'init'
-    },
-    methods: {
-      init: function () {
-        this.$store.dispatch('getBookDetail', {'bookId': this.bookId})
-        this.$store.dispatch('getBookChapterBySrc', {'bookId': this.bookId, 'src': this.src})
-        // this.$store.dispatch('getBookChapterDetail', {'bookChapterId': '59e85e59f18d06f0ddc17900' });
-      },
-      handleNodeClick (data, node) {
-        //
-      }
-    }
-  }
-</script>
-

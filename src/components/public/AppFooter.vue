@@ -2,19 +2,19 @@
   <div class="app-footer">
     <div class="inner">
       <div class="container">
-        <span>首页</span>
+        <a href="http://home.tjdesignx.com/#/"> <span>首页</span></a>
         <span>|</span>
-        <span>工程数据库</span>
+         <a href="http://home.tjdesignx.com/#/"> <span>工程数据库</span></a>
         <span>|</span>
-        <span>工程与工程师</span>
+       <a href="/#/selected" class="link">工程师史</a>
         <span>|</span>
-        <span>版权贸易</span>
+         <a href="http://trade.tjdesignx.com/#/">版权贸易</a>
         <span>|</span>
-        <span>工程技术论坛</span>
+        <a href="http://bbs.tjdesignx.com/#/">工程技术论坛</a>
         <span>|</span>
-        <span>同济设计在线</span>
+         <a href="http://x.tjdesignx.com/#/">同济设计在线</a>
         <span>|</span>
-        <span>BIM培训中心</span>
+        <a href="http://bim.tjdesignx.com/#/">BIM培训中心</a>
       </div>
       <div class="icp">
         <a href="http://www.miitbeian.gov.cn/">沪ICP备11031396号</a>

@@ -18,6 +18,7 @@ import {
   BookInfo,
   BookContent,
   MediaPopup,
+  AboutUs,
 
   Selected,
   EngineerList,
@@ -116,12 +117,16 @@ export default new Router({
           }
         },
       ]
+    }, 
+    { 
+      path: '/about/us',
+      components: {
+        'app-header': AppHeader,
+        'app-body': AboutUs,
+        'app-footer': AppFooter
+      },
     },
 
-    {
-      path: '/about_us',
-      component: resolve => require(['../components/about_us.vue'], resolve)
-    },
     {
       path: '/auth/login',
 

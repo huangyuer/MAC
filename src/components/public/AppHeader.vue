@@ -19,7 +19,8 @@
           <a href="javascript:void(0);">
             <img src="../../assets/images/grzx_ico1.png" alt="">
           </a>
-        </router-link>
+        </router-link> 
+           
         <router-link to="">
           <a href="javascript:void(0);" @click="logout()">
             <p>退出登录</p>
@@ -30,7 +31,12 @@
       <div class="z_home home ">
         <router-link to="/"><a href="javascript:void(0);">首页</a></router-link>
         |
-        <router-link to="/about_us"><a href="javascript:void(0);">关于我们</a></router-link>
+        <!-- <router-link to="/#/selected"><a href="/#/selected" class="menu_item link">工程与工程师</a></router-link>|
+          <router-link to="http://trade.tjdesignx.com/#/"><a href="http://trade.tjdesignx.com/#/" class="menu_item link">版权贸易</a></router-link>|
+           <router-link to="http://bbs.tjdesignx.com/#/"><a href="http://bbs.tjdesignx.com/#/" class="menu_item link">工程技术论坛</a></router-link>|
+           <router-link to="http://x.tjdesignx.com/#/"><a href="http://x.tjdesignx.com/#/" class="menu_item link">同济设计在线</a></router-link>|
+           <router-link to="http://bim.tjdesignx.com/#/"><a href="http://bim.tjdesignx.com/#/" class="menu_item link">BIM培训中心</a></router-link>| -->
+        <router-link to="/about/us"><a href="javascript:void(0);">关于我们</a></router-link>
       </div>
 
 
@@ -74,8 +80,8 @@
         deleteCookie('sessionToken')
         deleteCookie('userInfo')
         this.$store.commit('setLoggedOut')
-        this.$router.push({path: '/'})
-
+        console.log('logged out')
+        window.location.href = '/'
       },
     },
     computed: {

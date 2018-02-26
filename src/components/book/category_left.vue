@@ -106,6 +106,7 @@
       openChapter: function(chapter){
         this.$router.push('/book/content/' + this.bookId + '/chapter?src=' + chapter.src);
         document.documentElement.scrollTop = 0;
+        
       }
     }
   }

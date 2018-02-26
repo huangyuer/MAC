@@ -999,9 +999,11 @@ const actions = {
   },
   searchHybrid ({commit}, data) {
     let promise = api.searchHybrid(data)
+ 
     promise.then((response) => {
       console.log(response)
       commit('setSearchContent', data['searchContent'])
+ 
       commit('searchHybrid', response.data)
     }, (response) => {
 

@@ -3,8 +3,8 @@
     <back-bar></back-bar>
     <div class="engineer_info">
       <div class="engineer_info_left">
-        <h4>{{engineer.name}}</h4>
-        <p v-html="engineer.content"></p>
+        <h3>{{engineer.name}}</h3>
+        <p class="enginerer_content" v-html="engineer.content"></p>
         <div class="engineer_info_bar"></div>
       </div>
       <div class="engineer_info_right">
@@ -36,6 +36,25 @@
   </div>
 </template>
 
+<style scoped>
+  .engineer_info  h3 {
+    color: #009264;
+    font-size: 1.5em;
+    line-height: 2em;
+    font-family: "";
+    font-weight: normal;
+    margin-bottom: 1em;  
+    text-align: center; 
+  } 
+  p.enginerer_content{
+    display: block;
+    color: rgb(111, 111, 111);
+    font-size:16px;
+    line-height: 30px;
+    text-indent: 2em;
+    padding-top: 10px;
+  }
+</style>
 <script>
   import backBar from '../public/back_bar.vue'
   export default {
