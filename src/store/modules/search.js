@@ -22,7 +22,6 @@ const state = {
   literatureSearchResults: [],
   totalLiteratureSearchResults: 0,
 
-  serverPic: 'http://118.178.238.202:9988/',
   allPageBookList: [],//搜索'全部'的时候图书的列表
   allChapterList: [],//搜索'全部'的时候图书章节的列表
   allPageProjectList: [
@@ -162,7 +161,7 @@ const actions = {
             context.type = '图书'
             context.name = d[i]._source.name
             context.publishedAt = d[i]._source.publishedAt
-            context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
+            context.cover = 'http://47.98.32.49:9988/' + d[i]._source.cover
             context.keywords = d[i]._source.keywords
             var stt = ''
             console.log(d[i].hasOwnProperty('highlight'))
@@ -209,7 +208,7 @@ const actions = {
             context.type = '图书'
             context.name = d[i]._source.name
             context.publishedAt = d[i]._source.publishedAt
-            context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
+            context.cover = 'http://47.98.32.49:9988/' + d[i]._source.cover
             context.keywords = d[i]._source.keywords
             var stt = ''
             console.log(d[i].hasOwnProperty('highlight'))
@@ -263,7 +262,7 @@ const actions = {
           context.type = '图书'
           context.name = d[i]._source.name
           context.publishedAt = d[i]._source.publishedAt
-          context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
+          context.cover = 'http://47.98.32.49:9988/' + d[i]._source.cover
           context.keywords = d[i]._source.keywords
           var stt = ''
           console.log(d[i].hasOwnProperty('highlight'))
@@ -354,7 +353,7 @@ const actions = {
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
-        media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
+        media.url = 'http://47.98.32.49:9988/' + d[i]._source.url
         media.description = d[i]._source.description
         media.title = d[i]._source.title
         media.clicks = d[i]._source.clicks
@@ -545,7 +544,7 @@ const actions = {
         context.type = '图书'
         context.name = d[i]._source.name
         context.publishedAt = d[i]._source.publishedAt
-        context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
+        context.cover = 'http://47.98.32.49:9988/' + d[i]._source.cover
         context.keywords = d[i]._source.keywords
         context.highlight = d[i]._source.summary
         temp.push(context)
@@ -592,7 +591,7 @@ const actions = {
         context.type = '图书'
         context.name = d[i]._source.name
         context.publishedAt = d[i]._source.publishedAt
-        context.cover = 'http://118.178.238.202:9988/' + d[i]._source.cover
+        context.cover = 'http://47.98.32.49:9988/' + d[i]._source.cover
         context.keywords = d[i]._source.keywords
         context.keywords = d[i]._source.keywords
         temp.push(context)
@@ -748,7 +747,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
+        media.url = 'http://47.98.32.49:9988/' + d[i]._source.url
         media.title = d[i]._source.title
         media.description = d[i]._source.description
         media.clicks = d[i]._source.clicks
@@ -770,7 +769,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
+        media.url = 'http://47.98.32.49:9988/' + d[i]._source.url
         media.title = d[i]._source.title
         media.description = d[i]._source.description
         media.clicks = d[i]._source.clicks
@@ -792,7 +791,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = 'http://118.178.238.202:9988/' + d[i]._source.url
+        media.url = 'http://47.98.32.49:9988/' + d[i]._source.url
         media.title = d[i]._source.title
         media.description = d[i]._source.description
         media.clicks = d[i]._source.clicks
@@ -1246,7 +1245,7 @@ const mutations = {
       context.name = bookData[i]._source.name
       context.publishedAt = bookData[i]._source.publishedAt
       context.keywords = bookData[i]._source.keywords
-      context.cover = 'http://118.178.238.202:9988/' + bookData[i]._source.cover
+      context.cover = 'http://47.98.32.49:9988/' + bookData[i]._source.cover
       context.type = '图书'
       var highlightString = ''
       if (bookData[i].hasOwnProperty('highlight')) {
