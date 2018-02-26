@@ -154,7 +154,7 @@
     },
     data () {
       return {
-        preFix: 'http://118.178.238.202:9988/'
+        preFix: 'http://47.98.32.49:9988/'
       }
     },
     methods: {
