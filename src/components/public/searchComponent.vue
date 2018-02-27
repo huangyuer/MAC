@@ -8,7 +8,7 @@
       <div class="right">
         <div class="category">
           <span @click="setActiveLevelOneCategory(index)" :class="{'category-active': i.active}"
-                v-for="i,index in categoryList">{{i.name}}</span>
+                  v-for="i,index in categoryList">{{i.name}}</span>
         </div>
         <div class="search-content">
           <input id="search-input" @keydown.enter="clickSearch" v-model="searchContent" :placeholder="placeholder"

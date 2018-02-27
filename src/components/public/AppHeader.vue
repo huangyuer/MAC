@@ -2,33 +2,48 @@
   <div class="app-header">
     <div class="inner">
 
+      <!--wap menu bar-->
+      <div class="wap-menu-bar">
+        <img src="../../assets/images/wap_menu.png"/>
+      </div>
+
+      <!--logo-->
       <div class="logo-container">
         <a href="/"><img src="../../assets/images/header-logo.png" alt=""></a>
       </div>
 
-      <div v-show="!loggedIn" class="login-container">
-        <div @click="login" class="btn btn-login">
-          <span>登 录</span>
-        </div>
-        <div @click="register" class="btn btn-register">
-          <span>注 册</span>
-        </div>
-      </div>
-      <div v-show="loggedIn" class="grzx_grzx">
-        <router-link to="/user/info">
-          <a href="javascript:void(0);">
-            <img src="../../assets/images/grzx_ico1.png" alt="">
-          </a>
-        </router-link> 
-           
-        <router-link to="">
-          <a href="javascript:void(0);" @click="logout()">
-            <p>退出登录</p>
-          </a>
-        </router-link>
+      <!--wap search bar-->
+      <div class="wap-search-bar">
+        <img src="../../assets/images/wap_search_bar.png"/>
       </div>
 
-      <div class="z_home home ">
+      <!--web端 登录状态-->
+      <div class="login-container">
+        <div v-show="!loggedIn">
+          <div @click="login" class="btn btn-login">
+            <span>登 录</span>
+          </div>
+          <div @click="register" class="btn btn-register">
+            <span>注 册</span>
+          </div>
+        </div>
+        <div v-show="loggedIn" class="grzx_grzx">
+          <router-link to="/user/info">
+            <a href="javascript:void(0);">
+              <img src="../../assets/images/grzx_ico1.png" alt="">
+            </a>
+          </router-link>
+
+          <router-link to="">
+            <a href="javascript:void(0);" @click="logout()">
+              <p>退出登录</p>
+            </a>
+          </router-link>
+        </div>
+      </div>
+
+      <!--web端 首页 / 关于我们-->
+      <div class="z_home home">
         <router-link to="/"><a href="javascript:void(0);">首页</a></router-link>
         |
         <!-- <router-link to="/#/selected"><a href="/#/selected" class="menu_item link">工程与工程师</a></router-link>|

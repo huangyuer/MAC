@@ -1,94 +1,169 @@
 @import "../global";
 
-@media screen and (min-width: 840px) {
-  .app-header {
-    background-color: $primary-color;
-    height: 80px;
+.app-header {
+  background-color: $primary-color;
+  height: 80px;
+  width: 100%;
+  .inner {
     width: 100%;
-    .inner {
-      width: 100%;
-      max-width: 1280px;
+    max-width: 1280px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    .wap-menu-bar {
+      display: none;
+      vertical-align: middle;
       height: 100%;
-      margin: 0 auto;
-      position: relative;
-      .logo-container {
-        left: 0;
-        display: inline-block;
-        vertical-align: middle;
-        height: 100%;
+      width: 40px;
+      position: absolute;
+      left: 20px;
+      img {
+        text-align: center;
         position: absolute;
-        img {
-          text-align: center;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          margin-top: auto;
-          margin-bottom: auto;
-        }
+        top: 0;
+        bottom: 0;
+        width: 16px;
+        height: 16px;
+        margin-top: auto;
+        margin-bottom: auto;
       }
-      .navigator {
+    }
+    .wap-search-bar {
+      display: none;
+      vertical-align: middle;
+      height: 100%;
+      width: 40px;
+      position: absolute;
+      right: 0;
+      img {
+        text-align: center;
         position: absolute;
-        display: inline-block;
-        vertical-align: middle;
-        right: 242px;
-        height: 30px;
-        line-height: 30px;
-        color: #ffffff;
+        width: 16px;
+        height: 16px;
         top: 0;
         bottom: 0;
         margin-top: auto;
         margin-bottom: auto;
-        & > span:nth-child(2) {
-          color: $orange-color;
-        }
-        & > span {
-          cursor: pointer;
-        }
+      }
+    }
+    .home{
+      width: 150px;
+      float: right;
+      color: #fff;
+      a {
+        line-height: 80px;
+        color: #fff;
+        font-size: 14px;
+        margin:0 5px;
+      }
+    }
+    .logo-container {
+      left: 0;
+      display: inline-block;
+      vertical-align: middle;
+      width: 110px;
+      height: 100%;
+      position: absolute;
+      img {
+        text-align: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
 
-        & > span > a:active, & > span > a:visited, & > span > a:link {
-          color: #ffffff;
-        }
-        & > span > a:hover {
-          color: $orange-color;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+    .navigator {
+      position: absolute;
+      display: inline-block;
+      vertical-align: middle;
+      right: 242px;
+      height: 30px;
+      line-height: 30px;
+      color: #ffffff;
+      top: 0;
+      bottom: 0;
+      margin-top: auto;
+      margin-bottom: auto;
+      & > span:nth-child(2) {
+        color: $orange-color;
+      }
+      & > span {
+        cursor: pointer;
+      }
+
+      & > span > a:active, & > span > a:visited, & > span > a:link {
+        color: #ffffff;
+      }
+      & > span > a:hover {
+        color: $orange-color;
+      }
+    }
+    .login-container {
+      position: absolute;
+      display: inline-block;
+      vertical-align: middle;
+      right: 0;
+      width: 221px;
+      height: 100%;
+      .btn {
+        border-radius: 21px;
+        display: inline-block;
+        line-height: 40px;
+        top: 0;
+        bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+        position: absolute;
+        font-weight: bold;
+        cursor: pointer;
+        user-select: none;
+      }
+      .btn-login {
+        color: $primary-color;
+        text-align: center;
+        width: 100px;
+        background-color: white;
+        height: 40px;
+      }
+      .btn-register {
+        height: 36px;
+        line-height: 36px;
+        width: 96px;
+        border: 2px solid $orange-color;
+        background-color: $primary-color;
+        color: $orange-color;
+        text-align: center;
+        right: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .app-header {
+    height: 60px;
+    .inner {
+      .wap-menu-bar {
+        display: inline-block;
+      }
+      .wap-search-bar {
+        display: inline-block;
+      }
+      .logo-container {
+        left: 50%;
+        margin-left: -55px;
+        img {
+          width: 110px;
+          height: 28px;
         }
       }
       .login-container {
-        position: absolute;
-        display: inline-block;
-        vertical-align: middle;
-        right: 0;
-        width: 221px;
-        height: 100%;
-        .btn {
-          border-radius: 21px;
-          display: inline-block;
-          line-height: 40px;
-          top: 0;
-          bottom: 0;
-          margin-top: auto;
-          margin-bottom: auto;
-          position: absolute;
-          font-weight: bold;
-          cursor: pointer;
-          user-select: none;
-        }
-        .btn-login {
-          color: $primary-color;
-          text-align: center;
-          width: 100px;
-          background-color: white;
-          height: 40px;
-        }
-        .btn-register {
-          height: 36px;
-          line-height: 36px;
-          width: 96px;
-          border: 2px solid $orange-color;
-          background-color: $primary-color;
-          color: $orange-color;
-          text-align: center;
-          right: 0;
-        }
+        display: none;
+      }
+      .home {
+        display: none;
       }
     }
   }
