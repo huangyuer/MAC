@@ -1233,7 +1233,6 @@ const mutations = {
     }
   },
   searchBook (state, data) {
-
   },
   searchBookNotlogin (state, data) {
 
