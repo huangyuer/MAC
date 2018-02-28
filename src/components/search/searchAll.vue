@@ -147,6 +147,7 @@
 
   export default {
     mounted: function () {
+      console.log(this.allPageProjectList)
     },
     components: {
       imageTextItem,

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="nav_bar">
+    <div class="nav-bar">
       <router-link :to="firstUrl">
         <span class="activated" v-if="firstNav" v-text="firstNav"></span>
       </router-link>
@@ -37,4 +37,8 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  @import "../../assets/css/public/navBar";
+</style>
 

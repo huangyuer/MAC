@@ -41,7 +41,8 @@ import {
   UserMessages,
   UserResources,
   LoadingComponent,
-  mediaDetail
+  mediaDetail,
+  Test
 } from './params'
 // 配置路由
 export default new Router({
@@ -53,6 +54,12 @@ export default new Router({
         'app-header': AppHeader,
         'app-body': NotFound404,
         'app-footer': AppFooter,
+      }
+    },
+    {
+      path: '/test',
+      components: {
+        'app-body': Test,
       }
     },
     {
@@ -117,8 +124,8 @@ export default new Router({
           }
         },
       ]
-    }, 
-    { 
+    },
+    {
       path: '/about/us',
       components: {
         'app-header': AppHeader,
@@ -212,7 +219,7 @@ export default new Router({
         'app-footer': AppFooter
       },
     },
-    { 
+    {
       path: '/history/search/result',
       components: {
         'app-header': AppHeader,
@@ -220,7 +227,7 @@ export default new Router({
         'app-footer': AppFooter
       },
     },
-    { 
+    {
       path: '/engineer/search/result',
       components: {
         'app-header': AppHeader,
@@ -228,7 +235,7 @@ export default new Router({
         'app-footer': AppFooter
       },
     },
-    { 
+    {
       path: '/literature/search/result',
       components: {
         'app-header': AppHeader,
@@ -236,7 +243,7 @@ export default new Router({
         'app-footer': AppFooter
       },
     },
-    { 
+    {
       path: '/project/search/result',
       components: {
         'app-header': AppHeader,

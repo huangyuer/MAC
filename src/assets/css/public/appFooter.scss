@@ -3,6 +3,7 @@
 .app-footer {
   height: 200px;
   width: 100%;
+  min-width: $inner-width;
   position: relative;
   background-color: $primary-color;
   .wap-inner {
@@ -129,6 +130,7 @@
 @media only screen and (max-width: $max-width) {
   .app-footer {
     height: auto;
+    min-width: 0;
     padding-bottom: 15px;
     .inner {
       display: none;

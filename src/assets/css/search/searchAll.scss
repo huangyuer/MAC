@@ -25,14 +25,16 @@
     background-color: $primary-color;
     .inner {
       color: #FFFFFF;
+      font-size: 14px;
+      font-weight: lighter;
       margin-left: 37px;
       margin-right: 47px;
       .right {
-        font-size: 14px;
+        font-size: 12px;
         display: inline-block;
         float: right;
         height: 100%;
-        width: 82px;
+        width: 65px;
         cursor: pointer;
         user-select: none;
       }
@@ -40,8 +42,7 @@
   }
   .row {
     width: 90%;
-    margin: 0 auto;
-    margin-top: 30px;
+    margin: 30px auto 0;
     overflow: hidden;
     position: relative;
     & > .image-item:nth-child(1) {
@@ -66,7 +67,9 @@
 
 @media only screen and (max-width: $max-width) {
   .search-all {
-    width: auto;
+    width: 100%;
     margin: 0;
+    .row {
+    }
   }
 }

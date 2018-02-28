@@ -4,7 +4,9 @@
 
       <!--wap menu bar-->
       <div class="wap-menu-bar">
-        <img src="../../assets/images/wap_menu.png"/>
+        <label for="sidebar">
+          <img src="../../assets/images/wap_menu.png"/>
+        </label>
       </div>
 
       <!--logo-->
@@ -75,19 +77,18 @@
 
   export default {
     mounted: function () {
-
     },
     components: {},
     data () {
-      return {}
+      return {
+      }
     },
     methods: {
-
       login: function () {
-        this.$rotuer.push('/auth/login')
+        this.$router.push('/auth/login')
       },
       register: function () {
-        this.$rotuer.push('/auth/register')
+        this.$router.push('/auth/register')
 
       },
       // 退出登录

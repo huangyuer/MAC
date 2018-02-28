@@ -1,5 +1,5 @@
 .index_bg{
-  position: absolute;
+  /*position: absolute;*/
   background: url(../images/bg.png) top center no-repeat;
   width: 100%;
   height: auto;
@@ -52,6 +52,7 @@
   .top_login{width: auto;float: right;margin-top: 25px}
   .login_btn{width: 80px;height: 30px;line-height: 30px;}
   .reg_btn{width: 80px;height: 30px;line-height: 30px; margin-left: 5px;}
+
 }
 
 .triangle-up{
@@ -185,16 +186,6 @@
 }
 .active {
   color: #1E518A !important;
-}
-.nav_bar {
-  margin: 24px 0 24px 24px;
-}
-.activated {
-  color: #1E518A !important;
-  font-size: 14px;
-}
-.activated:hover {
-  text-decoration: underline;
 }
 .login_btn1{
   width: 100px;
@@ -344,6 +335,9 @@
 }
 
 @media only screen and (max-width: 1070px){
+  .index_bg{
+    background-size: auto 100%;
+  }
   .index_logo{
     display: none;
   }

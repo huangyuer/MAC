@@ -4,6 +4,7 @@
   font-size: 16px;
   height: 160px;
   width: 100%;
+  min-width: $inner-width;
   position: relative;
   border-top: 1px solid transparent;
   img.img-bg {
@@ -113,6 +114,7 @@
 @media screen and (max-width: 768px) {
   .search-component {
     height: 60px;
+    min-width: 0;
     img.img-bg {
       height: 60px;
       margin: 0;
@@ -129,6 +131,9 @@
         font-size: 12px;
         .category {
           margin: 0 10px;
+          white-space: nowrap;
+          height: 20px;
+          overflow-y: hidden;
           span {
             margin: 0 5px;
           }
@@ -162,6 +167,9 @@
           .search-btn {
             display: none;
           }
+        }
+        .level-two-category {
+          margin-top: 10px;
         }
       }
     }

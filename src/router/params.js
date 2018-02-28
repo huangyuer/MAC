@@ -211,6 +211,12 @@ const LoadingComponent = resolve => {
   })
 }
 
+const Test = resolve => {
+  require.ensure(['../components/Test.vue'], () => {
+    resolve(require('../components/Test.vue'))
+  })
+}
+
 export {
   homePage,
   SearchIndex,
@@ -251,5 +257,6 @@ export {
   HistorySearchResult,
   LiteratureSearchResult,
   EngineerSearchResult,
-  ProjectSearchResult
+  ProjectSearchResult,
+  Test
 }

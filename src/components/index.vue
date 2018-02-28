@@ -121,7 +121,7 @@
 
     <!--web端-->
     <div class="bot">
-      <div>Copyright @2017 Tongjl.All Rights Reserved.<br>
+      <div>Copyright @2017 Tongji.All Rights Reserved.<br>
         同济大学出版社版权所有 上海市杨浦区赤峰路2号 021-0000000
       </div>
     </div>
@@ -131,7 +131,7 @@
       <div>
         沪ICP备11031396号<br>
         同济大学出版社版权所有 上海市杨浦区赤峰路2号<br>
-        <span class="copyright">Copyright @2017 Tongjl.All Rights Reserved.</span>
+        <span class="copyright">Copyright @2017 Tongji.All Rights Reserved.</span>
       </div>
     </div>
 

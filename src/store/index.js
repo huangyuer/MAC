@@ -58,7 +58,7 @@ export default new Vuex.Store({
     toolBar,
     loadingComponent,
     user,
-    mediaDetail,
+    mediaDetail
   },
   strict: debug
 })
