@@ -122,8 +122,12 @@
       display: inline-block;
       vertical-align: middle;
       right: 0;
-      width: 221px;
+      width: 220px;
+      margin-right: 160px;
       height: 100%;
+      a {
+        float: right;
+      }
       .btn {
         border-radius: 21px;
         display: inline-block;

@@ -25,6 +25,7 @@ import toolBar from './modules/toolBar'
 import loadingComponent from './modules/loadingComponent'
 import user from './modules/user'
 import mediaDetail from './modules/mediaDetail'
+import sideBar from './modules/sideBar'
 
 Vue.use(Vuex)
 
@@ -58,7 +59,8 @@ export default new Vuex.Store({
     toolBar,
     loadingComponent,
     user,
-    mediaDetail
+    mediaDetail,
+    sideBar
   },
   strict: debug
 })

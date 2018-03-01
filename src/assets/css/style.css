@@ -323,7 +323,7 @@ html{font-size: 30px !important;}
 }
 
 /*6*/
-.reg,.log{width: 270px;box-shadow: 1px 1px 10px #666;padding: 40px 30px;margin: 60px auto 0;}
+.reg,.log{width: 270px;box-shadow: 1px 1px 10px #666;padding: 40px 30px;margin: 60px auto;}
 .reg p{font-size: 17px;color: #E37423;text-align: center;}
 .reg span{display: block;font-size: 14px;color: #6f71f0;margin-top: 20px;}
 .reg span a{font-size: 14px;color: #1e518a;float: left;display: block;margin-left: 18px;}
@@ -875,4 +875,18 @@ a{text-decoration:none;}
   vertical-align: middle;
 }
 
+.app {
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.open {
+  transform: translateX(70%);
+}
 

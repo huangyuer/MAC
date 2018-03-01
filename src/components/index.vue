@@ -368,6 +368,6 @@
   }
 </script>
 
-<style scoped>
-  @import "../assets/css/index.css";
+<style lang="scss" scoped>
+  @import "../assets/css/index.scss";
 </style>

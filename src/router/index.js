@@ -138,7 +138,9 @@ export default new Router({
       path: '/auth/login',
 
       components: {
+        'app-header': AppHeader,
         'app-body': Login,
+        'app-footer': AppFooter
       },
     },
     {
@@ -152,7 +154,9 @@ export default new Router({
     {
       path: '/auth/register',
       components: {
+        'app-header': AppHeader,
         'app-body': Register,
+        'app-footer': AppFooter
       },
     },
 
@@ -190,9 +194,10 @@ export default new Router({
     },
     {
       path: '/user/password/change',
-
       components: {
+        'app-header': AppHeader,
         'app-body': ChangePassword,
+        'app-footer': AppFooter
       },
     },
     {
