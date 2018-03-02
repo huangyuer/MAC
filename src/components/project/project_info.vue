@@ -4,8 +4,7 @@
     <div class="engineer_info">
       <div class="engineer_info_left">
         <h4 v-text="project.title"></h4>
-        <p v-html="project.content"></p>
-        <div class="engineer_info_bar"></div>
+        <p class="engineer_content" v-html="project.content"></p>
       </div>
       <div class="engineer_info_right">
         <h4><span>|&nbsp;</span><span class="blue">所属年代</span></h4>
@@ -39,6 +38,10 @@
     <div class="clear"></div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "../../assets/css/project/projectInfo";
+</style>
 
 <script>
   import backBar from '../public/back_bar.vue'

@@ -1,11 +1,26 @@
 <template>
   <div class="engineer_wrapper">
+    <engineer-header-search></engineer-header-search>
     <engineer-header-bg></engineer-header-bg>
     <engineer-header-bar></engineer-header-bar>
 
     <div class="engineer_list_wrapper">
       <!--工程师-->
       <div class="engineer_list">
+        <!--wap 端-->
+        <div class="wap_engineer_header">
+          <div class="wap_engineer_header_left">
+            <img src="../assets/images/engineer_avatar.png"/>
+            <span>工程师</span>
+          </div>
+          <div class="wap_engineer_header_right">
+            <router-link :to="'/engineer/list'">
+              <span>查看全部→</span>
+            </router-link>
+          </div>
+          <div class="clear"></div>
+        </div>
+
         <router-link :to="'/engineer/list'">
           <div class="engineer_list_left">
             <div class="engineer_list_left_img">
@@ -36,6 +51,21 @@
 
       <!--工程-->
       <div class="engineer_list">
+
+        <!--wap 端-->
+        <div class="wap_engineer_header">
+          <div class="wap_engineer_header_left">
+            <img src="../assets/images/project_avatar.png"/>
+            <span>工程项目</span>
+          </div>
+          <div class="wap_engineer_header_right">
+            <router-link :to="'/project/list'">
+              <span>查看全部→</span>
+            </router-link>
+          </div>
+          <div class="clear"></div>
+        </div>
+
         <router-link :to="'/project/list'">
           <div class="engineer_list_left">
             <div class="engineer_list_left_img">
@@ -65,6 +95,21 @@
 
       <!--工程文献-->
       <div class="engineer_list">
+
+        <!--wap 端-->
+        <div class="wap_engineer_header">
+          <div class="wap_engineer_header_left">
+            <img src="../assets/images/project_avatar.png"/>
+            <span>工程文献</span>
+          </div>
+          <div class="wap_engineer_header_right">
+            <router-link :to="'/literature/list'">
+              <span>查看全部→</span>
+            </router-link>
+          </div>
+          <div class="clear"></div>
+        </div>
+
         <router-link :to="'/literature/list'">
           <div class="engineer_list_left">
             <div class="engineer_list_left_img">
@@ -74,6 +119,7 @@
             <p>收录了从古代到改革开放以来的著名工程师，包括等等</p>
           </div>
         </router-link>
+
         <div class="literature_list_right">
           <ul>
             <li v-for="literature in literatures">
@@ -96,7 +142,12 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "../assets/css/selected";
+</style>
+
 <script>
+  import engineerHeaderSearch from './engineer/engineer_header_search.vue'
   import engineerHeaderBg from './engineer/engineer_header_bg.vue'
   import engineerHeaderBar from './engineer/engineer_header_bar.vue'
   import engineerItem from './engineer/engineer_item.vue'
@@ -139,6 +190,7 @@
       }
     },
     components: {
+      engineerHeaderSearch,
       engineerHeaderBg,
       engineerHeaderBar,
       engineerItem,

@@ -1,6 +1,6 @@
 <template>
   <div class="engineer_wrapper">
-
+    <engineer-header-search></engineer-header-search>
     <engineer-header-bg></engineer-header-bg>
     <engineer-header-bar></engineer-header-bar>
 
@@ -19,13 +19,13 @@
         </router-link>
         <div class="engineer_list_right">
           <div>
-          <ul> 
+          <ul>
               <li v-for="engineer in engineers">
                 <router-link :to="'/engineer/info/' + engineer._id">
                   <engineer-item :engineer="engineer"></engineer-item>
                 </router-link>
-              </li> 
-          </ul> 
+              </li>
+          </ul>
           </div>
           <div style="clear:both;"></div>
           <div style="margin:20px;" class="paginator">
@@ -38,22 +38,28 @@
           </div>
         </div>
       </div>
-      <div class="clear"></div> 
+      <div class="clear"></div>
     </div>
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "../../assets/css/engineer/engineerList";
+</style>
+
 <script>
+  import engineerHeaderSearch from './engineer_header_search.vue'
   import engineerHeaderBg from './engineer_header_bg.vue'
   import engineerHeaderBar from './engineer_header_bar.vue'
   import engineerItem from './engineer_item.vue'
   export default {
     data() {
       return {
-        
+
       }
     },
     components: {
+      engineerHeaderSearch,
       engineerHeaderBg,
       engineerHeaderBar,
       engineerItem,
@@ -62,45 +68,45 @@
       this.getData();
     },
     computed: {
-      engineers () { 
-        return this.$store.getters.engineers;  
+      engineers () {
+        return this.$store.getters.engineers;
       },
-      
-      isSearchResult () { 
-        return this.$store.getters.engineers.isSearchResult;  
+
+      isSearchResult () {
+        return this.$store.getters.engineers.isSearchResult;
       },
       engineersTotal(){
         return this.$store.getters.engineersTotal;
       },
       currentProfession(){
-        let profession = this.$route.query.profession || '';  
+        let profession = this.$route.query.profession || '';
         return profession;
       },
       currentEra(){
-        let era = this.$route.query.era || '';  
+        let era = this.$route.query.era || '';
         return era;
       },
       pageSize(){
-        let pageSize = this.$route.query.limit || 20;  
+        let pageSize = this.$route.query.limit || 20;
         return parseInt(pageSize);
       },
       currentPage(){
-        let currentPage = this.$route.query.page || 1;  
+        let currentPage = this.$route.query.page || 1;
         return parseInt(currentPage);
       }
     },
-     
-    watch: { 
+
+    watch: {
        '$route': 'getData'
     },
-    methods: { 
-      getData: function(){   
-        this.$store.dispatch('getLatestEngineers', {'profession': this.currentProfession,'era': this.currentEra, 'limit': this.pageSize, 'page': this.currentPage}); 
+    methods: {
+      getData: function(){
+        this.$store.dispatch('getLatestEngineers', {'profession': this.currentProfession,'era': this.currentEra, 'limit': this.pageSize, 'page': this.currentPage});
       },
-      handleCurrentChange(val) { 
-        this.$store.dispatch('getLatestEngineers', {'profession': this.currentProfession, 'era': this.currentEra,  'limit': this.pageSize, 'page': val}); 
+      handleCurrentChange(val) {
+        this.$store.dispatch('getLatestEngineers', {'profession': this.currentProfession, 'era': this.currentEra,  'limit': this.pageSize, 'page': val});
         document.documentElement.scrollTop = 0;
-         
+
       },
     }
   }

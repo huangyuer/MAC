@@ -1,11 +1,11 @@
 <template>
   <div class="engineer_wrapper">
-     
+    <engineer-header-search></engineer-header-search>
     <engineer-header-bg></engineer-header-bg>
     <engineer-header-bar></engineer-header-bar>
 
     <div class="engineer_list_wrapper">
- 
+
       <!--工程师-->
       <div class="engineer_list">
         <router-link :to="'/engineer/list'">
@@ -23,9 +23,9 @@
               <router-link :to="'/engineer/info/' + engineer._id">
                 <engineer-item :engineer="engineer._source"></engineer-item>
               </router-link>
-            </li> 
+            </li>
           </ul>
-           <div class="clear"></div> 
+           <div class="clear"></div>
           <div style="margin:20px;" class="paginator">
             <el-pagination
               background
@@ -34,67 +34,69 @@
               :total="engineersTotal" :current-page="currentPage" :page-size="pageSize">
             </el-pagination>
           </div>
-        </div>  
+        </div>
       </div>
-      <div class="clear"></div>  
+      <div class="clear"></div>
     </div>
   </div>
 </template>
 
 <script>
+  import engineerHeaderSearch from './engineer_header_search.vue'
   import engineerHeaderBg from './engineer_header_bg.vue'
   import engineerHeaderBar from './engineer_header_bar.vue'
   import engineerItem from './engineer_item.vue'
-   
+
   export default {
     data() {
       return {
-        
+
       }
     },
     components: {
+      engineerHeaderSearch,
       engineerHeaderBg,
-      engineerHeaderBar, 
-      engineerItem, 
+      engineerHeaderBar,
+      engineerItem,
     },
     mounted(){
       this.getData();
     },
-    computed: { 
+    computed: {
       engineers () {
         return  this.$store.getters.engineerSearchResults;
       },
       searchContent: function () {
         return this.$store.state.searchComponent.searchContent
       },
-      engineersTotal(){ 
+      engineersTotal(){
         return this.$store.getters.totalEngineerSearchResults;
       },
       pageSize(){
-        let pageSize = this.$route.query.limit || 20;  
+        let pageSize = this.$route.query.limit || 20;
         return parseInt(pageSize);
       },
       currentPage(){
-        let currentPage = this.$route.query.page || 1;  
+        let currentPage = this.$route.query.page || 1;
         return parseInt(currentPage);
       }
     },
-     
-    watch: { 
-        
+
+    watch: {
+
     },
-    methods: { 
-      getData: function(){   
-         
+    methods: {
+      getData: function(){
+
       },
-      handleCurrentChange(val) {  
+      handleCurrentChange(val) {
          let p = {
           searchContent: this.searchContent,
           category: '0',
           keywords: [],
           rows: 16,
           page: val,
-        }    
+        }
         this.$store.dispatch('searchEngineer', p)
         // this.$store.dispatch('searchProject', p)
         this.$router.push('/engineer/search/result')

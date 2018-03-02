@@ -4,7 +4,7 @@
     <img  v-show="project.cover !==''" :src="project.cover+ '?x-oss-process=image/resize,m_fill,w_280,h_180'" />
 
     <img v-show="project.cover === ''" src="../../assets/images/default.jpg" />
-  
+
     <div class="project_item">
       <h4 v-text="project.title"></h4>
       <p >
@@ -23,6 +23,10 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "../../assets/css/project/projectItem";
+</style>
 
 <script>
   export default {

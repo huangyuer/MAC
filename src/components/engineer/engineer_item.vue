@@ -1,10 +1,10 @@
 <template>
   <div class="engineer_item_wrapper">
- 
+
     <img v-show="engineer.avatar === ''" src="../../assets/images/default.jpg" />
 
     <img v-show="engineer.avatar !==''" :src="engineer.avatar" />
- 
+
 
     <div class="engineer_item">
       <h4 v-text="engineer.name"></h4>
@@ -21,6 +21,10 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "../../assets/css/engineer/engineerItem";
+</style>
 
 <script>
   export default {

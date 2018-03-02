@@ -3,9 +3,6 @@
     <img src="../../assets/images/engineer_header_bg.png"/>
   </div>
 </template>
-
-<script>
-  export default {
-
-  }
-</script>
+<style lang="scss" scoped>
+  @import "../../assets/css/engineer/engineerHeaderBg";
+</style>

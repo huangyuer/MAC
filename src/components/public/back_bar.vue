@@ -6,6 +6,10 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "../../assets/css/public/backBar";
+</style>
+
 <script>
   export default {
     methods: {

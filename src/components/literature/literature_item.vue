@@ -27,6 +27,10 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "../../assets/css/literature/literatureItem";
+</style>
+
 <script>
   export default {
     props: {

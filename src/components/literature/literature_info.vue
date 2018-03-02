@@ -5,7 +5,6 @@
       <div class="engineer_info_left">
         <h4 v-text="literature.name"></h4>
         <p v-html="literature.content"></p>
-        <div class="engineer_info_bar"></div>
       </div>
       <div class="engineer_info_right">
         <h4><span>|&nbsp;</span><span class="blue">所属类别</span></h4>

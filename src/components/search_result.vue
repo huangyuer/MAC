@@ -1,12 +1,13 @@
 <template>
   <div class="engineer_wrapper">
-     
+
+    <engineer-header-search></engineer-header-search>
     <engineer-header-bg></engineer-header-bg>
     <engineer-header-bar></engineer-header-bar>
 
     <div class="engineer_list_wrapper">
 
-       
+
       <!--工程师-->
       <div class="engineer_list">
         <router-link :to="'/engineer/list'">
@@ -29,7 +30,7 @@
           <div class="list_all">
             <a href="javascript:;" @click="searchMoreEngineers()" class="link">  <p class="list_all_btn"> > </p>
               <p>更多搜索结果</p>
-            </a> 
+            </a>
           </div>
         </div>
 
@@ -58,7 +59,7 @@
           <div class="list_all">
             <a href="javascript:;" @click="searchMoreProjects()" class="link">  <p class="list_all_btn"> > </p>
               <p>更多搜索结果</p>
-            </a> 
+            </a>
           </div>
         </div>
       </div>
@@ -86,33 +87,34 @@
            <div class="list_all">
             <a href="javascript:;" @click="searchMoreLiteratures()" class="link">  <p class="list_all_btn"> > </p>
               <p>更多搜索结果</p>
-            </a> 
+            </a>
           </div>
         </div>
       </div>
-      
-
-        
-      </div>
-      <div class="clear"></div> 
     </div>
+    <div class="clear"></div>
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "../assets/css/selected";
+</style>
+
 <script>
+  import engineerHeaderSearch from './engineer/engineer_header_search.vue'
   import engineerHeaderBg from './engineer/engineer_header_bg.vue'
   import engineerHeaderBar from './engineer/engineer_header_bar.vue'
-   
   import engineerItem from './engineer/engineer_item.vue'
   import projectItem from './project/project_item.vue'
   import literatureItem from './literature/literature_item.vue'
   export default {
     data() {
       return {
-        
+
       }
     },
     components: {
+      engineerHeaderSearch,
       engineerHeaderBg,
       engineerHeaderBar,
       engineerItem,
@@ -122,7 +124,7 @@
     mounted(){
       this.getData();
     },
-    computed: { 
+    computed: {
       engineers () {
         return this.$store.state.search.hybridEngineerList
       },
@@ -131,7 +133,7 @@
       },
       works () {
         return this.$store.state.search.hybridProjectList
-      }, 
+      },
       searchContextData: function () {
         return this.$store.state.searchContext.searchContextData
       },
@@ -139,24 +141,24 @@
         return this.$store.state.searchComponent.searchContent
       },
       pageSize(){
-        let pageSize = this.$route.query.limit || 20;  
+        let pageSize = this.$route.query.limit || 20;
         return parseInt(pageSize);
       },
       currentPage(){
-        let currentPage = this.$route.query.page || 1;  
+        let currentPage = this.$route.query.page || 1;
         return parseInt(currentPage);
       }
     },
-     
-    watch: { 
-        
+
+    watch: {
+
     },
-    methods: { 
-      getData: function(){   
-         
+    methods: {
+      getData: function(){
+
       },
-      handleCurrentChange(val) {  
-         
+      handleCurrentChange(val) {
+
       },
       searchMoreEngineers(val){
         let p = {
@@ -165,7 +167,7 @@
           keywords: [],
           rows: 16,
           page: 1,
-        }    
+        }
         this.$store.dispatch('searchEngineer', p)
         // this.$store.dispatch('searchProject', p)
         this.$router.push('/engineer/search/result')
@@ -177,7 +179,7 @@
           keywords: [],
           rows: 16,
           page: 1,
-        }    
+        }
         this.$store.dispatch('searchProject', p)
         // this.$store.dispatch('searchProject', p)
         this.$router.push('/project/search/result')
@@ -189,7 +191,7 @@
           keywords: [],
           rows: 16,
           page: 1,
-        }    
+        }
         this.$store.dispatch('searchLiterature', p)
         // this.$store.dispatch('searchProject', p)
         this.$router.push('/literature/search/result')
