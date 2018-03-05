@@ -51,7 +51,8 @@ const state = {
   },
   libMenuVisible: true,
   categoryMenuVisible: true,
-  clcMenuVisible: true
+  clcMenuVisible: true,
+  leftMenuVisible: false
 };
 
 // getters
@@ -73,7 +74,8 @@ const getters = {
   bookClcsEditDialogVisible: state => state.bookClcsEditDialogVisible,
   libMenuVisible: state => state.libMenuVisible,
   categoryMenuVisible: state => state.categoryMenuVisible,
-  clcMenuVisible: state => state.clcMenuVisible
+  clcMenuVisible: state => state.clcMenuVisible,
+  leftMenuVisible: state => state.leftMenuVisible
 };
 
 // actions
@@ -328,6 +330,9 @@ const mutations = {
     // 变更状态
     state.clcMenuVisible = false;
   },
+  setLeftMenuVisible(state, leftMenuVisible) {
+    state.leftMenuVisible = leftMenuVisible
+  }
 };
 
 export default {

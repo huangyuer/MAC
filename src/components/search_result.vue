@@ -9,7 +9,22 @@
 
 
       <!--工程师-->
-      <div class="engineer_list">
+      <div class="engineer_list" v-if="engineers.length > 0">
+
+        <!--wap 端-->
+        <div class="wap_engineer_header">
+          <div class="wap_engineer_header_left">
+            <img src="../assets/images/engineer_avatar.png"/>
+            <span>工程师</span>
+          </div>
+          <div class="wap_engineer_header_right">
+            <router-link :to="'/engineer/list'">
+              <span>查看全部→</span>
+            </router-link>
+          </div>
+          <div class="clear"></div>
+        </div>
+
         <router-link :to="'/engineer/list'">
           <div class="engineer_list_left">
             <div class="engineer_list_left_img">
@@ -38,7 +53,22 @@
       <div class="clear"></div>
 
       <!--工程-->
-      <div class="engineer_list">
+      <div class="engineer_list" v-if="works.length > 0">
+
+        <!--wap 端-->
+        <div class="wap_engineer_header">
+          <div class="wap_engineer_header_left">
+            <img src="../assets/images/project_avatar.png"/>
+            <span>工程项目</span>
+          </div>
+          <div class="wap_engineer_header_right">
+            <router-link :to="'/project/list'">
+              <span>查看全部→</span>
+            </router-link>
+          </div>
+          <div class="clear"></div>
+        </div>
+
         <router-link :to="'/project/list'">
           <div class="engineer_list_left">
             <div class="engineer_list_left_img">
@@ -66,7 +96,22 @@
       <div class="clear"></div>
 
       <!--工程文献-->
-      <div class="engineer_list">
+      <div class="engineer_list" v-if="literatures.length > 0">
+
+        <!--wap 端-->
+        <div class="wap_engineer_header">
+          <div class="wap_engineer_header_left">
+            <img src="../assets/images/project_avatar.png"/>
+            <span>工程文献</span>
+          </div>
+          <div class="wap_engineer_header_right">
+            <router-link :to="'/literature/list'">
+              <span>查看全部→</span>
+            </router-link>
+          </div>
+          <div class="clear"></div>
+        </div>
+
         <router-link :to="'/literature/list'">
           <div class="engineer_list_left">
             <div class="engineer_list_left_img">

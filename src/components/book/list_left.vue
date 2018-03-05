@@ -1,9 +1,6 @@
 <template>
   <div class="list_left">
 
-    
-    <div class="clear" style="border-bottom: 1px solid #fff;"></div>
-
     <div class="class_title">
       <span>图书库</span>
       <div class="title_img">
@@ -58,8 +55,89 @@
         <a href="javascript:;"><p @click="listBooksByClc(clc.name)" v-text="clc.name"></p></a>
       </div>
     </div>
+
+    <!--wap left menu-->
+    <div class="wap-left-menu" v-show="leftMenuVisible">
+
+      <div class="class-title">
+        <span>所有类别</span>
+        <div class="title-img-close">
+          <a href="javascript:;" @click="hideMenu()">
+            <img src="../../assets/images/wap_cross.png" />
+          </a>
+        </div>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="class-title">
+        <span>图书库</span>
+        <div class="title-img">
+          <a href="javascript:;" @click="hideLibMenu" v-show="libMenuVisible">
+            <span>-</span>
+          </a>
+          <a href="javascript:;" @click="showLibMenu" v-show="!libMenuVisible">
+            <span>+</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="list-class" v-show="libMenuVisible">
+        <div class="list-title"  v-for="lib in sublibs">
+          <a href="javascript:;"><p @click="listBooksByLib(lib.name)" v-text="lib.name"></p></a>
+        </div>
+      </div>
+
+
+      <div class="class-title">
+        <span>学科分类</span>
+        <div class="title-img">
+          <a href="javascript:;" @click="hideCategoryMenu" v-show="categoryMenuVisible">
+            <span>-</span>
+          </a>
+          <a href="javascript:;" @click="showCategoryMenu" v-show="!categoryMenuVisible">
+            <span>+</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="list-class" v-show="categoryMenuVisible">
+        <div class="list-title" v-for="category in categories">
+          <a href="javascript:;"><p @click="listBooksByCategory(category.name)" v-text="category.name"></p></a>
+        </div>
+      </div>
+
+      <div class="class-title">
+        <span>中图分类</span>
+        <div class="title-img">
+          <a href="javascript:;" @click="hideClcMenu" v-show="clcMenuVisible">
+            <span>-</span>
+          </a>
+          <a href="javascript:;" @click="showClcMenu" v-show="!clcMenuVisible">
+            <span>+</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="list-class" v-show="clcMenuVisible">
+        <div class="list-title" v-for="clc in clcs">
+          <a href="javascript:;"><p @click="listBooksByClc(clc.name)" v-text="clc.name"></p></a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "../../assets/css/book/listLeft";
+</style>
 
 <script>
   export default {
@@ -102,6 +180,9 @@
       clcMenuVisible() {
         return this.$store.getters.clcMenuVisible;
       },
+      leftMenuVisible() {
+        return this.$store.getters.leftMenuVisible;
+      },
     },
     methods: {
       listBooksByCategory: function(category){
@@ -136,6 +217,9 @@
       hideClcMenu: function () {
         this.$store.commit('hideClcMenu')
       },
+      hideMenu: function () {
+        this.$store.commit('setLeftMenuVisible', false)
+      }
     }
   }
 </script>

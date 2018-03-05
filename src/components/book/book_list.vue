@@ -1,14 +1,18 @@
 <template>
-  <div class="bg">
+  <div class="book_list">
 
     <search-component></search-component>
     <nav-bar firstUrl="/" firstNav="首页" secondUrl="/book/list" secondNav="图书列表"></nav-bar>
-    <div class="list_main">
+    <div class="book_list_main">
       <list-left></list-left>
 
       <div class="main_left">
         <div class="list_cent">
+          <!--wap tool bar-->
+          <book-tool-bar></book-tool-bar>
+
           <tool-bar></tool-bar>
+
           <div class="list_list">
             <div class="list_cout">找到&nbsp;<font color="#E37423">{{booksTotal}}</font>&nbsp;条结果</div>
             <div class="list_li">
@@ -48,9 +52,14 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "../../assets/css/book/bookList";
+</style>
+
 <script>
   import {checkLoginCookie, getCookie} from '../../assets/js/cookie'
   import toolBar from '../search/toolBar.vue'
+  import bookToolBar from '../book/bookToolBar.vue'
   import navBar from '../public/nav_bar.vue'
   import searchComponent from '../public/searchComponent.vue'
   import listLeft from '../book/list_left.vue'
@@ -68,6 +77,7 @@
     props: {
     },
     components: {
+      bookToolBar,
       toolBar,
       navBar,
       searchComponent,
@@ -100,12 +110,12 @@
       books () {
         return this.$store.getters.books;
       },
-      userInfo () {  
+      userInfo () {
         let userInfo = getCookie('userInfo');
         if (userInfo) {
           let user = JSON.parse(userInfo);
           return user;
-        } else { 
+        } else {
           return this.$store.getters.userInfo;
         }
       },
@@ -159,7 +169,7 @@
         this.$store.dispatch('searchBooks', {'keywords': keywords, 'limit': limit, 'page': page});
       },
       // 加入收藏夹
-      addToFav: function (book) { 
+      addToFav: function (book) {
         this.$store.dispatch('addUserFavoriteBooks', {'bookId': book._id, 'userId': this.userInfo.userId})
       },
       // 移除收藏夹

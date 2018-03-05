@@ -4,3 +4,7 @@
     <a href="http://x.tjdesignx.com/"><img  style="width:260px;" src="../../assets/images/adv2.png" alt=""></a>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "../../assets/css/book/listRight";
+</style>

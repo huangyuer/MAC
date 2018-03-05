@@ -1,5 +1,6 @@
 @import "../global";
 .nav-bar {
+  display: block;
   width: $inner-width;
   min-width: $inner-width;
   margin: 12px auto;
@@ -14,7 +15,6 @@
 
 @media only screen and (max-width: $max-width) {
   .nav-bar {
-    width: 100%;
-    min-width: 0;
+    display: none;
   }
 }

@@ -1,10 +1,10 @@
 @import "../global";
 
-.project_info_wrapper {
-  .project_info{
+.literature_info_wrapper {
+  .literature_info{
     margin: 20px auto;
     width: 1100px;
-    .project_info_left {
+    .literature_info_left {
       width: 800px;
       float: left;
       padding: 20px;
@@ -20,7 +20,7 @@
         margin-bottom: 1em;
         text-align: center;
       }
-      .project_content {
+      .literature_content {
         display: block;
         color: rgb(111, 111, 111);
         font-size:16px;
@@ -30,7 +30,7 @@
         padding-top: 10px;
       }
     }
-    .project_info_right {
+    .literature_info_right {
       width: 200px;
       margin-left: 20px;
       padding: 20px;
@@ -64,7 +64,7 @@
         font-size: 14px;
         font-weight: 400;
       }
-      .project_info_right_img {
+      .literature_info_right_img {
         margin: 30px 0;
         width: 150px;
         img {
@@ -77,10 +77,10 @@
 }
 
 @media only screen and (max-width: $max-width) {
-  .project_info_wrapper {
-    .project_info {
+  .literature_info_wrapper {
+    .literature_info {
       width: 100%;
-      .project_info_left {
+      .literature_info_left {
         width: 90%;
         padding: 5%;
         h3 {
@@ -88,12 +88,12 @@
           line-height: 1.8em;
           margin-bottom: 0;
         }
-        .project_content {
+        .literature_content {
           font-size: 14px;
           line-height: 20px;
         }
       }
-      .project_info_right {
+      .literature_info_right {
         display: none;
       }
     }

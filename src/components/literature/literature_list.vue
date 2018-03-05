@@ -1,16 +1,16 @@
 <template>
-  <div class="engineer_wrapper">
+  <div class="literature_wrapper">
 
     <engineer-header-bg></engineer-header-bg>
     <engineer-header-bar></engineer-header-bar>
 
-    <div class="engineer_list_wrapper">
+    <div class="literature_list_wrapper">
 
       <!--工程文献-->
-      <div class="engineer_list">
+      <div class="literature_list">
         <router-link :to="'/literature/list'">
-        <div class="engineer_list_left">
-          <div class="engineer_list_left_img">
+        <div class="literature_list_left">
+          <div class="literature_list_left_img">
             <img src="../../assets/images/literature_avatar.png"/>
           </div>
           <h4>工程文献</h4>
@@ -27,7 +27,7 @@
             </li>
           </ul>
           </div>
-          <div class="clear"></div> 
+          <div class="clear"></div>
           <div style="margin:20px;" class="paginator">
             <el-pagination
               background
@@ -44,6 +44,10 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "../../assets/css/literature/literatureList";
+</style>
+
 <script>
   import engineerHeaderBg from '../engineer/engineer_header_bg.vue'
   import engineerHeaderBar from '../engineer/engineer_header_bar.vue'
@@ -55,10 +59,10 @@
       literatureItem
     },
     data() {
-      return { 
+      return {
       }
     },
-    mounted(){ 
+    mounted(){
       this.getLatestLiteratures();
     },
     computed:{
@@ -69,32 +73,32 @@
         return this.$store.getters.literaturesTotal;
       },
       currentCategory(){
-        let category = this.$route.query.category || '';  
+        let category = this.$route.query.category || '';
         return category;
       },
       currentEra(){
-        let era = this.$route.query.era || '';  
+        let era = this.$route.query.era || '';
         return era;
       },
       pageSize(){
-        let pageSize = this.$route.query.limit || 20;  
+        let pageSize = this.$route.query.limit || 20;
         return parseInt(pageSize);
       },
       currentPage(){
-        let currentPage = this.$route.query.page || 1;  
+        let currentPage = this.$route.query.page || 1;
         return parseInt(currentPage);
       }
     },
-    watch: { 
+    watch: {
        '$route': 'getLatestLiteratures'
     },
-    methods: { 
+    methods: {
       getLatestLiteratures: function(category,limit,page){
-        this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory,'era': this.currentEra,  'limit': 20, 'page': 1}); 
-      },  
-      handleCurrentChange(val) { 
-        this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory, 'era': this.currentEra, 'limit': this.pageSize, 'page': val}); 
-         
+        this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory,'era': this.currentEra,  'limit': 20, 'page': 1});
+      },
+      handleCurrentChange(val) {
+        this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory, 'era': this.currentEra, 'limit': this.pageSize, 'page': val});
+
       },
     }
   }

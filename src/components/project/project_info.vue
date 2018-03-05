@@ -1,12 +1,12 @@
 <template>
-  <div class="engineer_info_wrapper">
+  <div class="project_info_wrapper">
     <back-bar></back-bar>
-    <div class="engineer_info">
-      <div class="engineer_info_left">
+    <div class="project_info">
+      <div class="project_info_left">
         <h4 v-text="project.title"></h4>
-        <p class="engineer_content" v-html="project.content"></p>
+        <p class="project_content" v-html="project.content"></p>
       </div>
-      <div class="engineer_info_right">
+      <div class="project_info_right">
         <h4><span>|&nbsp;</span><span class="blue">所属年代</span></h4>
         <p>
            <span>{{project.era}}</span>
@@ -16,7 +16,7 @@
         <p>
           <span v-for="category in project.categories">{{category}}&nbsp;</span>
         </p>
-        <div class="engineer_info_right_img">
+        <div class="project_info_right_img">
           <img v-show="project.cover === ''" src="../../assets/images/default.jpg" />
           <img v-show="project.cover !==''" :src="project.cover + '?x-oss-process=image/resize,w_230'" />
         </div>

@@ -41,6 +41,10 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "../../assets/css/engineer/engineerList";
+</style>
+
 <script>
   import engineerHeaderSearch from './engineer_header_search.vue'
   import engineerHeaderBg from './engineer_header_bg.vue'

@@ -6,7 +6,7 @@
 
     <div class="engineer_list_wrapper">
       <!--工程师-->
-      <div class="engineer_list">
+      <div class="engineer_list" v-if="engineers.length > 0">
         <!--wap 端-->
         <div class="wap_engineer_header">
           <div class="wap_engineer_header_left">
@@ -50,7 +50,7 @@
       <div class="clear"></div>
 
       <!--工程-->
-      <div class="engineer_list">
+      <div class="engineer_list" v-if="works.length > 0">
 
         <!--wap 端-->
         <div class="wap_engineer_header">
@@ -94,7 +94,7 @@
       <div class="clear"></div>
 
       <!--工程文献-->
-      <div class="engineer_list">
+      <div class="engineer_list" v-if="literatures.length > 0">
 
         <!--wap 端-->
         <div class="wap_engineer_header">

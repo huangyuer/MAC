@@ -1,23 +1,23 @@
 <template>
-  <div class="engineer_wrapper">
+  <div class="project_wrapper">
 
     <engineer-header-bg></engineer-header-bg>
     <engineer-header-bar></engineer-header-bar>
 
-    <div class="engineer_list_wrapper">
+    <div class="project_list_wrapper">
 
       <!--工程-->
-      <div class="engineer_list">
+      <div class="project_list">
         <router-link :to="'/project/list'">
-        <div class="engineer_list_left">
-          <div class="engineer_list_left_img">
+        <div class="project_list_left">
+          <div class="project_list_left_img">
             <img src="../../assets/images/project_avatar.png"/>
           </div>
           <h4>工程项目</h4>
           <p>收录了从古代到改革开放依赖的著名工程师，包括等等</p>
         </div>
       </router-link>
-        <div class="engineer_list_right">
+        <div class="project_list_right">
           <div>
             <ul>
               <li v-for="project in projects">
@@ -27,7 +27,7 @@
               </li>
             </ul>
           </div>
-          <div class="clear"></div> 
+          <div class="clear"></div>
           <div style="margin:20px;" class="paginator">
             <el-pagination
               background
@@ -44,6 +44,10 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "../../assets/css/project/projectList";
+</style>
+
 <script>
   import engineerHeaderBg from '../engineer/engineer_header_bg.vue'
   import engineerHeaderBar from '../engineer/engineer_header_bar.vue'
@@ -56,10 +60,10 @@
     },
     data() {
       return {
-         
+
       }
     },
-    mounted(){ 
+    mounted(){
       this.getLatestWorks();
     },
     computed:{
@@ -70,32 +74,32 @@
         return this.$store.getters.worksTotal;
       },
       currentCategory(){
-        let category = this.$route.query.category || '';  
+        let category = this.$route.query.category || '';
         return category;
       },
       currentEra(){
-        let era = this.$route.query.era || '';  
+        let era = this.$route.query.era || '';
         return era;
       },
       pageSize(){
-        let pageSize = this.$route.query.limit || 20;  
+        let pageSize = this.$route.query.limit || 20;
         return parseInt(pageSize);
       },
       currentPage(){
-        let currentPage = this.$route.query.page || 1;  
+        let currentPage = this.$route.query.page || 1;
         return parseInt(currentPage);
       }
     },
-    watch: { 
+    watch: {
        '$route': 'getLatestWorks'
     },
-    methods: { 
+    methods: {
       getLatestWorks: function(category,limit,page){
-        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra, 'limit': 20, 'page': 1}); 
-      },  
-      handleCurrentChange(val) { 
-        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra,  'limit': this.pageSize, 'page': val}); 
-         
+        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra, 'limit': 20, 'page': 1});
+      },
+      handleCurrentChange(val) {
+        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra,  'limit': this.pageSize, 'page': val});
+
       },
     }
   }

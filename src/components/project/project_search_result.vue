@@ -1,24 +1,24 @@
 <template>
-  <div class="engineer_wrapper">
-     
+  <div class="project_wrapper">
+
+    <engineer-header-search></engineer-header-search>
     <engineer-header-bg></engineer-header-bg>
     <engineer-header-bar></engineer-header-bar>
 
-    <div class="engineer_list_wrapper">
+    <div class="project_list_wrapper">
 
-       
       <!--工程师-->
-      <div class="engineer_list">
+      <div class="project_list">
         <router-link :to="'/engineer/list'">
-          <div class="engineer_list_left">
-            <div class="engineer_list_left_img">
+          <div class="project_list_left">
+            <div class="project_list_left_img">
               <img src="../../assets/images/project_avatar.png"/>
             </div>
              <h4>工程项目</h4>
             <p>收录了从古代到改革开放依赖的著名工程师，包括等等</p>
           </div>
         </router-link>
-        <div class="engineer_list_right">
+        <div class="project_list_right">
            <ul>
               <li v-for="project in projects">
                 <router-link :to="'/project/info/' + project._id">
@@ -35,63 +35,69 @@
               :total="projectsTotal" :current-page="currentPage" :page-size="pageSize">
             </el-pagination>
           </div>
-        </div> 
-         
+        </div>
+
       </div>
-      <div class="clear"></div>  
+      <div class="clear"></div>
     </div>
   </div>
 </template>
 
+<style lang="scss" scoped>
+  @import "../../assets/css/project/projectList";
+</style>
+
 <script>
+  import engineerHeaderSearch from '../engineer/engineer_header_search.vue'
   import engineerHeaderBg from '../engineer/engineer_header_bg.vue'
   import engineerHeaderBar from '../engineer/engineer_header_bar.vue'
   import projectItem from './project_item.vue'
-  
+
   export default {
     data() {
       return {
-        
+
       }
     },
     components: {
+      engineerHeaderSearch,
       engineerHeaderBg,
-      engineerHeaderBar, 
+      engineerHeaderBar,
       projectItem,
-      
+
     },
     mounted(){
       this.getData();
     },
-    computed: {  
+    computed: {
       projects () {
         return  this.$store.getters.projectSearchResults;
-      }, 
+      },
       searchContent: function () {
         return this.$store.state.searchComponent.searchContent
       },
-      projectsTotal(){ 
+      projectsTotal(){
         return this.$store.getters.totalProjectSearchResults;
       },
       pageSize(){
-        let pageSize = this.$route.query.limit || 20;  
+        let pageSize = this.$route.query.limit || 20;
         return parseInt(pageSize);
       },
       currentPage(){
-        let currentPage = this.$route.query.page || 1;  
+        let currentPage = this.$route.query.page || 1;
         return parseInt(currentPage);
       }
     },
-     
-    watch: { 
-        
+
+    watch: {
+
     },
-    methods: { 
-      getData: function(){   
-         
+    methods: {
+      getData: function(){
+
       },
-      handleCurrentChange(val) {  
-         
+      handleCurrentChange(val) {
+
       },
     }
   }

@@ -1,17 +1,17 @@
 <template>
-  <div class="engineer_info_wrapper">
+  <div class="literature_info_wrapper">
     <back-bar></back-bar>
-    <div class="engineer_info">
-      <div class="engineer_info_left">
+    <div class="literature_info">
+      <div class="literature_info_left">
         <h4 v-text="literature.name"></h4>
-        <p v-html="literature.content"></p>
+        <p v-html="literature.content" class="literature_content"></p>
       </div>
-      <div class="engineer_info_right">
+      <div class="literature_info_right">
         <h4><span>|&nbsp;</span><span class="blue">所属类别</span></h4>
         <p>
           <span v-for="category in literature.categories">{{category}}&nbsp;</span>
         </p>
-        <div class="engineer_info_right_img">
+        <div class="literature_info_right_img">
           <img  v-show="literature.cover !==''" :src="literature.cover + '?x-oss-process=image/resize,m_fill,w_280,h_210'" />
           <img v-show="literature.cover === ''" src="../../assets/images/default.jpg" />
         </div>
@@ -32,6 +32,10 @@
     <div class="clear"></div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "../../assets/css/literature/literatureInfo";
+</style>
 
 <script>
   import backBar from '../public/back_bar.vue'
