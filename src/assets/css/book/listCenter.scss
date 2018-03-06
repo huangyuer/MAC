@@ -1,0 +1,58 @@
+@import "../global";
+
+.list_li {
+  margin-top: 20px;
+  span{
+    color: #666782;
+    margin-top: 10px;
+    display: block;
+  }
+  dl {
+    overflow: hidden;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eaeaea;
+    margin-top: 10px;
+  }
+  dt {
+    width: 63px;
+    float: left;
+    img {
+      width: 55px;
+      height: 80px;
+    }
+  }
+  dd {
+    width: 512px;
+    float: left;
+    em {
+      float: left;
+      border: 1px solid #f89e8f;
+      line-height: 20px;
+      padding:0 5px;
+      border-radius: 5px;
+      color: #f89e8f;
+      margin-right: 10px;
+    }
+    p {
+      a {
+        color: #000;
+        font-size: 14px;
+      }
+    }
+    .fav {
+      float: right;
+      border: 1px solid #ddd;
+      line-height: 20px;
+      padding:0 5px;
+      margin: 10px 0 0 0;
+      &:hover{
+        border: 1px solid #face43;
+        background-color: #face43;
+        color: #fff !important;
+      }
+      span {
+        margin-top: 0;
+      }
+    }
+  }
+}

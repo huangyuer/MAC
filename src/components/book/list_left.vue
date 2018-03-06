@@ -68,6 +68,12 @@
         </div>
       </div>
 
+      <div class="list-class">
+        <div class="list-title">
+          <a href="javascript:;"><p @click="listBooks">所有类别</p></a>
+        </div>
+      </div>
+
       <div class="clear"></div>
 
       <div class="class-title">
@@ -185,17 +191,29 @@
       },
     },
     methods: {
+      listBooks: function () {
+        this.hideMenu()
+        this.$store.commit('setLeftCategory', '所有类别')
+        this.$router.push('/book/list');
+
+      },
       listBooksByCategory: function(category){
+        this.hideMenu()
+        this.$store.commit('setLeftCategory', category)
         this.$router.push('/book/list?category=' + encodeURI(category));
         document.documentElement.scrollTop = 0;
       },
 
       listBooksByClc: function(clc){
+        this.hideMenu()
+        this.$store.commit('setLeftCategory', clc)
         this.$router.push('/book/list?clc=' + encodeURI(clc));
         document.documentElement.scrollTop = 0;
       },
 
       listBooksByLib: function(lib){
+        this.hideMenu()
+        this.$store.commit('setLeftCategory', lib)
         this.$router.push('/book/list?lib=' + encodeURI(lib));
         document.documentElement.scrollTop = 0;
       },

@@ -119,5 +119,42 @@
 }
 
 @media only screen and (max-width: $max-width){
-
+  .image-text-item {
+    .content {
+      .subtitle {
+        overflow: hidden;
+        height: 28px;
+        .category {
+          float: left;
+          width: 50px;
+        }
+        .category-brother {
+          margin-left: 60px;
+          display: block;
+          span {
+            display: inline-block;
+            max-width: 100px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+          .name {
+            display: none;
+          }
+          b {
+            display: none;
+          }
+        }
+      }
+      .content {
+        margin: 0;
+      }
+      .keywords {
+        margin-top: 5px;
+      }
+      .btn-container {
+        margin: 5px 0;
+      }
+    }
+  }
 }

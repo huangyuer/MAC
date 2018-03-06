@@ -13,10 +13,24 @@
     display: inline-block;
     width: 33%;
     float: left;
+    p {
+      margin: 0;
+      padding: 0;
+      height: 40px;
+      span {
+        display: inline-block;
+        //width: 100px;
+        max-width: 80px;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        -o-text-overflow:ellipsis;
+        overflow:hidden;
+      }
+    }
     .triangle-down {
       position: relative;
       left: 2px;
-      top: 2px;
+      top: -14px;
       display: inline-block;
       border-width: 4px;
       border-style: solid;
@@ -28,10 +42,23 @@
     display: inline-block;
     width: 34%;
     float: left;
+    p {
+      margin: 0;
+      padding: 0;
+      height: 40px;
+      span {
+        display: inline-block;
+        max-width: 80px;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        -o-text-overflow:ellipsis;
+        overflow:hidden;
+      }
+    }
     .triangle-down {
       position: relative;
       left: 2px;
-      top: 2px;
+      top: -14px;
       display: inline-block;
       border-width: 4px;
       border-style: solid;
@@ -43,10 +70,23 @@
     display: inline-block;
     width: 33%;
     float: left;
+    p {
+      margin: 0;
+      padding: 0;
+      height: 40px;
+      span {
+        display: inline-block;
+        max-width: 80px;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        -o-text-overflow:ellipsis;
+        overflow:hidden;
+      }
+    }
     .triangle-down {
       position: relative;
       left: 2px;
-      top: 2px;
+      top: -14px;
       display: inline-block;
       border-width: 4px;
       border-style: solid;

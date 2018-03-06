@@ -1,31 +1,73 @@
 <template>
-  <div class="list_left list_left_bg">
+  <div class="list_left">
     <div class="class_title">
       <span>本书目录</span>
     </div>
-    <div class="clear" style="border-bottom: 1px solid #fff;"></div>
-    <el-table
-      :data="catalogs"
-      style="width: 100%"
-      :row-style="showRow">
-      <el-table-column
-        prop="name"
-        label="本书目录">
-        <template slot-scope="scope">
+    <div class="clear"></div>
+
+    <!-- 客户端 -->
+    <div class="web-book-category">
+      <el-table
+        :data="catalogs"
+        style="width: 100%"
+        :row-style="showRow">
+        <el-table-column
+          prop="name"
+          label="本书目录">
+          <template slot-scope="scope">
               <span v-for="space in scope.row.level" class="ms-tree-space">
                 &nbsp;&nbsp;
               </span>
-          <el-button  v-if="scope.row.isLeaf===true" type="text" icon="el-icon-document"></el-button>
-          <el-button @click="toggle(scope.row,index)"  v-else-if="scope.row.expanded===true"  type="text" icon="el-icon-caret-bottom"></el-button>
-          <el-button @click="toggle(scope.row,index)" v-else type="text" icon="el-icon-caret-right"></el-button>
-          <a href="javascript:;">
-            <span @click="openChapter(scope.row)" style="color: #4A4A4A">{{scope.row.name}}</span>
+            <el-button  v-if="scope.row.isLeaf===true" type="text" icon="el-icon-document"></el-button>
+            <el-button @click="toggle(scope.row,index)"  v-else-if="scope.row.expanded===true"  type="text" icon="el-icon-caret-bottom"></el-button>
+            <el-button @click="toggle(scope.row,index)" v-else type="text" icon="el-icon-caret-right"></el-button>
+            <a href="javascript:;">
+              <span @click="openChapter(scope.row)" style="color: #4A4A4A">{{scope.row.name}}</span>
+            </a>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+
+    <!-- 移动端 -->
+    <div class="wap-book-category" v-show="bookCategoryVisible">
+
+      <div class="class-title">
+        <span>本书目录</span>
+        <div class="title-img-close">
+          <a href="javascript:;" @click="hideBookCategory()">
+            <img src="../../assets/images/wap_cross.png" />
           </a>
-        </template>
-      </el-table-column>
-    </el-table>
+        </div>
+      </div>
+
+      <el-table
+        :data="catalogs"
+        style="width: 100%"
+        :row-style="showRow">
+        <el-table-column
+          prop="name"
+          label="本书目录">
+          <template slot-scope="scope">
+              <span v-for="space in scope.row.level" class="ms-tree-space">
+                &nbsp;&nbsp;
+              </span>
+            <el-button  v-if="scope.row.isLeaf===true" type="text" icon="el-icon-document"></el-button>
+            <el-button @click="toggle(scope.row,index)"  v-else-if="scope.row.expanded===true"  type="text" icon="el-icon-caret-bottom"></el-button>
+            <el-button @click="toggle(scope.row,index)" v-else type="text" icon="el-icon-caret-right"></el-button>
+            <a href="javascript:;">
+              <span @click="openChapter(scope.row)" style="color: #4A4A4A">{{scope.row.name}}</span>
+            </a>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  @import "../../assets/css/book/categoryLeft";
+</style>
 
 <script>
   import {DataTree} from '../../utils/data_tree'
@@ -53,6 +95,9 @@
         catalogs  = this.treeToArray(this.treeCatalogs);
         return catalogs;
       },
+      bookCategoryVisible () {
+        return this.$store.getters.bookCategoryVisible
+      }
     },
     methods: {
       init: function () {
@@ -104,9 +149,13 @@
         }
       },
       openChapter: function(chapter){
+        this.hideBookCategory()
         this.$router.push('/book/content/' + this.bookId + '/chapter?src=' + chapter.src);
         document.documentElement.scrollTop = 0;
-        
+
+      },
+      hideBookCategory: function () {
+        this.$store.commit('setBookCategoryVisible', false)
       }
     }
   }

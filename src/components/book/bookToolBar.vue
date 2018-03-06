@@ -1,16 +1,22 @@
 <template>
   <div class="book-tool-bar">
     <div class="tool-bar-left" @click="showMenu()">
-      <span>所有类别</span>
-      <div class="triangle-down"></div>
+      <p>
+        <span v-text="leftCategory"></span>
+        <b class="triangle-down"></b>
+      </p>
     </div>
     <div class="tool-bar-center">
-      <span>排序</span>
-      <div class="triangle-down"></div>
+      <p>
+        <span>排序</span>
+        <b class="triangle-down"></b>
+      </p>
     </div>
     <div class="tool-bar-right">
-      <span>显示</span>
-      <div class="triangle-down"></div>
+      <p>
+        <span>显示</span>
+        <b class="triangle-down"></b>
+      </p>
     </div>
   </div>
 </template>
@@ -24,6 +30,11 @@
     methods: {
       showMenu: function () {
         this.$store.commit('setLeftMenuVisible', true)
+      }
+    },
+    computed: {
+      leftCategory () {
+        return this.$store.getters.leftCategory
       }
     }
   }

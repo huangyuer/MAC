@@ -13,25 +13,12 @@
 
           <tool-bar></tool-bar>
 
-          <div class="list_list">
-            <div class="list_cout">找到&nbsp;<font color="#E37423">{{booksTotal}}</font>&nbsp;条结果</div>
-            <div class="list_li">
-              <dl v-for="book in books">
-                <dt><img :src="url + book.cover" alt="" class="list_li_img"></dt>
-                <dd>
-                  <em v-text="book.bindingFormat">图书</em>
-                  <p>
-                    <router-link :to="'/book/info/' + book._id">
-                      <a v-text="book.name"></a>
-                    </router-link>
-                  </p>
-                  <div class="clear"></div>
-                  <span v-text="book.bindingFormat.length < 90 ? book.bindingFormat : book.bindingFormat.substring(0, 90) + '...'"></span>
-                  <a class="fav" v-show="!book.isFav" @click="addToFav(book)"><small></small><span>加入收藏夹</span></a>
-                  <a class="fav" v-show="book.isFav" @click="removeFromFav()"><small></small><span>已加入收藏夹</span></a>
-                </dd>
-              </dl>
-            </div>
+          <div class="list_center">
+
+            <div class="list_count">找到&nbsp;<font color="#E37423">{{booksTotal}}</font>&nbsp;条结果</div>
+
+            <list-center></list-center>
+
             <div class="clear"></div>
             <div style="margin:20px;" class="paginator">
               <el-pagination
@@ -42,6 +29,7 @@
               </el-pagination>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -62,6 +50,7 @@
   import bookToolBar from '../book/bookToolBar.vue'
   import navBar from '../public/nav_bar.vue'
   import searchComponent from '../public/searchComponent.vue'
+  import listCenter from '../book/list_center.vue'
   import listLeft from '../book/list_left.vue'
   import listRight from '../book/list_right.vue'
 //  import searchBar from '../public/searchComponent.vue'
@@ -83,6 +72,7 @@
       searchComponent,
 //      searchBar,
       pagination,
+      listCenter,
       listLeft,
       listRight,
     },
@@ -107,9 +97,6 @@
       },
     },
     computed: {
-      books () {
-        return this.$store.getters.books;
-      },
       userInfo () {
         let userInfo = getCookie('userInfo');
         if (userInfo) {
@@ -167,14 +154,6 @@
       search: function(limit, page){
         let keywords = this.searchForm.keywords;
         this.$store.dispatch('searchBooks', {'keywords': keywords, 'limit': limit, 'page': page});
-      },
-      // 加入收藏夹
-      addToFav: function (book) {
-        this.$store.dispatch('addUserFavoriteBooks', {'bookId': book._id, 'userId': this.userInfo.userId})
-      },
-      // 移除收藏夹
-      removeFromFav: function () {
-        //
       }
     }
   }
