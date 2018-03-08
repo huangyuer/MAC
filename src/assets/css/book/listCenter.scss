@@ -2,6 +2,111 @@
 
 .list_li {
   margin-top: 20px;
+
+  // 图书list
+  ul {
+    li {
+      .list-item {
+        .item-left {
+          display: inline-block;
+          width: 70%;
+          float: left;
+          .title {
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            span {
+              font-size: 16px;
+              color: black;
+            }
+          }
+
+          .subtitle{
+            .category {
+              margin: 5px 0;
+              width: auto;
+              font-size: 11px;
+              line-height: 20px;
+              display: inline-block;
+              vertical-align: middle;
+              span {
+                margin: 0 15px 5px 0;
+                border: 1px solid $orange-color;
+                border-radius: 3px;
+                padding: 0 5px;
+                display: inline-block;
+                color: $orange-color;
+              }
+            }
+            .category-brother {
+              display: block;
+              vertical-align: middle;
+            }
+            span {
+              margin: 0;
+              display: block;
+              font-size: 12px;
+              color: #666666;
+            }
+          }
+
+          .content {
+            font-size: 12px;
+            color: #666666;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            overflow: hidden;
+            span > span {
+              color: red;
+            }
+          }
+
+          .btn-container {
+            margin-top: 15px;
+            margin-bottom: 12px;
+            .btn {
+              height: 20px;
+              width: 65px;
+              color: $orange-color;
+              border: 1px solid $orange-color;
+              text-align: center;
+              user-select: none;
+              cursor: pointer;
+              font-size: 11px;
+              line-height: 20px;
+              vertical-align: middle;
+              display: inline-block;
+              border-radius: 3px;
+              margin-right: 10px;
+            }
+          }
+        }
+
+        .item-right {
+          display: inline-block;
+          width: 30%;
+          float: left;
+          .img-wrapper {
+            width: 55px;
+            margin: 40px auto 0 auto;
+            img {
+              height: 79px;
+              width: 55px;
+            }
+          }
+        }
+        .clear-line {
+          clear: both;
+          border-bottom: 1px solid #D8D8D8;
+        }
+      }
+    }
+  }
+
   span{
     color: #666782;
     margin-top: 10px;

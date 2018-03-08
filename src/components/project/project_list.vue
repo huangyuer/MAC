@@ -8,6 +8,16 @@
 
       <!--工程-->
       <div class="project_list">
+
+        <!--wap 端-->
+        <div class="wap_project_header">
+          <div class="wap_project_header_left">
+            <img src="../../assets/images/project_avatar.png"/>
+            <span>工程项目</span>
+          </div>
+          <div class="clear"></div>
+        </div>
+
         <router-link :to="'/project/list'">
         <div class="project_list_left">
           <div class="project_list_left_img">

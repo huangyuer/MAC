@@ -8,6 +8,16 @@
 
       <!--工程文献-->
       <div class="literature_list">
+
+        <!--wap 端-->
+        <div class="wap_literature_header">
+          <div class="wap_literature_header_left">
+            <img src="../../assets/images/literature_avatar.png"/>
+            <span>工程文献</span>
+          </div>
+          <div class="clear"></div>
+        </div>
+
         <router-link :to="'/literature/list'">
         <div class="literature_list_left">
           <div class="literature_list_left_img">

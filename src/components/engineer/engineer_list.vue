@@ -8,6 +8,16 @@
 
       <!--工程师-->
       <div class="engineer_list">
+
+        <!--wap 端-->
+        <div class="wap_engineer_header">
+          <div class="wap_engineer_header_left">
+            <img src="../../assets/images/engineer_avatar.png"/>
+            <span>工程师</span>
+          </div>
+          <div class="clear"></div>
+        </div>
+
         <router-link :to="'/engineer/list'">
         <div class="engineer_list_left">
           <div class="engineer_list_left_img">

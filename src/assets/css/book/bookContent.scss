@@ -13,10 +13,7 @@
         float: left;
         margin: 0 auto;
         .book_li {
-          margin: 0 15px;
-          p {
-            font-size: 16px;
-          }
+          //margin: 0 15px;
         }
       }
     }
@@ -32,12 +29,9 @@
         width: 100%;
         margin: 0;
         .list_cent {
-          width: 90%;
-          margin: 0 5%;
+          width: 95%;
+          margin: 0 2.5%;
           .book_li {
-            p {
-              font-size: 16px;
-            }
           }
         }
       }
@@ -69,11 +63,17 @@
 
 .book_li p {
   display: block;
-  color: rgb(111, 111, 111);
-  font-size:16px;
-  line-height: 30px;
+  color: #4A4A4A;
+  font-size:14px;
+  font-weight: lighter;
+  line-height: 22px;
   text-indent: 2em;
+  margin: 0 15px;
   padding-top: 10px;
+  h1 {
+    color: #009264 !important;
+    //font-size: 20px;
+  }
 }
 
 .book_li h1 {
@@ -82,9 +82,12 @@
 
   text-align: center;
   font-weight: normal;
-  color: #009264;
+  color: #009264 !important;
   line-height: 2em;
+}
 
+.book_li.center {
+  text-align: center;
 }
 
 /*一级标题*/
@@ -484,8 +487,8 @@ ol.lower-alpha {
 
 hr {
   width: 100%;
-  color: "#000000";
-  size: "1px";
+  color: #000000;
+  size: 1px;
 
 }
 
@@ -497,14 +500,14 @@ hr {
 
 /*背景颜色*/
 /**/
-.left {
+.book_li.left {
   text-align: left;
 
 }
 
 /*居左*/
 /**/
-book_li.right {
+.book_li.right {
   text-align: right;
 
 }

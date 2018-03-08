@@ -26,6 +26,7 @@
 
 <style lang="scss" scoped>
   @import "../../assets/css/book/bookContent";
+
 </style>
 
 <script>
