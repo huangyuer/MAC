@@ -57,7 +57,7 @@
     </div>
 
     <!--wap left menu-->
-    <div class="wap-left-menu" v-show="leftMenuVisible">
+    <div class="wap-left-menu" v-show="leftBookMenuVisible">
 
       <div class="class-title">
         <span>所有类别</span>
@@ -142,7 +142,7 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/book/listLeft";
+  @import "../../assets/css/book/bookListLeft";
 </style>
 
 <script>
@@ -186,34 +186,34 @@
       clcMenuVisible() {
         return this.$store.getters.clcMenuVisible;
       },
-      leftMenuVisible() {
-        return this.$store.getters.leftMenuVisible;
+      leftBookMenuVisible() {
+        return this.$store.getters.leftBookMenuVisible;
       },
     },
     methods: {
       listBooks: function () {
         this.hideMenu()
-        this.$store.commit('setLeftCategory', '所有类别')
+        this.$store.commit('setLeftBookCategory', '所有类别')
         this.$router.push('/book/list');
 
       },
       listBooksByCategory: function(category){
         this.hideMenu()
-        this.$store.commit('setLeftCategory', category)
+        this.$store.commit('setLeftBookCategory', category)
         this.$router.push('/book/list?category=' + encodeURI(category));
         document.documentElement.scrollTop = 0;
       },
 
       listBooksByClc: function(clc){
         this.hideMenu()
-        this.$store.commit('setLeftCategory', clc)
+        this.$store.commit('setLeftBookCategory', clc)
         this.$router.push('/book/list?clc=' + encodeURI(clc));
         document.documentElement.scrollTop = 0;
       },
 
       listBooksByLib: function(lib){
         this.hideMenu()
-        this.$store.commit('setLeftCategory', lib)
+        this.$store.commit('setLeftBookCategory', lib)
         this.$router.push('/book/list?lib=' + encodeURI(lib));
         document.documentElement.scrollTop = 0;
       },
@@ -236,7 +236,7 @@
         this.$store.commit('hideClcMenu')
       },
       hideMenu: function () {
-        this.$store.commit('setLeftMenuVisible', false)
+        this.$store.commit('setLeftBookMenuVisible', false)
       }
     }
   }

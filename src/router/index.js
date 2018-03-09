@@ -31,6 +31,8 @@ import {
   ProjectInfo,
   LiteratureList,
   LiteratureInfo,
+  MagazineList,
+  MagazineInfo,
 
   Login,
   Register,
@@ -293,6 +295,22 @@ export default new Router({
       components: {
         'app-header': AppHeader,
         'app-body': LiteratureInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/magazine/list',
+      components: {
+        'app-header': AppHeader,
+        'app-body': MagazineList,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/magazine/info/:magazineId',
+      components: {
+        'app-header': AppHeader,
+        'app-body': MagazineInfo,
         'app-footer': AppFooter
       },
     },

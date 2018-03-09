@@ -26,8 +26,9 @@
             </li>
           </ul>
            <div class="clear"></div>
-          <div style="margin:20px;" class="paginator">
+          <div style="width: 100%; margin: 20px auto; text-align: center;" class="paginator">
             <el-pagination
+              small
               background
               @current-change="handleCurrentChange"
               layout="prev, pager, next"
@@ -46,10 +47,10 @@
 </style>
 
 <script>
-  import engineerHeaderSearch from './engineer_header_search.vue'
-  import engineerHeaderBg from './engineer_header_bg.vue'
-  import engineerHeaderBar from './engineer_header_bar.vue'
-  import engineerItem from './engineer_item.vue'
+  import engineerHeaderSearch from './engineerHeaderSearch.vue'
+  import engineerHeaderBg from './engineerHeaderBg.vue'
+  import engineerHeaderBar from './engineerHeaderBar.vue'
+  import engineerItem from './engineerItem.vue'
 
   export default {
     data() {

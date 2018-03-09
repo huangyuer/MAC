@@ -5,8 +5,8 @@ const homePage = resolve => {
 }
 
 const AboutUs = resolve => {
-  require.ensure(['../components/about_us.vue'], () => {
-    resolve(require('../components/about_us.vue'))
+  require.ensure(['../components/aboutUs.vue'], () => {
+    resolve(require('../components/aboutUs.vue'))
   })
 }
 
@@ -79,19 +79,19 @@ const rightPanel = resolve => {
 }
 
 const BookList = resolve => {
-  require.ensure(['../components/book/book_list.vue'], () => {
-    resolve(require('../components/book/book_list.vue'))
+  require.ensure(['../components/book/bookList.vue'], () => {
+    resolve(require('../components/book/bookList.vue'))
   })
 }
 const BookInfo = resolve => {
-  require.ensure(['../components/book/book_info.vue'], () => {
-    resolve(require('../components/book/book_info.vue'))
+  require.ensure(['../components/book/bookInfo.vue'], () => {
+    resolve(require('../components/book/bookInfo.vue'))
   })
 }
 
 const BookContent = resolve => {
-  require.ensure(['../components/book/book_content.vue'], () => {
-    resolve(require('../components/book/book_content.vue'))
+  require.ensure(['../components/book/bookContent.vue'], () => {
+    resolve(require('../components/book/bookContent.vue'))
   })
 }
 
@@ -102,106 +102,118 @@ const Selected = resolve => {
 }
 
 const EngineerList = resolve => {
-  require.ensure(['../components/engineer/engineer_list.vue'], () => {
-    resolve(require('../components/engineer/engineer_list.vue'))
+  require.ensure(['../components/engineer/engineerList.vue'], () => {
+    resolve(require('../components/engineer/engineerList.vue'))
   })
 }
 
 const HistorySearchResult = resolve => {
-  require.ensure(['../components/search_result.vue'], () => {
-    resolve(require('../components/search_result.vue'))
+  require.ensure(['../components/searchResult.vue'], () => {
+    resolve(require('../components/searchResult.vue'))
   })
 }
 const EngineerSearchResult = resolve => {
-  require.ensure(['../components/engineer/engineer_search_result.vue'], () => {
-    resolve(require('../components/engineer/engineer_search_result.vue'))
+  require.ensure(['../components/engineer/engineerSearchResult.vue'], () => {
+    resolve(require('../components/engineer/engineerSearchResult.vue'))
   })
 }
 const LiteratureSearchResult = resolve => {
-  require.ensure(['../components/literature/literature_search_result.vue'], () => {
-    resolve(require('../components/literature/literature_search_result.vue'))
+  require.ensure(['../components/literature/literatureSearchResult.vue'], () => {
+    resolve(require('../components/literature/literatureSearchResult.vue'))
   })
 }
 
 const ProjectSearchResult = resolve => {
-  require.ensure(['../components/project/project_search_result.vue'], () => {
-    resolve(require('../components/project/project_search_result.vue'))
+  require.ensure(['../components/project/projectSearchResult.vue'], () => {
+    resolve(require('../components/project/projectSearchResult.vue'))
   })
 }
 
 const EngineerInfo = resolve => {
-  require.ensure(['../components/engineer/engineer_info.vue'], () => {
-    resolve(require('../components/engineer/engineer_info.vue'))
+  require.ensure(['../components/engineer/engineerInfo.vue'], () => {
+    resolve(require('../components/engineer/engineerInfo.vue'))
   })
 }
 
 const ProjectList = resolve => {
-  require.ensure(['../components/project/project_list.vue'], () => {
-    resolve(require('../components/project/project_list.vue'))
+  require.ensure(['../components/project/projectList.vue'], () => {
+    resolve(require('../components/project/projectList.vue'))
   })
 }
 
 const ProjectInfo = resolve => {
-  require.ensure(['../components/project/project_info.vue'], () => {
-    resolve(require('../components/project/project_info.vue'))
+  require.ensure(['../components/project/projectInfo.vue'], () => {
+    resolve(require('../components/project/projectInfo.vue'))
   })
 }
 
 const LiteratureList = resolve => {
-  require.ensure(['../components/literature/literature_list.vue'], () => {
-    resolve(require('../components/literature/literature_list.vue'))
+  require.ensure(['../components/literature/literatureList.vue'], () => {
+    resolve(require('../components/literature/literatureList.vue'))
   })
 }
 
 const LiteratureInfo = resolve => {
-  require.ensure(['../components/literature/literature_info.vue'], () => {
-    resolve(require('../components/literature/literature_info.vue'))
+  require.ensure(['../components/literature/literatureInfo.vue'], () => {
+    resolve(require('../components/literature/literatureInfo.vue'))
+  })
+}
+
+const MagazineList = resolve => {
+  require.ensure(['../components/magazine/magazineList.vue'], () => {
+    resolve(require('../components/magazine/magazineList.vue'))
+  })
+}
+
+const MagazineInfo = resolve => {
+  require.ensure(['../components/magazine/magazineInfo.vue'], () => {
+    resolve(require('../components/magazine/magazineInfo.vue'))
   })
 }
 
 const Login = resolve => {
-  require.ensure(['../components/auth/sign_in.vue'], () => {
-    resolve(require('../components/auth/sign_in.vue'))
+  require.ensure(['../components/auth/signIn.vue'], () => {
+    resolve(require('../components/auth/signIn.vue'))
   })
 }
 
 const Register = resolve => {
-  require.ensure(['../components/auth/sign_up.vue'], () => {
-    resolve(require('../components/auth/sign_up.vue'))
+  require.ensure(['../components/auth/signUp.vue'], () => {
+    resolve(require('../components/auth/signUp.vue'))
   })
 }
 
 const ResetPassword = resolve => {
-  require.ensure(['../components/auth/password_reset.vue'], () => {
-    resolve(require('../components/auth/password_reset.vue'))
+  require.ensure(['../components/auth/passwordReset.vue'], () => {
+    resolve(require('../components/auth/passwordReset.vue'))
   })
 }
 
 const ChangePassword = resolve => {
-  require.ensure(['../components/usercenter/password_change.vue'], () => {
-    resolve(require('../components/usercenter/password_change.vue'))
+  require.ensure(['../components/usercenter/passwordChange.vue'], () => {
+    resolve(require('../components/usercenter/passwordChange.vue'))
   })
 }
 
 const UserInfo = resolve => {
-  require.ensure(['../components/usercenter/user_info.vue'], () => {
-    resolve(require('../components/usercenter/user_info.vue'))
+  require.ensure(['../components/usercenter/userInfo.vue'], () => {
+    resolve(require('../components/usercenter/userInfo.vue'))
   })
 }
 
 const UserFavorites = resolve => {
-  require.ensure(['../components/usercenter/user_favorites.vue'], () => {
-    resolve(require('../components/usercenter/user_favorites.vue'))
+  require.ensure(['../components/usercenter/userFavorites.vue'], () => {
+    resolve(require('../components/usercenter/userFavorites.vue'))
   })
 }
 const UserMessages = resolve => {
-  require.ensure(['../components/usercenter/user_messages.vue'], () => {
-    resolve(require('../components/usercenter/user_messages.vue'))
+  require.ensure(['../components/usercenter/userMessages.vue'], () => {
+    resolve(require('../components/usercenter/userMessages.vue'))
   })
 }
 const UserResources = resolve => {
-  require.ensure(['../components/usercenter/user_resources.vue'], () => {
-    resolve(require('../components/usercenter/user_resources.vue'))
+  require.ensure(['../components/usercenter/userResources.vue'], () => {
+    resolve(require('../components/usercenter/userResources.vue'))
   })
 }
 
@@ -241,6 +253,8 @@ export {
   ProjectInfo,
   LiteratureList,
   LiteratureInfo,
+  MagazineList,
+  MagazineInfo,
   AboutUs,
 
   Login,

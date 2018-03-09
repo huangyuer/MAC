@@ -61,12 +61,12 @@
 </style>
 <script>
   import searchComponent from '../public/searchComponent.vue'
-  import navBar from '../public/nav_bar.vue'
-  import bookCategoryBar from '../book/book_category_bar.vue'
-  import categoryLeft from '../book/category_left.vue'
-  import similarRight from '../book/similar_right.vue'
+  import navBar from '../public/navBar.vue'
+  import bookCategoryBar from './bookCategoryBar.vue'
+  import categoryLeft from './categoryLeft.vue'
+  import similarRight from './similarRight.vue'
   import {DataTree} from '../../utils/data_tree'
-  import listRight from '../book/list_right.vue'
+  import listRight from './bookListRight.vue'
 
   export default {
     name: 'book_info',

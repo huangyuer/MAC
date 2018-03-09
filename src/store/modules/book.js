@@ -54,8 +54,8 @@ const state = {
   libMenuVisible: true,
   categoryMenuVisible: true,
   clcMenuVisible: true,
-  leftMenuVisible: false,
-  leftCategory: '所有类别',
+  leftBookMenuVisible: false,
+  leftBookCategory: '所有类别',
   bookCategoryVisible: false
 };
 
@@ -79,8 +79,8 @@ const getters = {
   libMenuVisible: state => state.libMenuVisible,
   categoryMenuVisible: state => state.categoryMenuVisible,
   clcMenuVisible: state => state.clcMenuVisible,
-  leftMenuVisible: state => state.leftMenuVisible,
-  leftCategory: state => state.leftCategory,
+  leftBookMenuVisible: state => state.leftBookMenuVisible,
+  leftBookCategory: state => state.leftBookCategory,
   bookCategoryVisible: state => state.bookCategoryVisible
 };
 
@@ -337,11 +337,11 @@ const mutations = {
     // 变更状态
     state.clcMenuVisible = false;
   },
-  setLeftMenuVisible(state, leftMenuVisible) {
-    state.leftMenuVisible = leftMenuVisible
+  setLeftBookMenuVisible(state, leftBookMenuVisible) {
+    state.leftBookMenuVisible = leftBookMenuVisible
   },
-  setLeftCategory(state, leftCategory) {
-    state.leftCategory = leftCategory
+  setLeftBookCategory(state, leftBookCategory) {
+    state.leftBookCategory = leftBookCategory
   },
   setBookCategoryVisible(state, bookCategoryVisible) {
     state.bookCategoryVisible = bookCategoryVisible

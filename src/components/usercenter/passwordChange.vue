@@ -1,5 +1,5 @@
 <template>
-  <div class="z_bg"> 
+  <div class="z_bg">
     <div class="grzx_main">
     <user-left-menu></user-left-menu>
     <div class="grzx_right">
@@ -7,11 +7,11 @@
       <p>基本信息</p>
     </div>
     <div class="grzx_right2">
-       
+
      <div class="grzx_right21">
         <div class="grzx_right21l">
           <p>旧密码</p>
-           
+
         </div>
         <div class="grzx_right21r">
           <input type="password" v-model="passwordForm.oldPassword" value="" class="input_3 input_1">
@@ -20,7 +20,7 @@
       <div class="grzx_right21">
         <div class="grzx_right21l">
           <p>新密码</p>
-           
+
         </div>
         <div class="grzx_right21r">
           <input type="password" v-model="passwordForm.newPassword" value="" class="input_3 input_1">
@@ -29,20 +29,20 @@
       <div class="grzx_right21">
         <div class="grzx_right21l">
           <p>确认密码</p>
-         
+
         </div>
         <div class="grzx_right21r">
           <input type="password" value="" v-model="passwordForm.rePassword" class="input_3 input_1">
         </div>
       </div>
-      
-       
+
+
       <div class="grzx_a">
         <a href="javascript:void(0);" @click="changePassword()">确认</a>
       </div>
     </div>
   </div>
-  </div> 
+  </div>
 </div>
 </template>
 
@@ -98,33 +98,33 @@
         cursor: pointer;
     }
 </style>
-<script>  
-  import validator from 'validator'; 
-  import UserLeftMenu from './left_menu'
+<script>
+  import validator from 'validator';
+  import UserLeftMenu from './leftMenu'
   import {getCookie, deleteCookie} from '../../utils/cookie';
   export default{
     name: 'PasswordForm',
-    data(){ 
+    data(){
       return {
         passwordForm: {
           id: '',
           oldPassword: '',
           newPassword: '',
-          rePassword: ''  
+          rePassword: ''
         }
       }
-    }, 
+    },
     props: [],
-    mounted: function(){ 
+    mounted: function(){
 
     },
     beforeCompile: function () {
       //this.init();
     },
-    components:{ 
+    components:{
       'user-left-menu': UserLeftMenu
     },
-    computed: {   
+    computed: {
       loggedUser(){
         return this.$store.getters.loggedUser;
       },
@@ -133,11 +133,11 @@
       },
       passwordError(){
         return this.$store.getters.passwordError;
-      } 
-    }, 
-    watch:{ 
+      }
+    },
+    watch:{
        passwordError: {
-        handler: function (val, oldVal) { 
+        handler: function (val, oldVal) {
           if(val !== ''){
             this.error = val;
             this.$message({
@@ -146,42 +146,42 @@
               type: 'error'
             });
           }
-          //this.$store.commit('setPasswordError', '');  
+          //this.$store.commit('setPasswordError', '');
         },
         deep: true
-      }, 
+      },
       changePasswordStatus: {
         handler: function (val, oldVal) {
-          if (val) { 
+          if (val) {
             this.$message({
               showClose: true,
               message: '密码修改成功',
               type: 'success'
-            }); 
+            });
           }
         },
         deep: true
       }
     },
-    methods: {  
+    methods: {
       checkValidation: function(){
         let msg = "";
         if (this.passwordForm.rePassword === '' || this.passwordForm.oldPassword === '' || this.passwordForm.newPassword === '' ) {
           msg = "密码不能为空";
-        } else { 
+        } else {
           if(this.passwordForm.newPassword.length < 6){
             msg = "密码长度至少为6位以上";
           }
           if (this.passwordForm.oldPassword  === this.passwordForm.newPassword ) {
              msg = "新旧密码不能相同";
-          } 
+          }
           if (this.passwordForm.rePassword  !== this.passwordForm.newPassword ) {
              msg = "两次输入密码不一致";
-          } 
+          }
         }
         return msg;
-      }, 
-      changePassword: function() {  
+      },
+      changePassword: function() {
         let msg = this.checkValidation();
         if(msg != ''){
             this.$message({
@@ -190,16 +190,16 @@
               type: 'error'
             });
             return;
-        }else {   
-          if(this.loggedUser.userId){ 
-            this.passwordForm.id = this.loggedUser.userId; 
-            this.$store.dispatch('changePassword', this.passwordForm);  
+        }else {
+          if(this.loggedUser.userId){
+            this.passwordForm.id = this.loggedUser.userId;
+            this.$store.dispatch('changePassword', this.passwordForm);
           }
         }
-      },  
+      },
       checkOldPassword: function(){
-        this.$store.dispatch('checkOldPassword', this.passwordForm);  
+        this.$store.dispatch('checkOldPassword', this.passwordForm);
       }
-    } 
+    }
   }
 </script>

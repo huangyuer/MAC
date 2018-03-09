@@ -48,7 +48,7 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/book/listCenter";
+  @import "../../assets/css/book/bookListCenter";
 </style>
 
 <script>

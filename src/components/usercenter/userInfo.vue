@@ -1,5 +1,5 @@
 <template>
-  <div class="z_bg"> 
+  <div class="z_bg">
     <div class="grzx_main">
     <user-left-menu></user-left-menu>
     <div class="grzx_right">
@@ -29,7 +29,7 @@
           <input type="text" class="input_3 input_1" v-model="userForm.username">
         </div>
       </div>
-       
+
       <div class="grzx_right21">
         <div class="grzx_right21l">
           <p>专业</p>
@@ -41,7 +41,7 @@
       <div class="grzx_right21">
         <div class="grzx_right21l">
           <p>公司</p>
-          
+
         </div>
         <div class="grzx_right21r">
           <input type="text" value="" v-model="userForm.company" class="input_3 input_1">
@@ -76,13 +76,13 @@
       </div>
     </div>
   </div>
-  </div> 
+  </div>
 </div>
 </template>
 
 <script>
   import {errorHandle} from '../../assets/js/common'
-  import UserLeftMenu from './left_menu'
+  import UserLeftMenu from './leftMenu'
   import {checkLoginCookie, getCookie} from '../../assets/js/cookie'
   export default {
     name: 'UserInfo',
@@ -114,15 +114,15 @@
         userForm: {
           id: '',
           username: '',
-          mobile: '', 
-          email: '', 
+          mobile: '',
+          email: '',
           avatar: '',
           company: '',
-          speciality: '',  
+          speciality: '',
           intro: '',
           degree: '',
-        }, 
-        
+        },
+
       }
     },
     watch: {
@@ -177,16 +177,16 @@
       },
       userDetailReady(){
         return this.$store.getters.userDetailReady;
-      }, 
+      },
       userSaveStatus(){
         return this.$store.getters.userSaveStatus;
       },
-      userInfo () {  
+      userInfo () {
         let userInfo = getCookie('userInfo');
         if (userInfo) {
           let user = JSON.parse(userInfo);
           return user;
-        } else { 
+        } else {
           return this.$store.getters.userInfo;
         }
       },
@@ -200,18 +200,18 @@
           this.userForm[k] = this.userDetail[k];
         }
       },
-      saveUser: function () {  
-        this.$store.dispatch('putUser', this.userForm);  
+      saveUser: function () {
+        this.$store.dispatch('putUser', this.userForm);
       }
     },
-    mounted () { 
+    mounted () {
       //this.initData()
       let userId = getCookie('userInfo');
       if(userId !== ''){
         this.$store.dispatch("getUserFullInfo", {'userId': this.userInfo.userId})
       }else{
         this.$router.push('/auth/login')
-      } 
+      }
     }
   }
 </script>

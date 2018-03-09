@@ -146,12 +146,12 @@
 </style>
 
 <script>
-  import engineerHeaderSearch from './engineer/engineer_header_search.vue'
-  import engineerHeaderBg from './engineer/engineer_header_bg.vue'
-  import engineerHeaderBar from './engineer/engineer_header_bar.vue'
-  import engineerItem from './engineer/engineer_item.vue'
-  import projectItem from './project/project_item.vue'
-  import literatureItem from './literature/literature_item.vue'
+  import engineerHeaderSearch from './engineer/engineerHeaderSearch.vue'
+  import engineerHeaderBg from './engineer/engineerHeaderBg.vue'
+  import engineerHeaderBar from './engineer/engineerHeaderBar.vue'
+  import engineerItem from './engineer/engineerItem.vue'
+  import projectItem from './project/projectItem.vue'
+  import literatureItem from './literature/literatureItem.vue'
   export default {
     data() {
       return {

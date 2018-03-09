@@ -1,8 +1,8 @@
 <template>
-  <div class="book-tool-bar">
+  <div class="magazine-tool-bar">
     <div class="tool-bar-left" @click="showMenu()">
       <p>
-        <span v-text="leftBookCategory"></span>
+        <span v-text="leftMagazineCategory"></span>
         <b class="triangle-down"></b>
       </p>
     </div>
@@ -22,19 +22,19 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/book/bookToolBar";
+  @import "../../assets/css/magazine/magazineToolBar";
 </style>
 
 <script>
   export default {
     methods: {
       showMenu: function () {
-        this.$store.commit('setLeftBookMenuVisible', true)
+        this.$store.commit('setLeftMagazineMenuVisible', true)
       }
     },
     computed: {
-      leftBookCategory () {
-        return this.$store.getters.leftBookCategory
+      leftMagazineCategory () {
+        return this.$store.getters.leftMagazineCategory
       }
     }
   }

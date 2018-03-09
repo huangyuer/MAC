@@ -1,8 +1,8 @@
 <template>
-  <div class="z_bg"> 
+  <div class="z_bg">
   <div class="grzx_main">
-    <user-left-menu></user-left-menu> 
-    
+    <user-left-menu></user-left-menu>
+
   <div class="grzx_right">
     <div class="grzx_right1">
       <p>站内信</p>
@@ -61,7 +61,7 @@
 </template>
 
 <script>
-  import UserLeftMenu from './left_menu'
+  import UserLeftMenu from './leftMenu'
   export default {
     name: 'UserMessages',
     data () {

@@ -6,5 +6,5 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/book/listRight";
+  @import "../../assets/css/magazine/magazineListRight";
 </style>

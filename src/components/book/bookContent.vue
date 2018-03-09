@@ -30,13 +30,13 @@
 </style>
 
 <script>
-  import navBar from '../public/nav_bar.vue'
+  import navBar from '../public/navBar.vue'
   import searchComponent from '../public/searchComponent.vue'
-  import categoryLeft from '../book/category_left.vue'
-  import bookCategoryBar from '../book/book_category_bar.vue'
-  import similarRight from '../book/similar_right.vue'
+  import categoryLeft from './categoryLeft.vue'
+  import bookCategoryBar from './bookCategoryBar.vue'
+  import similarRight from './similarRight.vue'
   import { DataTree } from '../../utils/data_tree'
-  import listRight from '../book/list_right.vue'
+  import listRight from './bookListRight.vue'
 
   export default {
     name: 'book_info',

@@ -29,7 +29,7 @@
       vertical-align: middle;
       width: 145px;
       height: 25px;
-      margin-top: 45.5px;
+      //margin-top: 45.5px;
       img.left-img {
         height: 100%;
         width: 100%;
@@ -111,7 +111,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $max-width) {
   .search-component {
     height: 60px;
     min-width: 0;

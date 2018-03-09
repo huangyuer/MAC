@@ -44,7 +44,7 @@
 </style>
 
 <script>
-  import backBar from '../public/back_bar.vue'
+  import backBar from '../public/backBar.vue'
   export default {
     data () {
       return {

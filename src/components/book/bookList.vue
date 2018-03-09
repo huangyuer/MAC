@@ -4,7 +4,7 @@
     <search-component></search-component>
     <nav-bar firstUrl="/" firstNav="首页" secondUrl="/book/list" secondNav="图书列表"></nav-bar>
     <div class="book_list_main">
-      <list-left></list-left>
+      <book-list-left></book-list-left>
 
       <div class="main_left">
         <div class="list_cent">
@@ -17,11 +17,12 @@
 
             <div class="list_count">找到&nbsp;<font color="#E37423">{{booksTotal}}</font>&nbsp;条结果</div>
 
-            <list-center></list-center>
+            <book-list-center></book-list-center>
 
             <div class="clear"></div>
-            <div style="margin:20px;" class="paginator">
+            <div style="width: 100%; margin: 20px auto; text-align: center;" class="paginator">
               <el-pagination
+                small
                 background
                 @current-change="handleCurrentChange"
                 layout="prev, pager, next"
@@ -33,7 +34,7 @@
         </div>
       </div>
 
-      <list-right></list-right>
+      <book-list-right></book-list-right>
     </div>
     <div class="clear"></div>
 
@@ -48,14 +49,12 @@
   import {checkLoginCookie, getCookie} from '../../assets/js/cookie'
   import toolBar from '../search/toolBar.vue'
   import bookToolBar from '../book/bookToolBar.vue'
-  import navBar from '../public/nav_bar.vue'
+  import navBar from '../public/navBar.vue'
   import searchComponent from '../public/searchComponent.vue'
-  import listCenter from '../book/list_center.vue'
-  import listLeft from '../book/list_left.vue'
-  import listRight from '../book/list_right.vue'
-//  import searchBar from '../public/searchComponent.vue'
+  import bookListCenter from './bookListCenter.vue'
+  import bookListLeft from './bookListLeft.vue'
+  import bookListRight from './bookListRight.vue'
   import pagination from '../public/pagination.vue'
-  import {errorHandle} from '../../assets/js/common'
   export default {
     name: 'book_list',
     data () {
@@ -70,11 +69,10 @@
       toolBar,
       navBar,
       searchComponent,
-//      searchBar,
       pagination,
-      listCenter,
-      listLeft,
-      listRight,
+      bookListLeft,
+      bookListCenter,
+      bookListRight,
     },
     mounted: function() {
       this.getLatestBooks(this.currentCategory,this.currentClc, this.currentLib,this.pageSize, this.currentPage);
@@ -107,7 +105,7 @@
         }
       },
       isSearchResult () {
-        return this.$store.getters.books.isSearchResult;
+        return this.$store.getters.latestBooks.isSearchResult;
       },
       booksTotal(){
         return this.$store.getters.booksTotal;

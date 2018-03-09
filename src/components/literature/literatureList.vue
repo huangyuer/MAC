@@ -38,8 +38,9 @@
           </ul>
           </div>
           <div class="clear"></div>
-          <div style="margin:20px;" class="paginator">
+          <div style="width: 100%; margin: 20px auto; text-align: center;" class="paginator">
             <el-pagination
+              small
               background
               @current-change="handleCurrentChange"
               layout="prev, pager, next"
@@ -59,9 +60,9 @@
 </style>
 
 <script>
-  import engineerHeaderBg from '../engineer/engineer_header_bg.vue'
-  import engineerHeaderBar from '../engineer/engineer_header_bar.vue'
-  import literatureItem from './literature_item.vue'
+  import engineerHeaderBg from '../engineer/engineerHeaderBg.vue'
+  import engineerHeaderBar from '../engineer/engineerHeaderBar.vue'
+  import literatureItem from './literatureItem.vue'
   export default {
     components: {
       engineerHeaderBg,
