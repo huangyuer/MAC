@@ -171,6 +171,18 @@ const MagazineInfo = resolve => {
   })
 }
 
+const ThesisList = resolve => {
+  require.ensure(['../components/thesis/thesisList.vue'], () => {
+    resolve(require('../components/thesis/thesisList.vue'))
+  })
+}
+
+const ThesisInfo = resolve => {
+  require.ensure(['../components/thesis/thesisInfo.vue'], () => {
+    resolve(require('../components/thesis/thesisInfo.vue'))
+  })
+}
+
 const Login = resolve => {
   require.ensure(['../components/auth/signIn.vue'], () => {
     resolve(require('../components/auth/signIn.vue'))
@@ -255,6 +267,8 @@ export {
   LiteratureInfo,
   MagazineList,
   MagazineInfo,
+  ThesisList,
+  ThesisInfo,
   AboutUs,
 
   Login,

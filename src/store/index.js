@@ -12,6 +12,7 @@ import works from './modules/works'
 import engineer from './modules/engineer'
 import literature from './modules/literature'
 import magazine from './modules/magazine'
+import thesis from './modules/thesis'
 import auth from './modules/auth'
 
 import search from './modules/search'
@@ -56,6 +57,7 @@ export default new Vuex.Store({
     works,
     literature,
     magazine,
+    thesis,
     engineer,
     mediaPopup,
     toolBar,

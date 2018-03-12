@@ -4,22 +4,22 @@
     <div class="class_title">
       <span>期刊分类</span>
       <div class="title_img">
-        <a href="javascript:;" @click="toggleMagazineCategoryMenuVisible" v-if="magazineCategoryMenuVisible">
+        <a href="javascript:;" @click="toggleThesisCategoryMenuVisible" v-if="thesisCategoryMenuVisible">
           <span>-</span>
         </a>
-        <a href="javascript:;" @click="toggleMagazineCategoryMenuVisible" v-else>
+        <a href="javascript:;" @click="toggleThesisCategoryMenuVisible" v-else>
           <span>+</span>
         </a>
       </div>
     </div>
-    <div class="list_class" v-show="magazineCategoryMenuVisible">
+    <div class="list_class" v-show="thesisCategoryMenuVisible">
       <div class="list_title" v-for="category in categories">
-        <a href="javascript:;"><p @click="listMagazinesByCategory(category.name)" v-text="category.name"></p></a>
+        <a href="javascript:;"><p @click="listThesisesByCategory(category.name)" v-text="category.name"></p></a>
       </div>
     </div>
 
     <!--wap left menu-->
-    <div class="wap-left-menu" v-show="leftMagazineMenuVisible">
+    <div class="wap-left-menu" v-show="leftThesisMenuVisible">
 
       <div class="class-title">
         <span>所有类别</span>
@@ -32,7 +32,7 @@
 
       <div class="list-class">
         <div class="list-title">
-          <a href="javascript:;"><p @click="listMagazines">所有类别</p></a>
+          <a href="javascript:;"><p @click="listThesises">所有类别</p></a>
         </div>
       </div>
 
@@ -40,12 +40,12 @@
 
 
       <div class="class-title">
-        <span>期刊分类</span>
+        <span>论文分类</span>
         <div class="title-img">
-          <a href="javascript:;" @click="toggleMagazineCategoryMenuVisible" v-if="magazineCategoryMenuVisible">
+          <a href="javascript:;" @click="toggleThesisCategoryMenuVisible" v-if="thesisCategoryMenuVisible">
             <span>-</span>
           </a>
-          <a href="javascript:;" @click="toggleMagazineCategoryMenuVisible" v-else>
+          <a href="javascript:;" @click="toggleThesisCategoryMenuVisible" v-else>
             <span>+</span>
           </a>
         </div>
@@ -53,9 +53,9 @@
 
       <div class="clear"></div>
 
-      <div class="list-class" v-show="magazineCategoryMenuVisible">
+      <div class="list-class" v-show="thesisCategoryMenuVisible">
         <div class="list-title" v-for="category in categories">
-          <a href="javascript:;"><p @click="listMagazinesByCategory(category.name)" v-text="category.name"></p></a>
+          <a href="javascript:;"><p @click="listThesisesByCategory(category.name)" v-text="category.name"></p></a>
         </div>
       </div>
     </div>
@@ -63,12 +63,12 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/magazine/magazineListLeft";
+  @import "../../assets/css/thesis/thesisListLeft";
 </style>
 
 <script>
   export default {
-    name: 'magazineListLeft',
+    name: 'thesisListLeft',
     data () {
       return {
         url: 'http://118.178.238.202:9988/'
@@ -92,31 +92,31 @@
       categories(){
         return this.$store.getters.subjects;
       },
-      magazineCategoryMenuVisible() {
-        return this.$store.getters.magazineCategoryMenuVisible;
+      thesisCategoryMenuVisible() {
+        return this.$store.getters.thesisCategoryMenuVisible;
       },
-      leftMagazineMenuVisible() {
-        return this.$store.getters.leftMagazineMenuVisible;
+      leftThesisMenuVisible() {
+        return this.$store.getters.leftThesisMenuVisible;
       },
     },
     methods: {
-      listMagazines: function () {
+      listThesises: function () {
         this.hideMenu()
-        this.$store.commit('setLeftMagazineCategory', '所有类别')
-        this.$router.push('/magazine/list');
+        this.$store.commit('setLeftThesisCategory', '所有类别')
+        this.$router.push('/thesis/list');
 
       },
-      listMagazinesByCategory: function(category){
+      listThesisesByCategory: function(category){
         this.hideMenu()
-        this.$store.commit('setLeftMagazineCategory', category)
-        this.$router.push('/magazine/list?category=' + encodeURI(category));
+        this.$store.commit('setLeftThesisCategory', category)
+        this.$router.push('/thesis/list?category=' + encodeURI(category));
         document.documentElement.scrollTop = 0;
       },
-      toggleMagazineCategoryMenuVisible: function () {
-        this.$store.commit('setMagazineCategoryMenuVisible', !this.magazineCategoryMenuVisible)
+      toggleThesisCategoryMenuVisible: function () {
+        this.$store.commit('setThesisCategoryMenuVisible', !this.thesisCategoryMenuVisible)
       },
       hideMenu: function () {
-        this.$store.commit('setLeftMagazineMenuVisible', false)
+        this.$store.commit('setLeftThesisMenuVisible', false)
       }
     }
   }

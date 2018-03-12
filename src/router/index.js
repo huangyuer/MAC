@@ -33,6 +33,8 @@ import {
   LiteratureInfo,
   MagazineList,
   MagazineInfo,
+  ThesisList,
+  ThesisInfo,
 
   Login,
   Register,
@@ -311,6 +313,22 @@ export default new Router({
       components: {
         'app-header': AppHeader,
         'app-body': MagazineInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/thesis/list',
+      components: {
+        'app-header': AppHeader,
+        'app-body': ThesisList,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/thesis/info/:thesisId',
+      components: {
+        'app-header': AppHeader,
+        'app-body': ThesisInfo,
         'app-footer': AppFooter
       },
     },
