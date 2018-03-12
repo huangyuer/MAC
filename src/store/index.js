@@ -11,6 +11,7 @@ import bookChapter from './modules/book_chapter'
 import works from './modules/works'
 import engineer from './modules/engineer'
 import literature from './modules/literature'
+import magazine from './modules/magazine'
 import auth from './modules/auth'
 
 import search from './modules/search'
@@ -25,6 +26,7 @@ import toolBar from './modules/toolBar'
 import loadingComponent from './modules/loadingComponent'
 import user from './modules/user'
 import mediaDetail from './modules/mediaDetail'
+import sideBar from './modules/sideBar'
 
 Vue.use(Vuex)
 
@@ -53,12 +55,14 @@ export default new Vuex.Store({
     searchContext,
     works,
     literature,
+    magazine,
     engineer,
     mediaPopup,
     toolBar,
     loadingComponent,
     user,
     mediaDetail,
+    sideBar
   },
   strict: debug
 })

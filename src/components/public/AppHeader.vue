@@ -2,41 +2,53 @@
   <div class="app-header">
     <div class="inner">
 
+      <!--wap menu bar-->
+      <div class="wap-menu-bar">
+        <label for="sidebar" @click="setSideBarShow()">
+          <img src="../../assets/images/wap_menu.png"/>
+        </label>
+      </div>
+
+      <!--logo-->
       <div class="logo-container">
         <a href="/"><img src="../../assets/images/header-logo.png" alt=""></a>
       </div>
 
-      <div v-show="!loggedIn" class="login-container">
-        <div @click="login" class="btn btn-login">
-          <span>登 录</span>
-        </div>
-        <div @click="register" class="btn btn-register">
-          <span>注 册</span>
-        </div>
-      </div>
-      <div v-show="loggedIn" class="grzx_grzx">
-        <router-link to="/user/info">
-          <a href="javascript:void(0);">
-            <img src="../../assets/images/grzx_ico1.png" alt="">
-          </a>
-        </router-link> 
-           
-        <router-link to="">
-          <a href="javascript:void(0);" @click="logout()">
-            <p>退出登录</p>
-          </a>
-        </router-link>
+      <!--wap search bar-->
+      <div class="wap-search-bar">
+        <img src="../../assets/images/wap_search_bar.png"/>
       </div>
 
-      <div class="z_home home ">
-        <router-link to="/"><a href="javascript:void(0);">首页</a></router-link>
+      <!--web端 登录状态-->
+      <div class="login-container">
+        <div v-if="loggedIn" class="grzx_grzx">
+          <a href="javascript:;" @click="logout()">
+            <p>退出登录</p>
+          </a>
+          <router-link to="/user/info">
+            <img src="../../assets/images/grzx_ico1.png" alt="">
+          </router-link>
+        </div>
+        <div v-else>
+          <div @click="register" class="btn btn-register">
+            <span>注 册</span>
+          </div>
+          <div @click="login" class="btn btn-login">
+            <span>登 录</span>
+          </div>
+        </div>
+      </div>
+
+      <!--web端 首页 / 关于我们-->
+      <div class="z_home home">
+        <router-link to="/">首页</router-link>
         |
         <!-- <router-link to="/#/selected"><a href="/#/selected" class="menu_item link">工程与工程师</a></router-link>|
           <router-link to="http://trade.tjdesignx.com/#/"><a href="http://trade.tjdesignx.com/#/" class="menu_item link">版权贸易</a></router-link>|
            <router-link to="http://bbs.tjdesignx.com/#/"><a href="http://bbs.tjdesignx.com/#/" class="menu_item link">工程技术论坛</a></router-link>|
            <router-link to="http://x.tjdesignx.com/#/"><a href="http://x.tjdesignx.com/#/" class="menu_item link">同济设计在线</a></router-link>|
            <router-link to="http://bim.tjdesignx.com/#/"><a href="http://bim.tjdesignx.com/#/" class="menu_item link">BIM培训中心</a></router-link>| -->
-        <router-link to="/about/us"><a href="javascript:void(0);">关于我们</a></router-link>
+        <router-link to="/about/us">关于我们</router-link>
       </div>
 
 
@@ -60,20 +72,21 @@
 
   export default {
     mounted: function () {
-
     },
     components: {},
     data () {
-      return {}
+      return {
+      }
     },
     methods: {
-
+      setSideBarShow: function () {
+        this.$store.commit('setSideBarShow', !this.isSideBarShow)
+      },
       login: function () {
-        this.$rotuer.push('/auth/login')
+        this.$router.push('/auth/login')
       },
       register: function () {
-        this.$rotuer.push('/auth/register')
-
+        this.$router.push('/auth/register')
       },
       // 退出登录
       logout: function () {
@@ -85,6 +98,9 @@
       },
     },
     computed: {
+      isSideBarShow () {
+        return this.$store.getters.isSideBarShow
+      },
       loggedIn () {
         try {
           let logged = this.$store.getters.loggedIn
@@ -103,9 +119,7 @@
             return this.$store.getters.userInfo
           }
         } catch (e) {
-
         }
-
       },
     },
     filters: {}

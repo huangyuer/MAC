@@ -14,16 +14,29 @@
         <div class="underline">
 
         </div>
+
         <div class="tool-bar">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-tupian"></use>
           </svg>
           <span @click="seeOrign">查看详情</span>
-          <svg style="margin-left: 12px;" class="icon" aria-hidden="true">
+          <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-yanjing"></use>
           </svg>
           <span>{{clicks}}次查看</span>
         </div>
+
+        <div class="wap-tool-bar">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-tupian"></use>
+          </svg>
+          <span @click="seeOrign">详情</span>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-yanjing"></use>
+          </svg>
+          <span>{{clicks}}点击</span>
+        </div>
+
       </div>
     </div>
   </div>

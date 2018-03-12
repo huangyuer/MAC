@@ -73,6 +73,8 @@
       <image-item :idd="j.id" type="工程师" :cover="j.avatar" :title="j.name" :summary="j.summary" v-for="j in i.children"
                   :key="i.id"></image-item>
     </div>
+
+
     <div id="mediaAll" class="subtitle" v-show="allPageMediaList[0].children.length>0"
          :class="{'m-top-21':allPageMediaList[0].children.length>0}">
       <div class="inner">
@@ -147,6 +149,7 @@
 
   export default {
     mounted: function () {
+      console.log(this.allPageProjectList)
     },
     components: {
       imageTextItem,
@@ -313,6 +316,7 @@
         return this.$store.state.search.allChapterList
       },
       allPageEngineerList: function () {
+        console.log('allPageEngineerList： ' + this.$store.state.search.allPageEngineerList)
         return this.$store.state.search.allPageEngineerList
       },
       allPageMediaList: function () {
