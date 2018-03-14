@@ -6,24 +6,6 @@
     li {
       float: left;
       width: 25%;
-      .magazine-item {
-        text-align: center;
-        margin: 10px auto;
-        img {
-          width: 120px;
-          height: 175px;
-        }
-        .magazine-title {
-          color: #000;
-          font-size: 14px;
-          font-weight: bold;
-        }
-        .magazine-time {
-          color: #000;
-          font-size: 13px;
-          font-weight: normal;
-        }
-      }
     }
   }
 }
@@ -35,13 +17,6 @@
       margin: 0 5%;
       li {
         width: 33.33%;
-        .magazine-item {
-          margin: 5px;
-          img {
-            width: 100%;
-            height: auto;
-          }
-        }
       }
     }
   }

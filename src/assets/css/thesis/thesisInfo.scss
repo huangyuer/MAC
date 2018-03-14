@@ -2,114 +2,76 @@
 
 .thesis-info {
   .thesis-info-wrapper {
-    width: 1240px;
+    width: 1270px;
     height: auto;
     margin: 0 auto;
     .thesis-info-left {
-      float: left;
-      width: 923px;
-      box-shadow: 0 1px 1px $gray-color;
+      width: 300px;
+      margin-right: 20px;
       background: white;
+      float: left;
+    }
+    .thesis-info-center {
+      float: left;
+      width: 680px;
       overflow: hidden;
       .thesis-info-header {
-        margin: 15px;
+        background: white;
+        box-shadow: 0 1px 1px $gray-color;
+        padding: 35px 20px 30px 20px;
         .thesis-info-title {
-          font-size: 20px;
+          font-size: 22px;
           height: 36px;
-          font-weight: bold;
+          font-weight: 400;
           color: $primary-color;
         }
-        img {
-          float: left;
-          width: 146px;
-        }
-        .thesis-info-detail {
-          margin-left: 161px;
-          font-size: 14px;
-          p {
-            height: 22px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            span {
-              color: $primary-color;
-            }
-            span:nth-child(2) {
-              font-weight: 300;
-              color: #000;
-            }
+        .thesis-info-subtitle {
+          span {
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
           }
-
-          .thesis-info-brief {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-            overflow: hidden;
-            span {
-              color: $primary-color;
-            }
-            span:nth-child(2) {
-              font-weight: 300;
-              color: #000;
-            }
-          }
-
-          .thesis-info-btn-group {
-            margin: 10px 0;
-            span {
-              cursor: pointer;
-              color: $orange-color;
-              border: 1px $orange-color solid;
-              padding: 1px 6px;
-              margin-right: 5px;
-              border-radius: 3px;
-            }
-          }
-        }
-      }
-
-      .thesis-info-menu-bar {
-        margin: 30px auto 10px;
-        padding: 0 15px;
-        font-size: 16px;
-        font-weight: 200;
-        line-height: 40px;
-        color: white;
-        background: $primary-color;
-      }
-
-      ul {
-        li {
-          margin: 15px 18px;
-          overflow: hidden;
-          .thesis-info-menu-title {
-            margin: 15px auto;
-            font-size: 16px;
-            color: $primary-color;
+          .thesis-info-btn {
             cursor: pointer;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
+            color: $orange-color;
+            border: 1px $orange-color solid;
+            padding: 1px 6px;
+            border-radius: 3px;
           }
-          .thesis-info-menu-info {
-            font-size: 14px;
-            font-weight: 300;
-            color: #4A4A4A;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-            overflow: hidden;
-          }
+        }
+
+        .thesis-info-content {
+          margin-top: 18px;
+          font-size: 14px;
+          line-height: 22px;
+          color: #4A4A4A;
+        }
+      }
+
+      .thesis-info-next {
+        cursor: pointer;
+        margin: 20px 0 50px 0;
+        background: white;
+        box-shadow: 0 1px 1px $gray-color;
+        padding-left: 20px;
+        height: 40px;
+        line-height: 40px;
+        span {
+          font-size: 14px;
+          font-weight: bold;
+          color: $primary-color;
         }
       }
     }
     .thesis-info-right {
-      width: 305px;
-      float: right;
+      width: 250px;
+      margin-left: 20px;
+      float: left;
       box-shadow: 0 1px 1px $gray-color;
       background: white;
+      overflow: hidden;
 
-      .thesis-info-similar-bar {
+      .thesis-info-magazine-bar {
         padding: 0 15px;
         font-size: 16px;
         font-weight: 200;
@@ -118,24 +80,8 @@
         background: $primary-color;
       }
 
-      ul {
-        li {
-          width: 50%;
-          float: left;
-          margin: 0 auto;
-          .thesis-info-similar-item {
-            margin: 20px auto 0;
-            text-align: center;
-            img {
-              width: 120px;
-            }
-            span {
-              font-size: 13px;
-              font-weight: 300;
-              line-height: 30px;
-            }
-          }
-        }
+      .thesis-info-magazine-wrapper {
+        margin: 20px 0;
       }
     }
   }
@@ -146,7 +92,13 @@
   .thesis-info {
     .thesis-info-wrapper {
       width: 100%;
+
       .thesis-info-left {
+        width: 100%;
+        margin: 0;
+      }
+
+      .thesis-info-center {
         float: none;
         width: 100%;
         .thesis-info-header {
@@ -154,66 +106,21 @@
             font-size: 18px;
             height: 30px;
           }
-          img {
-            width: 140px;
-          }
-          .thesis-info-detail {
-            margin-left: 155px;
-            font-size: 12px;
-            p {
-              height: 20px;
-              span:nth-child(2) {
-                font-size: 11px;
-              }
-            }
-            .thesis-info-brief {
-              -webkit-line-clamp: 3;
-              span:nth-child(2) {
-                font-size: 11px;
-              }
-            }
 
-            .thesis-info-btn-group {
-              font-size: 11px;
-            }
-          }
-        }
-
-        .thesis-info-menu-bar {
-          font-size: 14px;
-          line-height: 30px;
-        }
-
-        ul {
-          li {
-            margin: 5px 18px;
-            .thesis-info-menu-title {
-              font-size: 14px;
-              margin: 10px auto 5px;
-            }
-            .thesis-info-menu-info {
-              font-size: 13px;
-            }
-          }
         }
       }
       .thesis-info-right {
         float: none;
         width: 100%;
-        .thesis-info-similar-bar {
+        margin: 0;
+        .thesis-info-magazine-bar {
           font-size: 14px;
           line-height: 30px;
         }
-        ul {
-          li {
-            width: 25%;
-            margin: auto 4.166%;
-            .thesis-info-similar-item {
-              img {
-                width: 100%;
-              }
-            }
-          }
+
+        .thesis-info-magazine-wrapper {
+          width: 30%;
+          margin: 20px auto;
         }
       }
     }

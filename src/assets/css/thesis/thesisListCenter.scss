@@ -43,6 +43,10 @@
           font-size: 12px;
           line-height: 18px;
           color: #666666;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
         }
 
         .thesis-keyword {
@@ -80,6 +84,7 @@
   .thesis-list-center {
     ul {
       li {
+        margin: 0 3%;
       }
     }
   }
