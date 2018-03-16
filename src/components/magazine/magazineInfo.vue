@@ -1,58 +1,44 @@
 <template>
   <div class="magazine-info">
     <search-component></search-component>
-    <!--:thirdUrl="'/book/info/' + magazineId" :thirdNav="magazine.name"-->
-    <nav-bar firstUrl="/" firstNav="首页" secondUrl="/magazine/list" secondNav="期刊列表"></nav-bar>
+    <nav-bar firstUrl="/" firstNav="首页" secondUrl="/magazine/list" secondNav="期刊列表"
+             :thirdUrl="'/magazine/info/' + magazineId" :thirdNav="magazine.name"></nav-bar>
     <div class="magazine-info-wrapper">
       <div class="magazine-info-left">
         <div class="magazine-info-header">
-          <div class="magazine-info-title">
-            结构工程师
-          </div>
-          <img src="../../assets/images/img.jpg" />
+          <div class="magazine-info-title" v-text="magazine.name"></div>
+          <img src="../../assets/images/img.jpg" v-if="magazine.cover === ''"/>
+          <img :src="magazine.cover" v-else />
           <div class="magazine-info-detail">
             <p>
               <span>主办单位：</span>
-              <span>
-                轻、稀、贵金属地质、采矿、选矿、冶炼、加工、材料、环保、设备和过程控制的综合性科学技术刊物，国内外公开发行。发行和交换28个国家和地区，是全国中文核心期刊。
-              </span>
+              <span v-text="magazine.organizer"></span>
             </p>
             <p>
               <span>主编：</span>
-              <span>
-                轻、稀、贵金属地质、采矿、选矿、冶炼、加工、材料、环保、设备和过程控制的综合性科学技术刊物，国内外公开发行。发行和交换28个国家和地区，是全国中文核心期刊。
+              <span v-text="magazine.chiefEditor">
               </span>
             </p>
             <p>
               <span>语种：</span>
-              <span>
-                轻、稀、贵金属地质、采矿、选矿、冶炼、加工、材料、环保、设备和过程控制的综合性科学技术刊物，国内外公开发行。发行和交换28个国家和地区，是全国中文核心期刊。
-              </span>
+              <span v-text="magazine.language"></span>
             </p>
             <p>
               <span>国际刊号：</span>
-              <span>
-                轻、稀、贵金属地质、采矿、选矿、冶炼、加工、材料、环保、设备和过程控制的综合性科学技术刊物，国内外公开发行。发行和交换28个国家和地区，是全国中文核心期刊。
-              </span>
+              <span v-text="magazine.issn"></span>
             </p>
             <p>
               <span>国内刊号：</span>
-              <span>
-                轻、稀、贵金属地质、采矿、选矿、冶炼、加工、材料、环保、设备和过程控制的综合性科学技术刊物，国内外公开发行。发行和交换28个国家和地区，是全国中文核心期刊。
-              </span>
+              <span v-text="magazine.cn"></span>
             </p>
             <p>
               <span>出版周期：</span>
-              <span>
-                轻、稀、贵金属地质、采矿、选矿、冶炼、加工、材料、环保、设备和过程控制的综合性科学技术刊物，国内外公开发行。发行和交换28个国家和地区，是全国中文核心期刊。
-              </span>
+              <span v-text="magazine.period"></span>
             </p>
 
             <div class="magazine-info-brief">
               <span>期刊简介：</span>
-              <span>本刊是涉及重、轻、稀、贵金属地质、采矿、选矿、冶炼、加工、材料、环保、设备和过程控制的综合性科学技术刊物，国内外公开发行。发行和交换28个国家和地区，是全国中文核心期刊。
-              轻、稀、贵金属地质、采矿、选矿、冶炼、加工、材料、环保、设备和过程控制的综合性科学技术刊物，国内外公开发行。发行和交换28个国家和地区，是全国中文核心期刊。
-              </span>
+              <span v-text="magazine.intro"></span>
             </div>
 
             <div class="magazine-info-btn-group">
@@ -133,6 +119,17 @@
     components: {
       searchComponent,
       navBar
+    },
+    mounted () {
+      this.$store.dispatch('getMagazineDetails', {'magazineId': this.magazineId})
+    },
+    computed: {
+      magazineId () {
+        return this.$route.params.magazineId || '0'
+      },
+      magazine () {
+        return this.$store.getters.magazine
+      }
     },
     methods: {
       // 加入收藏夹

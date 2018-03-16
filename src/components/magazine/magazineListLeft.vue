@@ -89,7 +89,7 @@
     watch:{
     },
     computed: {
-      categories(){
+      categories () {
         return this.$store.getters.subjects;
       },
       magazineCategoryMenuVisible() {
