@@ -4,22 +4,22 @@
     <div class="class_title">
       <span>期刊分类</span>
       <div class="title_img">
-        <a href="javascript:;" @click="toggleThesisCategoryMenuVisible" v-if="thesisCategoryMenuVisible">
+        <a href="javascript:;" @click="togglePaperCategoryMenuVisible" v-if="paperCategoryMenuVisible">
           <span>-</span>
         </a>
-        <a href="javascript:;" @click="toggleThesisCategoryMenuVisible" v-else>
+        <a href="javascript:;" @click="togglePaperCategoryMenuVisible" v-else>
           <span>+</span>
         </a>
       </div>
     </div>
-    <div class="list_class" v-show="thesisCategoryMenuVisible">
+    <div class="list_class" v-show="paperCategoryMenuVisible">
       <div class="list_title" v-for="category in categories">
-        <a href="javascript:;"><p @click="listThesisesByCategory(category.name)" v-text="category.name"></p></a>
+        <a href="javascript:;"><p @click="listPapersByCategory(category.name)" v-text="category.name"></p></a>
       </div>
     </div>
 
     <!--wap left menu-->
-    <div class="wap-left-menu" v-show="leftThesisMenuVisible">
+    <div class="wap-left-menu" v-show="leftPaperMenuVisible">
 
       <div class="class-title">
         <span>所有类别</span>
@@ -32,7 +32,7 @@
 
       <div class="list-class">
         <div class="list-title">
-          <a href="javascript:;"><p @click="listThesises">所有类别</p></a>
+          <a href="javascript:;"><p @click="listPapers">所有类别</p></a>
         </div>
       </div>
 
@@ -42,10 +42,10 @@
       <div class="class-title">
         <span>论文分类</span>
         <div class="title-img">
-          <a href="javascript:;" @click="toggleThesisCategoryMenuVisible" v-if="thesisCategoryMenuVisible">
+          <a href="javascript:;" @click="togglePaperCategoryMenuVisible" v-if="paperCategoryMenuVisible">
             <span>-</span>
           </a>
-          <a href="javascript:;" @click="toggleThesisCategoryMenuVisible" v-else>
+          <a href="javascript:;" @click="togglePaperCategoryMenuVisible" v-else>
             <span>+</span>
           </a>
         </div>
@@ -53,9 +53,9 @@
 
       <div class="clear"></div>
 
-      <div class="list-class" v-show="thesisCategoryMenuVisible">
+      <div class="list-class" v-show="paperCategoryMenuVisible">
         <div class="list-title" v-for="category in categories">
-          <a href="javascript:;"><p @click="listThesisesByCategory(category.name)" v-text="category.name"></p></a>
+          <a href="javascript:;"><p @click="listPapersByCategory(category.name)" v-text="category.name"></p></a>
         </div>
       </div>
     </div>
@@ -63,12 +63,12 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/thesis/thesisListLeft";
+  @import "../../assets/css/paper/paperListLeft";
 </style>
 
 <script>
   export default {
-    name: 'thesisListLeft',
+    name: 'paperListLeft',
     data () {
       return {
         url: 'http://118.178.238.202:9988/'
@@ -92,31 +92,31 @@
       categories(){
         return this.$store.getters.subjects;
       },
-      thesisCategoryMenuVisible() {
-        return this.$store.getters.thesisCategoryMenuVisible;
+      paperCategoryMenuVisible() {
+        return this.$store.getters.paperCategoryMenuVisible;
       },
-      leftThesisMenuVisible() {
-        return this.$store.getters.leftThesisMenuVisible;
+      leftPaperMenuVisible() {
+        return this.$store.getters.leftPaperMenuVisible;
       },
     },
     methods: {
-      listThesises: function () {
+      listPapers: function () {
         this.hideMenu()
-        this.$store.commit('setLeftThesisCategory', '所有类别')
-        this.$router.push('/thesis/list');
+        this.$store.commit('setLeftPaperCategory', '所有类别')
+        this.$router.push('/paper/list');
 
       },
-      listThesisesByCategory: function(category){
+      listPapersByCategory: function(category){
         this.hideMenu()
-        this.$store.commit('setLeftThesisCategory', category)
-        this.$router.push('/thesis/list?category=' + encodeURI(category));
+        this.$store.commit('setLeftPaperCategory', category)
+        this.$router.push('/paper/list?category=' + encodeURI(category));
         document.documentElement.scrollTop = 0;
       },
-      toggleThesisCategoryMenuVisible: function () {
-        this.$store.commit('setThesisCategoryMenuVisible', !this.thesisCategoryMenuVisible)
+      togglePaperCategoryMenuVisible: function () {
+        this.$store.commit('setPaperCategoryMenuVisible', !this.paperCategoryMenuVisible)
       },
       hideMenu: function () {
-        this.$store.commit('setLeftThesisMenuVisible', false)
+        this.$store.commit('setLeftPaperMenuVisible', false)
       }
     }
   }

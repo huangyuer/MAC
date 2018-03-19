@@ -26,6 +26,11 @@ const searchMedia = resolve => {
     resolve(require('../components/search/searchMedia.vue'))
   })
 }
+const SearchPaper = resolve => {
+  require.ensure(['../components/search/searchPaper.vue'], () => {
+    resolve(require('../components/search/searchPaper.vue'))
+  })
+}
 const mediaDetail = resolve => {
   require.ensure(['../components/search/mediaDetail.vue'], () => {
     resolve(require('../components/search/mediaDetail.vue'))
@@ -171,15 +176,15 @@ const MagazineInfo = resolve => {
   })
 }
 
-const ThesisList = resolve => {
-  require.ensure(['../components/thesis/thesisList.vue'], () => {
-    resolve(require('../components/thesis/thesisList.vue'))
+const PaperList = resolve => {
+  require.ensure(['../components/paper/paperList.vue'], () => {
+    resolve(require('../components/paper/paperList.vue'))
   })
 }
 
-const ThesisInfo = resolve => {
-  require.ensure(['../components/thesis/thesisInfo.vue'], () => {
-    resolve(require('../components/thesis/thesisInfo.vue'))
+const PaperInfo = resolve => {
+  require.ensure(['../components/paper/paperInfo.vue'], () => {
+    resolve(require('../components/paper/paperInfo.vue'))
   })
 }
 
@@ -252,6 +257,7 @@ export {
   SearchNull,
   NotFound404,
   searchMedia,
+  SearchPaper,
   searchAll,
   BookList,
   BookInfo,
@@ -267,8 +273,8 @@ export {
   LiteratureInfo,
   MagazineList,
   MagazineInfo,
-  ThesisList,
-  ThesisInfo,
+  PaperList,
+  PaperInfo,
   AboutUs,
 
   Login,

@@ -6,5 +6,5 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/thesis/thesisListRight";
+  @import "../../assets/css/paper/paperListRight";
 </style>

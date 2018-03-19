@@ -10,6 +10,7 @@ import {
   SearchNull,
   searchAll,
   searchMedia,
+  SearchPaper,
   homePage,
   leftPanel,
   rightPanel,
@@ -33,8 +34,8 @@ import {
   LiteratureInfo,
   MagazineList,
   MagazineInfo,
-  ThesisList,
-  ThesisInfo,
+  PaperList,
+  PaperInfo,
 
   Login,
   Register,
@@ -127,6 +128,15 @@ export default new Router({
             'rightPanel': rightPanel,
           }
         },
+        {
+          path: 'paper',
+          name: 'searchPaper',
+          components: {
+            'leftPanel': leftPanel,
+            'middlePanel': SearchPaper,
+            'rightPanel': rightPanel,
+          }
+        }
       ]
     },
     {
@@ -317,18 +327,18 @@ export default new Router({
       },
     },
     {
-      path: '/thesis/list',
+      path: '/paper/list',
       components: {
         'app-header': AppHeader,
-        'app-body': ThesisList,
+        'app-body': PaperList,
         'app-footer': AppFooter
       },
     },
     {
-      path: '/thesis/info/:thesisId',
+      path: '/paper/info/:paperId',
       components: {
         'app-header': AppHeader,
-        'app-body': ThesisInfo,
+        'app-body': PaperInfo,
         'app-footer': AppFooter
       },
     },

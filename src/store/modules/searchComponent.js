@@ -189,7 +189,13 @@ const state = {
       type: 'text',
       children: []
     },//9
-
+    {
+      name: '论文',
+      active: false,
+      nickName: 'paper',
+      type: 'paper',
+      children: []
+    }
   ],
   currentLevelOneCategory: '',
 }

@@ -1,8 +1,8 @@
 <template>
-  <div class="thesis-tool-bar">
+  <div class="paper-tool-bar">
     <div class="tool-bar-left" @click="showMenu()">
       <p>
-        <span v-text="leftThesisCategory"></span>
+        <span v-text="leftPaperCategory"></span>
         <b class="triangle-down"></b>
       </p>
     </div>
@@ -22,19 +22,19 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/thesis/thesisToolBar";
+  @import "../../assets/css/paper/paperToolBar";
 </style>
 
 <script>
   export default {
     methods: {
       showMenu: function () {
-        this.$store.commit('setLeftThesisMenuVisible', true)
+        this.$store.commit('setLeftPaperMenuVisible', true)
       }
     },
     computed: {
-      leftThesisCategory () {
-        return this.$store.getters.leftThesisCategory
+      leftPaperCategory () {
+        return this.$store.getters.leftPaperCategory
       }
     }
   }

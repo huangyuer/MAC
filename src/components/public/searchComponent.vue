@@ -333,6 +333,16 @@
             this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: ''})
             this.$store.dispatch('searchKnowledgeLeftPanel', p)
             break
+          case 'paper':
+            // var p = {
+            //   searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+            //   rows: 9,
+            //   page: 1,
+            // }
+            // this.$store.dispatch('searchExpertPatent', p)
+            // this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: ''})
+            // this.$store.dispatch('searchKnowledgeLeftPanel', p)
+            break
           default:
             break
         }

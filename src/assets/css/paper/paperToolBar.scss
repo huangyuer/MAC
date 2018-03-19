@@ -1,6 +1,6 @@
 @import "../global";
 
-.thesis-tool-bar {
+.paper-tool-bar {
   display: none;
   width: 100%;
   height: 40px;
@@ -96,7 +96,7 @@
 }
 
 @media only screen and (max-width: $max-width) {
-  .thesis-tool-bar {
+  .paper-tool-bar {
     display: block;
   }
 }

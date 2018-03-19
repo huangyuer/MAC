@@ -1,8 +1,8 @@
 @import "../global";
 
-.thesis-info-left-wrapper {
+.paper-info-left-wrapper {
   width: 100%;
-  .thesis-info-menu-bar {
+  .paper-info-menu-bar {
     padding: 0 15px;
     font-size: 16px;
     font-weight: 200;
@@ -36,9 +36,9 @@
 }
 
 @media only screen and (max-width: $max-width) {
-  .thesis-info-left-wrapper {
+  .paper-info-left-wrapper {
     width: 100%;
-    .thesis-info-menu-bar {
+    .paper-info-menu-bar {
       font-size: 14px;
       line-height: 30px;
     }
