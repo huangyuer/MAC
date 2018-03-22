@@ -26,6 +26,11 @@ const searchMedia = resolve => {
     resolve(require('../components/search/searchMedia.vue'))
   })
 }
+const SearchPaper = resolve => {
+  require.ensure(['../components/search/searchPaper.vue'], () => {
+    resolve(require('../components/search/searchPaper.vue'))
+  })
+}
 const mediaDetail = resolve => {
   require.ensure(['../components/search/mediaDetail.vue'], () => {
     resolve(require('../components/search/mediaDetail.vue'))
@@ -171,6 +176,18 @@ const MagazineInfo = resolve => {
   })
 }
 
+const PaperList = resolve => {
+  require.ensure(['../components/paper/paperList.vue'], () => {
+    resolve(require('../components/paper/paperList.vue'))
+  })
+}
+
+const PaperInfo = resolve => {
+  require.ensure(['../components/paper/paperInfo.vue'], () => {
+    resolve(require('../components/paper/paperInfo.vue'))
+  })
+}
+
 const Login = resolve => {
   require.ensure(['../components/auth/signIn.vue'], () => {
     resolve(require('../components/auth/signIn.vue'))
@@ -240,6 +257,7 @@ export {
   SearchNull,
   NotFound404,
   searchMedia,
+  SearchPaper,
   searchAll,
   BookList,
   BookInfo,
@@ -255,6 +273,8 @@ export {
   LiteratureInfo,
   MagazineList,
   MagazineInfo,
+  PaperList,
+  PaperInfo,
   AboutUs,
 
   Login,

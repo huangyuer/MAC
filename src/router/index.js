@@ -10,6 +10,7 @@ import {
   SearchNull,
   searchAll,
   searchMedia,
+  SearchPaper,
   homePage,
   leftPanel,
   rightPanel,
@@ -33,6 +34,8 @@ import {
   LiteratureInfo,
   MagazineList,
   MagazineInfo,
+  PaperList,
+  PaperInfo,
 
   Login,
   Register,
@@ -125,6 +128,15 @@ export default new Router({
             'rightPanel': rightPanel,
           }
         },
+        {
+          path: 'paper',
+          name: 'searchPaper',
+          components: {
+            'leftPanel': leftPanel,
+            'middlePanel': SearchPaper,
+            'rightPanel': rightPanel,
+          }
+        }
       ]
     },
     {
@@ -311,6 +323,22 @@ export default new Router({
       components: {
         'app-header': AppHeader,
         'app-body': MagazineInfo,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/paper/list',
+      components: {
+        'app-header': AppHeader,
+        'app-body': PaperList,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/paper/info/:paperId',
+      components: {
+        'app-header': AppHeader,
+        'app-body': PaperInfo,
         'app-footer': AppFooter
       },
     },

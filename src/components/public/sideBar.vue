@@ -55,6 +55,9 @@
         isSubLibsShow: true
       }
     },
+    mounted () {
+      this.$store.dispatch('listSublibs', {})
+    },
     methods: {
       // toggleSubLibs wap 切换子菜单
       toggleSubLibs: function () {
@@ -63,6 +66,7 @@
       listBooksByLib: function (lib) {
         this.closeSideBar()
         this.$router.push('/book/list?lib=' + encodeURI(lib))
+        this.$store.commit('setLeftBookCategory', lib)
       },
       closeSideBar: function () {
         document.getElementById('sidebar').checked = false

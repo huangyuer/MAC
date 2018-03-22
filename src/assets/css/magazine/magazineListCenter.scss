@@ -6,22 +6,6 @@
     li {
       float: left;
       width: 25%;
-      .magazine-item {
-        text-align: center;
-        margin: 10px auto;
-        img {
-          width: 120px;
-          height: 175px;
-        }
-        .magazine-title {
-          font-size: 14px;
-          font-weight: bold;
-        }
-        .magazine-time {
-          font-size: 13px;
-          font-weight: normal;
-        }
-      }
     }
   }
 }
@@ -29,8 +13,10 @@
 @media only screen and (max-width: $max-width) {
   .magazine-list-center {
     ul {
+      width: 90%;
+      margin: 0 5%;
       li {
-        width: 50%;
+        width: 33.33%;
       }
     }
   }
