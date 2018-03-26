@@ -2,245 +2,255 @@ import axios from 'axios'
 import config from '../config'
 
 export default {
-  searchAll (data) {
+  searchAll(data) {
     let apiUrl = `${config.API_HOST}/search/all`
     let promise = axios.post(apiUrl, data)
     return promise
   },
-  searchBook (data) {
+  searchBook(data) {
     let apiUrl = `${config.API_HOST}/search/book`
     let promise = axios.post(apiUrl, data)
     return promise
   },
-  searchBookChapter (data) {
+  searchBookChapter(data) {
     let apiUrl = `${config.API_HOST}/search/bookchapter`
     let promise = axios.post(apiUrl, data)
     return promise
   },
-  searchProject (data) {
+  searchProject(data) {
     let apiUrl = `${config.API_HOST}/search/project`
     let promise = axios.post(apiUrl, data)
     return promise
   },
-  searchEngineer (data) {
+  searchEngineer(data) {
     let apiUrl = `${config.API_HOST}/search/engineer`
     let promise = axios.post(apiUrl, data)
     return promise
   },
-  searchMedia (data) {
+  searchMedia(data) {
     let apiUrl = `${config.API_HOST}/search/media`
     let promise = axios.post(apiUrl, data)
     return promise
   },
-  searchRequirement (data) {
+  searchRequirement(data) {
     let apiUrl = `${config.API_HOST}/search/requirement`
     let promise = axios.post(apiUrl, data)
     return promise
   },
-  searchLiterature (data) {
+  searchLiterature(data) {
     let apiUrl = `${config.API_HOST}/search/literature`
     let promise = axios.post(apiUrl, data)
     return promise
   },
-  searchExpertPatent (data) {
+  searchExpertPatent(data) {
     let apiUrl = `${config.API_HOST}/search/expertpatent`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //搜索图书时，侧边栏展示clcs分类
-  searchBookClcs (data) {
+  searchBookClcs(data) {
     let apiUrl = `${config.API_HOST}/search/book/clcs`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //搜索图书时，侧边栏展示sublibs分类
-  searchBookSublibs (data) {
+  searchBookSublibs(data) {
     let apiUrl = `${config.API_HOST}/search/book/sublibs`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //通过clcs字段搜索图书
-  searchBookClcsDataList (data) {
+  searchBookClcsDataList(data) {
     let apiUrl = `${config.API_HOST}/search/clcs`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //通过sublibs搜索图书
-  searchBookSublibsDataList (data) {
+  searchBookSublibsDataList(data) {
     let apiUrl = `${config.API_HOST}/search/sublibs`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //搜索工程时，侧边栏展示年代
-  searchProjectEra (data) {
+  searchProjectEra(data) {
     let apiUrl = `${config.API_HOST}/search/project/era`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //搜索工程时，侧边栏展示地区
-  searchProjectArea (data) {
+  searchProjectArea(data) {
     let apiUrl = `${config.API_HOST}/search/project/area`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击搜索上方的'工程师'或则searchAll界面上的'工程师'时
-  searchEngineerEraDataList (data) {
+  searchEngineerEraDataList(data) {
     let apiUrl = `${config.API_HOST}/search/engineer/category/era`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击搜索上方的'工程师'或则searchAll界面上的'工程师'时
-  searchEngineerTradesDataList (data) {
+  searchEngineerTradesDataList(data) {
     let apiUrl = `${config.API_HOST}/search/engineer/category/trades`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击搜索上方的'企业需求'或则searchAll界面上的'需求'时
-  searchRequirementProvinceDataList (data) {
+  searchRequirementProvinceDataList(data) {
     let apiUrl = `${config.API_HOST}/search/requirement/category/province`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击搜索上方的'企业需求'或则searchAll界面上的'需求'时
-  searchRequirementWayDataList (data) {
+  searchRequirementWayDataList(data) {
     let apiUrl = `${config.API_HOST}/search/requirement/category/way`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击搜索上方的'企业需求'或则searchAll界面上的'工程师'时
-  searchMediaDataList (data) {
+  searchMediaDataList(data) {
     let apiUrl = `${config.API_HOST}/search/media/category`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击搜索上方的'工程文献'或则searchAll界面上的'工程师'时
-  searchLiteratureEraDataList (data) {
+  searchLiteratureEraDataList(data) {
     let apiUrl = `${config.API_HOST}/search/literature/category/era`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击搜索上方的'工程文献'或则searchAll界面上的'工程师'时
-  searchLiteratureCategoryDataList (data) {
+  searchLiteratureCategoryDataList(data) {
     let apiUrl = `${config.API_HOST}/search/literature/category/category`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击搜索上方的'知识产权'或则searchAll界面上的'工程师'时
-  searchKnowledgeCategoryDataList (data) {
+  searchKnowledgeCategoryDataList(data) {
     let apiUrl = `${config.API_HOST}/search/knowledge/category`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //工程下点击"年代"类别
-  searchProjectEraChild (data) {
+  searchProjectEraChild(data) {
     let apiUrl = `${config.API_HOST}/search/project/era/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //工程下点击"地区"类别
-  searchProjectAreaChild (data) {
+  searchProjectAreaChild(data) {
     let apiUrl = `${config.API_HOST}/search/project/area/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //工程师下点击"年代"
-  searchEngineerEraChild (data) {
+  searchEngineerEraChild(data) {
     let apiUrl = `${config.API_HOST}/search/engineer/era/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //工程师下点击"行业"
-  searchEngineerTradeChild (data) {
+  searchEngineerTradeChild(data) {
     let apiUrl = `${config.API_HOST}/search/engineer/trade/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //搜索图表
-  searchBookchart (data) {
+  searchBookchart(data) {
     let apiUrl = `${config.API_HOST}/search/bookchart`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //搜索图片
-  searchBookimage (data) {
+  searchBookimage(data) {
     let apiUrl = `${config.API_HOST}/search/bookimage`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //搜索公式
-  searchBookformula (data) {
+  searchBookformula(data) {
     let apiUrl = `${config.API_HOST}/search/bookformula`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击企业需求，"省份"
-  searchRequirementProvinceChild (data) {
+  searchRequirementProvinceChild(data) {
     let apiUrl = `${config.API_HOST}/search/requirement/province/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击企业需求，"途径"
-  searchRequirementWayChild (data) {
+  searchRequirementWayChild(data) {
     let apiUrl = `${config.API_HOST}/search/requirement/way/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击工程文献，"年代
-  searchLiteratureEraChild (data) {
+  searchLiteratureEraChild(data) {
     let apiUrl = `${config.API_HOST}/search/literature/era/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //点击工程文献，"类别"
-  searchLiteratureCategoryChild (data) {
+  searchLiteratureCategoryChild(data) {
     let apiUrl = `${config.API_HOST}/search/literature/category/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //搜索专家
-  searchExpertChild (data) {
+  searchExpertChild(data) {
     let apiUrl = `${config.API_HOST}/search/expert/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //搜索专利
-  searchPatentChild (data) {
+  searchPatentChild(data) {
     let apiUrl = `${config.API_HOST}/search/patent/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   // 搜索科研成果
-  searchAchievementChild (data) {
+  searchAchievementChild(data) {
     let apiUrl = `${config.API_HOST}/search/achievement/child`
     let promise = axios.post(apiUrl, data)
     return promise
   },
+  searchPaper(data) {
+    let apiUrl = `${config.API_HOST}/search/paper`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  searchMagazine(data) {
+    let apiUrl = `${config.API_HOST}/search/magazine`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
   // 获取登录用户收藏的图书
-  getUserFavoriteBooks () {
+  getUserFavoriteBooks() {
     let apiUrl = `${config.API_HOST}/users/favorite/books`
     let promise = axios.get(apiUrl)
     return promise
   },
   // 收藏图书
-  addUserFavoriteBooks (data) {
+  addUserFavoriteBooks(data) {
     let apiUrl = `${config.API_HOST}/users/add/favorite/book`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   //取消收藏图书
-  removeUserFavoriteBooks (data) {
+  removeUserFavoriteBooks(data) {
     let apiUrl = `${config.API_HOST}/users/cancel/favorite/book`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   // http://home.tjdesignx.com/#/selected   设计到的搜索
-  searchHybrid (data) {
+  searchHybrid(data) {
     let apiUrl = `${config.API_HOST}/search/hybrid`
     let promise = axios.post(apiUrl, data)
     return promise
   },
   // 增加点击数
-  addClickCount (data) {
+  addClickCount(data) {
     let apiUrl = `${config.API_HOST}/search/click/count`
     let promise = axios.post(apiUrl, data)
     return promise
