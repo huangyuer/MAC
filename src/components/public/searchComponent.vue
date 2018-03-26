@@ -338,7 +338,7 @@
               searchContent: this.searchContent ? this.searchContent : this.searchContent_,
               rows: 10,
               page: 1,
-            }
+            } 
             this.$store.dispatch('searchPaper',p)
             this.$store.commit('setPaginatorCategory',{parent:'paper',child:''})
             this.$store.dispatch('searchPaperLeftPanel',p)
