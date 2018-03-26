@@ -187,6 +187,16 @@
             this.$store.dispatch('searchKnowledgeLeftPanel', p7)
             this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: ''})
             break
+          case 'paper': 
+            var p = {
+              searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+              rows: 10,
+              page: 1,
+            } 
+            this.$store.dispatch('searchPaper',p)
+            this.$router.push('/search/result/context')
+            this.$store.commit('setPaginatorCategory',{parent:'paper',child:''})
+            this.$store.dispatch('searchPaperLeftPanel',p) 
           default:
             break
         }
