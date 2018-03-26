@@ -1,4 +1,6 @@
 import api from '../api/book';
+import router from "../../router";
+import {bookItem} from "../objectDeclare";
 
 // initial state
 const state = {
@@ -12,12 +14,12 @@ const state = {
     'data': [],
     'isSearchResult': false,
   },
-  books: {
-    'total': 0,
-    'data': [],
-    'isSearchResult': false,
-    'keywords': ''
-  },
+  // books: {
+  //   'total': 0,
+  //   'data': [],
+  //   'isSearchResult': false,
+  //   'keywords': ''
+  // },
   bookDetail: {
      _id: '',
     name: '',
@@ -51,16 +53,19 @@ const state = {
   },
   libMenuVisible: true,
   categoryMenuVisible: true,
-  clcMenuVisible: true
+  clcMenuVisible: true,
+  leftBookMenuVisible: false,
+  leftBookCategory: '所有类别',
+  bookCategoryVisible: false
 };
 
 // getters
 const getters = {
   hottestBooks: state => state.hottestBooks.data,
-  books: state => state.books.data,
+  // books: state => state.books.data,
   latestBooks: state => state.latestBooks.data,
   hottestBooksTotal: state => state.hottestBooks.total,
-  booksTotal: state => state.books.total,
+  booksTotal: state => state.latestBooks.total,
   latestBooksTotal: state => state.latestBooks.total,
   bookDetail: state => state.bookDetail,
   savedBook: state => state.savedBook,
@@ -73,7 +78,10 @@ const getters = {
   bookClcsEditDialogVisible: state => state.bookClcsEditDialogVisible,
   libMenuVisible: state => state.libMenuVisible,
   categoryMenuVisible: state => state.categoryMenuVisible,
-  clcMenuVisible: state => state.clcMenuVisible
+  clcMenuVisible: state => state.clcMenuVisible,
+  leftBookMenuVisible: state => state.leftBookMenuVisible,
+  leftBookCategory: state => state.leftBookCategory,
+  bookCategoryVisible: state => state.bookCategoryVisible
 };
 
 // actions
@@ -83,11 +91,11 @@ const actions = {
     promise.then((response) => {
       console.log(response.data);
       commit('setHottestBooks', response.data);
-      commit('setBooks', state.hottestBooks);
+      // commit('setBooks', state.hottestBooks);
     }, (response) => {
       console.log(response);
-      commit('setHottestBooks', []);
-      commit('setBooks', []);
+      commit('setHottestBooks', state.hottestBooks);
+      // commit('setBooks', []);
     });
   },
   getLatestBooks ({ commit,state }, params) {
@@ -95,27 +103,28 @@ const actions = {
     promise.then((response) => {
       console.log(response.data);
       commit('setLatestBooks', response.data);
-      commit('setBooks', state.latestBooks);
+
+      // commit('setBooks', state.latestBooks);
     }, (response) => {
       console.log(response);
-      commit('setLatestBooks', []);
-      commit('setBooks', []);
+      commit('setLatestBooks', state.latestBooks);
+      // commit('setBooks', []);
     });
   },
-  searchBooks ({ commit }, params) {
-    let promise = api.search(params.keywords, params.limit, params.page);
-    promise.then((response) => {
-      console.log(response.data);
-      let result = {'total': response.data.total,
-                    'data': response.data.data,
-                    'isSearchResult': true,
-                    'keywords': params.keywords};
-      commit('setBooks', result);
-    }, (response) => {
-      console.log(response);
-      commit('setBooks', []);
-    });
-  },
+  // searchBooks ({ commit }, params) {
+  //   let promise = api.search(params.keywords, params.limit, params.page);
+  //   promise.then((response) => {
+  //     console.log(response.data);
+  //     let result = {'total': response.data.total,
+  //                   'data': response.data.data,
+  //                   'isSearchResult': true,
+  //                   'keywords': params.keywords};
+  //     commit('setBooks', result);
+  //   }, (response) => {
+  //     console.log(response);
+  //     commit('setBooks', []);
+  //   });
+  // },
   getBookDetail({ commit,state }, params) {
     commit('setBookDetailReady',false);
     let promise = api.getBookDetail(params.bookId);
@@ -224,14 +233,14 @@ const mutations = {
     state.hottestBooks.data = books.data;
     state.hottestBooks.isSearchResult = false;
   },
-  setBooks (state, books) {
+  // setBooks (state, books) {
+  //   // 变更状态
+  //   state.books = books;
+  // },
+  setLatestBooks (state, data) {
     // 变更状态
-    state.books = books;
-  },
-  setLatestBooks (state, books) {
-    // 变更状态
-    state.latestBooks.total = books.total;
-    state.latestBooks.data = books.data;
+    state.latestBooks.total = data.total;
+    state.latestBooks.data = data.data;
     state.latestBooks.isSearchResult = false;
   },
   setBookDetail(state, book) {
@@ -328,6 +337,15 @@ const mutations = {
     // 变更状态
     state.clcMenuVisible = false;
   },
+  setLeftBookMenuVisible(state, leftBookMenuVisible) {
+    state.leftBookMenuVisible = leftBookMenuVisible
+  },
+  setLeftBookCategory(state, leftBookCategory) {
+    state.leftBookCategory = leftBookCategory
+  },
+  setBookCategoryVisible(state, bookCategoryVisible) {
+    state.bookCategoryVisible = bookCategoryVisible
+  }
 };
 
 export default {

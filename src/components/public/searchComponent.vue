@@ -8,7 +8,7 @@
       <div class="right">
         <div class="category">
           <span @click="setActiveLevelOneCategory(index)" :class="{'category-active': i.active}"
-                v-for="i,index in categoryList">{{i.name}}</span>
+                  v-for="i,index in categoryList">{{i.name}}</span>
         </div>
         <div class="search-content">
           <input id="search-input" @keydown.enter="clickSearch" v-model="searchContent" :placeholder="placeholder"
@@ -332,6 +332,16 @@
             this.$store.dispatch('searchExpertPatent', p)
             this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: ''})
             this.$store.dispatch('searchKnowledgeLeftPanel', p)
+            break
+          case 'paper':
+            // var p = {
+            //   searchContent: this.searchContent ? this.searchContent : this.searchContent_,
+            //   rows: 9,
+            //   page: 1,
+            // }
+            // this.$store.dispatch('searchExpertPatent', p)
+            // this.$store.commit('setPaginatorCategory', {parent: 'knowledge', child: ''})
+            // this.$store.dispatch('searchKnowledgeLeftPanel', p)
             break
           default:
             break

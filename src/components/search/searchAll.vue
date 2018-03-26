@@ -41,6 +41,27 @@
     </div>
 
 
+    <!--论文-->
+    <div class="subtitle">
+      <div class="inner">
+        <span>相关论文</span>
+        <div class="right">
+          <span @click="redirectSeeAll('paper')">查看全部</span>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-jiantou-left"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="inners">
+      <ul>
+        <li v-for="paper in allPagePaperList">
+          <paper-item :paper="paper"></paper-item>
+        </li>
+      </ul>
+    </div>
+
+
     <div class="subtitle" v-show="allPageProjectList[0].children.length>0"
          :class="{'m-top-21':allPageProjectList[0].children.length>0}">
       <div class="inner">
@@ -73,6 +94,8 @@
       <image-item :idd="j.id" type="工程师" :cover="j.avatar" :title="j.name" :summary="j.summary" v-for="j in i.children"
                   :key="i.id"></image-item>
     </div>
+
+
     <div id="mediaAll" class="subtitle" v-show="allPageMediaList[0].children.length>0"
          :class="{'m-top-21':allPageMediaList[0].children.length>0}">
       <div class="inner">
@@ -144,11 +167,14 @@
 <script>
   import imageTextItem from './imageTextItem.vue'
   import imageItem from './imageItem.vue'
+  import PaperItem from "../paper/paperItem"
 
   export default {
     mounted: function () {
+      console.log(this.allPageProjectList)
     },
     components: {
+      PaperItem,
       imageTextItem,
       imageItem,
     },
@@ -198,6 +224,12 @@
             this.$router.push('/search/result/media')
             this.$store.dispatch('searchProjectLeftPanel', p2)
             break
+
+          // 论文
+          case 'paper':
+            this.$router.push('/search/result/paper')
+            break
+
           case 'engineer':
             var pp = this.levelOneCategoryList[3].children
             var keywords = []
@@ -309,10 +341,14 @@
       allPageProjectList: function () {
         return this.$store.state.search.allPageProjectList
       },
+      allPagePaperList: function () {
+        return this.$store.state.search.allPagePaperList
+      },
       allChapterList: function () {
         return this.$store.state.search.allChapterList
       },
       allPageEngineerList: function () {
+        console.log('allPageEngineerList： ' + this.$store.state.search.allPageEngineerList)
         return this.$store.state.search.allPageEngineerList
       },
       allPageMediaList: function () {

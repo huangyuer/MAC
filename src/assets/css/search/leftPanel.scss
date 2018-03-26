@@ -7,3 +7,9 @@
   vertical-align: top;
 
 }
+
+@media only screen and (max-width: 768px) {
+  .left-panel {
+    display: none;
+  }
+}

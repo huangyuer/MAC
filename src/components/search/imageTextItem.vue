@@ -9,7 +9,11 @@
           <span>{{type}}</span>
         </div>
         <div class="category-brother" v-show="type=='图书'">
-          <span>{{author}}</span>-<span>{{name}}</span>-<span>{{year_}}年</span>
+          <span>{{author}}</span>
+          <b class="divider">-</b>
+          <span class="name">{{name}}</span>
+          <b class="divider">-</b>
+          <span>{{year_}}年</span>
         </div>
       </div>
       <div class="content">
