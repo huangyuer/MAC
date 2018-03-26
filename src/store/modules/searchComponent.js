@@ -193,7 +193,7 @@ const state = {
       name: '论文',
       active: false,
       nickName: 'paper',
-      type: 'paper',
+      type: 'text',
       children: []
     }
   ],

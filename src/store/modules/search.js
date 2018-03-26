@@ -1,5 +1,7 @@
 import api from '../api/search'
-import { getCookie } from '../../utils/cookie'
+import {
+  getCookie
+} from '../../utils/cookie'
 import router from '../../router/index'
 import {
   knowledgeItem,
@@ -22,10 +24,9 @@ const state = {
   literatureSearchResults: [],
   totalLiteratureSearchResults: 0,
 
-  allPageBookList: [],//搜索'全部'的时候图书的列表
-  allChapterList: [],//搜索'全部'的时候图书章节的列表
-  allPageProjectList: [
-    {
+  allPageBookList: [], //搜索'全部'的时候图书的列表
+  allChapterList: [], //搜索'全部'的时候图书章节的列表
+  allPageProjectList: [{
       children: []
     },
     {
@@ -34,9 +35,8 @@ const state = {
     {
       children: []
     }
-  ],//搜索'全部'的时候工程的列表
-  allPageEngineerList: [
-    {
+  ], //搜索'全部'的时候工程的列表
+  allPageEngineerList: [{
       children: []
     },
     {
@@ -45,9 +45,8 @@ const state = {
     {
       children: []
     }
-  ],//搜索'全部'的时候工程师的列表
-  allPageMediaList: [
-    {
+  ], //搜索'全部'的时候工程师的列表
+  allPageMediaList: [{
       children: []
     },
     {
@@ -56,12 +55,12 @@ const state = {
     {
       children: []
     }
-  ],//搜索'全部'的时候多媒体的列表
-  allPageRequirementList: [],//搜索'全部'的时候企业需求的列表
-  allPageLiteratureList: [],//搜索'全部'的时候文献的列表
-  allPageKnowledgeList: [],//搜索'全部'的时候文献的列表
+  ], //搜索'全部'的时候多媒体的列表
+  allPageRequirementList: [], //搜索'全部'的时候企业需求的列表
+  allPageLiteratureList: [], //搜索'全部'的时候文献的列表
+  allPageKnowledgeList: [], //搜索'全部'的时候文献的列表
 
-  bookList: [],//搜索图书列表
+  bookList: [], //搜索图书列表
   literatureList: [],
   bookTotal: '',
   hybridEngineerList: [],
@@ -80,7 +79,9 @@ const getters = {
 }
 const actions = {
 
-  searchAll ({commit}, data) {
+  searchAll({
+    commit
+  }, data) {
     commit('setLoadingState', true)
     let promise = api.searchAll(data)
     let userInfo = getCookie('userInfo')
@@ -123,9 +124,11 @@ const actions = {
     }
 
   },
-  searchBookBak ({commit}, data) {
+  searchBookBak({
+    commit
+  }, data) {
     let userInfo = getCookie('userInfo')
-    if (userInfo) {// 已经登录
+    if (userInfo) { // 已经登录
       let promise1 = api.searchBook(data)
       let promise2 = api.getUserFavoriteBooks(data)
       Promise.all([promise1, promise2]).then(function (resp) {
@@ -140,7 +143,9 @@ const actions = {
       })
     }
   },
-  searchBook ({commit}, data) {
+  searchBook({
+    commit
+  }, data) {
     let promise = api.searchBook(data)
     let promise1 = api.getUserFavoriteBooks(data)
     let userInfo = getCookie('userInfo')
@@ -284,7 +289,9 @@ const actions = {
     }
 
   },
-  searchProject ({commit}, data) {
+  searchProject({
+    commit
+  }, data) {
     let promise = api.searchProject(data)
     commit('setLoadingState', true)
     promise.then((response) => {
@@ -313,7 +320,9 @@ const actions = {
       alert('网络错误，请刷新页面')
     })
   },
-  searchEngineer ({commit}, data) {
+  searchEngineer({
+    commit
+  }, data) {
     let promise = api.searchEngineer(data)
     commit('setLoadingState', true)
 
@@ -343,7 +352,9 @@ const actions = {
 
     })
   },
-  searchMedia ({commit}, data) {
+  searchMedia({
+    commit
+  }, data) {
     let promise = api.searchMedia(data)
     commit('setLoadingState', true)
     promise.then((response) => {
@@ -369,7 +380,9 @@ const actions = {
       alert('网络错误，请刷新页面')
     })
   },
-  searchRequirement ({commit}, data) {
+  searchRequirement({
+    commit
+  }, data) {
     let promise = api.searchRequirement(data)
     promise.then((response) => {
       // TODO:  企业需求现在没有数据
@@ -394,7 +407,9 @@ const actions = {
 
     })
   },
-  searchLiterature ({commit}, data) {
+  searchLiterature({
+    commit
+  }, data) {
     let promise = api.searchLiterature(data)
     commit('setLoadingState', true)
     promise.then((response) => {
@@ -433,7 +448,9 @@ const actions = {
 
     })
   },
-  searchExpertPatent ({commit}, data) {
+  searchExpertPatent({
+    commit
+  }, data) {
     let promise = api.searchExpertPatent(data)
     commit('setSearchState', true)
     promise.then((response) => {
@@ -504,7 +521,9 @@ const actions = {
 
     })
   },
-  searchBookLeftPanel ({commit}, data) {
+  searchBookLeftPanel({
+    commit
+  }, data) {
     let p = {
       searchContent: data.searchContent,
       keywords: data.keywords,
@@ -521,7 +540,9 @@ const actions = {
 
     })
   },
-  searchProjectLeftPanel ({commit}, data) {
+  searchProjectLeftPanel({
+    commit
+  }, data) {
     let promise1 = api.searchProjectEra(data)
     let promise2 = api.searchProjectArea(data)
     commit('setLoadingState', true)
@@ -530,7 +551,9 @@ const actions = {
       commit('setLoadingState', false)
     })
   },
-  searchBookClcsDataList ({commit}, data) {
+  searchBookClcsDataList({
+    commit
+  }, data) {
     let promise = api.searchBookClcsDataList(data)
     promise.then((response) => {
       let d = response.data.hits.hits
@@ -554,7 +577,9 @@ const actions = {
 
     })
   },
-  searchBookChapterDataList ({commit}, data) {
+  searchBookChapterDataList({
+    commit
+  }, data) {
     let promise = api.searchBookChapter(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -577,7 +602,9 @@ const actions = {
 
     })
   },
-  searchBookSublibsDataList ({commit}, data) {
+  searchBookSublibsDataList({
+    commit
+  }, data) {
     let promise = api.searchBookSublibsDataList(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -601,7 +628,9 @@ const actions = {
 
     })
   },
-  searchEngineerLeftPanel ({commit}, data) {
+  searchEngineerLeftPanel({
+    commit
+  }, data) {
     let promise1 = api.searchEngineerEraDataList(data)
     commit('setLoadingState', true)
     // promise1.then((response) => {
@@ -619,7 +648,9 @@ const actions = {
       commit('setLoadingState', false)
     })
   },
-  searchRequirementLeftPanel ({commit}, data) {
+  searchRequirementLeftPanel({
+    commit
+  }, data) {
     let promise1 = api.searchRequirementProvinceDataList(data)
     let promise2 = api.searchRequirementWayDataList(data)
     commit('setLoadingState', true)
@@ -628,7 +659,9 @@ const actions = {
       commit('setLoadingState', false)
     })
   },
-  searchMediaLeftPanel ({commit}, data) {
+  searchMediaLeftPanel({
+    commit
+  }, data) {
     let promise = api.searchMediaDataList(data)
     commit('setLoadingState', true)
     promise.then((response) => {
@@ -638,7 +671,9 @@ const actions = {
       alert('网络错误，请刷新页面')
     })
   },
-  searchLiteratureLeftPanel ({commit}, data) {
+  searchLiteratureLeftPanel({
+    commit
+  }, data) {
     let promise1 = api.searchLiteratureEraDataList(data)
     let promise2 = api.searchLiteratureCategoryDataList(data)
     commit('setLoadingState', true)
@@ -647,7 +682,9 @@ const actions = {
       commit('setLoadingState', false)
     })
   },
-  searchKnowledgeLeftPanel ({commit}, data) {
+  searchKnowledgeLeftPanel({
+    commit
+  }, data) {
     commit('setLoadingState', true)
     let promise = api.searchKnowledgeCategoryDataList(data)
     promise.then((response) => {
@@ -657,7 +694,14 @@ const actions = {
 
     })
   },
-  searchProjectEraChild ({commit}, data) {
+  searchPaperLeftPanel({
+    commit
+  }, data) {
+
+  },
+  searchProjectEraChild({
+    commit
+  }, data) {
     let promise = api.searchProjectEraChild(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -677,7 +721,9 @@ const actions = {
 
     })
   },
-  searchProjectAreaChild ({commit}, data) {
+  searchProjectAreaChild({
+    commit
+  }, data) {
     let promise = api.searchProjectAreaChild(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -693,10 +739,11 @@ const actions = {
       }
       commit('setSearchMediaData', temp)
       commit('setPaginatorTotal', total)
-    }, (response) => {
-    })
+    }, (response) => {})
   },
-  searchEngineerEraChild ({commit}, data) {
+  searchEngineerEraChild({
+    commit
+  }, data) {
     let promise = api.searchEngineerEraChild(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -717,7 +764,9 @@ const actions = {
 
     })
   },
-  searchEngineerTradeChild ({commit}, data) {
+  searchEngineerTradeChild({
+    commit
+  }, data) {
     let promise = api.searchEngineerTradeChild(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -738,7 +787,9 @@ const actions = {
 
     })
   },
-  searchBookchart ({commit}, data) {
+  searchBookchart({
+    commit
+  }, data) {
     let promise = api.searchBookchart(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -760,7 +811,9 @@ const actions = {
 
     })
   },
-  searchBookformula ({commit}, data) {
+  searchBookformula({
+    commit
+  }, data) {
     let promise = api.searchBookformula(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -782,7 +835,9 @@ const actions = {
 
     })
   },
-  searchBookimage ({commit}, data) {
+  searchBookimage({
+    commit
+  }, data) {
     let promise = api.searchBookimage(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -804,7 +859,9 @@ const actions = {
 
     })
   },
-  searchRequirementProvinceChild ({commit}, data) {
+  searchRequirementProvinceChild({
+    commit
+  }, data) {
     let promise = api.searchRequirementProvinceChild(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -827,7 +884,9 @@ const actions = {
 
     })
   },
-  searchRequirementWayChild ({commit}, data) {
+  searchRequirementWayChild({
+    commit
+  }, data) {
     let promise = api.searchRequirementWayChild(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -850,7 +909,9 @@ const actions = {
 
     })
   },
-  searchLiteratureEraChild ({commit}, data) {
+  searchLiteratureEraChild({
+    commit
+  }, data) {
     let promise = api.searchLiteratureEraChild(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -873,7 +934,9 @@ const actions = {
 
     })
   },
-  searchLiteratureCategoryChild ({commit}, data) {
+  searchLiteratureCategoryChild({
+    commit
+  }, data) {
     let promise = api.searchLiteratureCategoryChild(data)
     commit('setLoadingState', true)
     promise.then((response) => {
@@ -898,7 +961,9 @@ const actions = {
 
     })
   },
-  searchExpertChild ({commit}, data) {
+  searchExpertChild({
+    commit
+  }, data) {
     let promise = api.searchExpertChild(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -921,7 +986,9 @@ const actions = {
 
     })
   },
-  searchPatentChild ({commit}, data) {
+  searchPatentChild({
+    commit
+  }, data) {
     let promise = api.searchPatentChild(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -944,7 +1011,9 @@ const actions = {
 
     })
   },
-  searchAchievementChild ({commit}, data) {
+  searchAchievementChild({
+    commit
+  }, data) {
     let promise = api.searchAchievementChild(data)
     promise.then((response) => {
       let d = response.data.hits
@@ -964,7 +1033,9 @@ const actions = {
       commit('setPaginatorTotal', response.data.total)
     })
   },
-  getUserFavoriteBooks ({commit}, data) {
+  getUserFavoriteBooks({
+    commit
+  }, data) {
     let promise = api.getUserFavoriteBooks(data)
     promise.then((response) => {
 
@@ -972,7 +1043,9 @@ const actions = {
 
     })
   },
-  addUserFavoriteBooks ({commit}, data) {
+  addUserFavoriteBooks({
+    commit
+  }, data) {
     let promise = api.addUserFavoriteBooks(data)
     promise.then((response) => {
       if (response.data.hasOwnProperty('success')) {
@@ -984,7 +1057,9 @@ const actions = {
       alert('请先登录')
     })
   },
-  removeUserFavoriteBooks ({commit}, data) {
+  removeUserFavoriteBooks({
+    commit
+  }, data) {
     let promise = api.removeUserFavoriteBooks(data)
     promise.then((response) => {
       if (response.data.hasOwnProperty('success')) {
@@ -997,7 +1072,9 @@ const actions = {
 
     })
   },
-  searchHybrid ({commit}, data) {
+  searchHybrid({
+    commit
+  }, data) {
     let promise = api.searchHybrid(data)
 
     promise.then((response) => {
@@ -1009,44 +1086,66 @@ const actions = {
 
     })
   },
-  addClickCount ({commit}, data) {
+  addClickCount({
+    commit
+  }, data) {
     let promise = api.addClickCount(data)
     promise.then((response) => {
+
+    })
+  },
+  searchMagazine({
+    commit
+  }, data) {
+    let promise = api.searchMagazine(data)
+    promise.then((response) => {
+
+    }, (response) => {
+
+    })
+  },
+  searchPaper({
+    commit
+  }, data) {
+    let promise = api.searchPaper(data)
+    promise.then((response) => {
+
+    }, (response) => {
 
     })
   }
 }
 
 const mutations = {
-  setSearchState (state, data) {
+  setSearchState(state, data) {
     state.searchStatus = data
   },
-  setEngineerSearchResults (state, data) {
+  setEngineerSearchResults(state, data) {
     state.engineerSearchResults = data
   },
-  setTotalEngineerSearchResults (state, total) {
+  setTotalEngineerSearchResults(state, total) {
     state.totalEngineerSearchResults = total
   },
-  setProjectSearchResults (state, data) {
+  setProjectSearchResults(state, data) {
     state.projectSearchResults = data
   },
-  setTotalProjectSearchResults (state, total) {
+  setTotalProjectSearchResults(state, total) {
     state.totalProjectSearchResults = total
   },
-  setLiteratureSearchResults (state, data) {
+  setLiteratureSearchResults(state, data) {
     state.literatureSearchResults = data
   },
-  setTotalLiteratureSearchResults (state, total) {
+  setTotalLiteratureSearchResults(state, total) {
     state.totalLiteratureSearchResults = total
   },
-  setAllPageBookFav (state, data) {
+  setAllPageBookFav(state, data) {
     for (var i = 0; i < state.allPageBookList.length; i++) {
       if (data.indexOf(state.allPageBookList[i].id) > -1) {
         state.allPageBookList[i].isFavorited = true
       }
     }
   },
-  searchAll (state, data) {
+  searchAll(state, data) {
     state.allPageBookList = []
     let allCount = data.bookChapterDataCount + data.bookDataCount + data.engineerDataCount + data.engineerDataCount + data.literatureDataCount + data.mediaDataCount + data.projectDataCount + data.requirementDataCount
     console.log(allCount)
@@ -1092,8 +1191,7 @@ const mutations = {
       state.allChapterList.push(chapter)
     }
     let b = data.projectData
-    state.allPageProjectList = [
-      {
+    state.allPageProjectList = [{
         children: []
       },
       {
@@ -1127,8 +1225,7 @@ const mutations = {
       state.allPageProjectList[i].children = temp.slice(3 * i, 3 * (i + 1))
     }
     let c = data.engineerData
-    state.allPageEngineerList = [
-      {
+    state.allPageEngineerList = [{
         children: []
       },
       {
@@ -1160,8 +1257,7 @@ const mutations = {
       state.allPageEngineerList[i].children = temp.slice(3 * i, 3 * (i + 1))
     }
     let d = data.mediaData
-    state.allPageMediaList = [
-      {
+    state.allPageMediaList = [{
         children: []
       },
       {
@@ -1232,12 +1328,11 @@ const mutations = {
       state.allPageKnowledgeList.push(knowledge)
     }
   },
-  searchBook (state, data) {
-  },
-  searchBookNotlogin (state, data) {
+  searchBook(state, data) {},
+  searchBookNotlogin(state, data) {
 
   },
-  searchBookLogin (state, data) {
+  searchBookLogin(state, data) {
     let bookData = data[0].hits
     let favData = data[1].hits
     let temp = []
@@ -1268,32 +1363,32 @@ const mutations = {
       temp.push(context)
     }
   },
-  searchProject (state, data) {
+  searchProject(state, data) {
 
   },
-  searchEngineer (state, data) {},
-  searchMedia (state, data) {},
-  searchRequirement (state, data) {},
-  searchLiterature (state, data) {
+  searchEngineer(state, data) {},
+  searchMedia(state, data) {},
+  searchRequirement(state, data) {},
+  searchLiterature(state, data) {
 
   },
-  searchExpert (state, data) {},
-  searchPatent (state, data) {},
-  baddUserFavoriteBooks (state, data) {
+  searchExpert(state, data) {},
+  searchPatent(state, data) {},
+  baddUserFavoriteBooks(state, data) {
     for (var i = 0; i < state.allPageBookList.length; i++) {
       if (data.bookId === state.allPageBookList[i].id) {
         state.allPageBookList[i].isFavorited = true
       }
     }
   },
-  bremoveUserFavoriteBooks (state, data) {
+  bremoveUserFavoriteBooks(state, data) {
     for (var i = 0; i < state.allPageBookList.length; i++) {
       if (data.bookId === state.allPageBookList[i].id) {
         state.allPageBookList[i].isFavorited = false
       }
     }
   },
-  searchHybrid (state, data) {
+  searchHybrid(state, data) {
     state.hybridEngineerList = data.engineerData
     state.hybridProjectList = data.projectData
     state.hubridLiteratureList = data.literatureData
