@@ -194,6 +194,7 @@
               page: 1,
             } 
             this.$store.dispatch('searchPaper',p)
+            this.$store.dispatch('searchPaperLeftPanel',p)
             this.$router.push('/search/result/context')
             this.$store.commit('setPaginatorCategory',{parent:'paper',child:''})
             this.$store.dispatch('searchPaperLeftPanel',p) 

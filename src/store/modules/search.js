@@ -697,7 +697,14 @@ const actions = {
   searchPaperLeftPanel({
     commit
   }, data) {
+    commit('setLoadingState', true)
+    let promise = api.searchPaperAggs(data)
+    promise.then((response) => {
+      commit('setLeftPanelPaper', response.data)
+      commit('setLoadingState', false)
+    }, (response) => {
 
+    })
   },
   searchProjectEraChild({
     commit
@@ -1107,8 +1114,36 @@ const actions = {
   searchPaper({
     commit
   }, data) {
+    commit('setLoadingState', true)
     let promise = api.searchPaper(data)
     promise.then((response) => {
+      let d = response.data.hits
+      let total = response.data.total
+      commit('setPaginatorTotal', total)
+      commit('setPaginatorRows', 10)
+      let temp = []
+      for (var i = 0; i < d.length; i++) {
+        var context = new contextItem
+        context.id = d[i]._id
+        context.type = '论文'
+        context.name = d[i]._source.title
+        context.publishedAt = d[i]._source.createdAt
+        context.cover = d[i]._source.cover
+        context.keywords = d[i]._source.tags
+        if (d[i].hasOwnProperty('highlight')) {
+          var tt = ''
+          var dd = d[i].highlight.content
+          for (var j = 0; j < dd.length; j++) {
+            tt = tt + dd[j]
+          }
+          context.highlight = tt
+        } else {
+          context.highlight = d[i]._source.content
+        }
+        temp.push(context)
+      }
+      commit('setSearchContextData', temp)
+      commit('setLoadingState', false)
 
     }, (response) => {
 

@@ -1,30 +1,28 @@
-import { levelOneCategoryItem } from '../objectDeclare'
+import {
+  levelOneCategoryItem
+} from '../objectDeclare'
 
 const state = {
-  leftPanelItemList: [
-    {
-      name: '没有找到相关文献',
-      type: '',          //代表每个categoryItem的类型、
-      children: []
-    }
-  ],
+  leftPanelItemList: [{
+    name: '没有找到相关文献',
+    type: '', //代表每个categoryItem的类型、
+    children: []
+  }],
 }
 
 const actions = {}
 
 const mutations = {
   //如果搜索数据为空的话可以调用这个
-  setLeftPanelNoData (state, data) {
-    state.leftPanelItemList = [
-      {
-        name: '没有找到相关文献',
-        type: '',          //代表每个categoryItem的类型、
-        children: []
-      }
-    ]
+  setLeftPanelNoData(state, data) {
+    state.leftPanelItemList = [{
+      name: '没有找到相关文献',
+      type: '', //代表每个categoryItem的类型、
+      children: []
+    }]
   },
   //清除所有侧边栏数据集
-  clearLeftPanelData (state, data) {
+  clearLeftPanelData(state, data) {
     for (var i = 0; i < state.leftPanelItemList.length; i++) {
       state.leftPanelItemList[i].name = ''
       state.leftPanelItemList[i].type = ''
@@ -32,13 +30,11 @@ const mutations = {
     }
   },
   //首页，全部搜索的时候展示的数据
-  setAllPageLeftPanel (state, data) {
-    state.leftPanelItemList = [
-      {
-        name: '没有找到相关文献',
-        children: []
-      }
-    ]
+  setAllPageLeftPanel(state, data) {
+    state.leftPanelItemList = [{
+      name: '没有找到相关文献',
+      children: []
+    }]
     state.leftPanelItemList[0].name = '所有类别'
     state.leftPanelItemList[0].type = 'searchAll'
     state.leftPanelItemList[0].children.push({
@@ -83,24 +79,20 @@ const mutations = {
     })
   },
   //搜索工程师的时候展示的数据
-  setLeftPanelClickEngineerCategory (state, data) {
+  setLeftPanelClickEngineerCategory(state, data) {
     state.leftPanelItemList = []
     let a = data[0].data
     let b = data[1].data
-    state.leftPanelItemList.push(
-      {
-        name: '',
-        type: '',
-        children: []
-      }
-    )
-    state.leftPanelItemList.push(
-      {
-        name: '',
-        type: '',
-        children: []
-      }
-    )
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
     state.leftPanelItemList[0].name = '年代'
     state.leftPanelItemList[0].type = 'engineerCategory'
     state.leftPanelItemList[1].type = 'engineerCategory'
@@ -123,7 +115,7 @@ const mutations = {
     }
   },
   //搜索'企业需求'时展示的数据
-  setLeftPanelClickRequirementCategory (state, data) {
+  setLeftPanelClickRequirementCategory(state, data) {
     state.leftPanelItemList = []
     let a = data[0].data
     let b = data[1].data
@@ -160,7 +152,7 @@ const mutations = {
       }
     }
   },
-  setLeftPanelClickMediaCategorys (state, data) {
+  setLeftPanelClickMediaCategorys(state, data) {
     state.leftPanelItemList = []
     console.log(data)
     let a = data[0].hits.total
@@ -189,7 +181,7 @@ const mutations = {
       active: false
     })
   },
-  setActiveLevel2Category (state, data) {
+  setActiveLevel2Category(state, data) {
     let d = state.leftPanelItemList[data.parentIndex]
     for (var i = 0; i < d.children.length; i++) {
       d.children[i].active = false
@@ -197,26 +189,22 @@ const mutations = {
     d.children[data.childIndex].active = true
   },
   //搜索图书的时候展示的数据
-  setLeftPanelClickBookCategory (state, data) {
+  setLeftPanelClickBookCategory(state, data) {
     state.leftPanelItemList = []
     let a = data[0].data
     let b = data[1].data
     let c = data[2].data
     let d = data[3].data
-    state.leftPanelItemList.push(
-      {
-        name: '',
-        type: '',
-        children: []
-      }
-    )
-    state.leftPanelItemList.push(
-      {
-        name: '',
-        type: '',
-        children: []
-      }
-    )
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
     // state.leftPanelItemList.push(
     //   {
     //     name: '',
@@ -255,7 +243,7 @@ const mutations = {
     //   active: false
     // })
   },
-  setLeftPanelClickProject (state, data) {
+  setLeftPanelClickProject(state, data) {
     state.leftPanelItemList = []
     let a = data[0].data
     let b = data[1].data
@@ -290,7 +278,7 @@ const mutations = {
       }
     }
   },
-  setLeftPanelClickLiterature (state, data) {
+  setLeftPanelClickLiterature(state, data) {
     state.leftPanelItemList = []
     let a = data[0].data
     let b = data[1].data
@@ -327,7 +315,7 @@ const mutations = {
       }
     }
   },
-  setLeftPanelClickKnowledgeCategorys (state, data) {
+  setLeftPanelClickKnowledgeCategorys(state, data) {
     state.leftPanelItemList = []
     let a = data[0].hits.total
     let b = data[1].hits.total
@@ -355,7 +343,20 @@ const mutations = {
       count: c,
       active: false,
     })
-
+  },
+  setLeftPanelPaper(state, data) {
+    state.leftPanelItemList = []
+    console.log(data)
+    state.leftPanelItemList.push({
+      name: '',
+      type: '',
+      children: []
+    })
+    if (data.length > 0) {
+      state.leftPanelItemList[0].name = '类别'
+    } else {
+      state.leftPanelItemList[0].name = '暂无数据'
+    }
   }
 }
 

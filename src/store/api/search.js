@@ -215,8 +215,15 @@ export default {
     let promise = axios.post(apiUrl, data)
     return promise
   },
+  // 搜索论文
   searchPaper(data) {
     let apiUrl = `${config.API_HOST}/search/paper`
+    let promise = axios.post(apiUrl, data)
+    return promise
+  },
+  //搜索论文分类
+  searchPaperAggs(data) {
+    let apiUrl = `${config.API_HOST}/search/paper/aggs`
     let promise = axios.post(apiUrl, data)
     return promise
   },
