@@ -13,20 +13,20 @@
 </template>
 
 <script>
-  import sideBar from './components/public/sideBar'
-  export default {
-    name: 'app',
-    components: {
-      sideBar
-    },
-    computed: {
-      isSideBarShow () {
-        return this.$store.getters.isSideBarShow
-      }
-    },
+import sideBar from "./components/public/sideBar";
+export default {
+  name: "app",
+  components: {
+    sideBar
+  },
+  computed: {
+    isSideBarShow() {
+      return this.$store.getters.isSideBarShow;
+    }
   }
+};
 </script>
 
 <style scoped>
-  @import "./assets/css/style.css";
+@import "./assets/css/style.css";
 </style>
