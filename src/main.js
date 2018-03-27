@@ -8,8 +8,17 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 
-import { Pagination, Tree, Table, TableColumn, Button, MessageBox, Message, Row,
-  Col } from 'element-ui'
+import {
+  Pagination,
+  Tree,
+  Table,
+  TableColumn,
+  Button,
+  MessageBox,
+  Message,
+  Row,
+  Col
+} from 'element-ui'
 
 Vue.use(Pagination)
 Vue.use(Tree)
@@ -22,7 +31,9 @@ Vue.use(Col)
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$message = Message
 
-import { AUTH_TOKEN } from './assets/js/config'
+import {
+  AUTH_TOKEN
+} from './assets/js/config'
 import './assets/iconfont/iconfont.css'
 import './assets/iconfont/iconfont'
 
@@ -50,5 +61,7 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: {App}
+  components: {
+    App
+  }
 })
