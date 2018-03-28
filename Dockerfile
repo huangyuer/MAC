@@ -29,4 +29,4 @@ CMD ["npm","run","dev"]
 #RUN curl --silent --location https://rpm.nodesource.com/setup_8.x |  bash -
 #RUN yum -y install nodejs
 # install nvm
-# https://github.com/creationix/nvm#install-script
+# https://github.com/creationix/nvm#install-script 
