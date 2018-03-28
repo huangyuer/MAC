@@ -10,7 +10,8 @@ if (process.env.NODE_ENV == 'development') {
   }
 } else {
   var config = {
-    API_HOST: 'http://101.132.93.53/v1'
+    // API_HOST: 'http://101.132.93.53/v1'
+    API_HOST: 'http://47.100.38.51/v1'
     // API_HOST: 'http://118.178.238.202:9988/v1'
   }
 }
