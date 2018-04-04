@@ -1,11 +1,11 @@
 @import "../global";
 
-.magazine-list {
+.paper-list {
   background-color: #f9f9f9;
-  .magazine-list-wrapper {
+  .paper-list-wrapper {
     width: 1240px;
     margin:0 auto;
-    .magazine-left{
+    .paper-left{
       float: left;
       width: 660px;
       background-color: #fff;
@@ -32,10 +32,10 @@
 
 
 @media only screen and (max-width: $max-width) {
-  .magazine-list{
-    .magazine-list-wrapper {
+  .paper-list{
+    .paper-list-wrapper {
       width: 100%;
-      .magazine-left {
+      .paper-left {
         float: none;
         width: auto;
         background-color: #fff;
