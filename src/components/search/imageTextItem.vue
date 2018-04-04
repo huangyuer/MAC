@@ -67,7 +67,7 @@ export default {
   components: {},
   data() {
     return {
-      preFix: "http://47.98.32.49:9988/"
+      preFix: this.$store.state.IMAGE_SERVER_PREFIX
     };
   },
   methods: {
@@ -101,7 +101,8 @@ export default {
       this.$store.dispatch("removeUserFavoriteBooks", p);
     },
     redirectChapterDetail: function() {
-      window.open("http://47.98.32.49/pdfviewer/pc?pdf=" + this.obj.pdf);
+      let pdfUrl = this.$store.state.PDF_SERVER_PREFIX + this.obj.pdf;
+      window.open(pdfUrl);
     }
   },
   computed: {
