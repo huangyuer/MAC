@@ -315,6 +315,22 @@ export default {
           this.$router.push("/search/result/context");
           this.$store.dispatch("searchKnowledgeLeftPanel", p7);
           break;
+        case "paper":
+          var p = {
+            searchContent: this.searchContent
+              ? this.searchContent
+              : this.searchContent_,
+            rows: 10,
+            page: 1
+          };
+          this.$store.dispatch("searchPaper", p);
+          this.$store.dispatch("searchPaperLeftPanel", p);
+          this.$router.push("/search/result/context");
+          this.$store.commit("setPaginatorCategory", {
+            parent: "paper",
+            child: ""
+          });
+          this.$store.dispatch("searchPaperLeftPanel", p);
         default:
           break;
       }
