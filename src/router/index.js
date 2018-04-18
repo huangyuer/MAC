@@ -319,7 +319,7 @@ export default new Router({
       },
     },
     {
-      path: '/magazine/info/:magazineId',
+      path: '/magazine/info/:issueId',
       components: {
         'app-header': AppHeader,
         'app-body': MagazineInfo,

@@ -30,7 +30,7 @@ const actions = {
   },
   getLatestPapers ({commit, state}, params) {
     // let promise = api.getLatestPapers(params.category, params.limit, params.page)
-    let promise = api.getLatestPapers(params.limit, params.page)
+    let promise = api.getLatestPapers(params.issueId, params.limit, params.page)
     promise.then((response) => {
       console.log(response.data)
       commit('setLatestPapers', response.data.data)

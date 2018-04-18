@@ -3,22 +3,12 @@
     <div class="paper-info-menu-bar">
       目录
     </div>
-    <ul>
-      <li>
-        <router-link to="/paper/info/3">
-          基于达索3D体验平台的铁路混合基于达索3D体验平台的铁路混合基于达索3D体验平台的铁路混合基于达索3D体验平台的铁路混合
+    <ul v-if="papers">
+      <li v-for="paper in papers">
+        <router-link :to="'/paper/info/' + paper._id">
+          {{paper.title}}
         </router-link>
-      </li>
-      <li>
-        <router-link to="/paper/info/3">
-          <span>基于达索3D体验平台的铁路混合基于达索3D体验平台的铁路混合基于达索3D体验平台的铁路混合基于达索3D体验平台的铁路混合</span>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/paper/info/3">
-          <span>基于达索3D体验平台的铁路混合基于达索3D体验平台的铁路混合基于达索3D体验平台的铁路混合基于达索3D体验平台的铁路混合</span>
-        </router-link>
-      </li>
+      </li> 
     </ul>
   </div>
 </template>
@@ -26,3 +16,17 @@
 <style lang="scss" scoped>
   @import "../../assets/css/paper/paperInfoLeft";
 </style>
+
+<script>
+export default {
+  props: ['papers', ],
+  computed:{
+    paperId () {
+        return this.$route.query.paperId || ''
+    }, 
+  },
+  mounted () { 
+
+  }
+}
+</script>

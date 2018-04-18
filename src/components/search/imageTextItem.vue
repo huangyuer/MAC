@@ -101,7 +101,7 @@ export default {
       this.$store.dispatch("removeUserFavoriteBooks", p);
     },
     redirectChapterDetail: function() {
-      let pdfUrl = this.$store.state.PDF_SERVER_PREFIX + this.obj.pdf;
+      let pdfUrl = this.$store.state.BOOKS_PDF_SERVER_PREFIX + this.obj.pdf;
       window.open(pdfUrl);
     }
   },

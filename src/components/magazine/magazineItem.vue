@@ -1,10 +1,10 @@
 <template>
-  <div class="magazine-item">
-    <router-link :to="`/magazine/info/${magazine._id}`">
-      <img src="../../assets/images/img.jpg" v-if="magazine.cover === ''"/>
-      <img :src="magazine.cover" v-else />
-      <div class="magazine-title">{{magazine.name}}</div>
-      <div class="magazine-time">{{magazine.createdAt | getYear}}年{{magazine.createdAt | getMonth}}期</div>
+  <div class="magazine-item" v-if="issue">
+    <router-link :to="'/magazine/info/' + issue._id">
+      <img src="../../assets/images/img.jpg" v-if="issue.cover === ''"/>
+      <img :src="issue.cover" v-else />
+      <div class="magazine-title">{{issue.year}}年第{{issue.issue}}期</div>
+      <div class="magazine-time"></div>
     </router-link>
   </div>
 </template>
@@ -16,18 +16,10 @@
 <script>
   export default {
     props: {
-      magazine: {}
+      issue: {'_id': '', 'cover': '', 'year': '', 'issue': ''}
     },
     filters: {
-      getYear: function (value) {
-        let date = new Date(value)
-        return date.getFullYear()
-      },
-      getMonth: function (value) {
-        let date = new Date(value)
-        let month = date.getMonth() + 1
-        return month < 10 ? '0' + month : month
-      }
+      
     }
   }
 </script>
