@@ -7,17 +7,17 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/public/backBar";
+@import "../../assets/css/public/backBar";
 </style>
 
 <script>
-  export default {
-    methods: {
-      goBack: function () {
-        this.$router.go(-1)
-      }
+export default {
+  methods: {
+    goBack: function() {
+      this.$router.go(-1);
     }
   }
+};
 </script>
 
 
