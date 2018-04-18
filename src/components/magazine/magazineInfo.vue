@@ -4,7 +4,7 @@
     <nav-bar firstUrl="/" firstNav="首页" secondUrl="/magazine/list" secondNav="期刊列表"
              :thirdUrl="'/magazine/info/' + issueId" :thirdNav="issue.year + issue.issue"></nav-bar>
     <div class="magazine-info-wrapper">
-      <div class="magazine-info-left">
+      <div class="magazine-info-left" v-if="issue">
         <div class="magazine-info-header">
           <div class="magazine-info-title" v-text="issue.year + '年第' + issue.issue + '期'"></div>
           <img src="../../assets/images/img.jpg" v-if="issue.cover === ''"/>
@@ -12,37 +12,37 @@
           <div class="magazine-info-detail">
             <p>
               <span>主管单位：</span>
-              <span v-text="issue.magzine.manager"></span>
+              <span v-if="issue.magzine" v-text="issue.magzine.manager"></span>
             </p>
             <p>
               <span>主办单位：</span>
-              <span v-text="issue.magzine.organizer"></span>
+              <span v-if="issue.magzine" v-text="issue.magzine.organizer"></span>
             </p>
             <p>
               <span>主编：</span>
-              <span v-text="issue.magzine.chiefEditor">
+              <span v-if="issue.magzine" v-text="issue.magzine.chiefEditor">
               </span>
             </p>
             <p>
               <span>语种：</span>
-              <span v-text="issue.magzine.language"></span>
+              <span v-if="issue.magzine" v-text="issue.magzine.language"></span>
             </p>
             <p>
               <span>国际刊号：</span>
-              <span v-text="issue.magzine.issn"></span>
+              <span v-if="issue.magzine" v-text="issue.magzine.issn"></span>
             </p>
             <p>
               <span>国内刊号：</span>
-              <span v-text="issue.magzine.cn"></span>
+              <span v-if="issue.magzine" v-text="issue.magzine.cn"></span>
             </p>
             <p>
               <span>出版周期：</span>
-              <span v-text="issue.magzine.period"></span>
+              <span v-if="issue.magzine" v-text="issue.magzine.period"></span>
             </p>
 
             <div class="magazine-info-brief">
               <span>期刊简介：</span>
-              <span v-text="issue.magzine.info"></span>
+              <span v-if="issue.magzine" v-text="issue.magzine.info"></span>
             </div>
 
             <div class="magazine-info-btn-group">
