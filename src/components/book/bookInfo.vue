@@ -105,7 +105,8 @@
         this.$store.dispatch('getBookDetail', {'bookId': this.bookId});
       },
       readPdf: function(bookDetail){
-        let pdfUrl = 'http://47.98.32.49/pdfviewer/pc?pdf=' + bookDetail.pdf
+
+        let pdfUrl = this.$store.state.PDF_SERVER_PREFIX + bookDetail.pdf
         console.log(pdfUrl)
         window.location.href = pdfUrl
       },

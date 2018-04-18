@@ -33,7 +33,9 @@ Vue.use(Vuex)
 
 const state = {
   rootUrl: 'http://118.178.238.202:8000/',
-  coverUrlPrefix: 'http://47.98.32.49:9988/'
+  coverUrlPrefix: 'http://47.98.32.49:9988/',
+  PDF_SERVER_PREFIX: 'http://47.100.38.51:8080/pc/index.html?docuri=http://127.0.0.1:9090/', // 图书pdf服务地址前缀
+  IMAGE_SERVER_PREFIX: 'http://47.100.38.51:8244/' // 图片服务地址前缀
 }
 
 const debug = process.env.NODE_ENV !== 'production'

@@ -56,7 +56,7 @@
   export default {
     data () {
       return {
-        preFix: 'http://47.98.32.49:9988/'
+        preFix: this.$store.state.IMAGE_SERVER_PREFIX
       }
     },
     components: {
