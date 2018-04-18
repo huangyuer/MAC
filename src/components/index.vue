@@ -138,236 +138,262 @@
   </div>
 </template>
 <script>
-  import VueParticles from 'vue-particles/src/vue-particles/vue-particles.vue'
-  import { checkLoginCookie, deleteCookie, setCookie } from '../assets/js/cookie'
+import VueParticles from "vue-particles/src/vue-particles/vue-particles.vue";
+import { checkLoginCookie, deleteCookie, setCookie } from "../assets/js/cookie";
 
-  export default {
-    name: 'index',
-    data () {
-      return {
-        isSignedIn: false,
-        isLibListShow: false,
-        searchContent_: '',
-        placeholder: '全文检索',
-        isSubLibsShow: false
+export default {
+  name: "index",
+  data() {
+    return {
+      isSignedIn: false,
+      isLibListShow: false,
+      searchContent_: "",
+      placeholder: "全文检索",
+      isSubLibsShow: false
+    };
+  },
+  components: {
+    VueParticles
+  },
+  methods: {
+    // toggleSubLibs wap 切换子菜单
+    toggleSubLibs: function() {
+      this.isSubLibsShow = !this.isSubLibsShow;
+    },
+    listBooks: function() {
+      this.$router.push("/book/list");
+    },
+    listBooksByLib: function(lib) {
+      this.$router.push("/book/list?lib=" + encodeURI(lib));
+    },
+    // 检查token是否失效
+    checkToken: function() {
+      if (checkLoginCookie()) {
+        // 若未失效则登录注册切换显示个人中心
+        this.isSignedIn = true;
       }
     },
-    components: {
-      VueParticles
+    // 退出登录
+    logout: function() {
+      // 删除cookie检查状态成功则退出
+      deleteCookie("sessionToken");
+      this.$store.commit("setLoggedOut");
+      window.history.go(0);
+      this.$router.push("/");
     },
-    methods: {
-
-      // toggleSubLibs wap 切换子菜单
-      toggleSubLibs: function () {
-        this.isSubLibsShow = !this.isSubLibsShow
-      },
-      listBooks: function () {
-        this.$router.push('/book/list')
-      },
-      listBooksByLib: function (lib) {
-        this.$router.push('/book/list?lib=' + encodeURI(lib))
-      },
-      // 检查token是否失效
-      checkToken: function () {
-        if (checkLoginCookie()) {
-          // 若未失效则登录注册切换显示个人中心
-          this.isSignedIn = true
-        }
-      },
-      // 退出登录
-      logout: function () {
-        // 删除cookie检查状态成功则退出
-        deleteCookie('sessionToken')
-        this.$store.commit('setLoggedOut')
-        window.history.go(0)
-        this.$router.push('/')
-
-      },
-      clickSearch: function () {
-        switch (this.currentLevelOneCategory.nickName) {
-          case 'all':
-            var p = {
-              searchContent: this.searchContent
+    clickSearch: function() {
+      switch (this.currentLevelOneCategory.nickName) {
+        case "all":
+          var p = {
+            searchContent: this.searchContent
+          };
+          this.$store.dispatch("searchAll", p);
+          break;
+        case "book":
+          var pp = this.levelOneCategoryList[1].children;
+          var keywords = [];
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword);
             }
-            this.$store.dispatch('searchAll', p)
-            break
-          case 'book':
-            var pp = this.levelOneCategoryList[1].children
-            var keywords = []
-            for (var i = 0; i < pp.length; i++) {
-              if (pp[i].active === true) {
-                keywords.push(pp[i].keyword)
-              }
-            }
-            let p1 = {
-              rows: 10,
-              searchContent: this.searchContent,
-              page: 1,
-              keywords: keywords
-            }
-            this.$store.dispatch('searchBook', p1)
-            this.$store.dispatch('searchBookLeftPanel', p1)
-            this.$router.push('/search/result/context')
-            break
-          case 'project':
-            var pp = this.levelOneCategoryList[3].children
-            var keywords = []
-            for (var i = 0; i < pp.length; i++) {
-              if (pp[i].active === true) {
-                keywords.push(pp[i].keyword)
-              }
-            }
-            let p2 = {
-              rows: 9,
-              searchContent: this.searchContent,
-              page: 1,
-              keywords: keywords,
-            }
-
-            this.$store.dispatch('searchProject', p2)
-            this.$store.dispatch('searchProjectLeftPanel', p2)
-            this.$router.push('/search/result/media')
-            break
-          case 'engineer':
-            var pp = this.levelOneCategoryList[5].children
-            var keywords = []
-            for (var i = 0; i < pp.length; i++) {
-              if (pp[i].active === true) {
-                keywords.push(pp[i].keyword)
-              }
-            }
-            let p3 = {
-              rows: 9,
-              searchContent: this.searchContent,
-              page: 1,
-              keywords: keywords
-            }
-            this.$store.dispatch('searchEngineer', p3)
-            this.$store.dispatch('searchEngineerLeftPanel', p3)
-            this.$router.push('/search/result/media')
-            break
-          case 'pic':
-            let p4 = {
-              rows: 9,
-              searchContent: this.searchContent,
-              page: 1,
-            }
-            this.$store.dispatch('searchMedia', p4)
-            this.$store.dispatch('searchMediaLeftPanel', p4)
-            this.$router.push('/search/result/media')
-            break
-          case 'requirement':
-            var pp = this.levelOneCategoryList[7].children
-            var keywords = []
-            for (var i = 0; i < pp.length; i++) {
-              if (pp[i].active === true) {
-                keywords.push(pp[i].keyword)
-              }
-            }
-            let p5 = {
-              rows: 10,
-              searchContent: this.searchContent,
-              page: 1,
-              keywords: keywords,
-            }
-            this.$store.dispatch('searchRequirement', p5)
-            this.$store.dispatch('searchRequirementLeftPanel', p5)
-            this.$router.push('/search/result/context')
-            break
-          case 'anli':
-            var pp = this.levelOneCategoryList[8].children
-            var keywords = []
-            for (var i = 0; i < pp.length; i++) {
-              if (pp[i].active === true) {
-                keywords.push(pp[i].keyword)
-              }
-            }
-            let p6 = {
-              rows: 10,
-              searchContent: this.searchContent,
-              page: 1,
-              keywords: keywords,
-            }
-            this.$store.dispatch('searchLiterature', p6)
-            this.$store.dispatch('searchLiteratureLeftPanel', p6)
-            this.$router.push('/search/result/context')
-            break
-          case 'knowledge':
-            let p7 = {
-              rows: 10,
-              searchContent: this.searchContent,
-              page: 1,
-            }
-            this.$store.dispatch('searchExpertPatent', p7)
-            this.$router.push('/search/result/context')
-            this.$store.dispatch('searchKnowledgeLeftPanel', p7)
-            break
-          default:
-            break
-        }
-      },
-      setActiveLevelOneCategory (ind) {
-        this.$store.commit('setActiveLevelOneCategory', ind)
-      }
-    },
-    computed: {
-      loggedIn () {
-        try {
-          let logged = this.$store.getters.loggedIn
-          if (logged) {
-            return true
           }
-          let userInfo = getCookie('userInfo')
-          if (userInfo) {
-            try {
-              let user = JSON.parse(userInfo)
-              return user
-            } catch (e) {
-              return this.$store.getters.userInfo
+          let p1 = {
+            rows: 10,
+            searchContent: this.searchContent,
+            page: 1,
+            keywords: keywords
+          };
+          this.$store.dispatch("searchBook", p1);
+          this.$store.dispatch("searchBookLeftPanel", p1);
+          this.$router.push("/search/result/context");
+          break;
+        case "chapterTitle":
+          let ppst = {
+            rows: 10,
+            searchContent: this.searchContent,
+            page: 1,
+            keywords: []
+          };
+          this.$store.dispatch("searchBookChapterDataList", ppst);
+          this.$store.dispatch("searchBookLeftPanel", ppst);
+          this.$router.push("/search/result/context");
+          // this.$store.commit("setPaginatorCategory", {
+          //   parent: "bookChapter",
+          //   child: ""
+          // });
+          break;
+        case "project":
+          var pp = this.levelOneCategoryList[3].children;
+          var keywords = [];
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword);
             }
-          } else {
-            return this.$store.getters.userInfo
           }
-        } catch (e) {
-        }
-      },
-      sublibs () {
-        return this.$store.getters.sublibs
-      },
-      levelOneCategoryList: function () {
-        return this.$store.state.searchComponent.levelOneCategoryList
-      },
-      currentLevelOneCategory: function () {
-        return this.$store.state.searchComponent.currentLevelOneCategory
-      },
-      searchContent: {
-        get: function () {
-          return this.$store.state.searchComponent.searchContent
-        },
-        set: function (val) {
-          setCookie('searchContent', val)
-          this.$store.commit('setSearchContent', val)
-          console.log(val)
-          this.searchContent_ = val
-        }
+          let p2 = {
+            rows: 9,
+            searchContent: this.searchContent,
+            page: 1,
+            keywords: keywords
+          };
+
+          this.$store.dispatch("searchProject", p2);
+          this.$store.dispatch("searchProjectLeftPanel", p2);
+          this.$router.push("/search/result/media");
+          break;
+        case "engineer":
+          var pp = this.levelOneCategoryList[5].children;
+          var keywords = [];
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword);
+            }
+          }
+          let p3 = {
+            rows: 9,
+            searchContent: this.searchContent,
+            page: 1,
+            keywords: keywords
+          };
+          this.$store.dispatch("searchEngineer", p3);
+          this.$store.dispatch("searchEngineerLeftPanel", p3);
+          this.$router.push("/search/result/media");
+          break;
+        case "pic":
+          let p4 = {
+            rows: 9,
+            searchContent: this.searchContent,
+            page: 1
+          };
+          this.$store.dispatch("searchMedia", p4);
+          this.$store.dispatch("searchMediaLeftPanel", p4);
+          this.$router.push("/search/result/media");
+          break;
+        case "requirement":
+          var pp = this.levelOneCategoryList[7].children;
+          var keywords = [];
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword);
+            }
+          }
+          let p5 = {
+            rows: 10,
+            searchContent: this.searchContent,
+            page: 1,
+            keywords: keywords
+          };
+          this.$store.dispatch("searchRequirement", p5);
+          this.$store.dispatch("searchRequirementLeftPanel", p5);
+          this.$router.push("/search/result/context");
+          break;
+        case "anli":
+          var pp = this.levelOneCategoryList[8].children;
+          var keywords = [];
+          for (var i = 0; i < pp.length; i++) {
+            if (pp[i].active === true) {
+              keywords.push(pp[i].keyword);
+            }
+          }
+          let p6 = {
+            rows: 10,
+            searchContent: this.searchContent,
+            page: 1,
+            keywords: keywords
+          };
+          this.$store.dispatch("searchLiterature", p6);
+          this.$store.dispatch("searchLiteratureLeftPanel", p6);
+          this.$router.push("/search/result/context");
+          break;
+        case "knowledge":
+          let p7 = {
+            rows: 10,
+            searchContent: this.searchContent,
+            page: 1
+          };
+          this.$store.dispatch("searchExpertPatent", p7);
+          this.$router.push("/search/result/context");
+          this.$store.dispatch("searchKnowledgeLeftPanel", p7);
+          break;
+        case "paper":
+          var p = {
+            searchContent: this.searchContent
+              ? this.searchContent
+              : this.searchContent_,
+            rows: 10,
+            page: 1
+          };
+          this.$store.dispatch("searchPaper", p);
+          this.$store.dispatch("searchPaperLeftPanel", p);
+          this.$router.push("/search/result/context");
+          this.$store.commit("setPaginatorCategory", {
+            parent: "paper",
+            child: ""
+          });
+          this.$store.dispatch("searchPaperLeftPanel", p);
+        default:
+          break;
       }
     },
-    mounted () {
-      this.$store.commit('setActiveLevelOneCategory', 0)
-      this.checkToken()
-      this.$store.dispatch('listSublibs', {})
+    setActiveLevelOneCategory(ind) {
+      this.$store.commit("setActiveLevelOneCategory", ind);
+    }
+  },
+  computed: {
+    loggedIn() {
+      try {
+        let logged = this.$store.getters.loggedIn;
+        if (logged) {
+          return true;
+        }
+        let userInfo = getCookie("userInfo");
+        if (userInfo) {
+          try {
+            let user = JSON.parse(userInfo);
+            return user;
+          } catch (e) {
+            return this.$store.getters.userInfo;
+          }
+        } else {
+          return this.$store.getters.userInfo;
+        }
+      } catch (e) {}
     },
-    watch: {
-      searchContent: function (val) {
-
+    sublibs() {
+      return this.$store.getters.sublibs;
+    },
+    levelOneCategoryList: function() {
+      return this.$store.state.searchComponent.levelOneCategoryList;
+    },
+    currentLevelOneCategory: function() {
+      return this.$store.state.searchComponent.currentLevelOneCategory;
+    },
+    searchContent: {
+      get: function() {
+        return this.$store.state.searchComponent.searchContent;
       },
-      searchContent_: function (val) {
-        this.$store.commit('setSearchContent', val)
+      set: function(val) {
+        setCookie("searchContent", val);
+        this.$store.commit("setSearchContent", val);
+        console.log(val);
+        this.searchContent_ = val;
       }
     }
+  },
+  mounted() {
+    this.$store.commit("setActiveLevelOneCategory", 0);
+    this.checkToken();
+    this.$store.dispatch("listSublibs", {});
+  },
+  watch: {
+    searchContent: function(val) {},
+    searchContent_: function(val) {
+      this.$store.commit("setSearchContent", val);
+    }
   }
+};
 </script>
 
 <style lang="scss" scoped>
-  @import "../assets/css/index.scss";
+@import "../assets/css/index.scss";
 </style>
