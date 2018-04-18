@@ -12,6 +12,7 @@ import works from './modules/works'
 import engineer from './modules/engineer'
 import literature from './modules/literature'
 import magazine from './modules/magazine'
+import issue from './modules/issue'
 import paper from './modules/paper'
 import auth from './modules/auth'
 
@@ -33,8 +34,9 @@ Vue.use(Vuex)
 
 const state = {
   rootUrl: 'http://118.178.238.202:8000/',
-  coverUrlPrefix: 'http://47.98.32.49:9988/',
-  PDF_SERVER_PREFIX: 'http://47.100.38.51:8080/pc/index.html?docuri=http://127.0.0.1:9090/', // 图书pdf服务地址前缀
+  coverUrlPrefix: 'http://47.100.38.51:8244/',
+  BOOKS_PDF_SERVER_PREFIX: 'http://47.100.38.51:8080/pc/index.html?docuri=http://127.0.0.1:9090/books/', // 图书pdf服务地址前缀
+  MAGAZINES_PDF_SERVER_PREFIX: 'http://47.100.38.51:8080/pc/index.html?docuri=http://127.0.0.1:9090/magzines/', // 期刊pdf服务地址前缀
   IMAGE_SERVER_PREFIX: 'http://47.100.38.51:8244/' // 图片服务地址前缀
 }
 
@@ -59,6 +61,7 @@ export default new Vuex.Store({
     works,
     literature,
     magazine,
+    issue,
     paper,
     engineer,
     mediaPopup,

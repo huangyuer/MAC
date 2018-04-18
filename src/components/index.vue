@@ -29,9 +29,11 @@
           <li class="drop-down"><a href="javascript:;" @click="listBooks" class="menu_item link">工程数据库</a>
             <div class="triangle-up"></div>
             <ul class="drop-down-content">
-              <li v-for="lib in sublibs"><a @click="listBooksByLib(lib.name)" class="menu_item link" href="javascript:;"
+              <!-- <li v-for="lib in sublibs"><a @click="listBooksByLib(lib.name)" class="menu_item link" href="javascript:;"
                                             v-text="lib.name"></a>
-              </li>
+              </li> -->
+              <li><router-link class="menu_item link" to="/book/list">图书</router-link></li>
+              <li><router-link class="menu_item link" to="/magazine/list">期刊</router-link></li>
             </ul>
           </li>
           <li><a href="/#/selected" class="menu_item link">工程师史</a></li>

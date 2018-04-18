@@ -1378,7 +1378,7 @@ const mutations = {
       context.name = bookData[i]._source.name
       context.publishedAt = bookData[i]._source.publishedAt
       context.keywords = bookData[i]._source.keywords
-      context.cover = 'http://47.98.32.49:9988/' + bookData[i]._source.cover
+      context.cover = 'http://47.100.38.51:8244/' + bookData[i]._source.cover
       context.type = '图书'
       var highlightString = ''
       if (bookData[i].hasOwnProperty('highlight')) {

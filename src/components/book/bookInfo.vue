@@ -106,7 +106,7 @@
       },
       readPdf: function(bookDetail){
 
-        let pdfUrl = this.$store.state.PDF_SERVER_PREFIX + bookDetail.pdf
+        let pdfUrl = this.$store.state.BOOKS_PDF_SERVER_PREFIX + bookDetail.pdf
         console.log(pdfUrl)
         window.location.href = pdfUrl
       },
