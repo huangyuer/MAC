@@ -124,25 +124,6 @@ const actions = {
     }
 
   },
-  searchBookBak({
-    commit
-  }, data) {
-    let userInfo = getCookie('userInfo')
-    if (userInfo) { // 已经登录
-      let promise1 = api.searchBook(data)
-      let promise2 = api.getUserFavoriteBooks(data)
-      Promise.all([promise1, promise2]).then(function (resp) {
-        commit('searchBookLogin', resp)
-      })
-    } else {
-      let promise = api.searchBook(data)
-      promise.then((response) => {
-
-      }, (response) => {
-
-      })
-    }
-  },
   searchBook({
     commit
   }, data) {
