@@ -4,7 +4,7 @@
     <div class="literature_info">
       <div class="literature_info_left">
         <h4 v-text="literature.name"></h4>
-         <div  @click="readPdf(literature)" style="text-align:center;"  class="btn-container"><div class="btn">在线阅读</div></div>
+         <div v-if="literature.pdf"  @click="readPdf(literature)" style="text-align:center;"  class="btn-container"><div class="btn">在线阅读</div></div>
         <p v-html="literature.content" class="literature_content"></p>
       </div>
       <div class="literature_info_right">
