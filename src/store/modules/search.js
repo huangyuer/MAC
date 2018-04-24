@@ -3,6 +3,7 @@ import {
   getCookie
 } from '../../utils/cookie'
 import router from '../../router/index'
+import config from '../config'
 import {
   knowledgeItem,
   bookItem,
@@ -124,25 +125,6 @@ const actions = {
     }
 
   },
-  searchBookBak({
-    commit
-  }, data) {
-    let userInfo = getCookie('userInfo')
-    if (userInfo) { // 已经登录
-      let promise1 = api.searchBook(data)
-      let promise2 = api.getUserFavoriteBooks(data)
-      Promise.all([promise1, promise2]).then(function (resp) {
-        commit('searchBookLogin', resp)
-      })
-    } else {
-      let promise = api.searchBook(data)
-      promise.then((response) => {
-
-      }, (response) => {
-
-      })
-    }
-  },
   searchBook({
     commit
   }, data) {
@@ -166,7 +148,7 @@ const actions = {
             context.type = '图书'
             context.name = d[i]._source.name
             context.publishedAt = d[i]._source.publishedAt
-            context.cover = this.$store.state.IMAGE_SERVER_PREFIX + d[i]._source.cover
+            context.cover = config.IMAGE_SERVER_PREFIX + d[i]._source.cover
             context.keywords = d[i]._source.keywords
             var stt = ''
             console.log(d[i].hasOwnProperty('highlight'))
@@ -213,7 +195,7 @@ const actions = {
             context.type = '图书'
             context.name = d[i]._source.name
             context.publishedAt = d[i]._source.publishedAt
-            context.cover = this.$store.state.IMAGE_SERVER_PREFIX + d[i]._source.cover
+            context.cover = config.IMAGE_SERVER_PREFIX + d[i]._source.cover
             context.keywords = d[i]._source.keywords
             var stt = ''
             console.log(d[i].hasOwnProperty('highlight'))
@@ -267,7 +249,7 @@ const actions = {
           context.type = '图书'
           context.name = d[i]._source.name
           context.publishedAt = d[i]._source.publishedAt
-          context.cover = this.$store.state.IMAGE_SERVER_PREFIX + d[i]._source.cover
+          context.cover = config.IMAGE_SERVER_PREFIX + d[i]._source.cover
           context.keywords = d[i]._source.keywords
           var stt = ''
           console.log(d[i].hasOwnProperty('highlight'))
@@ -364,7 +346,7 @@ const actions = {
       let temp = []
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
-        media.url = this.$store.state.IMAGE_SERVER_PREFIX + d[i]._source.url
+        media.url = config.IMAGE_SERVER_PREFIX + d[i]._source.url
         media.description = d[i]._source.description
         media.title = d[i]._source.title
         media.clicks = d[i]._source.clicks
@@ -567,7 +549,7 @@ const actions = {
         context.type = '图书'
         context.name = d[i]._source.name
         context.publishedAt = d[i]._source.publishedAt
-        context.cover = this.$store.state.IMAGE_SERVER_PREFIX + d[i]._source.cover
+        context.cover = config.IMAGE_SERVER_PREFIX + d[i]._source.cover
         context.keywords = d[i]._source.keywords
         context.highlight = d[i]._source.summary
         temp.push(context)
@@ -618,7 +600,7 @@ const actions = {
         context.type = '图书'
         context.name = d[i]._source.name
         context.publishedAt = d[i]._source.publishedAt
-        context.cover = this.$store.state.IMAGE_SERVER_PREFIX + d[i]._source.cover
+        context.cover = config.IMAGE_SERVER_PREFIX + d[i]._source.cover
         context.keywords = d[i]._source.keywords
         context.keywords = d[i]._source.keywords
         temp.push(context)
@@ -805,7 +787,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = this.$store.state.IMAGE_SERVER_PREFIX + d[i]._source.url
+        media.url = config.IMAGE_SERVER_PREFIX + d[i]._source.url
         media.title = d[i]._source.title
         media.description = d[i]._source.description
         media.clicks = d[i]._source.clicks
@@ -829,7 +811,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = this.$store.state.IMAGE_SERVER_PREFIX + d[i]._source.url
+        media.url = config.IMAGE_SERVER_PREFIX + d[i]._source.url
         media.title = d[i]._source.title
         media.description = d[i]._source.description
         media.clicks = d[i]._source.clicks
@@ -853,7 +835,7 @@ const actions = {
       for (var i = 0; i < d.length; i++) {
         var media = new mediaItem()
         media.id = d[i]._id
-        media.url = this.$store.state.IMAGE_SERVER_PREFIX + d[i]._source.url
+        media.url = config.IMAGE_SERVER_PREFIX + d[i]._source.url
         media.title = d[i]._source.title
         media.description = d[i]._source.description
         media.clicks = d[i]._source.clicks
