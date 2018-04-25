@@ -37,7 +37,9 @@ const state = {
   coverUrlPrefix: 'http://47.100.38.51:8244/',
   OSS_PDF_SERVER_PREFIX: 'http://47.100.38.51:8080/pc/index.html?docuri=',
   BOOKS_PDF_SERVER_PREFIX: 'http://47.100.38.51:8080/pc/index.html?docuri=http://127.0.0.1:9090/books/', // 图书pdf服务地址前缀
+  BOOKS_PDF_MOBILE_SERVER_PREFIX: 'http://47.100.38.51:8080/mobile/index.html?docuri=http://127.0.0.1:9090/books/', // 手机版图书pdf服务地址前缀
   MAGAZINES_PDF_SERVER_PREFIX: 'http://47.100.38.51:8080/pc/index.html?docuri=http://127.0.0.1:9090/magzines/', // 期刊pdf服务地址前缀
+  MAGAZINES_PDF_MOBILE_SERVER_PREFIX: 'http://47.100.38.51:8080/mobile/index.html?docuri=http://127.0.0.1:9090/magzines/', // 手机版期刊pdf服务地址前缀
   IMAGE_SERVER_PREFIX: 'http://47.100.38.51:8244/' // 图片服务地址前缀
 }
 
