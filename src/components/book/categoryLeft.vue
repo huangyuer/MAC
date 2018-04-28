@@ -15,7 +15,7 @@
           prop="name"
           label="本书目录">
           <template slot-scope="scope">
-             <div v-if="scope">
+             <div v-if="scope.row">
               <span v-for="space in scope.row.level" class="ms-tree-space">
                 &nbsp;&nbsp;
               </span>
