@@ -3,15 +3,15 @@
     <!--web端-->
     <div class="inner">
       <div class="container">
-        <a href="http://home.tjdesignx.com/#/"> <span>首页</span></a>
+        <a href="http://www.tongjix.cn/#/"> <span>首页</span></a>
         <span>|</span>
-         <a href="http://home.tjdesignx.com/#/"> <span>工程数据库</span></a>
+         <a href="http://www.tongjix.cn/#/"> <span>工程数据库</span></a>
         <span>|</span>
        <a href="/#/selected" class="link">工程师史</a>
         <span>|</span>
-         <a href="http://trade.tjdesignx.com/#/">版权贸易</a>
+         <a href="http://trade.tongjix.cn/#/">版权贸易</a>
         <span>|</span>
-        <a href="http://bbs.tjdesignx.com/#/">工程技术论坛</a>
+        <a href="http://bbs.tongjix.cn/#/">工程技术论坛</a>
         <span>|</span>
          <a href="http://x.tjdesignx.com/#/">同济设计在线</a>
         <span>|</span>
@@ -32,17 +32,17 @@
     <div class="wap-inner">
       <div class="container">
         <div class="wap-inner-index">
-          <a href="http://home.tjdesignx.com/#/"> <span>首页</span></a>
+          <a href="http://www.tongjix.cn/#/"> <span>首页</span></a>
         </div>
       </div>
       <div class="container">
-        <a href="http://home.tjdesignx.com/#/"> <span>工程数据库</span></a>
-        <a href="http://trade.tjdesignx.com/#/">版权贸易</a>
+        <a href="http://www.tongjix.cn/#/"> <span>工程数据库</span></a>
+        <a href="http://trade.tongjix.cn/#/">版权贸易</a>
         <a href="http://x.tjdesignx.com/#/">同济设计在线</a>
       </div>
       <div class="container">
         <a href="/#/selected" class="link">工程师史</a>
-        <a href="http://bbs.tjdesignx.com/#/">工程技术论坛</a>
+        <a href="http://bbs.tongjix.cn/#/">工程技术论坛</a>
         <a href="http://bim.tjdesignx.com/#/">BIM培训中心</a>
       </div>
       <div class="container">

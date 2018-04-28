@@ -37,8 +37,8 @@
             </ul>
           </li>
           <li><a href="/#/selected" class="menu_item link">工程师史</a></li>
-          <li><a href="http://trade.tjdesignx.com/#/" class="menu_item link">版权贸易</a></li>
-          <li><a href="http://bbs.tjdesignx.com/#/" class="menu_item link">工程技术论坛</a></li>
+          <li><a href="http://trade.tongjix.cn/#/" class="menu_item link">版权贸易</a></li>
+          <li><a href="http://bbs.tongjix.cn/#/" class="menu_item link">工程技术论坛</a></li>
           <li><a href="http://x.tjdesignx.com/#/" class="menu_item link">同济设计在线</a></li>
           <li><a href="http://bim.tjdesignx.com/#/" class="menu_item link">BIM培训中心</a></li>
         </ul>
@@ -114,8 +114,8 @@
           </ul>
         </li>
         <li><a href="/#/selected">工程师史</a></li>
-        <li><a href="http://trade.tjdesignx.com/#/">版权贸易</a></li>
-        <li><a href="http://bbs.tjdesignx.com/#/">工程技术论坛</a></li>
+        <li><a href="http://trade.tongjix.cn/#/">版权贸易</a></li>
+        <li><a href="http://bbs.tongjix.cn/#/">工程技术论坛</a></li>
         <li><a href="http://x.tjdesignx.com/#/">同济设计在线</a></li>
         <li><a href="http://bim.tjdesignx.com/#/">BIM培训中心</a></li>
       </ul>
