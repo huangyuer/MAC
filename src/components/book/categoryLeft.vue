@@ -72,7 +72,7 @@
 <script>
   import {DataTree} from '../../utils/data_tree'
   export default {
-    created () {
+    mounted () {
       this.init()
     },
     computed: {
