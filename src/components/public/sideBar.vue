@@ -48,15 +48,17 @@
 </template>
 
 <script>
-  import {deleteCookie} from '../../utils/cookie'
+  import {deleteCookie, getCookie, setCookie} from '../../utils/cookie'
   export default {
     data () {
       return {
-        isSubLibsShow: true
+        isSubLibsShow: true,
+        isLoggedIn: false
       }
     },
     mounted () {
-      this.$store.dispatch('listSublibs', {})
+      this.$store.dispatch('listSublibs', {});
+      this.checkLoginStatus();
     },
     methods: {
       // toggleSubLibs wap 切换子菜单
@@ -72,10 +74,21 @@
         document.getElementById('sidebar').checked = false
         this.$store.commit('setSideBarShow', false)
       },
+      checkLoginStatus: function(){ 
+        console.log('loggedIn', this.loggedIn); 
+        if (! this.loggedIn) {
+          let userId = getCookie('userId');
+          console.log('userId', userId);
+          if(userId){
+            this.$store.commit('setLoggedIn'); 
+          }
+        }
+      },
       // 退出登录
       signOut: function () {
         this.closeSideBar()
         deleteCookie('sessionToken')
+        deleteCookie('userId')
         deleteCookie('userInfo')
         this.$store.commit('setLoggedOut')
         console.log('logged out')
@@ -86,25 +99,8 @@
       sublibs () {
         return this.$store.getters.sublibs
       },
-      loggedIn () {
-        try {
-          let logged = this.$store.getters.loggedIn
-          if (logged) {
-            return true
-          }
-          let userInfo = getCookie('userInfo')
-          if (userInfo) {
-            try {
-              let user = JSON.parse(userInfo)
-              return user
-            } catch (e) {
-              return this.$store.getters.userInfo
-            }
-          } else {
-            return this.$store.getters.userInfo
-          }
-        } catch (e) {
-        }
+      loggedIn () { 
+        return this.$store.getters.loggedIn; 
       },
     }
   }

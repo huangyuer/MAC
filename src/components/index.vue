@@ -179,6 +179,8 @@ export default {
     logout: function() {
       // 删除cookie检查状态成功则退出
       deleteCookie("sessionToken");
+      deleteCookie('userId');
+      deleteCookie('userInfo')
       this.$store.commit("setLoggedOut");
       window.history.go(0);
       this.$router.push("/");
