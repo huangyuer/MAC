@@ -13,9 +13,9 @@
         <span>|</span>
         <a href="http://bbs.tongjix.cn/#/">工程技术论坛</a>
         <span>|</span>
-         <a href="http://x.tjdesignx.com/#/">同济设计在线</a>
+         <a href="http://www.tjdesignx.com/#/">同济设计在线</a>
         <span>|</span>
-        <a href="http://bim.tjdesignx.com/#/">BIM培训中心</a>
+       <!--  <a href="http://bim.tjdesignx.com/#/">BIM培训中心</a> -->
       </div>
       <div class="icp">
         <a href="http://www.miitbeian.gov.cn/">沪ICP备11031396号</a>
@@ -38,12 +38,12 @@
       <div class="container">
         <a href="http://www.tongjix.cn/#/"> <span>工程数据库</span></a>
         <a href="http://trade.tongjix.cn/#/">版权贸易</a>
-        <a href="http://x.tjdesignx.com/#/">同济设计在线</a>
+        <a href="http://www.tjdesignx.com/#/">同济设计在线</a>
       </div>
       <div class="container">
         <a href="/#/selected" class="link">工程师史</a>
         <a href="http://bbs.tongjix.cn/#/">工程技术论坛</a>
-        <a href="http://bim.tjdesignx.com/#/">BIM培训中心</a>
+       <!--  <a href="http://bim.tjdesignx.com/#/">BIM培训中心</a> -->
       </div>
       <div class="container">
         <div class="icp">

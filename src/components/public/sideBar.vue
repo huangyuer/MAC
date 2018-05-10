@@ -19,8 +19,8 @@
       <li class="side-item"><a class="link" @click="closeSideBar()" href="/#/selected"><b>·工程师史</b></a></li>
       <li class="side-item"><a class="link" @click="closeSideBar()" href="http://trade.tongjix.cn/#/"><b>·版权贸易</b></a></li>
       <li class="side-item"><a class="link" @click="closeSideBar()" href="http://bbs.tongjix.cn/#/"><b>·工程技术论坛</b></a></li>
-      <li class="side-item"><a class="link" @click="closeSideBar()" href="http://x.tjdesignx.com/#/"><b>·同济设计在线</b></a></li>
-      <li class="side-item"><a class="link" @click="closeSideBar()" href="http://bim.tjdesignx.com/#/"><b>·BIM培训中心</b></a></li>
+      <li class="side-item"><a class="link" @click="closeSideBar()" href="http://www.tjdesignx.com/#/"><b>·同济设计在线</b></a></li>
+      <!-- <li class="side-item"><a class="link" @click="closeSideBar()" href="http://bim.tjdesignx.com/#/"><b>·BIM培训中心</b></a></li> -->
 
       <!--登录状态-->
       <li>
