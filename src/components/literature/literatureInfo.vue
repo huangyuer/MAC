@@ -6,6 +6,11 @@
         <h4 v-text="literature.name"></h4>
          <div v-if="literature.pdf"  @click="readPdf(literature)" style="text-align:center;"  class="btn-container"><div class="btn">在线阅读</div></div>
         <p v-html="literature.content" class="literature_content"></p>
+        <!-- 评论组件 -->
+        <div style="margin:  0 auto;">
+          <app-comment  kind="literature" :srcId="literatureId"></app-comment>
+        </div>
+        <!-- 评论组件 -->
       </div>
       <div class="literature_info_right">
          <h4><span>|&nbsp;</span><span v-text="literature.name" class="blue"></span></h4>
@@ -43,14 +48,16 @@
 </style>
 
 <script>
-  import backBar from '../public/backBar.vue'
+  import backBar from '../public/backBar.vue';
+  import AppComment from '../public/appComment.vue';
   export default {
     data () {
       return {
       }
     },
     components: {
-      backBar
+      backBar,
+      AppComment
     },
     mounted(){
       this.getData();

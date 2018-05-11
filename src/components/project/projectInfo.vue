@@ -5,6 +5,11 @@
       <div class="project_info_left">
         <h4 v-text="project.title"></h4>
         <p class="project_content" v-html="project.content"></p>
+        <!-- 评论组件 -->
+        <div style="margin:  0 auto;">
+          <app-comment  kind="works" :srcId="worksId"></app-comment>
+        </div>
+        <!-- 评论组件 -->
       </div>
       <div class="project_info_right">
         <h4><span>|&nbsp;</span><span class="blue">所属年代</span></h4>
@@ -44,14 +49,16 @@
 </style>
 
 <script>
-  import backBar from '../public/backBar.vue'
+  import backBar from '../public/backBar.vue';
+  import AppComment from '../public/appComment.vue';
   export default {
     data () {
       return {
       }
     },
     components: {
-      backBar
+      backBar,
+       AppComment
     },
     mounted(){
       this.getData();
