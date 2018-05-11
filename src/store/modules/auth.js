@@ -49,7 +49,7 @@ const getters = {
   favoriteBooks: state => state.favoriteBooks,
   favoriteBooksReady: state => state.favoriteBooksReady,
   
- 
+  
   loginAndRegisterDialogVisible: state => state.loginAndRegisterDialogVisible,
   loginDialogVisible: state => state.loginDialogVisible,
   registerDialogVisible: state => state.registerDialogVisible, 

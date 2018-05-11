@@ -29,6 +29,7 @@ import loadingComponent from './modules/loadingComponent'
 import user from './modules/user'
 import mediaDetail from './modules/mediaDetail'
 import sideBar from './modules/sideBar'
+import comment from './modules/comment'
 
 Vue.use(Vuex)
 
@@ -72,7 +73,8 @@ export default new Vuex.Store({
     loadingComponent,
     user,
     mediaDetail,
-    sideBar
+    sideBar,
+    comment
   },
   strict: debug
 })

@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "bson-objectid": "^1.2.3",
     "element-ui": "^2.0.7",
     "ismobilejs": "^0.4.1",
+    "moment": "^2.22.1",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "scss-loader": "^0.0.1",

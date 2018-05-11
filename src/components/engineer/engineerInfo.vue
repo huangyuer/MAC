@@ -5,7 +5,12 @@
       <div class="engineer_info_left">
         <h3>{{engineer.name}}</h3>
         <p class="engineer_content" v-html="engineer.content"></p>
-      </div>
+        <!-- 评论组件 -->
+        <div style="margin:  0 auto;">
+          <app-comment  kind="engineer" :srcId="engineerId"></app-comment>
+        </div>
+        <!-- 评论组件 -->
+      </div> 
       <div class="engineer_info_right">
         <h4><span>|&nbsp;</span><span class="blue">专长</span></h4>
         <p>
@@ -28,11 +33,11 @@
           <img src="../../assets/images/chat.png"/>
           <span>{{engineer.comment_count||0}}</span>
         </h5>
-        <div class="divider" style="margin: 30px 0;"></div>
+        <div class="divider" style="max-width:680px;margin: 30px 0;"></div>
+      </div> 
       </div>
-    </div>
-    <div class="clear"></div>
-  </div>
+      <div class="clear"></div> 
+  </div> 
 </template>
 
 <style lang="scss" scoped>
@@ -40,6 +45,7 @@
 </style>
 <script>
   import backBar from '../public/backBar.vue'
+  import AppComment from '../public/appComment.vue';
   export default {
     data () {
       return {
@@ -47,7 +53,8 @@
       }
     },
     components: {
-      backBar
+      backBar,
+      AppComment
     },
     mounted(){
       this.getData();

@@ -13,6 +13,12 @@ const state = {
     'isSearchResult': false,
     'keyword': ''
   },
+  defaultAvatars: [
+    'http://tjdesigner.oss-cn-shanghai.aliyuncs.com/upload/avatar/b.png',
+    'http://tjdesigner.oss-cn-shanghai.aliyuncs.com/upload/avatar/r.png',
+    'http://tjdesigner.oss-cn-shanghai.aliyuncs.com/upload/avatar/y.png',
+    'http://tjdesigner.oss-cn-shanghai.aliyuncs.com/upload/avatar/ghost.png'
+  ],
   userDetail: {
     _id: '',
     username: '',
@@ -73,6 +79,7 @@ const getters = {
   userDeleteResult: state => state.userDeleteResult,
   userDetailReady: state => state.userDetailReady,
   userCacheReady: state => state.userCacheReady,
+  defaultAvatars: state => state.defaultAvatars,
   setUserStatusSuccess: state => state.setUserStatusSuccess,
   setUserAuditStatusSuccess: state => state.setUserAuditStatusSuccess,
   changePasswordStatus: state => state.changePasswordStatus,
