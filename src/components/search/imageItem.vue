@@ -1,7 +1,7 @@
 <template>
   <div class="image-item">
     <div class="img-container" @click="seeOrign">
-      <img :src="cover">
+      <img :src="cover" alt="">
     </div>
     <div class="content">
       <div class="inner">
