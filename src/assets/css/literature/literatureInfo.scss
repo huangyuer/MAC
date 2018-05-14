@@ -1,7 +1,6 @@
 @import "../global";
-
 .literature_info_wrapper {
-  .literature_info{
+  .literature_info {
     margin: 20px auto;
     width: 1100px;
     .literature_info_left {
@@ -23,7 +22,7 @@
       .literature_content {
         display: block;
         color: rgb(111, 111, 111);
-        font-size:16px;
+        font-size: 16px;
         font-weight: 200;
         line-height: 30px;
         text-indent: 2em;
@@ -47,7 +46,7 @@
         margin: 20px 0;
         font-size: 12px;
         height: 20px;
-        span{
+        span {
           font-size: 12px;
           height: 14px;
           line-height: 14px;
@@ -71,6 +70,16 @@
           margin: 30px 0;
           width: 150px;
         }
+      }
+      .print {
+        width: 90px;
+        background-color: #E37423;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 3px;
+        user-select: none;
+        color: white;
       }
     }
   }

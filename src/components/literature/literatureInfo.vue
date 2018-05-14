@@ -26,6 +26,9 @@
           <img src="../../assets/images/chat.png"/>
           <span>{{literature.comment_count||0}}</span>
         </h5>
+<div class="print" @click="clickPrint">
+          <span>打印本页</span>
+        </div>
         <div class="divider" style="margin: 30px 0;"></div>
       </div>
     </div>
@@ -34,55 +37,59 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/literature/literatureInfo";
+@import "../../assets/css/literature/literatureInfo";
 </style>
 
 <script>
-  import backBar from '../public/backBar.vue'
-  export default {
-    data () {
-      return {
-      }
+import backBar from "../public/backBar.vue";
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    backBar
+  },
+  mounted() {
+    this.getData();
+  },
+  computed: {
+    literatureError() {
+      return this.$store.getters.literatureError;
     },
-    components: {
-      backBar
+    literatureId() {
+      console.log(this.$route.params.literatureId);
+      return this.$route.params.literatureId || "0";
     },
-    mounted(){
-      this.getData();
-    },
-    computed: {
-      literatureError () {
-          return this.$store.getters.literatureError;
+    literature() {
+      return this.$store.getters.literatureDetail;
+    }
+  },
+  watch: {
+    literatureError: {
+      handler: function(val, oldVal) {
+        if (val) {
+          this.error = val;
+          this.$message({
+            showClose: true,
+            message: val,
+            type: "error"
+          });
+          this.$store.commit("clearLiteratureError");
+        }
       },
-      literatureId(){
-        console.log(this.$route.params.literatureId);
-        return this.$route.params.literatureId || '0';
-      },
-      literature(){
-        return this.$store.getters.literatureDetail;
-      }
+      deep: true
     },
-    watch:{
-      literatureError: {
-        handler: function (val, oldVal) {
-          if(val){
-            this.error = val;
-            this.$message({
-              showClose: true,
-              message: val,
-              type: 'error'
-            });
-            this.$store.commit('clearLiteratureError');
-          }
-        },
-        deep: true
-      },
-      '$route': 'getData'
+    $route: "getData"
+  },
+  methods: {
+    getData: function() {
+      this.$store.dispatch("getLiteratureDetail", {
+        literatureId: this.literatureId
+      });
     },
-    methods: {
-      getData: function() {
-        this.$store.dispatch('getLiteratureDetail', {'literatureId': this.literatureId });
-      }
+    clickPrint: function() {
+      window.print();
     }
   }
+};
 </script>

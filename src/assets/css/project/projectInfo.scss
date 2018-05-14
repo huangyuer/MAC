@@ -72,6 +72,16 @@
           width: 150px;
         }
       }
+      .print {
+        width: 90px;
+        background-color: #E37423;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 3px;
+        user-select: none;
+        color: white;
+      }
     }
   }
 }
