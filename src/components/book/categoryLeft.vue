@@ -15,6 +15,7 @@
           prop="name"
           label="本书目录">
           <template slot-scope="scope">
+             <div v-if="scope.row">
               <span v-for="space in scope.row.level" class="ms-tree-space">
                 &nbsp;&nbsp;
               </span>
@@ -24,6 +25,7 @@
             <a href="javascript:;">
               <span @click="openChapter(scope.row)" style="color: #4A4A4A">{{scope.row.name}}</span>
             </a>
+            </div>
           </template>
         </el-table-column>
       </el-table>
@@ -72,7 +74,7 @@
 <script>
   import {DataTree} from '../../utils/data_tree'
   export default {
-    created () {
+    mounted () {
       this.init()
     },
     computed: {

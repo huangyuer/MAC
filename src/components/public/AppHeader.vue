@@ -21,7 +21,7 @@
 
       <!--web端 登录状态-->
       <div class="login-container">
-        <div v-if="loggedIn" class="grzx_grzx">
+        <div v-if="isLoggedIn" class="grzx_grzx">
           <a href="javascript:;" @click="logout()">
             <p>退出登录</p>
           </a>
@@ -71,16 +71,33 @@
   import { getCookie, setCookie, deleteCookie } from '../../utils/cookie'
 
   export default {
+
     mounted: function () {
+      // 检查登录信息 
+      this.checkLoginStatus();
     },
     components: {},
     data () {
       return {
+        isLoggedIn: false
       }
     },
     methods: {
       setSideBarShow: function () {
         this.$store.commit('setSideBarShow', !this.isSideBarShow)
+      },
+      checkLoginStatus: function(){ 
+        console.log('loggedIn', this.loggedIn); 
+        if (! this.loggedIn) {
+          let userId = getCookie('userId');
+          console.log('userId', userId);
+          if(userId){
+            //this.$store.commit('setLoggedIn');
+            this.isLoggedIn = true;
+          }
+        }else{
+          this.isLoggedIn = true;
+        }
       },
       login: function () {
         this.$router.push('/auth/login')
@@ -92,37 +109,28 @@
       logout: function () {
         deleteCookie('sessionToken')
         deleteCookie('userInfo')
+        deleteCookie('userId') 
         this.$store.commit('setLoggedOut')
         console.log('logged out')
         window.location.href = '/'
       },
     },
+    watch: {
+      loggedIn: {
+        handler: function (val, oldVal) {  
+          this.checkLoginStatus(); 
+        }
+      },
+      '$route': 'checkLoginStatus'
+    }, 
     computed: {
       isSideBarShow () {
         return this.$store.getters.isSideBarShow
       },
-      loggedIn () {
-        try {
-          let logged = this.$store.getters.loggedIn
-          if (logged) {
-            return true
-          }
-          let userInfo = getCookie('userInfo')
-          if (userInfo) {
-            try {
-              let user = JSON.parse(userInfo)
-              return user
-            } catch (e) {
-              return this.$store.getters.userInfo
-            }
-          } else {
-            return this.$store.getters.userInfo
-          }
-        } catch (e) {
-        }
+      loggedIn () { 
+        return this.$store.getters.loggedIn; 
       },
     },
-    filters: {}
-
+    filters: {} 
   }
 </script>

@@ -196,9 +196,11 @@
     },
     methods: {
       getData: function () {
-        for (let k in this.userDetail) {
-          this.userForm[k] = this.userDetail[k];
-        }
+        if(this.userDetail){
+          for (let k in this.userDetail) {
+            this.userForm[k] = this.userDetail[k];
+          }
+        } 
       },
       saveUser: function () {
         this.$store.dispatch('putUser', this.userForm);

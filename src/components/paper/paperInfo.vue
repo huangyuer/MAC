@@ -54,6 +54,7 @@
   import navBar from '../public/navBar'
   import paperApi from '../../store/api/paper';
   import magazineItem from '../magazine/magazineItem'
+  const isMobile = require('ismobilejs');
 
   export default {
     components: { 
@@ -102,6 +103,9 @@
       // 在线阅读
       readPdf: function(paper){ 
         let pdfUrl = this.$store.state.MAGAZINES_PDF_SERVER_PREFIX + paper.pdf
+        if (isMobile.apple.phone || isMobile.android.phone || isMobile.seven_inch) {
+          pdfUrl = this.$store.state.MAGAZINES_PDF_MOBILE_SERVER_PREFIX + issue.pdf
+        }
         console.log(pdfUrl)
         window.location.href = pdfUrl
       }, 

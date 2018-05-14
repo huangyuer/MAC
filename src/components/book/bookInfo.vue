@@ -67,6 +67,7 @@
   import similarRight from './similarRight.vue'
   import {DataTree} from '../../utils/data_tree'
   import listRight from './bookListRight.vue'
+  const isMobile = require('ismobilejs');
 
   export default {
     name: 'book_info',
@@ -105,8 +106,10 @@
         this.$store.dispatch('getBookDetail', {'bookId': this.bookId});
       },
       readPdf: function(bookDetail){
-
         let pdfUrl = this.$store.state.BOOKS_PDF_SERVER_PREFIX + bookDetail.pdf
+        if (isMobile.apple.phone || isMobile.android.phone || isMobile.seven_inch) {
+          pdfUrl = this.$store.state.BOOKS_PDF_MOBILE_SERVER_PREFIX + bookDetail.pdf 
+        }
         console.log(pdfUrl)
         window.location.href = pdfUrl
       },

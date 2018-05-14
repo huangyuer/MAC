@@ -17,7 +17,11 @@ import {
   MessageBox,
   Message,
   Row,
-  Col
+  Col,
+  Dialog,
+  Form,
+  FormItem,
+  Input
 } from 'element-ui'
 
 Vue.use(Pagination)
@@ -27,7 +31,10 @@ Vue.use(TableColumn)
 Vue.use(Button)
 Vue.use(Row)
 Vue.use(Col)
-
+Vue.use(Dialog)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$message = Message
 

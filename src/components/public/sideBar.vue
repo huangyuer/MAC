@@ -17,10 +17,10 @@
         </ul>
       </li>
       <li class="side-item"><a class="link" @click="closeSideBar()" href="/#/selected"><b>·工程师史</b></a></li>
-      <li class="side-item"><a class="link" @click="closeSideBar()" href="http://trade.tjdesignx.com/#/"><b>·版权贸易</b></a></li>
-      <li class="side-item"><a class="link" @click="closeSideBar()" href="http://bbs.tjdesignx.com/#/"><b>·工程技术论坛</b></a></li>
-      <li class="side-item"><a class="link" @click="closeSideBar()" href="http://x.tjdesignx.com/#/"><b>·同济设计在线</b></a></li>
-      <li class="side-item"><a class="link" @click="closeSideBar()" href="http://bim.tjdesignx.com/#/"><b>·BIM培训中心</b></a></li>
+      <li class="side-item"><a class="link" @click="closeSideBar()" href="http://trade.tongjix.cn/#/"><b>·版权贸易</b></a></li>
+      <li class="side-item"><a class="link" @click="closeSideBar()" href="http://bbs.tongjix.cn/#/"><b>·工程技术论坛</b></a></li>
+      <li class="side-item"><a class="link" @click="closeSideBar()" href="http://www.tjdesignx.com/#/"><b>·同济设计在线</b></a></li>
+      <!-- <li class="side-item"><a class="link" @click="closeSideBar()" href="http://bim.tjdesignx.com/#/"><b>·BIM培训中心</b></a></li> -->
 
       <!--登录状态-->
       <li>
@@ -48,15 +48,17 @@
 </template>
 
 <script>
-  import {deleteCookie} from '../../utils/cookie'
+  import {deleteCookie, getCookie, setCookie} from '../../utils/cookie'
   export default {
     data () {
       return {
-        isSubLibsShow: true
+        isSubLibsShow: true,
+        isLoggedIn: false
       }
     },
     mounted () {
-      this.$store.dispatch('listSublibs', {})
+      this.$store.dispatch('listSublibs', {});
+      this.checkLoginStatus();
     },
     methods: {
       // toggleSubLibs wap 切换子菜单
@@ -72,10 +74,21 @@
         document.getElementById('sidebar').checked = false
         this.$store.commit('setSideBarShow', false)
       },
+      checkLoginStatus: function(){ 
+        console.log('loggedIn', this.loggedIn); 
+        if (! this.loggedIn) {
+          let userId = getCookie('userId');
+          console.log('userId', userId);
+          if(userId){
+            this.$store.commit('setLoggedIn'); 
+          }
+        }
+      },
       // 退出登录
       signOut: function () {
         this.closeSideBar()
         deleteCookie('sessionToken')
+        deleteCookie('userId')
         deleteCookie('userInfo')
         this.$store.commit('setLoggedOut')
         console.log('logged out')
@@ -86,25 +99,8 @@
       sublibs () {
         return this.$store.getters.sublibs
       },
-      loggedIn () {
-        try {
-          let logged = this.$store.getters.loggedIn
-          if (logged) {
-            return true
-          }
-          let userInfo = getCookie('userInfo')
-          if (userInfo) {
-            try {
-              let user = JSON.parse(userInfo)
-              return user
-            } catch (e) {
-              return this.$store.getters.userInfo
-            }
-          } else {
-            return this.$store.getters.userInfo
-          }
-        } catch (e) {
-        }
+      loggedIn () { 
+        return this.$store.getters.loggedIn; 
       },
     }
   }

@@ -1,5 +1,21 @@
 <template>
   <div class="list_left">
+    <div class="class_title">
+      <span>学科分类</span>
+      <div class="title_img">
+        <a href="javascript:;" @click="hideClcMenu" v-show="clcMenuVisible">
+          <span>-</span>
+        </a>
+        <a href="javascript:;" @click="showClcMenu" v-show="!clcMenuVisible">
+          <span>+</span>
+        </a>
+      </div>
+    </div>
+    <div class="list_class" v-show="clcMenuVisible">
+      <div class="list_title" v-for="clc in clcs">
+        <a href="javascript:;"><p @click="listBooksByClc(clc.name)" v-text="clc.name"></p></a>
+      </div>
+    </div>
 
     <div class="class_title">
       <span>图书库</span>
@@ -20,7 +36,7 @@
 
     <div class="clear"></div>
 
-    <div class="class_title">
+    <!-- <div class="class_title">
       <span>学科分类</span>
       <div class="title_img">
         <a href="javascript:;" @click="hideCategoryMenu" v-show="categoryMenuVisible">
@@ -35,26 +51,11 @@
       <div class="list_title" v-for="category in categories">
         <a href="javascript:;"><p @click="listBooksByCategory(category.name)" v-text="category.name"></p></a>
       </div>
-    </div>
+    </div> -->
 
     <div class="clear"></div>
 
-    <div class="class_title">
-      <span>中图分类</span>
-      <div class="title_img">
-        <a href="javascript:;" @click="hideClcMenu" v-show="clcMenuVisible">
-          <span>-</span>
-        </a>
-        <a href="javascript:;" @click="showClcMenu" v-show="!clcMenuVisible">
-          <span>+</span>
-        </a>
-      </div>
-    </div>
-    <div class="list_class" v-show="clcMenuVisible">
-      <div class="list_title" v-for="clc in clcs">
-        <a href="javascript:;"><p @click="listBooksByClc(clc.name)" v-text="clc.name"></p></a>
-      </div>
-    </div>
+    
 
     <!--wap left menu-->
     <div class="wap-left-menu" v-show="leftBookMenuVisible">
@@ -68,6 +69,7 @@
         </div>
       </div>
 
+
       <div class="list-class">
         <div class="list-title">
           <a href="javascript:;"><p @click="listBooks">所有类别</p></a>
@@ -75,6 +77,25 @@
       </div>
 
       <div class="clear"></div>
+      <div class="class-title">
+        <span>学科分类</span>
+        <div class="title-img">
+          <a href="javascript:;" @click="hideClcMenu" v-show="clcMenuVisible">
+            <span>-</span>
+          </a>
+          <a href="javascript:;" @click="showClcMenu" v-show="!clcMenuVisible">
+            <span>+</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="list-class" v-show="clcMenuVisible">
+        <div class="list-title" v-for="clc in clcs">
+          <a href="javascript:;"><p @click="listBooksByClc(clc.name)" v-text="clc.name"></p></a>
+        </div>
+      </div>
 
       <div class="class-title">
         <span>图书库</span>
@@ -97,7 +118,7 @@
       </div>
 
 
-      <div class="class-title">
+      <!-- <div class="class-title">
         <span>学科分类</span>
         <div class="title-img">
           <a href="javascript:;" @click="hideCategoryMenu" v-show="categoryMenuVisible">
@@ -115,29 +136,8 @@
         <div class="list-title" v-for="category in categories">
           <a href="javascript:;"><p @click="listBooksByCategory(category.name)" v-text="category.name"></p></a>
         </div>
-      </div>
-
-      <div class="class-title">
-        <span>中图分类</span>
-        <div class="title-img">
-          <a href="javascript:;" @click="hideClcMenu" v-show="clcMenuVisible">
-            <span>-</span>
-          </a>
-          <a href="javascript:;" @click="showClcMenu" v-show="!clcMenuVisible">
-            <span>+</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="clear"></div>
-
-      <div class="list-class" v-show="clcMenuVisible">
-        <div class="list-title" v-for="clc in clcs">
-          <a href="javascript:;"><p @click="listBooksByClc(clc.name)" v-text="clc.name"></p></a>
-        </div>
-      </div>
-    </div>
-
+      </div>  -->
+    </div> 
   </div>
 </template>
 

@@ -90,6 +90,7 @@
   import searchComponent from '../public/searchComponent'
   import navBar from '../public/navBar'
   import issueApi from '../../store/api/issue';
+  const isMobile = require('ismobilejs');
 
   export default {
     components: {
@@ -126,7 +127,11 @@
       },
       // 在线阅读
       readPdf: function(issue){ 
+
         let pdfUrl = this.$store.state.MAGAZINES_PDF_SERVER_PREFIX + issue.pdf
+        if (isMobile.apple.phone || isMobile.android.phone || isMobile.seven_inch) {
+          pdfUrl = this.$store.state.MAGAZINES_PDF_MOBILE_SERVER_PREFIX + issue.pdf
+        }
         console.log(pdfUrl)
         window.location.href = pdfUrl
       },

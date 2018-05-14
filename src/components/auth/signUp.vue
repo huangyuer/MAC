@@ -15,7 +15,7 @@
     <div class="zhmm2">
       <input type="password" placeholder="请再一次输入密码" class="input_444" v-model="repassword">
     </div>
-    <small>注册代表您已经阅读并同意<a href="javascript:void(0);"><b>《xxxxx交易平台用户协议》</b></a></small>
+    <small>注册代表您已经阅读并同意<a href="javascript:void(0);"><b>《同济工程数据库用户协议》</b></a></small>
     <em><a href="javascript:void(0);"  @click="register()">注 册</a></em>
     <strong>已有账号？
        去<router-link to="/auth/login"><a href="javascript:void(0);">登录</a></router-link>
@@ -147,6 +147,7 @@
             self.timer();
           }
         }, function(error){
+          alert(error);
           console.log(error);
         });
       },
