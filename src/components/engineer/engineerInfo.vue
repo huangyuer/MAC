@@ -10,7 +10,7 @@
           <app-comment  kind="engineer" :srcId="engineerId"></app-comment>
         </div>
         <!-- 评论组件 -->
-      </div> 
+      </div>
       <div class="engineer_info_right">
         <h4><span>|&nbsp;</span><span class="blue">专长</span></h4>
         <p>
@@ -33,69 +33,76 @@
           <img src="../../assets/images/chat.png"/>
           <span>{{engineer.comment_count||0}}</span>
         </h5>
+        <div class="print" @click="clickPrint">
+          <span>打印本页</span>
+        </div>
         <div class="divider" style="max-width:680px;margin: 30px 0;"></div>
-      </div> 
       </div>
-      <div class="clear"></div> 
-  </div> 
+      </div>
+      <div class="clear"></div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/engineer/engineerInfo";
+@import "../../assets/css/engineer/engineerInfo";
 </style>
 <script>
-  import backBar from '../public/backBar.vue'
-  import AppComment from '../public/appComment.vue';
-  export default {
-    data () {
-      return {
+import backBar from "../public/backBar.vue";
+import AppComment from "../public/appComment.vue";
 
-      }
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    backBar,
+    AppComment
+  },
+  mounted() {
+    this.getData();
+  },
+  computed: {
+    engineerError() {
+      return this.$store.getters.engineerError;
     },
-    components: {
-      backBar,
-      AppComment
+    engineerId() {
+      console.log(this.$route.params.engineerId);
+      return this.$route.params.engineerId || "0";
     },
-    mounted(){
-      this.getData();
-    },
-    computed: {
-      engineerError () {
-          return this.$store.getters.engineerError;
+    engineer() {
+      return this.$store.getters.engineerDetail;
+    }
+  },
+  watch: {
+    engineerError: {
+      handler: function(val, oldVal) {
+        if (val) {
+          this.error = val;
+          this.$message({
+            showClose: true,
+            message: val,
+            type: "error"
+          });
+          this.$store.commit("clearEngineerError");
+        }
       },
-      engineerId(){
-        console.log(this.$route.params.engineerId);
-        return this.$route.params.engineerId || '0';
-      },
-      engineer(){
-        return this.$store.getters.engineerDetail;
-      }
+      deep: true
     },
-    watch:{
-      engineerError: {
-        handler: function (val, oldVal) {
-          if(val){
-            this.error = val;
-            this.$message({
-              showClose: true,
-              message: val,
-              type: 'error'
-            });
-            this.$store.commit('clearEngineerError');
-          }
-        },
-        deep: true
-      },
-      '$route': 'getData'
+    $route: "getData"
+  },
+  methods: {
+    getData: function() {
+      console.log(this.engineerId);
+      this.$store.dispatch("getEngineerDetail", {
+        engineerId: this.engineerId
+      });
     },
-    methods: {
-      getData: function() {
-        console.log(this.engineerId);
-        this.$store.dispatch('getEngineerDetail', {'engineerId': this.engineerId});
-      },
-      backHome:function(){
-        this.$router.push('/engineer/list');
-      }
+    backHome: function() {
+      this.$router.push("/engineer/list");
+    },
+    clickPrint: function() {
+      window.print();
     }
   }
+};
 </script>

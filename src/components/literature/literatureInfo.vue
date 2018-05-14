@@ -23,11 +23,11 @@
         <p>
           <span v-for="category in literature.categories">{{category}}&nbsp;</span>
         </p>
-        
+
         <div class="divider" style="margin: 30px 0;"></div>
-        
+
         <h5 v-text="literature.category"></h5>
-        
+
         <h5>
           <img src="../../assets/images/eye_close_up.png"/>
           <span>{{literature.clicks||0}}</span>
@@ -36,6 +36,9 @@
           <img src="../../assets/images/chat.png"/>
           <span>{{literature.comment_count||0}}</span>
         </h5>
+<div class="print" @click="clickPrint">
+          <span>打印本页</span>
+        </div>
         <div class="divider" style="margin: 30px 0;"></div>
       </div>
     </div>
@@ -44,61 +47,66 @@
 </template>
 
 <style lang="scss" scoped>
-  @import "../../assets/css/literature/literatureInfo";
+@import "../../assets/css/literature/literatureInfo";
 </style>
 
 <script>
-  import backBar from '../public/backBar.vue';
-  import AppComment from '../public/appComment.vue';
-  export default {
-    data () {
-      return {
-      }
+import backBar from "../public/backBar.vue";
+import AppComment from "../public/appComment.vue";
+
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    backBar,
+    AppComment
+  },
+  mounted() {
+    this.getData();
+  },
+  computed: {
+    literatureError() {
+      return this.$store.getters.literatureError;
     },
-    components: {
-      backBar,
-      AppComment
+    literatureId() {
+      console.log(this.$route.params.literatureId);
+      return this.$route.params.literatureId || "0";
     },
-    mounted(){
-      this.getData();
+    literature() {
+      return this.$store.getters.literatureDetail;
+    }
+  },
+  watch: {
+    literatureError: {
+      handler: function(val, oldVal) {
+        if (val) {
+          this.error = val;
+          this.$message({
+            showClose: true,
+            message: val,
+            type: "error"
+          });
+          this.$store.commit("clearLiteratureError");
+        }
+      },
+      deep: true
     },
-    computed: {
-      literatureError () {
-          return this.$store.getters.literatureError;
-      },
-      literatureId(){
-        console.log(this.$route.params.literatureId);
-        return this.$route.params.literatureId || '0';
-      },
-      literature(){
-        return this.$store.getters.literatureDetail;
-      }
+    $route: "getData"
+  },
+  methods: {
+    getData: function() {
+      this.$store.dispatch("getLiteratureDetail", {
+        literatureId: this.literatureId
+      });
     },
-    watch:{
-      literatureError: {
-        handler: function (val, oldVal) {
-          if(val){
-            this.error = val;
-            this.$message({
-              showClose: true,
-              message: val,
-              type: 'error'
-            });
-            this.$store.commit('clearLiteratureError');
-          }
-        },
-        deep: true
-      },
-      '$route': 'getData'
+    clickPrint: function() {
+      window.print();
     },
-    methods: {
-      getData: function() {
-        this.$store.dispatch('getLiteratureDetail', {'literatureId': this.literatureId });
-      },
-      readPdf: function(literature){ 
-        let pdfUrl = this.$store.state.OSS_PDF_SERVER_PREFIX + literature.pdf
-        window.location.href = pdfUrl
-      },
+    readPdf: function(literature) {
+      let pdfUrl = this.$store.state.OSS_PDF_SERVER_PREFIX + literature.pdf;
+      window.location.href = pdfUrl;
     }
   }
+};
 </script>

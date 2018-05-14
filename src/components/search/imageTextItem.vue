@@ -37,7 +37,7 @@
     </div>
     <div class="img-container">
       <div class="img-real-container" v-show="type=='图书'||type=='专家'">
-        <img :src="cover">
+        <img :src="cover" alt="">
       </div>
     </div>
   </div>

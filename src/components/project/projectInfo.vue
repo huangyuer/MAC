@@ -37,6 +37,9 @@
           <img src="../../assets/images/chat.png"/>
           <span>{{project.comment_count||0}}</span>
         </h5>
+        <div class="print" @click="clickPrint">
+          <span>打印本页</span>
+        </div>
         <div class="divider" style="margin: 30px 0;"></div>
       </div>
     </div>
@@ -97,6 +100,9 @@
       },
       backHome:function(){
         this.$router.push('/project/list');
+      },
+      clickPrint:function(){
+        window.print()
       }
     }
   }
