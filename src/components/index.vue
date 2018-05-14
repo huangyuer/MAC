@@ -1,6 +1,6 @@
 <template>
   <div class="index_bg">
-    <vue-particles
+    <!-- <vue-particles
       color="#fff"
       :particleOpacity="0.7"
       :particlesNumber="120"
@@ -17,7 +17,7 @@
       :clickEffect="true"
       clickMode="repulse"
       class="particles">
-    </vue-particles>
+    </vue-particles> -->
     <div class="top">
 
       <!--web端-->

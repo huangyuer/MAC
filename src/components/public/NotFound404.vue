@@ -1,6 +1,6 @@
 <template>
   <div class="not-found">
-    <vue-particles
+    <!-- <vue-particles
       color="#777"
       :particleOpacity="0.7"
       :particlesNumber="120"
@@ -17,7 +17,7 @@
       :clickEffect="true"
       clickMode="repulse"
       class="particles">
-    </vue-particles>
+    </vue-particles> -->
 
     <div class="img-container">
       <img src="../../assets/images/404.png">
