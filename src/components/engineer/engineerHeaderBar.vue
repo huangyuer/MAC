@@ -7,11 +7,12 @@
         </li>
       </ul>
       <div class="engineer-search">
-        <input class="engineer-search-input" placeholder="搜索" @keyup.enter="doSearch()" v-model="searchContent"/>
+        <input class="engineer-search-input" placeholder="搜索" @keyup.enter="doSearch()" v-model="searchContent"/> 
         <a href="javascript:;">
           <img class="engineer-search-img" src="../../assets/images/search.png" @click="doSearch()"/>
         </a>
       </div>
+       <el-button @click=""  type="text" icon="el-icon-edit">添加词条</el-button>
     </div>
   </div>
 </template>

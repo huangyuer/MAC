@@ -240,6 +240,24 @@ const LoadingComponent = resolve => {
   })
 }
 
+const CreateEntry = resolve => {
+  require.ensure(['../components/usercenter/createEntry.vue'], () => {
+    resolve(require('../components/usercenter/createEntry.vue'))
+  })
+}
+
+const EditEntry = resolve => {
+  require.ensure(['../components/usercenter/editEntry.vue'], () => {
+    resolve(require('../components/usercenter/editEntry.vue'))
+  })
+}
+
+const ListEntries = resolve => {
+  require.ensure(['../components/usercenter/listEntries.vue'], () => {
+    resolve(require('../components/usercenter/listEntries.vue'))
+  })
+}
+
 const Test = resolve => {
   require.ensure(['../components/Test.vue'], () => {
     resolve(require('../components/Test.vue'))
@@ -292,5 +310,8 @@ export {
   LiteratureSearchResult,
   EngineerSearchResult,
   ProjectSearchResult,
+  CreateEntry,
+  EditEntry,
+  ListEntries,
   Test
 }

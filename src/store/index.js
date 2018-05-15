@@ -5,6 +5,7 @@ import * as actions from './actions'
 import * as getters from './getters'
 // import * as getters from './getters'
 import book from './modules/book'
+import uploader from './modules/uploader'
 import category from './modules/category'
 import bookCatalog from './modules/book_catalog'
 import bookChapter from './modules/book_chapter'
@@ -30,6 +31,7 @@ import user from './modules/user'
 import mediaDetail from './modules/mediaDetail'
 import sideBar from './modules/sideBar'
 import comment from './modules/comment'
+import entry from './modules/entry'
 
 Vue.use(Vuex)
 
@@ -74,7 +76,9 @@ export default new Vuex.Store({
     user,
     mediaDetail,
     sideBar,
-    comment
+    comment,
+    uploader,
+    entry
   },
   strict: debug
 })

@@ -47,6 +47,9 @@ import {
   UserResources,
   LoadingComponent,
   mediaDetail,
+  CreateEntry,
+  EditEntry,
+  ListEntries,
   Test
 } from './params'
 // 配置路由
@@ -374,6 +377,29 @@ export default new Router({
         'app-footer': AppFooter
       },
     },
-
+    {
+      path: '/user/create/entry',
+      components: {
+        'app-header': AppHeader,
+        'app-body': CreateEntry,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/user/edit/entry/:id',
+      components: {
+        'app-header': AppHeader,
+        'app-body': EditEntry,
+        'app-footer': AppFooter
+      },
+    },
+    {
+      path: '/user/list/entries',
+      components: {
+        'app-header': AppHeader,
+        'app-body': ListEntries,
+        'app-footer': AppFooter
+      },
+    },
   ]
 })

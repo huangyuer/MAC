@@ -21,6 +21,9 @@ import {
   Dialog,
   Form,
   FormItem,
+  Select,
+  Upload,
+  Option,
   Input
 } from 'element-ui'
 
@@ -35,6 +38,10 @@ Vue.use(Dialog)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
+Vue.use(Upload)
+Vue.use(Select)
+Vue.use(Option)
+
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$message = Message
 
