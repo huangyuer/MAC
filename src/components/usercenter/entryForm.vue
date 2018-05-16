@@ -62,7 +62,7 @@
           strTags: '',
         }, 
         initContent: '',
-        uploadUrl: 'http://engineeringhistory.oss-cn-shanghai.aliyuncs.com',
+        uploadUrl: 'http://api.tongjix.cn/v1/uploader/upload',
         rules: {
           title: [
             { required: true, message: '请输入标题', trigger: 'blur'}, 
@@ -188,7 +188,7 @@
         console.log(file);
       },
       uploadCoverSuccess: function (response, file, fileList) { 
-        this.entryForm.avatar = response.url; 
+        this.entryForm.cover = response.url; 
       },
       handleError: function (err, response, file) {
         console.log('error');

@@ -45,8 +45,7 @@ const state = {
 };
 
 // getters
-const getters = {
-  
+const getters = { 
   entries: state => state.entries.data, 
   latestEntries: state => state.latestEntries.data,
   entriesTotal: state => state.entries.total,
@@ -74,7 +73,16 @@ const actions = {
       commit('setEntries', []);
     });
   }, 
-   
+  getMyEntries ({ commit,state }, params) {  
+    let promise = api.getMyEntries(params.kind,  params.limit, params.page);
+    promise.then((response) => {
+      console.log(response.data); 
+      commit('setEntries', response.data); 
+    }, (response) => {
+      console.log(response); 
+      commit('setEntries', []);
+    });
+  }, 
   searchEntries ({ commit }, params) {  
     let promise = api.search(params.keywords, params.limit, params.page);
     promise.then((response) => {

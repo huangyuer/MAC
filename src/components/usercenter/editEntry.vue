@@ -1,9 +1,16 @@
 <template>
-	<div id="entry-create">
-		<h4>修改词条</h4>
-		<hr class="title-hr" /> 
-		<entry-form :entryDetail='entryDetail'></entry-form>
-	</div> 
+  <div class="z_bg">
+    <div class="grzx_main">
+      <user-left-menu></user-left-menu>
+      <div class="grzx_right">
+      	<div id="entry-create">
+      		<h4>修改词条</h4>
+      		<hr class="title-hr" /> 
+      		<entry-form :entryDetail='entryDetail'></entry-form>
+      	</div> 
+      </div>
+  </div>
+</div>
 </template>
 
 <style>
@@ -11,6 +18,8 @@
 </style>
 <script> 
   import EntryForm from './entryForm.vue';
+  import UserLeftMenu from './leftMenu'
+  import {checkLoginCookie, getCookie} from '../../assets/js/cookie'
   export default{
     name: 'EntryEdit',
     data(){
@@ -19,7 +28,8 @@
       }
     }, 
     components:{
-       'entry-form': EntryForm
+       'entry-form': EntryForm,
+       'user-left-menu': UserLeftMenu
     },
     created:function(){
       this.getData();

@@ -1,78 +1,52 @@
 <template>
-<div>   
-    <el-table
-    :data="entries"
-    style="width: 100%">
-    <el-table-column
-      type="selection"
-      width="55">
-    </el-table-column>
-    <el-table-column  
-      label="头像"
-      width="180">
-        <template slot-scope="scope">
-        <img v-show="scope.row.avatar" width="64" height="64" :src="scope.row.avatar+'?x-oss-process=image/resize,w_100'" /> 
-        <img v-show="!scope.row.avatar" width="64" height="64" src="/assets/img/default-entry.png" /> 
-        <img v-show="!scope.row.avatar" width="64" src="/asssets/images/default.jpg">
-     </template>
-    </el-table-column>
-    <el-table-column 
-      prop="name"
-      label="姓名">
-      <template slot-scope="scope">
-        <router-link :to="'/entry/detail/' + scope.row._id">{{scope.row.name}}</router-link>
-      </template>
-    </el-table-column>
-    <el-table-column
-      prop="professions"
-      label="专长"
-      width="180">
-      <template slot-scope="scope">
-     <div v-for="profession in scope.row.professions">
-        <router-link style="margin-right:10px;" :to="'/entries?profession='+profession"><el-tag type="success" close-transition>{{profession}}</el-tag></router-link>
-      </div>
-      </template> 
-    </el-table-column> 
-     <el-table-column
-      prop="trades"
-      label="行业"
-      width="180">
-      <template  slot-scope="scope">
-        <div v-for="trade in scope.row.trades">
-        <router-link style="margin-right:10px;" :to="'/entries?trade='+trade"><el-tag type="success" close-transition>{{trade}}</el-tag></router-link>
-       </div>
-      </template> 
-    </el-table-column>
-    <el-table-column
-      prop="works"
-      label="相关工程"
-      width="100">
-       <template slot-scope="scope">
-        <a href="javascript:;" @click="editWorks(scope.$index, scope.row)"><i class="icon iconfont icon-edit"></i></a>
-        <div v-for="work in scope.row.works">
-        <router-link style="margin-right:10px;" :to="'/entries?work='+work"> {{work.title}}</router-link>
-      </div>
-      </template> 
-    </el-table-column>
-    <el-table-column
-      :context="_self" 
-      label="操作">
-       <template slot-scope="scope">
-        <el-button
-          size="small"
-          @click="handleEdit(scope.$index, scope.row)">
-          编辑
-        </el-button>  
-        <el-button
-          size="small"
-          type="danger"
-          @click="confirmDelete(scope.$index, scope.row)">
-          删除
-        </el-button>
-        </template> 
-    </el-table-column>
-  </el-table> 
-   
+<div class="z_bg">
+    <div class="grzx_main">
+     
+      <user-left-menu></user-left-menu>
+      <div class="grzx_right">
+          <el-table
+          :data="entries"
+          style="width: 100%"> 
+          <el-table-column  
+            label="图片"
+            width="180">
+              <template slot-scope="scope">
+              <img v-show="scope.row.cover" width="64" height="64" :src="scope.row.cover+'?x-oss-process=image/resize,w_100'" />  
+              <img v-show="!scope.row.cover" width="64" src="/asssets/images/default.jpg">
+           </template>
+          </el-table-column>
+          <el-table-column 
+            prop="title"
+            label="标题">
+            <template slot-scope="scope">
+              <router-link :to="'/entry/detail/' + scope.row._id">{{scope.row.title}}</router-link>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="kind"
+            label="分类"
+            width="180"> 
+          </el-table-column>  
+          <el-table-column
+            :context="_self" 
+            label="操作">
+             <template slot-scope="scope">
+              <el-button
+                size="small"
+                @click="handleEdit(scope.$index, scope.row)">
+                编辑
+              </el-button>  
+              <el-button
+                size="small"
+                type="danger"
+                @click="confirmDelete(scope.$index, scope.row)">
+                删除
+              </el-button>
+              </template> 
+          </el-table-column>
+        </el-table> 
+        </div>
+   </div>  
   </div>
 </template> 
 <style>
@@ -80,16 +54,24 @@
 </style>
 
 <script> 
+  import UserLeftMenu from './leftMenu'
+  import api from '../../store/api/entry';
+
   export default{
-    name: 'EntryList',
-    props: ['entries', ],
+    name: 'EntryList', 
     data(){
       return { 
         msg: '词条列表', 
         deleteConfirmVisible: false,  
       }
     },  
+    mounted: function(){
+      this.getData();
+    },
     computed: {
+      entries(){
+        return this.$store.getters.entries;
+      },
       entryDeleteStatus(){
         return this.$store.getters.entryDeleteStatus;
       },
@@ -102,7 +84,7 @@
       }
     },
     components: {
-        
+      'user-left-menu': UserLeftMenu
     },
     watch: { 
       entryDeleteStatus: {
@@ -119,14 +101,11 @@
       }
     },
     methods: { 
-      editWorks: function(index, row){  
-        // this.$store.dispatch('getEntryDetail', {'entryId': row._id}); 
-        this.$store.dispatch('getEntryWorks', {'entryId': row._id});   
-        this.$store.dispatch('getLatestWorks', {'category': '', 'limit': 10000, 'page': 1}); 
-        this.$store.commit('showEntryWorksRelationDialog');
-      },
+      getData: function(){ 
+        this.$store.dispatch('getMyEntries', {});
+      }, 
       handleEdit: function(index, row){
-        this.$router.push('/entry/edit/' + row._id);
+        this.$router.push('/user/edit/entry/' + row._id);
       },
       showDeleteConfirm: function(){
         this.deleteConfirmVisible = true;
@@ -141,7 +120,7 @@
         this.deleteConfirmVisible = false;
       },
       confirmDelete(index, row) {
-        this.$confirm('此操作将永久删除该文档, 是否继续?', '提示', {
+        this.$confirm('此操作将永久删除该词条, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'

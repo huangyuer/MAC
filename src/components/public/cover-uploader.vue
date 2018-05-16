@@ -3,9 +3,9 @@
     <el-upload
           class="cover-uploader"
           drag
-          action="http://engineeringhistory.oss-cn-shanghai.aliyuncs.com" 
+          action="http://api.tongjix.cn/v1/uploader/upload" 
+          :headers="headers"
           :accept="uploadType"
-         
           :multiple="false"
           :data="uploadData"
           :show-upload-list="false"
@@ -55,6 +55,7 @@
 <script> 
   var md5 = require('js-md5');
   var moment = require('moment');
+  import {getCookie, deleteCookie} from '../../utils/cookie';
   export default{
     name: 'CoverUploader',
     data(){
@@ -73,6 +74,10 @@
     computed: {  
       uploadToken:function(){
         return this.$store.getters.uploadToken;
+      },
+      headers: function(){
+        let token = getCookie('sessionToken'); 
+        return {'Authorization': token}
       },
       uploadData: function () { 
         return {
@@ -118,7 +123,8 @@
         let m = moment.now();
         hash.update(file.name + m);
         //this.uploader.key = 'upload/' + hash.hex();
-        this.uploadData.key = 'upload/' + hash.hex();
+        this.uploadData.key = 'upload/' + hash.hex(); 
+        
       },
       callbackMethod: function () {
         console.log('called....');

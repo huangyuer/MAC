@@ -12,7 +12,7 @@
           <img class="engineer-search-img" src="../../assets/images/search.png" @click="doSearch()"/>
         </a>
       </div>
-       <el-button @click=""  type="text" icon="el-icon-edit">添加词条</el-button>
+       <el-button @click="createEntry"  type="text" icon="el-icon-edit">添加词条</el-button>
     </div>
   </div>
 </template>
@@ -53,8 +53,10 @@
           keywords: []
         }
         this.$store.dispatch('searchHybrid', p)
-        // this.$store.dispatch('searchProject', p)
-        this.$router.push('/history/search/result')
+        // this.$store.dispatch('searchProject', p) 
+      },
+      createEntry: function(){
+        this.$router.push({path: '/user/create/entry'})
       },
       search: function (type) {
         console.log(type)

@@ -44,7 +44,7 @@
           '|', 'link', 'unlink',  'img', 'video', '|', 'undo', 'redo', 'fullscreen'
         ] 
         editor.config.withCredentials = true;
-        editor.config.uploadImgUrl = 'http://118.178.238.202:9988/v1/uploader/upload';
+        editor.config.uploadImgUrl = 'http://api.tongjix.cn/v1/uploader/upload';
         editor.onchange = function () { 
           self.formatContent(this.$txt.html());
         }  

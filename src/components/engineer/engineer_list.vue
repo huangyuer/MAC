@@ -26,9 +26,7 @@
                 <engineer-item :engineer="engineer"></engineer-item>
               </a>
             </li>
-          </ul>
- 
- 
+          </ul> 
           </div>
           <div style="clear:both;"></div>
           <div style="margin:20px;" class="paginator">
@@ -68,14 +66,8 @@
       engineers () {
         return this.$store.getters.engineers;
       },
-<<<<<<< HEAD
       isSearchResult () {
         return this.$store.getters.engineers.isSearchResult;
-=======
-      
-      isSearchResult () { 
-        return this.$store.getters.engineers.isSearchResult;  
->>>>>>> 019a709e23013bed11e0a788f9a6a973107cdc79
       },
       engineersTotal(){
         return this.$store.getters.engineersTotal;
@@ -105,16 +97,10 @@
       getData: function(){
         this.$store.dispatch('getLatestEngineers', {'profession': this.currentProfession,'era': this.currentEra, 'limit': this.pageSize, 'page': this.currentPage});
       },
-<<<<<<< HEAD
+
       handleCurrentChange(val) { 
         this.$store.dispatch('getLatestEngineers', {'profession': this.currentProfession, 'era': this.currentEra,  'limit': this.pageSize, 'page': val}); 
-        document.documentElement.scrollTop = 0;
-         
-=======
-      handleCurrentChange(val) {
-        this.$store.dispatch('getLatestEngineers', {'profession': this.currentProfession, 'era': this.currentEra,  'limit': this.pageSize, 'page': val});
-
->>>>>>> c002e01f3c95854bf0ebd6d753581fa5952edd90
+        document.documentElement.scrollTop = 0;  
       },
     }
   }

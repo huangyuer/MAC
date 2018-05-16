@@ -3,13 +3,20 @@ import config from '../config';
 
 
 export default{
-    getLatest (kind, limit, page) {  
+  getLatest (kind, limit, page) {  
     kind = encodeURI(kind); 
     let apiUrl = `${config.API_HOST}/entries?kind=${kind}&limit=${limit}&page=${page}&orderBy=latest`;
      
     let promise = Vue.http.get(apiUrl);
     return promise;
   },  
+  getMyEntries (kind, limit, page) {  
+    kind = encodeURI(kind); 
+    let apiUrl = `${config.API_HOST}/entries/of/me?kind=${kind}&limit=${limit}&page=${page}&orderBy=latest`;
+     
+    let promise = Vue.http.get(apiUrl);
+    return promise;
+  }, 
   getEntryDetail (entryId) {  
     let apiUrl = `${config.API_HOST}/entries/${entryId}/details`;
     let promise = Vue.http.get(apiUrl);
