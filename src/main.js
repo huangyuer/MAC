@@ -25,6 +25,9 @@ import {
   Upload,
   Option,
   Input,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem
    
 } from 'element-ui'
 
@@ -42,6 +45,9 @@ Vue.use(Input)
 Vue.use(Upload)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Dropdown)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
  
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$message = Message
