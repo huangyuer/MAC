@@ -24,7 +24,8 @@ import {
   Select,
   Upload,
   Option,
-  Input
+  Input,
+   
 } from 'element-ui'
 
 Vue.use(Pagination)
@@ -41,9 +42,10 @@ Vue.use(Input)
 Vue.use(Upload)
 Vue.use(Select)
 Vue.use(Option)
-
+ 
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm;
 
 import {
   AUTH_TOKEN

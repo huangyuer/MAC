@@ -113,7 +113,8 @@
       handleDelete: function(index, row) {    
         this.deleteConfirmVisible = false;
         this.$store.dispatch('deleteEntry', row._id);
-        this.entries.splice(index, 1);
+        //this.entries.splice(index, 1);
+        window.history.go(0);
       }, 
       cancelDelete:function(){ 
         console.log(this.deleteConfirmVisible);
