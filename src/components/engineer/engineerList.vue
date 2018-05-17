@@ -123,7 +123,7 @@
         this.$store.dispatch('getLatestEngineers', {'category': this.currentCategory, 'era': this.currentEra, 'area': this.currentArea, 'limit': this.pageSize, 'page': this.currentPage});
       },
       handleCurrentChange(val) {
-        this.$store.dispatch('getLatestEngineers', {'category': this.currentCategory, 'era': this.currentEra,  'limit': this.pageSize, 'page': val});
+        this.$store.dispatch('getLatestEngineers', {'category': this.currentCategory, 'era': this.currentEra, 'area': this.currentArea, 'limit': this.pageSize, 'page': val});
         document.documentElement.scrollTop = 0;
 
       },

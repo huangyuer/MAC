@@ -113,6 +113,7 @@
       },
       handleCurrentChange(val) {
         this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory, 'era': this.currentEra, 'limit': this.pageSize, 'page': val});
+        document.documentElement.scrollTop = 0;
 
       },
     }

@@ -113,8 +113,8 @@
         this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra, 'area': this.currentArea, 'limit': 20, 'page': 1});
       },
       handleCurrentChange(val) {
-        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra,  'limit': this.pageSize, 'page': val});
-
+        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra, 'area': this.currentArea,   'limit': this.pageSize, 'page': val});
+        document.documentElement.scrollTop = 0;
       },
     }
   }
