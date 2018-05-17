@@ -220,7 +220,7 @@
       },
       getLatestEngineers: function (profession, era) {
         this.$store.dispatch('getLatestEngineers', {
-          profession: this.currentProfession,
+          category: this.currentCategory,
           'era': this.currentEra,
           'area': this.currentArea,
           'limit': 6,
