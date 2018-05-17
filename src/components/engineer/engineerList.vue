@@ -93,9 +93,17 @@
         let profession = this.$route.query.profession || '';
         return profession;
       },
+      currentCategory(){
+        let category = this.$route.query.category ? this.$route.query.category : '';
+        return category;
+      },
       currentEra(){
         let era = this.$route.query.era || '';
         return era;
+      },
+      currentArea () {
+        let era = this.$route.query.area || ''
+        return era
       },
       pageSize(){
         let pageSize = this.$route.query.limit || 20;
@@ -112,10 +120,10 @@
     },
     methods: {
       getData: function(){
-        this.$store.dispatch('getLatestEngineers', {'profession': this.currentProfession,'era': this.currentEra, 'limit': this.pageSize, 'page': this.currentPage});
+        this.$store.dispatch('getLatestEngineers', {'category': this.currentCategory, 'era': this.currentEra, 'area': this.currentArea, 'limit': this.pageSize, 'page': this.currentPage});
       },
       handleCurrentChange(val) {
-        this.$store.dispatch('getLatestEngineers', {'profession': this.currentProfession, 'era': this.currentEra,  'limit': this.pageSize, 'page': val});
+        this.$store.dispatch('getLatestEngineers', {'category': this.currentCategory, 'era': this.currentEra,  'limit': this.pageSize, 'page': val});
         document.documentElement.scrollTop = 0;
 
       },
