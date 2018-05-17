@@ -85,7 +85,7 @@ const actions = {
     });
   }, 
   getLatestWorks ({ commit,state }, params) {  
-    let promise = api.getLatest(params.category, params.era,params.area, params.limit, params.page);
+    let promise = api.getLatest(params.category, params.era, params.area, params.limit, params.page);
     promise.then((response) => {
       console.log(response.data);
       commit('setLatestWorks', response.data); 

@@ -212,8 +212,8 @@
       getLatestWorks: function () {
         this.$store.dispatch('getLatestWorks', {
           'category': this.currentCategory,
-          'area': this.currentArea,
           'era': this.currentEra,
+          'area': this.currentArea,  
           'limit': 6,
           'page': 1
         })

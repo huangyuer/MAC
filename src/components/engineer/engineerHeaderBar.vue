@@ -131,7 +131,7 @@
       },
       redirectTo(){
         let queryStr = `area=${this.queryParams.area}&era=${this.queryParams.era}&category=${this.queryParams.category}`;
-        let url = '/selected?' + queryStr; 
+        let url = this.$route.path + '?' + queryStr; 
         console.log(url);
         this.$router.push({path:url});
       },

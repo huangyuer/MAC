@@ -88,6 +88,10 @@
         let category = this.$route.query.category || '';
         return category;
       },
+      currentArea () {
+        let era = this.$route.query.area || ''
+        return era
+      },
       currentEra(){
         let era = this.$route.query.era || '';
         return era;
@@ -106,7 +110,7 @@
     },
     methods: {
       getLatestWorks: function(category,limit,page){
-        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra, 'limit': 20, 'page': 1});
+        this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra, 'area': this.currentArea, 'limit': 20, 'page': 1});
       },
       handleCurrentChange(val) {
         this.$store.dispatch('getLatestWorks', {'category': this.currentCategory,'era': this.currentEra,  'limit': this.pageSize, 'page': val});

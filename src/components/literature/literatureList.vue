@@ -91,6 +91,10 @@
         let era = this.$route.query.era || '';
         return era;
       },
+      currentArea () {
+        let era = this.$route.query.area || ''
+        return era
+      },
       pageSize(){
         let pageSize = this.$route.query.limit || 20;
         return parseInt(pageSize);
@@ -105,7 +109,7 @@
     },
     methods: {
       getLatestLiteratures: function(category,limit,page){
-        this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory,'era': this.currentEra,  'limit': 20, 'page': 1});
+        this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory,'era': this.currentEra, 'limit': 20, 'page': 1});
       },
       handleCurrentChange(val) {
         this.$store.dispatch('getLatestLiteratures', {'category': this.currentCategory, 'era': this.currentEra, 'limit': this.pageSize, 'page': val});
