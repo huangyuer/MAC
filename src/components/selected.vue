@@ -34,7 +34,7 @@
           <ul>
             <li v-for="engineer in engineers">
               <router-link :to="'/engineer/info/' + engineer._id">
-                <engineer-item :engineer="engineer._source"></engineer-item>
+                <engineer-item :engineer="engineer"></engineer-item>
               </router-link>
             </li>
           </ul>
@@ -79,7 +79,7 @@
           <ul>
             <li v-for="project in works">
               <router-link :to="'/project/info/' + project._id">
-                <project-item :project="project._source"></project-item>
+                <project-item :project="project"></project-item>
               </router-link>
             </li>
           </ul>
@@ -124,7 +124,7 @@
           <ul>
             <li v-for="literature in literatures">
               <router-link :to="'/literature/info/' + literature._id">
-                <literature-item :literature="literature._source"></literature-item>
+                <literature-item :literature="literature"></literature-item>
               </router-link>
             </li>
           </ul>
@@ -163,15 +163,22 @@
         searchContent: '工程',
         category: '0',
       }
+
       this.$store.dispatch('searchHybrid', p)
       this.getData()
     },
     computed: {
       engineers () {
-        return this.$store.state.search.hybridEngineerList
+        //return this.$store.state.search.hybridEngineerList
+        return this.$store.getters.engineers;
       },
       literatures () {
-        return this.$store.state.search.hubridLiteratureList
+        //return this.$store.state.search.hubridLiteratureList
+        return this.$store.getters.literatures;
+      },
+      works () {
+        //return this.$store.state.search.hybridProjectList
+        return this.$store.getters.works;
       },
       currentCategory () {
         let category = this.$route.query.category || ''
@@ -181,13 +188,14 @@
         let era = this.$route.query.era || ''
         return era
       },
+      currentArea () {
+        let era = this.$route.query.area || ''
+        return era
+      },
       currentProfession () {
         let profession = this.$route.query.profession || ''
         return profession
-      },
-      works () {
-        return this.$store.state.search.hybridProjectList
-      }
+      }, 
     },
     components: {
       engineerHeaderSearch,
@@ -204,6 +212,7 @@
       getLatestWorks: function () {
         this.$store.dispatch('getLatestWorks', {
           'category': this.currentCategory,
+          'area': this.currentArea,
           'era': this.currentEra,
           'limit': 6,
           'page': 1
@@ -213,6 +222,7 @@
         this.$store.dispatch('getLatestEngineers', {
           profession: this.currentProfession,
           'era': this.currentEra,
+          'area': this.currentArea,
           'limit': 6,
           'page': 1
         })
@@ -221,11 +231,15 @@
         this.$store.dispatch('getLatestLiteratures', {
           'category': this.currentCategory,
           'era': this.currentEra,
+          'area': this.currentArea,
           'limit': 6,
           'page': 1
         })
       },
       getData: function () {
+        this.getLatestLiteratures();
+        this.getLatestEngineers();
+        this.getLatestWorks();
       }
     }
   }

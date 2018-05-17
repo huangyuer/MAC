@@ -3,6 +3,24 @@
     <div class="class_title">
       <span>学科分类</span>
       <div class="title_img">
+        <a href="javascript:;" @click="hideCategoryMenu" v-show="categoryMenuVisible">
+          <span>-</span>
+        </a>
+        <a href="javascript:;" @click="showCategoryMenu" v-show="!categoryMenuVisible">
+          <span>+</span>
+        </a>
+      </div>
+    </div>
+    <div class="list_class" v-show="categoryMenuVisible">
+      <div class="list_title" v-for="category in categories">
+        <a href="javascript:;"><p @click="listBooksByCategory(category.name)" v-text="category.name"></p></a>
+      </div>
+    </div>
+
+    <!-- <div class="clear"></div>
+    <div class="class_title">
+      <span>中图分类</span>
+      <div class="title_img">
         <a href="javascript:;" @click="hideClcMenu" v-show="clcMenuVisible">
           <span>-</span>
         </a>
@@ -15,7 +33,7 @@
       <div class="list_title" v-for="clc in clcs">
         <a href="javascript:;"><p @click="listBooksByClc(clc.name)" v-text="clc.name"></p></a>
       </div>
-    </div>
+    </div> -->
 
     <div class="class_title">
       <span>图书库</span>
@@ -36,24 +54,7 @@
 
     <div class="clear"></div>
 
-    <!-- <div class="class_title">
-      <span>学科分类</span>
-      <div class="title_img">
-        <a href="javascript:;" @click="hideCategoryMenu" v-show="categoryMenuVisible">
-          <span>-</span>
-        </a>
-        <a href="javascript:;" @click="showCategoryMenu" v-show="!categoryMenuVisible">
-          <span>+</span>
-        </a>
-      </div>
-    </div>
-    <div class="list_class" v-show="categoryMenuVisible">
-      <div class="list_title" v-for="category in categories">
-        <a href="javascript:;"><p @click="listBooksByCategory(category.name)" v-text="category.name"></p></a>
-      </div>
-    </div> -->
-
-    <div class="clear"></div>
+    
 
     
 

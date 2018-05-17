@@ -18,7 +18,13 @@
       height: 100%;
       li {
         float: left;
-        margin: 0 30px;
+        margin: 0 10px;
+        select{
+          height:30px;
+          line-height:30px;
+          min-width:60px;
+          max-width:100px;
+        }
       }
     }
     .engineer-search {
