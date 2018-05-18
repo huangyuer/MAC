@@ -80,7 +80,8 @@
         this.$router.push({path: '/book/info/' + bookId})
       },
       toBookContent: function (bookId) {
-        let htmlUrl = '/book/content/' + bookId + '/chapter?src=Text%2Fchapter1.html'
+        // let htmlUrl = '/book/content/' + bookId + '/chapter?src=Text%2Fchapter1.html'
+        let htmlUrl = '/book/info/' + bookId
         this.$router.push(htmlUrl)
       }
     },
