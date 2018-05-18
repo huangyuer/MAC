@@ -15,7 +15,7 @@
 
           <div class="list-center">
 
-            <div class="list-count">找到&nbsp;<font color="#E37423">23232</font>&nbsp;条结果</div>
+           <!--  <div class="list-count">找到&nbsp;<font color="#E37423">5</font>&nbsp;条结果</div> -->
 
             <magazine-list-center></magazine-list-center>
 
@@ -32,8 +32,7 @@
           </div>
 
         </div>
-      </div>
-
+      </div> 
       <magazine-list-right></magazine-list-right>
     </div>
     <div class="clear"></div>
