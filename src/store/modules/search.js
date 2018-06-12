@@ -447,6 +447,7 @@ const actions = {
         if (d[i]._type === 'experts') {
           context.type = '专家'
           context.name = d[i]._source.name
+          context.id = d[i]._id
           context.publishedAt = d[i]._source.createdAt
           context.cover = d[i]._source.avatar
           context.keywords = d[i]._source.categories
@@ -463,6 +464,7 @@ const actions = {
           temp.push(context)
         } else if (d[i]._type === 'patents') {
           context.type = '专利'
+          context.id = d[i]._id
           context.name = d[i]._source.name
           context.publishedAt = d[i]._source.createdAt
           context.cover = d[i]._source.avatar
